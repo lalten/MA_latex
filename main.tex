@@ -21,7 +21,7 @@
 \areaset[20mm]{160mm}{240mm}	% Binderand, Breite und Höhe nutzbarer Bereich
 \usepackage[textwidth=160mm,textheight=240mm]{geometry}
 
-
+\input{pandoc}
 \input{packages}
 
 % --------------------------------------------------------------------
@@ -83,17 +83,21 @@
 %                        citecolor=black]{hyperref} 
 		%% für die .pdf-Datei-Ausgabe bitte diese
 		%% Einstellungen verwenden und obige auskommentieren! 
-		       pdfpagelabels=true,
-		       bookmarks=true,
-		       pagebackref=true,	% Rücklinks im Lit.-verz.
-		       linktocpage=true,
-		       plainpages=false,
-		       hyperfootnotes=false,	% sonst doppelt definiert
-		       breaklinks=true,
-		       colorlinks=true,
-		       linkcolor=blue]{hyperref}
+        unicode=true,
+        pdfpagelabels=true,
+        bookmarks=true,
+        pagebackref=true,	% Rücklinks im Lit.-verz.
+        linktocpage=true,
+        plainpages=false,
+        hyperfootnotes=false,	% sonst doppelt definiert
+        breaklinks=true,
+        colorlinks=true,
+        linkcolor=blue
+        ]{hyperref}
 	\makeatletter
 	\hypersetup{
+	    breaklinks=true,
+	    pdfborder={0 0 0},
 		pdftitle={\@title},
 		pdfauthor={\@author},
 		pdfsubject={Diplomarbeit},
@@ -139,11 +143,6 @@
   München, im Monat Jahr
 \end{danksagung}
 
-% % Hier könnte eine Widmung stehen!
-% \begin{Widmung}
-% % oder auch nicht. ;)
-% \end{Widmung}
-
 % --------------------------------------------------------------------
 % Inhaltsverzeichnis, Abbildungsverzeichnis, Tabellenverzeichnis
 % --------------------------------------------------------------------
@@ -155,18 +154,7 @@
 
 \listoffigures
 \listoftables
-% --------------------------------------------------------------------
-% Liste der verwendeten Symbole
-% --------------------------------------------------------------------
-\phantomsection
-\begin{listofsymbols}
-\begin{tabbing}
-sp	\= symbol-space---- \= \kill \+ \\
-
-RCS	\> Institute for Real-Time Computer Systems \\
-
-\end{tabbing}
-\end{listofsymbols}
+\input{listofsymbols}
 
 % --------------------------------------------------------------------
 % Abstract (Kurzfassung)
@@ -201,7 +189,6 @@ This thesis explores a simple solution for a radar sensor being moving through a
 
 \include{text}
 
-\include{resultstable}
 
 % --------------------------------------------------------------------
 % Anhang
@@ -209,11 +196,8 @@ This thesis explores a simple solution for a radar sensor being moving through a
 \clearpage
 \begin{appendix}
 
-%\include{appendix}
-
-\chapter{Software Sources}
-
-\chapter{Hardware Sources}
+\chapter{List of Scans}
+\include{resultstable}
 
 \end{appendix}
 
@@ -232,7 +216,8 @@ This thesis explores a simple solution for a radar sensor being moving through a
 \clearpage
 %\bibliographystyle{geralpha}
 \bibliographystyle{gerplain}
-\bibliography{literatur} % welche bib-Dateien
+% \bibliography{literatur} % welche bib-Dateien
+\bibliography{mendeley} % welche bib-Dateien
 
 % --------------------------------------------------------------------
 % Dokument-Ende

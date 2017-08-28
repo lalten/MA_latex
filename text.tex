@@ -52,7 +52,7 @@ Usually associated with ship and aircraft localization, radar technology
 made its way to the automotive industry in the form of weather-proof
 range sensors. The newest sensors are even quite small (some sensors
 come with antennas integrated in silicon) and cheap, with prices
-projected to fall below 1\euro{}\cite{Brouwer2015}. Today's embedded
+projected to fall below 1€\cite{Brouwer2015}. Today's embedded
 processors are also powerful enough to handle any kind of radar signal
 processing. Combined with the easy licensing in the Industrial,
 Scientific, Medical (ISM) frequency bands, it seems very worthwhile to
@@ -209,7 +209,7 @@ modulation, which combines the higher transmission energy of longer
 pulses with the resolution of short pulses. Velocity is again known from
 frequency shift.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/radar_pulsed.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_pulsed"}
 Adapted from \cite{Adams2012} p.~52
 
 \subsubsection{Frequency-modulated continuous wave (FMCW)
@@ -231,13 +231,13 @@ Instead of a VCO, direct digital synthesizers together with phase-locked
 loops (PLL) can be used. They generate better (more linear) sweeps at
 the price of increased design complexity and cost \cite{Ernst2016}.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/fmcw_blocks.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/fmcw_blocks"}
 Adapted from \cite{VanZeijl2014}
 
 After the VCO's signal is amplified and transmitted, it reflects at
 visible targets and is received as echo in the same frequency band.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2_stationary.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2_stationary"}
 Adapted from \cite{Adams2012} p.~57
 
 In the top subplot, figure \#REF shows the transmitted frequency sweep
@@ -299,7 +299,7 @@ f_R = \frac{2R}{c} \frac{\Delta f}{T_d} \iff R=\frac{c T_d}{2\Delta f}f_R
 dR = \frac{c}{2 \Delta f}
 \]
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2"}
 Adapted from \cite{Adams2012} p.~57
 
 A moving target however will introduce a Doppler shift \(f_D\) in the
@@ -329,7 +329,7 @@ different target.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_multitarget.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_multitarget"}
 \caption{restrict-height}
 \end{figure}
 
@@ -342,7 +342,7 @@ In this example, \(T_d=32ms\) and \(\Delta f=7GHz\), so the targets were
 at ranges of \(0.5m\), \(1m\), and \(1.5m\). Note that the in-phase part
 \(S_I\) and quadrature part \(S_Q\) of the analytic signal are measured
 in separate channels to retain phase information. The Fourier transform
-in bottom subplot however shows the magnitude \(|S|\) of the analytic
+in bottom subplot however shows the magnitude \(\|S\|\) of the analytic
 signal\footnote{A good explanation is available at [ping.se's I/Q Data for Dummies](http://whiteboard.ping.se/SDR/IQ)}
 \(S = S_I + j~S_Q\) with the imaginary unit \(j\).
 
@@ -372,11 +372,11 @@ difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/Direction\%20of\%20Arrival.png}
+\includegraphics[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/Direction of Arrival"}
 \caption{restrict-height}
 \end{figure}
 
-\section{TODO}\label{todo}
+
 
 \cite{Hacker2010} \cite{Cho2017}
 
@@ -413,7 +413,7 @@ effect is that \(60GHz\) waves are limited to short ranges of a few
 
 Atmospheric attenuation also limits long-range applications. In short
 range (a few \(m\)) it should however not present a problem.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/ITU_0676-05.svg}
+%\includesvg[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/ITU_0676-05}
 Source: \cite{ITU1997}
 
 The downside is that there are some other technologies using the same
@@ -422,7 +422,7 @@ WiGig\cite{AgilentTechnologies2013}. The WiGig frequency allocations in
 figure \#REF show in which regions the \(60GHz\) band is available (also
 for radar).
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/spectrum.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/spectrum"}
 WiGig Channel Plan and Frequency Allocations by Region. Source:
 \cite{AgilentTechnologies2013}
 
@@ -460,7 +460,7 @@ operate in either mode by dividing their planar antenna into
 sub-apertures, whose phase and amplitude are controlled by the
 individual few hundred transmit/receive modules \cite{Moreira2013}.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/sar.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/sar"}
 Illustration of different SAR operation modes which are used to increase
 the swath width (ScanSAR) or improve azimuth resolution (Spotlight)
 compared to Stripmap mode. (a) Stripmap. (b) ScanSAR. (c) Spotlight.
@@ -480,7 +480,7 @@ In a second step, azimuth compression takes place by convolving the
 signal in slow-time with the complex conjugate of the expected
 azimuth-response from a target.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/sar2.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/sar2"}
 Summary of SAR processing steps where the range compressed data result
 from a convolution of the raw data with the range reference function. In
 a second step the azimuth compression is performed through a convolution
@@ -525,7 +525,6 @@ scaling algorithms \cite{Moreira2013}.
 Small ground robots
 
 \begin{itemize}
-\tightlist
 \item
   Martin Adams
 \item
@@ -541,7 +540,6 @@ Small ground robots
 Radar Slam
 
 \begin{itemize}
-\tightlist
 \item
   Martin Adams
 \item
@@ -572,13 +570,13 @@ speed \(v_D\) will be equal to radar speed \(v_R\) (target \(A\) in
 figure). If the radar passes the target on the side, so that the
 distance to the target stops decreasing and begins to grow, \(v_D = 0\)
 (target \(C\) in figure). If a target has an absolute Doppler speed
-\(|v_D|\) between \(0\) and \(v_R\) (target \(B\) in figure), it is seen
+\(\|v_D\|\) between \(0\) and \(v_R\) (target \(B\) in figure), it is seen
 from the radar under an angle \(\alpha\), such that
 \[v_D = v_R cos(\alpha)\]
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/Radar\%20Reprojection\%20Geometry.png}
+\includegraphics[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/Radar Reprojection Geometry"}
 \caption{restrict-height}
 \end{figure}
 
@@ -599,7 +597,7 @@ antennas with angle sensitivities that allow a field of view of over
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/Radar\%20Reprojection\%20Geometry\%20\%28Forward\%20Facing\%29.png}
+\includegraphics[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/Radar Reprojection Geometry (Forward Facing)"}
 \caption{restrict-height}
 \end{figure}
 
@@ -622,7 +620,7 @@ to the radar's position.
 This allows intelligent path planning and obstacle avoidance for mobile
 robots.
 
-\section{TODO}\label{todo-1}
+
 
 \subsubsection{Peak Gradient algorithm}\label{peak-gradient-algorithm}
 
@@ -636,7 +634,7 @@ simultaneously registered.
 
 \subsubsection{Limitations}\label{limitations}
 
-\section{TODO}\label{todo-2}
+
 
 \section{Implementation}\label{implementation}
 
@@ -1083,7 +1081,7 @@ With the RIC60-A they offer a Radar Development Kit (RDK) that gives
 handles the signal acquisition and communication. Figure \#REF shows the
 radar IC and how the three antennas are integrated in silicon.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/slide_RIC60A.svg}
+%\includesvg[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/slide_RIC60A}
 Source: \cite{Brouwer2015} p.9
 
 The radar sensor's beam is fan shaped, which means it is fairly
@@ -1193,7 +1191,7 @@ shows how short chirp times
 \caption{restrict-height}
 \end{figure}
 
-\section{TODO compare SNR}\label{todo-compare-snr}
+
 
 \subsection{Omniradar ROS driver}\label{omniradar-ros-driver}
 
@@ -1266,7 +1264,7 @@ accomplished from the source directory with
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{mkdir}\NormalTok{ build }\KeywordTok{&&} \BuiltInTok{cd}\NormalTok{ build}
+\FunctionTok{mkdir}\NormalTok{ build }\KeywordTok{\&\&} \BuiltInTok{cd}\NormalTok{ build}
 \FunctionTok{cmake}\NormalTok{ -DCPP_BINDINGS=ON -DMATLAB_BINDINGS=OFF ..}
 \FunctionTok{make}
 \FunctionTok{sudo}\NormalTok{ make install}
@@ -1282,12 +1280,12 @@ this would look like
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{target_link_libraries}\NormalTok{(}
-  \VariableTok{$\{PROJECT_NAME\}}\NormalTok{_node}
+  \VariableTok{\$\{PROJECT_NAME\}}\NormalTok{_node}
 \NormalTok{  omniradar}
 \NormalTok{  ftd2xx}
 \NormalTok{  pthread}
 \NormalTok{  dl}
-  \VariableTok{$\{catkin_LIBRARIES\}}
+  \VariableTok{\$\{catkin_LIBRARIES\}}
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1300,7 +1298,7 @@ the
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\AttributeTok{static} \BuiltInTok{std::}\NormalTok{shared_ptr< }\BuiltInTok{std::}\NormalTok{vector<}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint8_t}\NormalTok{> > > demultiplex(}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint32_t}\NormalTok{> &packed_data);}
+\AttributeTok{static} \BuiltInTok{std::}\NormalTok{shared_ptr< }\BuiltInTok{std::}\NormalTok{vector<}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint8_t}\NormalTok{> > > demultiplex(}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint32_t}\NormalTok{> \&packed_data);}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1319,7 +1317,7 @@ it as C style array, e.g.~with
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{[}\StringTok{'#pragma once'} \FloatTok{10} \StringTok{'std::vector<double>'} \FloatTok{10} \StringTok{'vco_tune \{'}\NormalTok{, sprintf(}\StringTok{'%.100g, '}\NormalTok{, VCOtune), }\StringTok{'\};'}\NormalTok{]}
+\NormalTok{[}\StringTok{'#pragma once'} \FloatTok{10} \StringTok{'std::vector<double>'} \FloatTok{10} \StringTok{'vco_tune \{'}\NormalTok{, sprintf(}\StringTok{'\%.100g, '}\NormalTok{, VCOtune), }\StringTok{'\};'}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1428,9 +1426,9 @@ the files to read in rosbags with \texttt{RadarEcho} type messages.
 
 \subsubsection{Lidar}\label{lidar}
 
-\section{Implementation}\label{implementation-1}
+\subsection{Implementation}\label{implementation-1}
 
-\subsection{Overview}\label{overview}
+\subsubsection{Overview}\label{overview}
 
 \subsubsection{Data path}\label{data-path}
 
@@ -1607,7 +1605,7 @@ Combined with the change in cross range,
 speeds of \(v_{D,1} = {d_{down,1} \over{d_{cross}}} = 109.55 \%\) (of
 radar movement speed) and
 \(v_{D,2} = {d_{down,2} \over{d_{cross}}} = -109.55 \%\). If the speeds
-were \(100\%\) and \(-100%\) it would mean that the targets are directly
+were \(100\%\) and \(-100\%\) it would mean that the targets are directly
 ahead and directly behind the moving radar. Speeds over 100\% are
 however impossible in a static environment where all relative target
 motion is caused by the radar movement. The targets are therefore either
@@ -1775,7 +1773,7 @@ move together so closely that they actually form a single target.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://www.filepicker.io/api/file/NxQVqszWTIqhFlxld5Rw}
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_squiggly_doppler_at_wall.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -1939,13 +1937,10 @@ y \in \{\lceil y_t \rceil, \lfloor y_t \rfloor\}
 } p_{x,y} = 1
 \]
 
-In the special case where \$y\_t = \lceil y\_t \rceil = \lfloor y\_t
-\rfloor\$ there are only two instead of the four neighboring pixels.
-Their weights \(p_{x,y}\) are \[
+In the special case where $y\_t = \lceil y\_t \rceil = \lfloor y\_t\rfloor$ there are only two instead of the four neighboring pixels. Their weights \(p_{x,y}\) are \[
 p_{\lfloor x_t \rfloor, y_t} = \nu_h\\
 p_{\lceil x_t \rceil, y_t} = (1 - \nu_h)
-\] The same applies when \$x\_t = \lceil x\_t \rceil = \lfloor x\_t
-\rfloor\$: \[
+\] The same applies when $x\_t = \lceil x\_t \rceil = \lfloor x\_t\rfloor$: \[
 p_{x_t, \lfloor y_t \rfloor} = \nu_v\\
 p_{x_t, \lceil y_t \rceil} = (1 - \nu_v)
 \] And lastly, if
@@ -1954,7 +1949,7 @@ then \(p_{x_t, y_t} = 1\)
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/Sample\%20splitting.png}
+\includegraphics[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/Sample splitting"}
 \caption{restrict-height}
 \end{figure}
 
@@ -1975,8 +1970,7 @@ c_a + (
 \right) ^ {-1}
 }\]
 
-\section{TODO fitting process to get a,b,c
-values}\label{todo-fitting-process-to-get-abc-values}
+
 
 Figure \#REF shows the range profile of the ``Torture Chamber'' scan
 both as oversampled raw values (top subplot) and with range compensation
@@ -2132,58 +2126,7 @@ parameters of the scan (orientation, sweep time), and resulting map. For
 some of the scans, Lidar slam maps were recorded. They are overlaid in
 the background of the reprojection map.
 
-\begin{longtable}[]{@{}lllllllllll@{}}
-\toprule
-\begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Name of scan\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Raw data\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Reprojection map\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Scan date\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Sweep duration\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Sensor orientation\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Squint angle\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Horn extension\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Slam map\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Slam localization\strut
-\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
-Notes\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-Attic\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/video/publicrestroom.webm}\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-Jul 10 2017 14:37:03\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-5ms\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-horizontal\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-90° left\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-Yes\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-No\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-No\strut
-\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
-\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\ldots{}
 
 \section{Discussion and Comparison}\label{discussion-and-comparison}
 
@@ -2201,7 +2144,7 @@ especially for the chair at the scene center. the legs appear in clear
 form as soon as the radar sees the leg from a point that is orthogonal
 to the office chair legs.
 
-\section{TODO snapshots from video?}\label{todo-snapshots-from-video}
+
 
 \subsubsection{Material-dependent echo
 strength}\label{material-dependent-echo-strength}
@@ -2240,7 +2183,7 @@ Torture Chamber. There, it seems like the radar waves bounce around a
 bit in the (2m,2m) area under the desk. The effect is that some targets
 are detected behind the wall behind the desk.
 
-\section{TODO picture?}\label{todo-picture}
+
 
 \subsubsection{Object penetration}\label{object-penetration}
 
@@ -2329,8 +2272,7 @@ the two can towers at the end of the cable.
 \caption{restrict-height}
 \end{figure}
 
-\section{TODO geometry for sensor out of plane with
-targets?}\label{todo-geometry-for-sensor-out-of-plane-with-targets}
+
 
 Both the X Ray Room and Y (Is There A Cable On The Floor) introduce a
 new geometry that lifts the radar sensor out of the two dimensional
@@ -2381,8 +2323,7 @@ about 5mm. However with the 60GHz Omniradar this is around 0.5mm.
 Keeping a straight line with less than half a millimeter of linearity
 error is not realistically achievable on the Kobuki platform.
 
-\section{TODO subfigure with stolt interpolation
-stuff}\label{todo-subfigure-with-stolt-interpolation-stuff}
+
 
 One big inherent problem with synthetic aperture radar algorithms is
 that basically all of them assume the radar to move in a straight line.
@@ -2487,7 +2428,7 @@ impaired'' project \cite{Lee2015} shows how cheap sensors can be hacked
 to read a range profile that looks very similar (see figure \#REF) to
 what is used for the radar reprojection method. It might be possible to
 adapt the algorithms in this thesis to use ultrasound sensors.
-\includegraphics[width=0.5\textwidth]{https://cdn.hackaday.io/images/9483821436059904197.jpg}
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/had_us.jpg}
 
 Most ultrasound range sensors use the time of flight of a pulsed echo,
 but FMCW-based ultrasound modules have been proposed
@@ -2517,13 +2458,13 @@ radar has more than two non-collinear receiving antennas, like
 visualized in figure \#REF. Horizontal DOA would be measured between
 antennas at positions \(Rx1\) and \(Rx2\) while vertical DOA would be
 measured between \(Rx1\) and \(Rx3\).
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/2D-DOA.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/2D-DOA"}
 Reprojection mapping could then be used to build 3D occupancy maps. The
 reprojection angle \(\alpha\) would then describe a circle at distance
 \(R~cos(\alpha)\) around the radar path, on which the detected target
 lies. Direction of arrival in horizontal and vertical planes would then
 have to be used to pinpoint the target location on the circle.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/diagrams/3Dcase.svg}
+%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/3Dcase"}
 This holds also for the 2D-case: The possible locations for targets are
 then at the intersection of reprojection cone circle and floor plane.
 
@@ -2542,7 +2483,7 @@ possible to use multiple, spatially separated sensors instead. Each
 sensor measures a reprojection angle. A target visible to both sensors
 can then be localized unambiguously with triangulation.
 
-\section{TODO}\label{todo-3}
+
 
 3D scenario. standard case: two intersecting spheres --\textgreater{}
 intersection circle doppler reprojection case: angle --\textgreater{}
