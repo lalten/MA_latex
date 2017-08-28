@@ -1,0 +1,3 @@
+[submodule "ma"]
+	path = ma
+	url = github.com:lalten/ma
