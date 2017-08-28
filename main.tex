@@ -1,0 +1,241 @@
+%LaTeX
+\typeout{$Id$}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%&delatex
+\documentclass[%
+	12pt,		% 12pt font size
+	headinclude,	% 
+	%openany,	% Kapitel können auch auf der linken Seite anfangen.
+	a4paper,	% Papierformat
+	pointlessnumbers, % entgegen Duden Nr. 21, S. 21 R4 als CI festgelegt
+	changebar,      % Änderungsbalken mit \begin/\end{changebar}
+	liststotoc,	% Was alles in der Table of Contents stehen soll
+	bibtotoc,
+	idxtotoc,
+	%draft,		% mark overfull hboxes with a thick rule, don't include
+	%		% (EPS) files, begin bibliography on a new page
+	]{diplomarbeit}
+	% noheadsepline
+
+\areaset[20mm]{160mm}{240mm}	% Binderand, Breite und Höhe nutzbarer Bereich
+\usepackage[textwidth=160mm,textheight=240mm]{geometry}
+
+
+\input{packages}
+
+% --------------------------------------------------------------------
+% Typ der Arbeit
+% --------------------------------------------------------------------
+% \arbeitsart{Techreport}
+% \techreportident{TR-XXXXXYY}
+% \arbeitsart{Studienarbeit}
+% \arbeitsart{IDP}
+% \arbeitsart{Praktikumsbericht}
+% \arbeitsart{Bachelor}
+% \arbeitsart{Diplomarbeit}
+\arbeitsart{Master's Thesis}
+
+% --------------------------------------------------------------------
+% Titel, Autor und sonstige Titelblatt--Angaben:
+% \betreuer{}, \band{} und \eingereicht{} setzen die
+% Style--Option `datitlepage' voraus!
+% --------------------------------------------------------------------
+\title{Radar Reprojection Mapping Improves Obstacle Avoidance in Mobile Robots with an Unsteered Radar Sensor}
+\author{Laurenz Altenmüller}
+\authorsaddr{Pommernstr. 9\\
+             80809 München}
+
+\betreuer{Michael Balszun, M.Sc.}
+% --------------------------------------------------------------------
+% bei externer Diplomarbeit
+% --------------------------------------------------------------------
+\ausgefuehrtam{at BSH Home Appliances Corporation\\Bosch Research and Technology Center\\Palo Alto, California, USA}
+%%% oder
+%\ausgefuehrtam{%
+%  am Institut für Werkzeugmaschinen und Betriebswissenschaften\\
+%   Technische Universität München}
+%%%_optional: \band{Band1}
+%%%_optional: \eingereicht{im September 2004}
+
+% --------------------------------------------------------------------
+% eigene Definitionen f"ur die Praeambel
+% --------------------------------------------------------------------
+\input{shorthands}
+
+% --------------------------------------------------------------------
+% PDF specials
+% --------------------------------------------------------------------
+	\pdfcompresslevel=9
+        \RequirePackage[pdftex,		
+		      %% für die DRUCK-Ausgabe bitte folgende
+		      %% Einstellungen verwenden
+% 		       pdfpagelabels=true,
+%                        bookmarks=true,
+%                        pagebackref=true,       % Rücklinks im Lit.-verz.
+%                        linktocpage=true,
+%                        plainpages=false,
+%                        hyperfootnotes=false,   % sonst doppelt definiert
+%                        breaklinks=true,
+%                        colorlinks=true,
+%                        linkcolor=black,
+%                        urlcolor=black,
+%                        citecolor=black]{hyperref} 
+		%% für die .pdf-Datei-Ausgabe bitte diese
+		%% Einstellungen verwenden und obige auskommentieren! 
+		       pdfpagelabels=true,
+		       bookmarks=true,
+		       pagebackref=true,	% Rücklinks im Lit.-verz.
+		       linktocpage=true,
+		       plainpages=false,
+		       hyperfootnotes=false,	% sonst doppelt definiert
+		       breaklinks=true,
+		       colorlinks=true,
+		       linkcolor=blue]{hyperref}
+	\makeatletter
+	\hypersetup{
+		pdftitle={\@title},
+		pdfauthor={\@author},
+		pdfsubject={Diplomarbeit},
+		pdfkeywords={keyword1,keyword2},
+	}
+	
+	
+	\def\fudge#1#2{%
+\addtolength\textheight{#1}%
+\@colroom\textheight
+\vsize\textheight
+\@colht\textheight
+\def\LS@rot{%
+  \setbox\@outputbox\vbox{\hbox{\kern-#2\rotatebox{90}{\box\@outputbox}}}}%
+\clearpage}
+	
+	\makeatother
+
+% wenn nur einzelne Kapitel gedruckt werden sollen...
+%
+%\includeonly{meineergebnisse}
+
+% --------------------------------------------------------------------
+%%% Hier beginnt das eigentliche LaTeX--Dokument
+% --------------------------------------------------------------------
+\begin{document}
+% --------------------------------------------------------------------
+% Titelseite
+% --------------------------------------------------------------------
+\renewcommand{\thepage}{t\arabic{page}}
+\maketitle
+
+% --------------------------------------------------------------------
+% Dank 
+% --------------------------------------------------------------------
+ \pagestyle{empty}
+\cleardoublepage 
+\setcounter{page}{3}	% Laut VDI Richtlinien
+\renewcommand{\thepage}{\roman{page}}
+\begin{danksagung}
+  Vielen Dank \dots
+
+  München, im Monat Jahr
+\end{danksagung}
+
+% % Hier könnte eine Widmung stehen!
+% \begin{Widmung}
+% % oder auch nicht. ;)
+% \end{Widmung}
+
+% --------------------------------------------------------------------
+% Inhaltsverzeichnis, Abbildungsverzeichnis, Tabellenverzeichnis
+% --------------------------------------------------------------------
+\clearpage
+\pagestyle{headings}
+% Inhaltsverzeichnis soll (nur) in den PDF Bookmarks erscheinen
+\pdfbookmark[1]{\contentsname}{toc}
+\tableofcontents
+
+\listoffigures
+\listoftables
+% --------------------------------------------------------------------
+% Liste der verwendeten Symbole
+% --------------------------------------------------------------------
+\phantomsection
+\begin{listofsymbols}
+\begin{tabbing}
+sp	\= symbol-space---- \= \kill \+ \\
+
+RCS	\> Institute for Real-Time Computer Systems \\
+
+\end{tabbing}
+\end{listofsymbols}
+
+% --------------------------------------------------------------------
+% Abstract (Kurzfassung)
+% In Deutsch und Englisch zu verfassen laut Promotionsordnung, zumindest
+% bei elektronischer Veröffentlichung.
+% --------------------------------------------------------------------
+%\pagestyle{empty}
+\cleardoublepage 
+\begin{abstract}
+Mobile indoor robots mostly rely on lidar and vision sensors to remotely detect obstacles in their path. These sensors have trouble detecting some common real-world obstacles like transparent surfaces and chair legs. Recent affordable near-range miniature radar sensors enable new solutions.
+This thesis explores a simple solution for a radar sensor being moving through a static environment without the need for beamforming or a mechanically scanning radar. The idea is put to test in experiments with an Omniradar FMCW radar mounted on a Kobuki robot platform. A comparison against lidar and RGBD sensors shows how promising the setup is for navigation in unstructured environments.
+\end{abstract}
+
+% Man muss erzwingen, dass die Seite mit Nummer 1 rechts ist, sonst
+% kommt latex aus dem Tritt, weil ungerade Seiten immer rechts sein
+% müssen!
+\newpage{\pagestyle{plain}\cleardoublepage}
+\rmfamily	% ab jetzt mit Serifen, weil besser lesbar
+% Die Seitennumerierung wird hier mit "1" begonnen
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+
+
+
+
+
+% --------------------------------------------------------------------
+% Hier beginnt der eigentliche Text
+% --------------------------------------------------------------------
+% Die Identifikation wesentlicher eigener Beiträge muß schon im
+% Inhaltsverzeichnis möglich sein.
+
+\include{text}
+
+\include{resultstable}
+
+% --------------------------------------------------------------------
+% Anhang
+% --------------------------------------------------------------------
+\clearpage
+\begin{appendix}
+
+%\include{appendix}
+
+\chapter{Software Sources}
+
+\chapter{Hardware Sources}
+
+\end{appendix}
+
+% --------------------------------------------------------------------
+% Index
+% --------------------------------------------------------------------
+\clearpage
+\printindex
+
+% --------------------------------------------------------------------
+% Literaturverzeichnis
+% --------------------------------------------------------------------
+% Nicht direkt referenzierte, aber benutzte Literatur
+%\nocite{wasauchimmer}
+%
+\clearpage
+%\bibliographystyle{geralpha}
+\bibliographystyle{gerplain}
+\bibliography{literatur} % welche bib-Dateien
+
+% --------------------------------------------------------------------
+% Dokument-Ende
+% --------------------------------------------------------------------
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

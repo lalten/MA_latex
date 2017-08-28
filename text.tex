@@ -1,0 +1,2570 @@
+\section{Introduction}\label{introduction}
+
+Mobile indoor robots have become a common sight. Over 15 million units
+of iRobot's Roomba vacuum robots have been sold since their introduction
+in 2002
+\footnote{http://www.irobot.com/About-iRobot/Company-Information/History.aspx}.
+Applications are not limited to vacuuming: There are service robots,
+entertainment robots, mapping robots, security robots, and many others.
+Mobile indoor robots in commercial spaces are upheld as ``the next big
+thing''
+\footnote{http://spectrum.ieee.org/automaton/robotics/robotics-hardware/indoor-robots-for-commercial-spaces}.
+
+Robotic navigation has also come a long way. The first vacuum robots
+were merely equipped with a bumper sensor that let them to traverse a
+room like a TV's DVD logo animation screensaver. In 2010, Neato Robotics
+managed to develop and integrate a low-cost Lidar
+\footnote{https://www.sparkfun.com/news/490} that first enabled path
+planning for their vacuum robot. Some robots like LG's
+Hom-bot\footnote{https://www.youtube.com/watch?v=UANWyiDf3hA} later used
+ceiling cameras with visual slam (simultaneous localization and mapping)
+for optical odometry information, but it was not before 2014 that iRobot
+brought a vacuum robot to the market that used visual slam to create a
+map of its environment
+\footnote{https://www.technologyreview.com/s/541326/the-roomba-now-sees-and-maps-a-home/}.
+
+There are still stories about vacuum robots failing hilariously in their
+navigation capabilities, including one woman's hair being eaten as she
+slept\footnote{https://www.theguardian.com/world/2015/feb/09/south-korean-womans-hair-eaten-by-robot-vacuum-cleaner-as-she-slept},
+and of course countless examples of the joke ``What is worse than
+finding dog poop on the carpet? Your robot vacuum finding dog poop on
+the
+carpet''\footnote{http://www.boredpanda.com/robot-vacuum-cleaner-spreads-dog-shit-everywhere/}.
+Other obstacles that are really difficult to see with the sensors of
+today's vacuum robots are very thin objects (like thin chair legs) in
+the case of visual navigation, and transparent surfaces like windows and
+glass walls with both visual and laser sensors. While theoretically it
+would be possible to detect mirrors just the way humans do it, by
+observing the geometry visible during movement and inferring the mirrors
+position and orientation, no home robot has demonstrated that capability
+so far.
+
+Of course, the home robot owners want their robot to have better
+navigational skills. A robot is more efficient if it can plan a path
+with knowledge of all obstacles on it. That translates to quicker
+cleaning. On the other hand it is safer, because the robot won't break
+things and won't get hurt if it does not bump into potentially dangerous
+things.
+
+Thanks to recent efforts in miniaturization and falling costs, there is
+a new option in the search for better navigation and obstacle sensors.
+Usually associated with ship and aircraft localization, radar technology
+made its way to the automotive industry in the form of weather-proof
+range sensors. The newest sensors are even quite small (some sensors
+come with antennas integrated in silicon) and cheap, with prices
+projected to fall below 1\euro{}\cite{Brouwer2015}. Today's embedded
+processors are also powerful enough to handle any kind of radar signal
+processing. Combined with the easy licensing in the Industrial,
+Scientific, Medical (ISM) frequency bands, it seems very worthwhile to
+investigate how the use of radar will improve obstacle sensing in mobile
+home robots.
+
+To understand if, and how radar should be integrated in next-generation
+home robots the next Section will give a brief overview of conventional
+sensing techniques, followed by the theoretical background of radar
+sensing. In section \#REF, reprojection mapping, a novel technique for
+mapping with unsteered sensors, is proposed. Section \#REF then details
+a proof-of-concept implementation of the method, Results of experiments
+with this method are listed in Section \#REF and discussed and compared
+in Section \#REF. Section \#REF finally concludes the thesis with an
+outlook and how everything fits in the bigger picture of obstacle
+sensing.
+
+\section{Theoretical Background}\label{theoretical-background}
+
+A variety of sensors enable robots to sense their environment. Most
+robots monitor information like temperature or track odometry from
+intertial measurement units (IMU) and wheel encoders. This section
+focuses on how a robot can avoid or detect collisions.
+
+\subsection{Traditional Obstacle
+Sensors}\label{traditional-obstacle-sensors}
+
+The fallback option of obstacle sensing is almost always a bumper
+sensor. If the robot runs into an obstacle in its path, a bumper switch
+will be pressed and the robot's navigation system knows that it can not
+traverse further in this particular direction. The concept can be
+extended to measure sudden acceleration that indicates a collision or
+even monitor motor current to find that the robot is stuck against an
+obstacle, but the idea is the same: With this kind of sensor, the robot
+can only detect that it already had a collision. The detection can be
+shifted to slightly earlier point in time with systems like whisker-like
+antennae or capacitive sensors\cite{Muhlbacher-Karrer2015}. A special
+case is negative obstacle (e.g.~cliff) detection. Here, usually Infrared
+(IR) range sensors are employed on the underside of the robot.
+
+Intelligent navigation and path planning however can only be achieved
+with ranging sensors. Classic range sensors are IR, ultrasound (US), or
+laser based. They measure the distance to the closest target in one
+direction. Because obstacles can appear in any direction, these sensors
+need to be scanned. Scanning means that the bearing of active sensing
+direction is changed over time to achieve range scans that are
+multiplexed over a field of view (FOV). Usually this is done
+mechanically, with a sensor turret spinning on a servo motor. The best
+known example of this is the classic lidar sensor, which spins a laser
+range finder around.
+
+Vision sensors are scannerless. Next to regular cameras as monocular
+vision sensors there are stereo-camera setups to record depth
+information. Structured light sensors such as the first-generation
+Microsoft Kinect sensor record depth disparity from triangulation, via
+correlation between a known and perceived projected light pattern.
+Time-of-flight (TOF) cameras like the second-generation Microsoft Kinect
+illuminate the scene with amplitude-modulated near-IR light and
+calculate depth from the phase shift between the transmitted and
+received signal\cite{Sarbolandi2015}.
+
+There is also a scannerless version of lidar. Full-field lidar, also
+known as flash lidar \cite{Payne2008} uses TOF measurements of
+omnidirectional light pulses to capture a 2D scene.
+
+To map out the environment and localize itself, the robot will usually
+employ a version of a simultaneous localization and mapping (slam)
+algorithm\cite{Cadena2016}.
+
+\subsection{Radar}\label{radar}
+
+Radar sensing is based on the transmission and reflection of
+electromagnetic signals. A transmitting antenna radiates EM energy, some
+of which is scattered off reflective objects, called targets, and
+intercepted by a receiving antenna. This signal is amplified and checked
+for time delay, frequency shift, phase shift and amplitude attenuation
+with respect to the transmitted signal. This allows to capture certain
+target properties like range, radial velocity, size, shape and, among
+others, even surface smoothness and orientation. \cite{Skolnik2008}
+
+The return signal's echo power is described for the interference-free
+case in vacuum by the radar equation, \[
+P_r = 
+\frac{P_t G_t}{4\pi R^2}
+\cdot
+\frac{\sigma}{4\pi R^2}
+\cdot
+A_r
+\] where \(P_r\) received target echo power \(P_t\) transmission power
+\(G_t\) transmit antenna gain \(R\) range of target (distance)
+\(\sigma\) radar cross section (RCS) of target \(A_r\) effective area of
+receiving antenna. Of the three factors in the equation, the first
+factor represents the power density at the radar-illuminated target's
+distance. The second factor represents how much of the radar energy is
+scattered back by the target. The third factor finally denotes how much
+of the echo power is collected by the receiving antenna.
+\cite{Skolnik2008} Conventional radar only becomes useful with directive
+antennas. The antenna gain \(G_t\) is defined as the ratio of increased
+power in a particular direction compared with that from an isotropic
+antenna \cite{Adams2012}. Antenna theory shows \cite{Balanis2015} the
+relation of receive antenna gain \(G_r\) with radiation wavelength
+\(\lambda\): \[G_r = \frac{4\pi A_r}{\lambda^2}\] With constant antenna
+loss factor \(L>1\), substituting equation \#REF into equation \#REF
+yields the classical radar equation \[
+P_r =
+\frac{P_t G_t G_r \lambda^2 \sigma}{(4\pi)^3R^4L}
+\propto \frac{\sigma}{R^4}
+\] In practice, the actual received power is lower than predicted by
+this equation due to many factors, including interference and
+atmospheric conditions. \(\sigma\) is also not constant but varies with
+viewing angle and material properties of the target. \cite{Adams2012}
+
+\subsubsection{Doppler effect}\label{doppler-effect}
+
+Many radar systems measure radial velocity with the Doppler frequency
+shift. Austrian physicist Christian Doppler described the kinematic
+effect in 1842. It describes the change of wavelength caused by the
+motion. A common example is the change of pitch that can be heard when a
+race car or ambulance passes the observer. The Doppler frequency shift
+\(f_D\) is \[
+f_D = 2 \frac{v_r}{\lambda} = 2 \frac{v \cos ( \theta )}{\lambda}
+\] where \(v_r\) is the radial velocity component of the target, which
+travels at a speed \(v\) at angle \(\theta\) between the target's
+direction and the radar beam with wavelength \(\lambda\)
+\cite{Skolnik2008}. The factor \(2\) is caused by the Doppler shift
+being applied twice; once for the incident wave, and once for the
+reflected wave. In effect this means that a radar sending out an EM wave
+with a frequency of exactly \(60GHz\) towards a target moving at a
+relative speed of \(v_r = 1\frac{cm}{s}\) towards the radar will receive
+back an echo with a frequency of \(60000000004 Hz\) because of the
+frequency shift of \(f_D = 4 Hz\).
+
+\subsubsection{Types of Radar}\label{types-of-radar}
+
+\paragraph{Continuous Wave (CW) radar}\label{continuous-wave-cw-radar}
+
+CW radar was the first radar system. It uses a continuous transmission
+at a fixed frequency. Thanks to antenna directionality it can be used to
+find a target's azimuth in radio direction finding. A target's velocity
+information can be extracted from the frequency shift due to the Doppler
+effect.
+
+\paragraph{Pulse radar}\label{pulse-radar}
+
+Pulse radars send series of short bursts. The time delay \(\tau\)
+between transmission and reception of a pulse, called time of flight
+(TOF), gives a target's range \(R\), so that \[ R = \frac{c\tau}{2} \]
+The range resolution \(\Delta R\) is given by
+\[\Delta R = \frac{c\tau_m}{2}\] with \(\tau_m\) the pulse high time. To
+achieve high range resolution pulses must be very short, which requires
+very high peak transmission power to still produce a detectable echo
+signal. Pulse compression radars send a longer pulse with an internal
+modulation, which combines the higher transmission energy of longer
+pulses with the resolution of short pulses. Velocity is again known from
+frequency shift.
+
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/radar_pulsed.svg}
+Adapted from \cite{Adams2012} p.~52
+
+\subsubsection{Frequency-modulated continuous wave (FMCW)
+radar}\label{frequency-modulated-continuous-wave-fmcw-radar}
+
+FMCW radars use a frequency modulation to measure range and speed at the
+same time. The transmitted modulation is compared to the modulation in
+the received signal to detect signal delay and frequency shift.
+Applications in robotics use this kind of radar the most, for reasons of
+lower transmission power and high-range resolution \cite{Adams2012}.
+
+An FMCW radar's modulation is called a frequency sweep or chirp and is
+usually triangular with a linearily increasing and decreasing frequency.
+Most sensor use a voltage controlled oscillator (VCO) to generate the
+modulation waveform. VCOs do not have a linear transfer function, so in
+order to obtain a linear sweep, the input to the VCO must be
+pre-distorted with the inverse of the VCO's nonlinear transfer function.
+Instead of a VCO, direct digital synthesizers together with phase-locked
+loops (PLL) can be used. They generate better (more linear) sweeps at
+the price of increased design complexity and cost \cite{Ernst2016}.
+
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/fmcw_blocks.svg}
+Adapted from \cite{VanZeijl2014}
+
+After the VCO's signal is amplified and transmitted, it reflects at
+visible targets and is received as echo in the same frequency band.
+
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2_stationary.svg}
+Adapted from \cite{Adams2012} p.~57
+
+In the top subplot, figure \#REF shows the transmitted frequency sweep
+from \(f_0\) to \(f_0 + \Delta f\) over a sweep length of \(T_d\) of a
+triangular modulation. The middle plot also shows the received signal as
+caused by a single stationary ideal reflector. Time of flight causes a
+delay \(\tau\) in the received signal. To understand where the beat
+signal comes from, we focus on the rising part of the triangle
+modulation, the upsweep. Using the superheterodyne principle the
+received signal \(v_{Rx}\) and a portion of the transmitted signal
+\(v_{Tx}\) (called the local oscillator (LO)), are frequency mixed in an
+analog multiplier to get the intermediate frequency (IF) \(v_{Mixer}\).
+The IF contains a target's beat frequency, which is proportional to the
+target's range. With the transmitted signal \(v_{Tx}\) and the received
+signal \(v_{Rx}\) as a function of time \(t\), \[
+\begin{align}
+v_{Tx}(t) &= A_{Tx} \cos\bigl(\omega_{Tx}(t)~t\bigr)\\
+v_{Rx}(t) &= A_{Rx} \cos\bigl(\omega_{Tx}(t-\tau)~t\bigr)\\
+\end{align}
+\] where \(\omega_{Tx}\) is the angular frequency of the transmitted
+signal, \[
+\begin{align}
+\omega_{Tx}(t) &= \underbrace{\omega_c}_\text{Carrier frequency} + \underbrace{\pi \frac{\Delta f}{T_d} t}_\text{Upsweep modulation}
+\end{align}
+\] the signal behind the frequency mixer \(v_{Mixer}\) can be calculated
+as \[
+\begin{align}
+v_{Mixer}(t) &= v_{Tx}(t) ~ v_{Rx}(t) \\
+&= A_{Tx}A_{Rx}~\cos(t\omega_{Tx}(t))t~\cos(\omega_{Tx}(t-\tau)t)
+\end{align}
+\] With the trigonometric identity
+\[ \cos A \cdot \cos B = \frac{ \cos(A+B)~+~\cos(A-B) }{2} \]
+\(v_{Mixer}\) can be written as \[
+v_{Mixer}(t-\tau) = \frac{A_{Tx} A_{Rx}}{2}(B_1 + B_2)
+\] where \[
+\begin{align}
+B_1 &= \cos\bigl[ 2\omega_{Tx}(t-\tau) t - \omega_{Tx}(\tau)\tau \bigr]\\
+    &= \cos\left[ 2\left(\omega_c + \pi\frac{\Delta f}{T_d}(t-\tau)\right)t - \left(\omega_c - \pi\frac{\Delta f}{T_d}\tau\right)\tau \right]\\
+B_2 &= \cos\left[ 2\left(\pi\frac{\Delta f}{T_d}t\right)\tau - \omega_{Tx}(\tau)\tau \right]\\
+    &= \cos\left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau\right)\tau \right]
+\end{align}
+\] Note that \(B_1\) consists of high angular frequencies around the
+carrier frequency, from \(f_0 = \frac{\omega_c}{2\pi}\) to
+\(f_0 + \Delta f\). \(B_2\) is a lower frequency (theoretically up to
+\(2\pi\Delta f\) at \(\tau = T_d\), but much lower in practice, as echos
+from targets this far away have very low intensity \(A_{Rx}\) and can't
+be detected) signal containing the beat frequency. The output of the
+low-pass filter intrinsic in the mixer stage will thus only consist of
+the beat frequency (plus noise of similar frequencies): \[
+v_{beat}(t,\tau) = \frac{A{Tx}A_{Rx}}{2} \cos \left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau \right) \tau \right]
+\] The term \(\frac{\Delta f}{T_d}\tau\) in \(v_{beat}(t,\tau)\) is
+known as the beat frequency \(f_b\). For stationary targets, the
+range-specific frequency \(f_R = f_b\). Knowing that the delay time
+\(\tau\) depends on the speed of light \(c\) and the range \(R\), the
+relationship between a target's \(f_R\) and range \(R\) can be given as
+\[
+f_R = \frac{2R}{c} \frac{\Delta f}{T_d} \iff R=\frac{c T_d}{2\Delta f}f_R
+\] This also gives the range resolution \(dR\), \[
+dR = \frac{c}{2 \Delta f}
+\]
+
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2.svg}
+Adapted from \cite{Adams2012} p.~57
+
+A moving target however will introduce a Doppler shift \(f_D\) in the
+received signal \(v_{Rx}\), which will shift the target's beat frequency
+\(f_b\) away from its range-specific frequency \(f_R\). The direction of
+the frequency shift depends on the modulation: An up-sweep will have a
+corresponding \[f_{b,up} = f_R - f_D\] while the down-sweep has
+\[f_{b,down} = f_R + f_D\] The range-specific frequency and Doppler
+frequency can be extracted from the two beat frequencies by averaging
+them: \[
+\begin{align}
+f_R &= \frac{f_{b,down} + f_{b,up}}{2} \\
+f_D &= \frac{f_{b,down} - f_{b,up}}{2}
+\end{align}
+\]
+
+The benefit of the triangular sweep becomes clear here: with a sawtooth
+waveform, only \(f_b,up\) can be determined. A stationary target and a
+moving target a range and Doppler speed corresponding to the same
+resulting frequencies would not be distinguishable.
+
+Of course, more than one target can be visible at a time. If multiple
+echos are received, as in figure \#REF , the intermediate frequency will
+contain multiple frequencies. The beat signal will have more than one
+dominant frequency in its spectrum, with each one corresponding to a
+different target.
+
+\begin{figure}
+\centering
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_multitarget.svg}
+\caption{restrict-height}
+\end{figure}
+
+Figure \#REF shows a real-world example of how the beat signal \(f_b\)
+(top subplot) and its frequency spectrum (bottom subplot) look like. At
+\(t=T_d=32ms\), a jump in the beat frequency is caused by the modulation
+change from upsweep to downsweep. In the frequency spectrum, three
+stationary targets are visible at ca. \(3kHz\), \(6kHz\), and \(9kHz\).
+In this example, \(T_d=32ms\) and \(\Delta f=7GHz\), so the targets were
+at ranges of \(0.5m\), \(1m\), and \(1.5m\). Note that the in-phase part
+\(S_I\) and quadrature part \(S_Q\) of the analytic signal are measured
+in separate channels to retain phase information. The Fourier transform
+in bottom subplot however shows the magnitude \(|S|\) of the analytic
+signal\footnote{A good explanation is available at [ping.se's I/Q Data for Dummies](http://whiteboard.ping.se/SDR/IQ)}
+\(S = S_I + j~S_Q\) with the imaginary unit \(j\).
+
+\begin{figure}
+\centering
+\includegraphics{https://rawgit.com/lalten/ma/master/figures/fig_raw_beat.png}
+\caption{restrict-height}
+\end{figure}
+
+\subsubsection{Direction of Arrival}\label{direction-of-arrival}
+
+A radar sensor with two or more receiving antennas which are separated
+by not more than half a wavelength can measure the Direction of arrival
+(DOA) of one or multiple targets. Because the echo from a target has to
+travel a slightly longer distance to antennas further away, a phase
+difference between the different antenna signals is measurable.
+
+In the case of a pair of receiving antennas, the direction of arrival
+\(\theta\) can be estimated \cite{VanZeijl2014} as
+
+\[\theta = sin^{-1}\left({{\lambda~\Delta\Phi}\over{2\pi ~d}}\right)\]
+
+with wavelength \(\lambda\), antenna separation \(d\) and phase
+difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
+\(\angle S_1 - \angle S_2\) of the complex analytic antenna signals
+\(S = S_I + j~S_Q\).
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/diagrams/Direction\%20of\%20Arrival.png}
+\caption{restrict-height}
+\end{figure}
+
+\section{TODO}\label{todo}
+
+\cite{Hacker2010} \cite{Cho2017}
+
+\subsubsection{Frequencies}\label{frequencies}
+
+Even though radar applications exist for many frequencies, only a few of
+them are OK to use for radiolocation and in home robots. The
+``Industrial, Scientific, Medical'' (ISM) bands allows the unlicensed
+use of some frequencies for radiolocation, including center frequencies
+of \(24.125 GHz\), \(61.25 GHz\), \(122.5 GHz\) and \(245 GHz\).
+Applications must however accept harmful interference \cite{FCC2017}.
+
+The \(77 GHz\) band is ``restricted to vehicle-mounted field disturbance
+sensors used as vehicle radar systems.'' (FCC Part 15 §15.253(c)) - ETSI
+defines it as ``Automatic Cruise Control `long-range radar' operating at
+\(77 GHz\). This enables a vehicle to maintain a cruising distance from
+a vehicle in front.'' (EN 301 091). The German Bundesnetzagentur also
+declares it ``Kraftfahrzeug-Kurzstreckenradar'' (Vfg 66 / 2014).
+
+A \(24 GHz\) center frequency is a safe bet. There are many radar
+systems available and it being an ISM band makes licensing much easier.
+The drawback is the very limited maximum bandwidth of \(250MHz\) in this
+band.
+
+Some newer radars use the \(60 GHz\) ISM band. It allows a rather wide
+bandwidth of up to \(9GHz\) in some regions (see figure \#REF ).
+According to equation \#REF, this gives a very good range resolution in
+the order of few \(cm\). At these high frequencies, RF energy
+attenuation in material increases noticably \cite{FerrisJr.1998}. The
+effect is that \(60GHz\) waves are limited to short ranges of a few
+\(m\) and don't usually penetrate walls.
+\includegraphics{https://rawgit.com/lalten/ma/master/figures/rf_attenuation.png}Source:
+\cite{FerrisJr.1998}
+
+Atmospheric attenuation also limits long-range applications. In short
+range (a few \(m\)) it should however not present a problem.
+\includegraphics{https://rawgit.com/lalten/ma/master/figures/ITU_0676-05.svg}
+Source: \cite{ITU1997}
+
+The downside is that there are some other technologies using the same
+frequency bands, most notably 802.11ad a.k.a.
+WiGig\cite{AgilentTechnologies2013}. The WiGig frequency allocations in
+figure \#REF show in which regions the \(60GHz\) band is available (also
+for radar).
+
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/spectrum.svg}
+WiGig Channel Plan and Frequency Allocations by Region. Source:
+\cite{AgilentTechnologies2013}
+
+\subsection{Overview of Radar
+Research}\label{overview-of-radar-research}
+
+Radar is used and researched since the 1940s. While it was historically
+only used to detect aircraft and ships, it is an active research domain
+in many fields today. Identification and localization of vessels is of
+course still an important application in both civil and military
+sectors. There is a great amount of research going into synthetic
+aperture radar, in terrestrial imaging, but also general and concealed
+imaging. Another area of research is radar antenna technology and
+quasi-optics, which aims to find design improvements and more adapted
+antennas for the manifold applications. Radar is used in human presence
+detection and monitoring, including heartbeat detection. A new and very
+promising discipline is radar-based gesture recognition, which enables
+innovative human machine interaction applications. Indoor communication
+and localization with radar beacons is another interesting and upcoming
+technology. The radar-related research area that is most relevant for
+mobile robots is radar-based slam.
+
+\subsection{Existing radar-based solutions for map
+building}\label{existing-radar-based-solutions-for-map-building}
+
+\subsubsection{SAR}\label{sar}
+
+In 1950 Doppler frequency analysis was found to improve image resolution
+of side-looking radar, which led to the development of the synthetic
+aperture radar (SAR) technique. SAR uses azimuth (along-track) motion to
+synthesize an aperture that is longer than the physical size of the
+radar antenna \cite{Wang2008}. The three major configurations are
+stripmap SAR, scan SAR, and spotlight SAR. Current SAR systems can
+operate in either mode by dividing their planar antenna into
+sub-apertures, whose phase and amplitude are controlled by the
+individual few hundred transmit/receive modules \cite{Moreira2013}.
+
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/sar.svg}
+Illustration of different SAR operation modes which are used to increase
+the swath width (ScanSAR) or improve azimuth resolution (Spotlight)
+compared to Stripmap mode. (a) Stripmap. (b) ScanSAR. (c) Spotlight.
+Source: \cite{Moreira2013}
+
+Radar echo data is sampled in both fast-time and slow-time, with
+fast-time meaning the range scan dimension (fast, because the EM waves
+travel at very high speed, \(c\)) and slow time denoting the azimuth or
+along-track dimension (slow, because movement velocity will be
+\(\ll c\)). This raw data does not give any useful information and needs
+to be signal-processed first. Because SAR systems typically use
+pulse-compressed radars, each range line needs to be convoluted with the
+complex conjugate of the transmitted chirp's spectrum to obtain the
+range-compressed
+data\footnote{For the FMCW system used in the later parts of this thesis this is not necessary - the FMCW beat frequency spectrum is equivalent to the range-compressed data}.
+In a second step, azimuth compression takes place by convolving the
+signal in slow-time with the complex conjugate of the expected
+azimuth-response from a target.
+
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/sar2.svg}
+Summary of SAR processing steps where the range compressed data result
+from a convolution of the raw data with the range reference function. In
+a second step the azimuth compression is performed through a convolution
+with the azimuth reference function, which changes from near to far
+range. Source: \cite{Moreira2013}
+
+An elemental scatterer at range \(R(t)\) will return an echo \(s_a(t)\)
+over time \(t\): \[
+s_a(t) = P_r \sqrt{\sigma\vphantom{1}} \exp(j\varphi_s)\exp(j \underbrace{\frac{-4\pi}{\lambda}R(t)}_\text{az. phase var. $\omega_D$})
+\] where \(P_r\) is the echo power of the received target, accounting
+for dependencies like transmit power and path loss, \(\sigma\) is the
+target's RCS, imaginary unit \(j\), \(\varphi_s\) the scattering phase,
+and \(\frac{4\pi}{\lambda}R(t)\) the azimuth phase variation due to
+changing distance \cite{Cumming2004}. The target's range \(R(t)\) is
+described by the range at closest approach \(R_0\) and the radar's
+(constant) movement speed \(v_R\): \[
+R(t) = \sqrt{R_0^2+\left(v_Rt\right)^2} \approx R_0 + \frac{(v_Rt)^2}{2R_0} ~\text{for}~ \frac{v_Rt}{R_0} \ll 1
+\] Substituting \#REF into the azimuth phase in \#REF and derivating
+with respect to time yields the azimuth frequency \(f_D\) \[
+\begin{align}
+f_D &= \underbrace{\frac{1}{2\pi}}_{\omega_D = 2\pi f_D} \frac{\partial}{\partial t} \frac{-4\pi}{\lambda}  \underbrace{\left( R_0 + \frac{(v_Rt)^2}{2R_0}  \right)}_{R(t)} \\
+&= -\frac{2v_R^2}{\lambda R_0}t
+\end{align}
+\] The azimuth frequency varies linearly with time \(t\) and is
+inversely proportional to the closest approach (slant range) \(R_0\),
+hence the azimuth reference function depends on geometry and is adapted
+to range. Because of the frequency-shifting effect it is analogous to
+and also called the Doppler frequency.
+
+The most challenging aspect of SAR is the correction of range cell
+migration induced defocusing. Range cell migration is visible in figure
+\#REF's curvature of range compressed data. It occurs when a point
+target's echo energy is distributed over several range cells, causing
+azimuth defocusing. This effect is range-variant, as the curvature
+depends on \(R_0\). Hence a non-stationary two-dimensional reference
+function is necessary. There are several approaches in tackling this,
+including the omega-k / wavenumber processor, range-Doppler, and chirp
+scaling algorithms \cite{Moreira2013}.
+
+\subsubsection{Scanning radar}\label{scanning-radar}
+
+Small ground robots
+
+\begin{itemize}
+\tightlist
+\item
+  Martin Adams
+\item
+  Henrik Forsten
+\item
+  Gregory Charvat
+\item
+  Bat type radar
+\end{itemize}
+
+\subsubsection{Radar slam}\label{radar-slam}
+
+Radar Slam
+
+\begin{itemize}
+\tightlist
+\item
+  Martin Adams
+\item
+  K2Pi
+\end{itemize}
+
+\section{Novel Approach: Reprojection
+Mapping}\label{novel-approach-reprojection-mapping}
+
+\subsection{Idea}\label{idea}
+
+With the Reprojection method, a radar echo's source can be determined
+without scanning the radar sensor. The distance to a target is already
+available in the radar data, so only the direction is needed to update a
+map. Under certain circumstances, this direction can also be extracted
+from the sensor's data.
+
+The prerequisite to the method is that the sensor has to move with a
+known speed \(v_R\) through an otherwise static environment. Caused by
+the radar's motion, the distance to all visible targets changes, which
+causes a Doppler speed \(v_D\) for every target point.
+
+\subsubsection{Geometry for the side-facing
+case}\label{geometry-for-the-side-facing-case}
+
+If the radar is moving directly towards a target, the target's Doppler
+speed \(v_D\) will be equal to radar speed \(v_R\) (target \(A\) in
+figure). If the radar passes the target on the side, so that the
+distance to the target stops decreasing and begins to grow, \(v_D = 0\)
+(target \(C\) in figure). If a target has an absolute Doppler speed
+\(|v_D|\) between \(0\) and \(v_R\) (target \(B\) in figure), it is seen
+from the radar under an angle \(\alpha\), such that
+\[v_D = v_R cos(\alpha)\]
+
+\begin{figure}
+\centering
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/Radar\%20Reprojection\%20Geometry.png}
+\caption{restrict-height}
+\end{figure}
+
+Positive values for \(\alpha\) indicate targets on the left side of the
+robot, while negative values for \(\alpha\) indicate right hand side
+targets. The caveat is that from \(v_D\) only the absolute value of
+angle \(\alpha\) is known. This is OK if the radar is mounted
+side-facing, such that only targets on one side of the motion path are
+visible. Like this, the angle ambiguity is resolved, because only one
+side is visible.
+
+\subsubsection{Geometry for the General
+case}\label{geometry-for-the-general-case}
+
+In the general case such as with a forward facing radar, or with radar
+antennas with angle sensitivities that allow a field of view of over
+\(180^\circ\), the angle ambiguity must be resolved differently.
+
+\begin{figure}
+\centering
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/Radar\%20Reprojection\%20Geometry\%20\%28Forward\%20Facing\%29.png}
+\caption{restrict-height}
+\end{figure}
+
+One solution to resolving the angle ambiguity is to use direction of
+arrival (DOA) information from a multistatic radar. If the radar is
+facing straight forward, a target's DOA will be lower or higher,
+depending on the antenna configuration and the side the target is being
+passed on. If the radar is not facing straight but still has parts of
+both sides of the motion paths visible in it's FOV the DOA gradient
+should be used instead of its value: If a target's DOA is gradually
+shifting towards left (i.e.~lower or higher, depending on the system),
+it will pass the radar on the left side. If it is gradually shifting
+towards right, it will pass on the right side.
+
+\subsubsection{Reprojection Method}\label{reprojection-method}
+
+When a target's range and angle are known, it can be mapped in relation
+to the radar's position.
+
+This allows intelligent path planning and obstacle avoidance for mobile
+robots.
+
+\section{TODO}\label{todo-1}
+
+\subsubsection{Peak Gradient algorithm}\label{peak-gradient-algorithm}
+
+One pillar of the Reprojection Method is the Doppler speed of static
+targets. If the Doppler speed is not precisely measured, the
+reprojection angle \(\alpha\) is imprecise or noisy, which leads to
+smeared-out targets or even false positive detections on the map.
+
+With FMCW radar, a target's range and Doppler speed can be
+simultaneously registered.
+
+\subsubsection{Limitations}\label{limitations}
+
+\section{TODO}\label{todo-2}
+
+\section{Implementation}\label{implementation}
+
+\subsection{Implementation Platform}\label{implementation-platform}
+
+The validity and performance of the concept is put to test with a proof
+of concept implementation. The reprojection method requires that the
+radar position and velocity is known at all times. While there was no
+precise source of ground truth data (like an IR ceiling camera system)
+was easily available, the Kobuki robot platform provides a fairly good
+odometry system and also allows to move the radar in a controlled way.
+
+\subsubsection{Kobuki}\label{kobuki}
+
+Good but not perfect odometry Ros Arm Limited performance Enough battery
+capacity Omniradar FMCW Radar development kit
+
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/models/kobuki.png}
+Image source: \cite{DesignK2013}
+
+\paragraph{ROS integration}\label{ros-integration}
+
+\paragraph{Odroid}\label{odroid}
+
+\subsubsection{Radar sensor}\label{radar-sensor}
+
+\paragraph{Devkit list}\label{devkit-list}
+
+There are quite a few short-range UWB FMCW radar modules. The following
+table compares some promising solutions.
+
+\begin{longtable}[]{@{}llllllc@{}}
+\toprule
+\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+Product\strut
+\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+Note\strut
+\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+Center Freq.\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+Bandwidth\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
+Antennas\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Devkit price\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
+Picture\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Omniradar RIC60A{]}{[}dkomniradar{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+High bandwidth. Presentation at SoC 2015
+{[}ref{]}{[}Brouwer2015{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+60GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+7GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-chip, 1 Tx, 2 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$4000\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_omniradar.jpg}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Google/Infineon Soli{]}{[}dksoli{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Expected 2018. Sub-millimeter accuracy, running at over 10,000 frames
+per second \cite{Lien2016}\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+60GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+7GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+In-package, 2 Tx, 4 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_soli.png}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Walabot Pro{]}{[}dkwalabot{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+3D configuration. Slow update rate\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+6.8GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+7GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 9 Tx, 9 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$599\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_walabot_1.png}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+Bosch Prototype\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Prototype for In-wall pipe detection\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+5.15GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+6.7GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+External, 2 Tx/Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$0\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_bosch.jpg}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Silicon Radar SiRad Simple{]}{[}dksirad{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Has WiFi\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+122GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+6.4GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-chip, 1 Tx, 1 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_silicon_radar.jpg}
+\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Anokiwave AWMF-0117{]}{[}dkanokiwave{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+12.5GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+4.5GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-chip, 1 Tx/Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_anokiwave.png}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}NXP Cocoon Radar{]}{[}Reuter2016{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Relatively small board. Presentation at FTF 2016
+{[}ref{]}{[}Reuter2016{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+77GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+4GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 3 Tx, 4 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_cocoon.png}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}TimeDomain P440{]}{[}dkpulson{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Can operate as multistatic radar or UWB communication node\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+4GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1.7GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+External, 2 Tx/Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$5000\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_p440.png}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Novelda Xethru X4M03{]}{[}dknovelda{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+8GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1.5GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 1 Tx/Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$399\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_xethru.png}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}RFbeam MR2001\_RD{]}{[}dkrfbeam{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+77GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 4 Tx, 6 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_rfbeam.jpg}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Inras Radarbook{]}{[}dkradarbook{]} (77Ghz)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Configurable FPGA processing chain\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+77GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 4 Tx, 8 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$7300\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_radarbook.jpg}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Acconeer A1{]}{[}dkacconeer{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Sub-mm accuracy\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+60GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-chip, ?\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_acconeer.webp}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Inras Radarbook{]}{[}dkradarbook{]} (24Ghz)\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+24GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+250MHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 4 Tx, 4 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$7300\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_radarbook.jpg}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}Infineon BGT24-RFB2412-EVAL{]}{[}dkinfineon{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+24GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+250MHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 1 Tx, 2 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$1333\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_bgt24.JPG}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}IMST DK-sR-1200e{]}{[}dkimst{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+24GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+250MHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 1 Tx, 2 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$3333\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_IMST.jpg}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}InnoSenT IVS-565{]}{[}dkinnosent{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+24GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+250MHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 1 Tx, 2 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_innosent.jpg}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}ST EVB-STradA431{]}{[}dkst{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+SMA connectors for internal signals\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+24GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+250MHz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+External, 1 Tx, 3 Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+?\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_ST.png}\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+{[}OmniPreSense OPS241-A{]}{[}dkomnipresense{]}\strut
+\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+Arduino shield with BGT24LTR11\strut
+\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+24GHz\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+80Mhz\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+On-board, 1 Tx/Rx\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\$169\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/boards/img_omnipresense.png}\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+The most suitable modules are the ones with the highest bandwidth as
+they give the highest resolution. Other beneficial properties are high
+update rate, and higher number of antennas. A high degree of
+configurability also helps during development. In the end, the Walabot
+Pro, Omniradar RIC60A and a proprietary Bosch prototype were available
+to be tested.
+
+\paragraph{Bosch Radar}\label{bosch-radar}
+
+The Bosch radar presented some challenges under a Linux environment.
+After its Matlab driver was patched for cross-platform compatibility, it
+turned out that the on-board MCU's firmware had an incompatible protocol
+format. A newer version of the prototype did work under Windows, but by
+the time the board arrived, the decision to focus on Omniradar was made.
+
+\paragraph{Walabot}\label{walabot}
+
+\href{https://www.vayyar.com/}{Vayyar} is an Israeli
+\href{https://www.crunchbase.com/organization/vayyar}{startup} that was
+founded in 2011. Coming from a medical background, they moved away from
+use cases such as breast cancer detection towards general 3D imaging in
+the consumer market with their Walabot sensor.
+
+Vayyar's Walabot Pro sensor uses an 18-antenna MIMO array for 3D radar
+imaging. Vayyar is very quiet about the technology and algorithms used
+in their product and even the nature of the data that the sensor sends.
+In their Python \href{https://api.walabot.com}{API documentation} they
+showcase the modes of operation: 3d imaging, 2d imaging, object
+tracking, pipe detection and raw data.
+
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/walabot_image.png}
+Image source: https://api.walabot.com/\_features.html\#\_examples
+
+The catch is however that it is almost impossible to do imaging without
+background subtraction, which they do in all their examples. This works
+well in scenarios where the sensor is at a fixed position or if the
+region of interest is very small, like in the pipe detection scenario.
+However, In the case of a robot-mounted sensor this does not work so
+well.
+
+At the time of writing, the only interesting published project is a fall
+detection scenario \cite{Haider2017} by Haider, in which people can be
+localized at intersections of vertically and horizontally oriented
+heatmaps.
+
+\subparagraph{Static range test}\label{static-range-test}
+
+Figure \#REF shows the signal from two Walabot antenna pairs as it
+records the scene in image \#REF with can stacks at \(0.5m\) \(1m\) and
+\(1.5m\). The signal is very stable over time and shows next to no
+noise. Unfortunately however it doesn't seem like the radar sensor can
+detect the metal cans at all. The high frequency signal is the raw
+signal as reported by the Walabot sensor. It is however hardly
+believable that it was measured like this, as the visible base frequency
+of the signal is around 7GHz. It was not possible to get any useful
+information from Vayyar's technical support regarding this. The envelope
+signal is a more interesting data source. It can easily be obtained from
+the analytic signal, using \texttt{scipy.signal}'s Hilbert transform.
+Another problem with the data is that the peaks of the envelope jitter
+in range. This can be fixed by combination with another oddity: The last
+180 samples rise very strongly in magnitude. If they are cut and
+prepended to the first sample, they match up perfectly. Peaks can then
+be detected in the signal (represented by the dots figure \#REF ) and
+the range set to zero at the first peak. This eliminates the range
+jitter completely. The reason is that the first peak is caused by
+transmit antenna crosstalk and can thus be used as a timing reference
+point.
+
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/walabot_rangetest.png}
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/pictures/experiment_walabot_rangetest.jpg}
+
+\subparagraph{Dynamic range test}\label{dynamic-range-test}
+
+Waving hands in front of the sensor did give a change in signal, but it
+was difficult to interpret the data conclusively. To objectively test
+the sensor's response, an aluminum plate that gave a strong echo signal
+was taped to the Kobuki robot. The robot was then driven with a constant
+speed away from the sensor and then towards the sensor as pictured in
+\#REF.
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/pictures/experiment_walabot.jpg}
+
+The sensor was sampled at a constant frequency in raw data mode. The
+analytic signal of the range scans is stacked at the right end of the
+matrix displayed in figure \#REF.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/walabot_disttest.png}
+\caption{restrict-height}
+\end{figure}
+
+The figure shows that the Walabot has problems with what looks like
+standing waves. The great amount of background signal is also visible.
+Because of its static nature, this can easily removed for a fixed radar.
+As some Walabot reviewers have noticed \cite{Valens2016} this background
+signal changes heavily and seemingly random when the sensor is moved.
+This makes the signal processing very difficult.
+
+Walabot advertises object detection capabilities. The catch with this
+mode is however that the number of objects to be detected must be
+configured first.
+
+\subsection{Omniradar}\label{omniradar}
+
+With its good range resolution and a good idea of its capabilities from
+\cite{Ernst2016}, this sensor promised good results. As it was chosen as
+a basis for the proof of concept implementation, it receives a more
+detailed look.
+
+Founded in 2010, \href{https://www.omniradar.com/}{Omniradar} is a Dutch
+\href{https://www.crunchbase.com/organization/omniradar}{startup} that
+claims to be the first to integrate a complete 60 GHz radar including
+antennas and analog to digital conversion in one chip.
+
+With the RIC60-A they offer a Radar Development Kit (RDK) that gives
+7GHz of bandwidth on two receiving antennas. An Altera Cyclone IV FPGA
+handles the signal acquisition and communication. Figure \#REF shows the
+radar IC and how the three antennas are integrated in silicon.
+
+\includegraphics{https://rawgit.com/lalten/ma/master/pictures/slide_RIC60A.svg}
+Source: \cite{Brouwer2015} p.9
+
+The radar sensor's beam is fan shaped, which means it is fairly
+sensitive over a wide angle in azimuth direction, but relatively focused
+in elevation. This makes it a very good candidate for the radar
+reprojection, as targets can be seen from the robot in a wide field of
+view, but floor and ceiling reflections are kept at a minimum. Of course
+the sensor can also be rotated. Omniradar also supplies a horn-like
+extension for the sensor board, which forms the radar sensitivity into a
+pencil-shaped beam that is very focused at a narrow field of view.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/pictures/omniradar.jpg}
+\caption{restrict-height}
+\end{figure}
+
+\subsubsection{Radar mount}\label{radar-mount}
+
+A 3D-printed part makes sure that the radar sensor is firmly mounted on
+the robot as it explores its environment. The part was designed in
+\href{http://www.openscad.org/}{OpenSCAD} and printed on a
+\href{https://3dprinter.dremel.com/}{Dremel 3D printer}. The bottom
+mount hole positions were extracted from the mechanical drawings of the
+Kobuki Base \cite{YujinRobot2012}; the side holes from the Altium layer
+document of the version 3.2 Omniradar interface board
+\cite{Omniradar2014}.
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/models/mount.png}
+When rotated to face to the left side of the robot, the RPLidar mount
+was in the way, so parts of the print had to be clipped off.
+
+Two screws hold the Omniradar interface board to the mount. The other
+two mounting holes in the interface board hold the Omniradar sensor
+board. The horn extension can be affixed to these screws as well. If a
+different sensor orientation is necessary, the sensor board can be
+rotated by 90 degrees, thanks to the symmetric layout.
+
+\subsubsection{Doppler sensitivity}\label{doppler-sensitivity}
+
+The Omniradar FMCW radar is not sensitive enough to use the Doppler
+speed directly. The following example illustrates this.
+
+The RIC60A has a sensitivity of \(400 {Hz\over{m/s}}\). A target with a
+doppler speed of \(0.02 m/s\) (A low speed at which the Kobuki robot
+still moves continuously and without jerking) will cause a frequency
+spike with a shift of \(8Hz\) in the FMCW beat frequency.
+
+The speed resolution capability is inversely proportional to the
+measurement or acquisition time. A 10 ms long acquisition gives a 100 Hz
+frequency resolution, or a speed resolution of 0.9 km/h (or 0.25 m/s).
+
+Sampling frequency \(F_s=25MHz\) and RIC60A Doppler sensitivity,
+\(S_D = 400 {Hz\over{m/s}}\) are constant values of the Omniradar RDK.
+
+Given a chirp duration of \(T_{chirp} = 2.5ms\), we get
+\(N_s = t_{chirp} F_s = 62500\) Samples,
+\(N_r = \lfloor {N_s \over{2} }\rfloor = 31250\) Samples per
+up/downsweep, \(dF = {F_s \over{N_r - 1}} = 800 Hz\) FFT frequency bin
+width and hence a Doppler resolution of \({dF \over{S_D}} = 2 m/s\).
+
+Even with subsample peak interpolation the accuracy will not be very
+good and targets will be reprojected at imprecise angles.
+
+It would be possible to use higher precision equipment. But another
+solution is to track the movement of target peaks in the range profile,
+using the Peak Gradient algorithm.
+
+\subsubsection{Optimal chirp time
+configuration}\label{optimal-chirp-time-configuration}
+
+The chirp duration \(t_{chirp}\) is configurable and has an effect on
+how the raw range profile data will look like.
+
+\textbf{Very short durations} (\(<2ms\)) incur a considerable processing
+overhead to acquisition time ratio and have a very low SNR.
+\textbf{Short durations} (\(<5ms\)) have acceptable SNR, and are more
+efficient with respect to overhead. \textbf{Long durations} (\(>15ms\))
+have good SNR, and don't create a lot of overhead. However at higher
+robot speeds, target peaks get blurred over several range bins as they
+move in range. Less intense target echos are more difficult to detect
+then. \textbf{Very long durations} (\(>20ms\)) required the Omniradar
+driver to be patched on Linux so as not to freeze when chirps longer
+than \(20ms\) are requested. Even with the patched driver the RDK's FPGA
+firmware is not very reliable at sending large volumes of data at once
+and corrupts packet headers or aborts transmissions intermittently.
+
+The optimal range was empirically found to lie between \(2ms\) and
+\(10ms\).
+
+Figure \#REF shows the chirp efficiency
+\(\eta = \frac{n_{chirp}~t_{chirp}}{t_{msg}}\), with number of
+consecutive sweeps \(n_{chirp}\) (two in the graph's data source), chirp
+length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_chirp_eff.png}
+\caption{restrict-height}
+\end{figure}
+
+The chirp length has an effect on accuracy and resolution. Figure \#REF
+shows how short chirp times
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_compare_chirp_times.png}
+\caption{restrict-height}
+\end{figure}
+
+\section{TODO compare SNR}\label{todo-compare-snr}
+
+\subsection{Omniradar ROS driver}\label{omniradar-ros-driver}
+
+The Omniradar RIC60A comes with a precompiled Matlab MEX driver library.
+This works well in a Windows OS on x86-based computers with a Matlab
+installation. An early goal was to have the robot carry the radar module
+around wireless. One option would have been to mount a Windows laptop on
+the Kobuki. However, Omniradar was kind enough to provide the author
+with the driver sources under an NDA agreement. This allowed recompiling
+the MEX driver for Linux systems. There were some issues with FTDI's
+D2XX serial communication library that had to be fixed for Linux
+systems. One challenge with the D2XX driver was that Ubuntu
+automatically loads the regular FTDI serial IO driver,
+\texttt{ftdi\_sio}. This could be solved by unbinding the driver in a
+set of udev rules
+\href{https://stackoverflow.com/questions/44529376}{{[}ref{]}}. Another
+issue was that due to a bug in the D2XX implementation, the Omniradar
+driver would freeze when more than 2MB of data (equivalent to a 20ms
+FMCW chirp) were requested. After a lot of debugging, this could be
+solved by never requesting a bigger amount of data than was already
+available in the D2XX buffer.
+
+\subsubsection{C++ bindings and library}\label{c-bindings-and-library}
+
+Since Matlab does not run on Arm arch processors such as the Odroid on
+the Kobuki robot, a new set of platform-independent C++ bindings was
+added to the driver. The C++ bindings serve the same purpose as the
+Matlab bindings.
+
+To include the library, some files need to be installed or pointed to by
+the binary that needs to use it.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.06\columnwidth}\raggedright\strut
+File\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Default install destination\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
+Purpose\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.06\columnwidth}\raggedright\strut
+omniradar.h\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+/usr/local/include\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+Library header file\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright\strut
+libomniradar.so\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+/usr/local/lib\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+dynamically linked shared object\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.06\columnwidth}\raggedright\strut
+51-omniradar.rules, 52-omniradar.rules\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+/etc/udev/rules.d/\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+Udev rules to unbind ftdi\_sio\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+If the driver source is available, installing the files can be
+accomplished from the source directory with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir}\NormalTok{ build }\KeywordTok{&&} \BuiltInTok{cd}\NormalTok{ build}
+\FunctionTok{cmake}\NormalTok{ -DCPP_BINDINGS=ON -DMATLAB_BINDINGS=OFF ..}
+\FunctionTok{make}
+\FunctionTok{sudo}\NormalTok{ make install}
+\end{Highlighting}
+\end{Shaded}
+
+The driver can then be included in an application. Note that since it is
+dynamically linked, the \texttt{ftd2xx}, \texttt{pthread} and
+\texttt{dl} libraries dependencies also need to be linked. In a Catkin
+\footnote{Catkin is the CMake-based ROS build system} CMakeLists.txt
+this would look like
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{target_link_libraries}\NormalTok{(}
+  \VariableTok{$\{PROJECT_NAME\}}\NormalTok{_node}
+\NormalTok{  omniradar}
+\NormalTok{  ftd2xx}
+\NormalTok{  pthread}
+\NormalTok{  dl}
+  \VariableTok{$\{catkin_LIBRARIES\}}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The C++ library offers the same functions as Omniradar's Matlab driver,
+with two differences. The optional device index number is 0-based
+instead of 1-based and the AquireEcho functions return (a shared pointer
+to) packed data instead of unpacked data for performance reasons. With
+the
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\AttributeTok{static} \BuiltInTok{std::}\NormalTok{shared_ptr< }\BuiltInTok{std::}\NormalTok{vector<}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint8_t}\NormalTok{> > > demultiplex(}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint32_t}\NormalTok{> &packed_data);}
+\end{Highlighting}
+\end{Shaded}
+
+function, the library offers an easy way to demultiplex the packed data
+array into a (shared pointer to a) vector of four vectors - one for each
+echo signal of the I/Q channel of left and right receiving antenna.
+
+Useage is simple as the driver follows the RAII principle. Allocation of
+an object of type \texttt{Omniradar} causes the library to fully
+initialize the RIC60A RDK. After that, the configuration string and the
+VCO tuning curve should be set. Omniradar provides some Matlab example
+code that measures the sensor's VCO tuning curve. The easiest way to
+bring this tuning curve into the C++ domain is to
+print\footnote{`['A' 10 'B']` is a quick way to print a newline character between `A` and `B`}
+it as C style array, e.g.~with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{[}\StringTok{'#pragma once'} \FloatTok{10} \StringTok{'std::vector<double>'} \FloatTok{10} \StringTok{'vco_tune \{'}\NormalTok{, sprintf(}\StringTok{'%.100g, '}\NormalTok{, VCOtune), }\StringTok{'\};'}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+and then saving the resulting string as \texttt{vco\_tune.h} include
+file.
+
+This setup allowed the development of a ROS node that handles
+communication with the radar module on the Linux/Arm based Kobuki robot.
+
+\subsubsection{ROS node}\label{ros-node}
+
+A new \texttt{omniradar} ROS package was developed to support the use of
+the Omniradar sensor within the ROS environment. A set of
+\texttt{roslaunch} launchfiles comes with the package that support the
+startup of the Kobuki robot in teleoperation mode, optionally together
+with lidar-based Cartographer slam, AMCL localization and an Astra
+Orbbec RGBD camera. A simple version to start the only the node to get
+radar data would be:
+
+\begin{verbatim}
+<launch>
+  <node pkg="omniradar" type="omniradar_node" name="omniradar_node" output="screen">
+    <param name="n_sweeps" value="1" />
+    <param name="t_sweep" value="5" />
+  </node>
+</launch>
+\end{verbatim}
+
+The node sends out the ROS topic \texttt{/omniradar\_node/radar\_raw} of
+the custom \texttt{RadarEcho} type, which is defined in RadarEcho.msg as
+
+\begin{verbatim}
+Header header
+string ric_config
+uint8 n_sweeps
+float64 t_sweep
+uint32[] packed_echo
+\end{verbatim}
+
+Early versions of the driver unpacked the radar echo bitstream inside
+the node and were able to use standard ROS message types like the
+\texttt{std\_msgs/ByteMultiArray} message. However, sending out the
+packed bitstream proved to be much more efficient in terms of chirp
+efficiency \(\eta\). The custom message type also allows to send out the
+configuration (RIC configuration string, number and length of FMCW
+sweeps) that was used to attain the message's echo. The message's
+timestamp and sequential ID is contained in the regular
+\texttt{std\_msgs/Header}.
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/screenshots/nodegraph.png}
+
+While parameters from the ROS parameter server (as configured in the
+launch) are respected, the node also offers a dynamic reconfigure server
+to change RIC configuration string, number of sweeps and length of sweep
+on the fly without the need to restart the node.
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/screenshots/dynreconf.png}
+
+The core of the node is a while loop that continuously triggers radar
+echo acquisition and copies the result into a new
+\texttt{omniradar::RadarEcho} message. The radar sensor update rate
+could be increased by offloading the message assembly and data copying
+into a C++11 lambda thread that is immediately detached.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{std::}\NormalTok{lock_guard<}\BuiltInTok{std::}\NormalTok{mutex> lock_rdk(mtx_rdk);}
+\KeywordTok{auto}\NormalTok{ t_echo = ros::Time::now();}
+\KeywordTok{auto}\NormalTok{ p_echo = rdk->AcquireEcho(msg.n_sweeps);}
+
+\BuiltInTok{std::}\NormalTok{thread t (}
+\NormalTok{    [=] ()}
+\NormalTok{    \{}
+        \BuiltInTok{std::}\NormalTok{lock_guard<}\BuiltInTok{std::}\NormalTok{mutex> lock_msg(mtx_msg);}
+\NormalTok{        msg.header.stamp = t_echo;}
+\NormalTok{        msg.packed_echo.resize(p_echo->size());}
+        \BuiltInTok{std::}\NormalTok{copy(p_echo->begin(), p_echo->end(), msg.packed_echo.begin());}
+\NormalTok{        pub.publish(msg);}
+\NormalTok{        msg.header.seq++;}
+\NormalTok{    \}}
+\NormalTok{);}
+\NormalTok{t.detach();}
+\end{Highlighting}
+\end{Shaded}
+
+The multithreading approach lets the node use between 100\% and 140\%
+CPU (observed with \texttt{htop}).
+
+\subsection{Matlab}\label{matlab}
+
+Matlab (release R2017a) was chosen as implementation platform and
+language because it allows quick prototyping, provides relatively easy
+visualization, and, with the Robotics Toolbox, supports many ROS
+features.
+
+\subsubsection{Custom ROS message
+support}\label{custom-ros-message-support}
+
+It is necessary to install custom message support with the
+\href{https://www.mathworks.com/help/robotics/ref/roboticsaddons.html}{roboticsAddon}
+and
+\href{https://www.mathworks.com/help/robotics/ug/create-custom-messages-from-ros-package.html}{generate}
+the files to read in rosbags with \texttt{RadarEcho} type messages.
+
+\subsection{Complementing sensors}\label{complementing-sensors}
+
+\subsubsection{RGBD}\label{rgbd}
+
+\subsubsection{Lidar}\label{lidar}
+
+\section{Implementation}\label{implementation-1}
+
+\subsection{Overview}\label{overview}
+
+\subsubsection{Data path}\label{data-path}
+
+\subsubsection{Code structure}\label{code-structure}
+
+\subsubsection{Usage}\label{usage}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Start robot, connect three sessions with \texttt{ssh\ zero2-pa}
+\item
+  Start ROS core with \texttt{roscore}
+\item
+  Start the node, with keyboard teleoperation and Cartographer Laser
+  Slam:
+  \texttt{roslaunch\ omniradar\ omniradar\_teleop\_lidarslam.launch}
+\item
+  Use \texttt{rqt} with the \emph{Dynamic Reconfigure} plugin to set the
+  Omniradar node to generate the preferred number of sweeps and sweep
+  duration. The configuration string can also be changed. The defaults
+  are fine (One 5ms sweep)
+\item
+  \texttt{rosbag\ record\ /omniradar\_node/radar\_raw\ /odom\ /tf\ /map\ -O\ scan}
+  will record a rosbag ``scan.bag'' containing all ROS messages with
+  radar data, Kobuki odometry and slam map and transforms from
+  Cartographer.
+\item
+  In the terminal running \texttt{roslaunch}, use the arrow keys to move
+  the robot around (\(\uparrow\) and \(\downarrow\) to increase and
+  decrease speed, \(\leftarrow\) and \(\rightarrow\) to increase and
+  decrease rotation speed). \(E\) resets speed to zero and makes the
+  robot halt.
+\item
+  After recording some interesting data, stop the rosbag record
+  (\(Ctrl+C\)). Open a new terminal on your local machine and run
+  \texttt{ssh\ zero2-pa\ "tar\ zcf\ -\ scan.bag"\ \textbar{}\ tar\ zxf\ -}.
+  The rosbag will be transferred to your machine. Using ssh with the tar
+  pipe is the fastest way to transfer the data (around \(100 Mbps\) on
+  the BSH wifi). Compressing first (\texttt{rosbag\ compress\ scan.bag})
+  and then sending takes a while on the not-so-powerful Odroid platform.
+\item
+  Optionally filter out unwanted transforms from the rosbag to speed up
+  later processing:
+  \texttt{rosbag\ filter\ scan.bag\ scan\_filtered.bag\ \textquotesingle{}(topic\ ==\ "/tf"\ and\ m.transforms{[}0{]}.child\_frame\_id\ ==\ "odom")\ or\ topic\ !=\ "/tf"\textquotesingle{}}
+\item
+  In Matlab, run
+  \texttt{radar\_data\ =\ radar\_bag2array("/path/to/your/scan.bag");}.
+  This will read the bag sequentially into memory and extract the data:
+  The robot position is recorded from odometry information and corrected
+  using the /map \(\rightarrow\) /odom transform as reported by slam
+  localization. Cross range mileage is calculated as cumulative sum of
+  distance between radar positions (as the radar is not mounted over the
+  robot's rotation center, the radar mileage is different from robot
+  mileage as soon as any rotational velocity is present). Lastly, all
+  values are interpolated at the radar message timestamps. It is a good
+  idea to save the function's output, using
+  \texttt{save(\textquotesingle{}radar\_data/radar\_data\_scan.mat\textquotesingle{},\ \textquotesingle{}radar\_data\textquotesingle{})}
+\item
+  The radar data can now be analyzed. The
+  \texttt{plot\_world\_projection} script can be used to get a good
+  overview over raw data, doppler speeds, direction of arrival, and
+  reprojection map.
+\item
+  To compare radar reprojection map and laser slam map, try the
+  \texttt{test\_slam\_overlay} with the correct bag filename (the lidar
+  map is extracted from that bag)
+\end{enumerate}
+
+\subsection{Data Preprocessing}\label{data-preprocessing}
+
+\subsubsection{Rosbag to Matlab}\label{rosbag-to-matlab}
+
+\subsubsection{(Odometry) Cross range
+interpolation}\label{odometry-cross-range-interpolation}
+
+\subsubsection{Raw Data Smoothing}\label{raw-data-smoothing}
+
+After taking a single range reading, it will usually be relatively
+noisy. One solution to getting cleaner range data with higher SNR is
+oversampling. It is possible to use a moving average over a certain
+accumulation distance to achieve this. However, the number of raw
+samples is quite high and processing each sample takes a considerable
+amount of time (some minutes for some minutes of recorded data). It is
+better to make use of binning, with bins the width of the accumulation
+distance. All samples in one bin are averaged to represent that bin's
+value. This greatly improves processing time (to less than a second for
+some minutes of recorded data).
+
+Figure \#REF shows in gray the raw data of the first 20 range scan lines
+from the ``Mancave'' dataset. It then compares different ways of
+averaging over these 20 scans. All of them increase the SNR, because a
+big part of the noise signal is statistically uncorrelated. Table \#REF
+compares the RMS of the difference of each signal to the harmonic mean,
+which gives the cleanest signal.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Signal & RMS of difference to harmonic mean\tabularnewline
+\midrule
+\endhead
+Harmonic mean & 0\tabularnewline
+Geometric mean & 0.144\tabularnewline
+Arithmetic mean & 0.275\tabularnewline
+50\%-Trim mean & 0.284\tabularnewline
+Median & 0.318\tabularnewline
+Raw & 1.064\tabularnewline
+\bottomrule
+\end{longtable}
+
+The harmonic mean is defined as
+\[harmmean(x_{1,2,...,n}) = \frac{n}{\frac1{x_1} + \frac1{x_2} + \cdots + \frac1{x_n}} = \frac{n}{\sum\limits_{i=1}^n \frac1{x_i}}\]
+The geometric mean is defined as
+\[geomean(x_{1,2,...,n}) = \left(\prod_{i=1}^n x_i \right)^\frac{1}{n} = \sqrt[n]{x_1 x_2 \cdots x_n}.\]
+The arithmetic mean is defined as
+\[mean(x_{1,2,...,n}) = \frac{1}{n}\sum_{i=1}^n x_i=\frac{x_1+x_2+\cdots+x_n}{n}\]
+The 50\% trimmed mean is defined as the arithmetic mean of all except
+the highest and lowest \(\frac{n}4\) data points, where \(n\) is the
+number of data points. The median is defined as the value that lies
+between the lower and the upper half of sample values.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_compare_means.png}
+\caption{restrict-height}
+\end{figure}
+
+Due to the good signal quality, the implementation uses the harmonic
+mean to average the bins. Weighting the average with triangular or
+Gauss-shaped weight distribution did not noticeably improve data quality
+for any of the averaging methods.
+
+Note that the range signal is not the only signal that needs to be
+averaged in a range bin. All other parameters that are part of the range
+scan need to be averaged as well. These parameters are mileage at scan
+time, robot position and orientation, and robot speed. Sweep time and
+down range bins don't change.
+
+\subsection{Doppler Estimation with the Peak Gradient
+Algorithm}\label{doppler-estimation-with-the-peak-gradient-algorithm}
+
+The peak gradient algorithm is a way to find Doppler speeds from
+consecutive range profiles.
+
+\begin{figure}
+\centering
+\includegraphics{https://rawgit.com/lalten/ma/master/figures/fig_explain_peak_gradient.png}
+\caption{restrict-height}
+\end{figure}
+
+In figure \#REF the scans at radar mileage \(0.355m\) and \(0.375m\) of
+a scene (``Basement'') are overlaid. Obviously the range profiles of the
+two scans are very similar. However, as visible in figure \#REF some
+peaks from target echoes are shifted, as the distance to the targets
+changes with the radar moving through the scene. The rate at which the
+distance to a target changes is its relative speed to the radar, the
+Doppler speed.
+
+Usually, speed is measured in distance per time. In this case, it
+actually makes sense to ignore the scan's time stamps and look at the
+cross range (driven mileage) instead. With the Doppler speed as change
+of down range (distance to target) per cross range driven, calculations
+become time independent and hence radar movement speed independent.
+
+A target's distance from the radar is assumed to be at the range bin of
+the corresponding peak in a scan's range profile. When a target's
+distance changes the peak will shift, too. This is visible in figure
+\#REF and we can read the Doppler speed from the figure. The peak around
+\(0.67m\) moves \(d_{down,1} = 0.0216m\) closer in range, while the peak
+around \(0.95m\) moves \(d_{down,2} = -0.0216m\) closer (i.e., away).
+Combined with the change in cross range,
+\(d_{cross} = 0.3752m - 0.3555m = 0.0197m\), we can calculate Doppler
+speeds of \(v_{D,1} = {d_{down,1} \over{d_{cross}}} = 109.55 \%\) (of
+radar movement speed) and
+\(v_{D,2} = {d_{down,2} \over{d_{cross}}} = -109.55 \%\). If the speeds
+were \(100\%\) and \(-100%\) it would mean that the targets are directly
+ahead and directly behind the moving radar. Speeds over 100\% are
+however impossible in a static environment where all relative target
+motion is caused by the radar movement. The targets are therefore either
+dynamic and moving by themselves, or the peak locations that determined
+those too-high speeds were not exact. Since we know that there were no
+dynamic moving objects in the controlled environment of the scan, the
+latter must be the case.
+
+This effect of imprecise target peak localization and Doppler speed
+estimation could be overcome by averaging noisy data so that the average
+peak distance is close to the actual change in target range. A lot more
+scans are necessary for that though, and scan oversampling needs to be
+drastically reduced. This would lead to lower SNR, which means that some
+peaks with lower echo intensity could not be detected.
+
+With higher downrange resolution, peaks could be localized more
+precisely. However, the down range resolution is limited by the
+available bandwidth of the radar sensor. In the Omniradar RIC60A, up to
+7GHz are available, which is already extremely high. Its range
+resolution \(dR\) is \(c \over{2 BW}\), which is roughly \(2.1cm\). With
+this method, \(dR\) is of course the smallest measurable change of
+target range.
+
+The localization of peaks is however not limited by range resolution,
+but by range accuracy, which mainly depends on SNR. It is much better
+than range resolution with \(\sigma_R = {dR \over{\sqrt{SNR}}}\). This
+can be utilized with subsample peak interpolation.
+
+\subsubsection{Inter-scan vs Intra-scan Doppler
+estimation}\label{inter-scan-vs-intra-scan-doppler-estimation}
+
+For correct Doppler estimation it is important to have the exact timing,
+or for relative Doppler speed, exact cross range mileage of the range
+scans whose peaks are compared in the peak gradient algorithm.
+
+The Omniradar sensor can send multiple consecutive sweeps without any
+delay between them. The timing will then be very exact, because the
+precise length of one sweep is known. However, the number of sweeps in
+such a set of sweeps is limited (transmission of high data volumes will
+often fail), so they can't be average to be smoothed through
+oversampling and will be noisy. Smaller peaks will then not be detected
+reliably. Another problem with this approach is that it will give target
+Doppler speeds in change of down range over time, but not the robot
+speed-invariant relative Doppler speed in change of down range over
+change of cross range.
+
+Inter-scan comparison gives better Doppler estimation, because the data
+can be smoothed through oversampling first. Consecutive sweeps can still
+be used: They need to be separated into individual scans with timestamps
+adjusted to \(t_{msg} + i\cdot t_{sweep}\) (with message timestamp
+\(t_{msg}\), consecutive sweep index \(i\) and sweep duration
+\(t_{sweep}\)) and cross range mileage interpolated at that timestamp.
+
+\subsubsection{Subsample peak
+interpolation}\label{subsample-peak-interpolation}
+
+In subsample peak interpolation a curve is fitted on several supporting
+points in the coarse-resolution data. In the case of a single,
+non-overlapping radar echo peak, a Gaussian pulse of the form
+\[g_i(x) = a_i e^{-b_i ( x - c_i )^2}\] is a good approximation. In
+figure \#REF, the data point of the respective peak as well as its left
+and right neighbors are fitted with a Gaussian. The fit parameters
+\(a\), \(b\) and \(c\) are calculated using
+\href{https://www.mathworks.com/matlabcentral/fileexchange/24465}{Travis
+Wiens's crit\_interp\_g} function.
+
+As evident by visual inspection, the intensity and location of the
+fitted function's maximum are much closer to the real value.
+
+With the same procedure as explained above, we measure peak distance
+shifts of \(d_{down,1}=9.510mm\) and \(d_{down,2}=-13.52mm\) in figure
+\#REF and can hence estimate Doppler speeds of \(v_{D,1}=48.26\%\) and
+\(v_{D,2}=-68.63\%\) of radar movement speed. These values are a much
+more plausible estimation and generally work very well when used to
+calculate the reprojection angle in the reprojection method.
+
+\subsubsection{Peak matching}\label{peak-matching}
+
+Visually it seems clear which peaks belong to each other in consecutive
+range scan lines. But for the algorithm this poses a challenge. Range
+scan lines usually don't have the same number of peaks because new
+targets can appear, old targets can disappear, noise can temporarily
+mask out targets peaks and target arcs cross each other. However if the
+cross range difference, i.e.~the driven distance between scans, is not
+too high, a single target will not change very much in both range and
+echo intensity. This allows the detection of peak matches, between which
+the Doppler speed will be calculated. The parameters for peak matching
+tolerance are therefor allowed intensity change
+\[max. ValueSearchArea = {\delta I\over{\Delta d_{cross}}}\] with
+intensity change factor \(\delta I\) and cross range difference
+\(\Delta d_{cross}\) allowed range change
+\[max. LocSearchArea = {\Delta d_{down}\over{\Delta d_{cross}}} = v_D = \alpha~v_R\]
+which is more easily expressed as maximum Doppler speed \(v_D\) in
+percent of robot speed \(v_R\). Good values are a factor of
+\(5 cm^{-1}\) as maximum intensity change factor and a factor of
+\(2 v_R\) as maximum Doppler speed.
+
+\paragraph{Minimum Peak height}\label{minimum-peak-height}
+
+\subsubsection{Transmit crosstalk
+suppression}\label{transmit-crosstalk-suppression}
+
+At low range, spurious peaks occur. The first one is caused by transmit
+antenna crosstalk and is visible as very high intensity echo around
+\(d_{down}=0\). After the transmit antenna crosstalk spike there is
+another peak around \(d_{down}=0.25m\) which is consistently visible. It
+can be explained with static objects sitting close to the radar,
+i.e.~robot parts and the floor below the robot.
+
+These spurious peaks create two problems: (1) automatic color scaling or
+height scaling respectively in plots is more difficult, and (2) high
+intensity false positives would be visible next to the robot path in the
+final map.
+
+Hence these spurious peaks must be ignored during peak detection. This
+can be achieved in two ways. The first is to simply replace all data
+values under a down range limit \(d_{mute}\) (usually
+\(d_{mute}=0.30m\)) with \(NaN\) values. For the second way, one effect
+of range compensation is exploited. As shown in figure \#REF, the spike
+that previously had its maximum in the first range bin, at
+\(d_{down}=0\), now has its maximum in a later range bin. The reason is
+that the range compensation factor at \(d_{down}=0\) is \(r(0) = 0\) but
+\(r(d_{down}>0) > 0\). As the transmit peak now has a maximum with
+neighbors lower than its maximum, \texttt{findpeaks} can find it. Color
+scaling can then be made to work correctly by clipping all values higher
+than the \emph{second highest} peak. The Peak Gradient Algorithm also
+has an optional parameter \texttt{SkipFirstPeak} which, when set to
+\(true\), ignores the first peak in each range scan line. This can help
+to ignore these echoes.
+
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_range_compensation_transmit_spike.png}
+Note that the \(0\) value at \(d_{down}=0\) won't be displayed in log
+scale.
+
+\subsubsection{Peaks overlaps at crossing target
+arcs}\label{peaks-overlaps-at-crossing-target-arcs}
+
+\subsubsection{Output}\label{output}
+
+\subsubsection{Limitations}\label{limitations-1}
+
+\paragraph{Problems with imperfect fit function for
+subsampling}\label{problems-with-imperfect-fit-function-for-subsampling}
+
+\paragraph{Problems with close
+targets}\label{problems-with-close-targets}
+
+When Doppler speed is measured directly using FMCW, there will be
+several Doppler peaks, each representing a different target at the same
+range but with individual relative speeds. With the Peak Gradient
+Algorithm however, multiple targets at the same range are difficult to
+separate. In some cases this is only a temporary problem and is resolved
+by the radar moving a little farther so the ranges are separated by more
+than the range resolution. Sometimes however some peaks come from
+point-like targets that are close together, like a parts of a wall. This
+bundle of targets is however not always separated by the same range.
+Especially in the case of a wall, the traces of visible points will
+cross each other as they slide on the sine arc (see figure). When the
+points are close together, only the brightest spots will be seen as
+peaks, and the trace of the detected peak matches will describe a
+squiggly motion. This causes the estimated Doppler speed to wander
+around the common speed. To combat this effect, a higher accumulation
+distance can be used during oversampling preprocessing, so the peaks
+move together so closely that they actually form a single target.
+
+\begin{figure}
+\centering
+\includegraphics{https://www.filepicker.io/api/file/NxQVqszWTIqhFlxld5Rw}
+\caption{restrict-height}
+\end{figure}
+
+\subsection{DOA Implementation}\label{doa-implementation}
+
+As described in \#REF, the Direction of Arrival (DOA) angle can be
+measured from the phase difference at the receiving antennas of a
+multistatic radar.
+
+In the case of RIC60A the antenna separation \(d\) is \(1.16mm\) and
+wavelength \(\lambda\) is \(\lambda={c\over{60GHz}}=5.0mm\) (with speed
+of light \(c\)).
+
+Figures \#REF and \#REF show the range profile and phase shift of the
+``Basement'' scan. The phase shift is very noisy in the regions without
+a target peak in the range profile but exhibits steady values following
+a gradient over targets.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_range.png}
+\caption{restrict-height}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_phase_shift.png}
+\caption{restrict-height}
+\end{figure}
+
+Four steps are performed to get a reasonable estimation of direction of
+arrival. \textbf{Peak detection}. In a first step, target peaks in the
+range profile are detected. The algorithm records for each peak in each
+range scan line its fitted interpolated location, full width at half
+maximum, and matching peaks in adjacent lines regarding value and
+location. \textbf{Down range averaging}. In each range scan and at every
+detected target peak, the phase shift is averaged over the width of the
+respective detected peak. The average is weighted using the Gaussian fit
+from subsample peak interpolation. \textbf{Cross range averaging}. In
+every range scan line, each peaks phase shift is averaged over a
+configurable accumulation distance in cross range dimension. This is
+done by taking the arithmetic mean of all the phase shifts at all
+matching peaks (regarding value and down range location) within
+accumulation distance in cross range dimension. \textbf{Cut out}. Noisy
+values at non-target peak range bins are masked out. \textbf{DOA
+calculation}. In each scan line, each peaks direction of arrival
+\(\theta\) is calculated from the smoothed phase shift values, using
+formula \#REF.
+
+Figure \#REF shows the result of these four steps applied on the data of
+the ``Basement'' scan. The direction of arrival seems plausible: In this
+side-facing scan the robot passed some metal cans. Apparently the radar
+sensor was not mounted perfectly orthogonal to the robot's movement
+direction (which is not necessary for the reprojection method), but was
+slightly off by. This can be seen at the closest points of the target
+arcs. At the pericenter the line of sight to a target is orthogonal to
+the robot's movement direction, but the DOA value shows to be around 5
+to 10 degrees.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_doa.png}
+\caption{restrict-height}
+\end{figure}
+
+Note that if the radar sensor is mounted inverted (rotated by 180°), DOA
+values have to be multiplied by \(-1\) to keep right and left where they
+are.
+
+\subsection{Reprojection Mapping}\label{reprojection-mapping}
+
+\subsubsection{Orientation parameters}\label{orientation-parameters}
+
+Before the reprojection can be executed, the physical orientation of the
+radar sensor needs to be known to the algorithm. In the implementation,
+the two boolean parameters \texttt{forward\_looking} and
+\texttt{mount\_inverted} control the behaviour. If the radar's squint
+angle and angle sensitivity are such that the field of view reaches both
+sides of the robot path, the \texttt{forward\_looking} parameter needs
+to be enabled. This enables the processing of DOA data to find the sign
+of every target's reprojection angle i.e.~if it is to the left or right
+side of the robot's motion path. If the radar is mounted in an
+upside-down configuration the squint angle is not affected, but if the
+DOA values are processed they need to be mirrored (multiplication with
+\(-1\)) because the left and right antennas are switched. Otherwise,
+targets will be projected to the wrong side of the robot's path.
+
+\subsubsection{Projection direction}\label{projection-direction}
+
+The radar reprojection can be executed as forward or backward mapping.
+The proof of concept implementation has an optional parameter
+\texttt{ProjectionMethod} to switch between forward and backward
+mapping.
+
+\paragraph{Backward mapping}\label{backward-mapping}
+
+If backward mapping is enabled, the reprojection algorithm still
+operates range scan line based, but iterates over each pixel in the map.
+While this is computationally much more intensive, it allows to add
+negative information by reducing the map's value at pixels that are
+known to not contain a target because the range scan line does not
+feature a peak at that range.
+
+\begin{verbatim}
+foreach range_scan_line in range_scan_lines
+  foreach pixel in map
+    pixel_angle = robot.get_angle_to(pixel)
+    distance = robot.get_distance_to(pixel)
+    if distance < max_range && pixel_angle in field_of_view_range
+      range_bin = range_scan_line.interpolate_at(distance)
+      if range_bin.has_peak
+        peak_angle = range_bin.peak.doppler.to_angle
+        if peak_angle == pixel_angle
+          map.at(pixel).add(range_bin.value)
+      else
+        map.at(pixel).reduce_value
+\end{verbatim}
+
+\paragraph{Forward mapping}\label{forward-mapping}
+
+In forward mapping, the reprojection algorithm iterates over each range
+bin in each range scan line. Detected peaks are cut out and reprojected
+to a position on the map which is calculated from relative Doppler
+speed, range, and robot position. The projection target coordinates
+don't usually fall exactly on the map grid points. The implementation
+uses sample splitting to distribute a value over the nearest pixels in
+this case.
+
+\begin{verbatim}
+foreach range_scan_line in range_scan_lines
+  foreach peak in range_scan_line
+    foreach range_bin in peak
+      target_coords = get_coords(robot.position, range_bin.range, peak.doppler)
+      weights, neighborhood = split_sample(target_coords)
+      map.at(neighborhood).add(weights, range_bin.value)
+\end{verbatim}
+
+\subsubsection{Sample splitting}\label{sample-splitting}
+
+To avoid aliasing when projecting a pixel in the forward projection
+direction, the sample is split over the four closest map pixels. The
+split is weighted with the distance of the target coordinates to the
+closest pixel centers.
+
+If the target coordinate is \(p_{target}=(x_t, y_t)\), then the
+horizontal and vertical distributions \(\nu_h\) and \(\nu_v\),
+respectively, are \[
+\nu_h = \frac{x_t - \lfloor x_t \rfloor}{\lceil x_t \rceil - \lfloor x_t \rfloor} \\
+\nu_v = \frac{y_t - \lfloor y_t \rfloor}{\lceil y_t \rceil - \lfloor y_t \rfloor}
+\]
+
+The pixel weights \(p_{x,y}\) are then \[
+p_{\lfloor x_t \rfloor, \lfloor y_t \rfloor} = \nu_v \nu_h\\
+p_{\lfloor x_t \rfloor, \lceil y_t \rceil} = \nu_v (1 - \nu_h)\\
+p_{\lceil x_t \rceil, \lfloor y_t \rfloor} =  (1 - \nu_v) \nu_h\\
+p_{\lceil x_t \rceil, \lceil y_t \rceil} = (1 - \nu_v) (1 - \nu_h)
+\] , such that \[
+\sum\limits_{
+x \in \{\lceil x_t \rceil, \lfloor x_t \rfloor\}\\
+y \in \{\lceil y_t \rceil, \lfloor y_t \rfloor\}
+} p_{x,y} = 1
+\]
+
+In the special case where \$y\_t = \lceil y\_t \rceil = \lfloor y\_t
+\rfloor\$ there are only two instead of the four neighboring pixels.
+Their weights \(p_{x,y}\) are \[
+p_{\lfloor x_t \rfloor, y_t} = \nu_h\\
+p_{\lceil x_t \rceil, y_t} = (1 - \nu_h)
+\] The same applies when \$x\_t = \lceil x\_t \rceil = \lfloor x\_t
+\rfloor\$: \[
+p_{x_t, \lfloor y_t \rfloor} = \nu_v\\
+p_{x_t, \lceil y_t \rceil} = (1 - \nu_v)
+\] And lastly, if
+(\(y_t = \lceil y_t \rceil = \lfloor y_t \rfloor ) \land (x_t = \lceil x_t \rceil = \lfloor x_t \rfloor )\),
+then \(p_{x_t, y_t} = 1\)
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/diagrams/Sample\%20splitting.png}
+\caption{restrict-height}
+\end{figure}
+
+\subsubsection{Range compensation}\label{range-compensation}
+
+As evident from the radar equation \#REF, echo intensity decreases with
+the fourth power of distance. This has the effect that reprojected
+targets appear brighter when they are mapped from close distance; but
+most importantly, when targets are detected from a far distance, mapped
+intensities are decreased due to the map's averaging.
+
+This attenuation can be compensated with a range-based compensation
+factor \(f_r\) with \[f_r(d_{down}) = {
+\left(
+c_a + (
+{{d_{down}}\over{c_b}}
++ c_c)^{-4}
+\right) ^ {-1}
+}\]
+
+\section{TODO fitting process to get a,b,c
+values}\label{todo-fitting-process-to-get-abc-values}
+
+Figure \#REF shows the range profile of the ``Torture Chamber'' scan
+both as oversampled raw values (top subplot) and with range compensation
+enabled (bottom subplot). The middle subplot details the range scan line
+at one cross range highlighted by the red lines. Inspecting this detail
+graph reveals that both target peaks and noise floor are lowered in the
+near range, while the noise floor stays constant in the far range. This
+helps to keep a target's intensity at at least similar values over all
+ranges in the map.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_range_compensation.png}
+\caption{restrict-height}
+\end{figure}
+
+\subsubsection{Angle sensitivity
+compensation}\label{angle-sensitivity-compensation}
+
+The intensity of a target peak depends on its angle with respect to the
+antenna. The angle is unknown before the Doppler speed is estimated, so
+the knowledge about echo attenuation caused by antenna angle sensitivity
+can not be used to improve peak detection. But the echo intensity
+influences how a target is represented on the reprojection map. Since
+the map averages all reprojections to any given point a low intensity
+echo will reduce the visibility of a target on the map. This can however
+be compensated by multiplying detected target peak heights with a factor
+that is based on the angle the target is believed to be seen under.
+
+The angle compensation factor curve was found by experiment. A strong
+point target (a retroreflector) was placed at a known range away from
+the robot. The robot was then made to rotate around itself, such that
+the target comes into view and leaves again. Meanwhile, the radar scans,
+together with robot odometry were recorded.
+
+The radar was not mounted over the center of rotation of the robot. This
+way, the radar did describe a circular path whose mileage can be
+calculated. The angle compensation measurement can hence be visualized
+in figure \#REF in the usual range profile with echo intensities over
+cross versus down range. The range of the retroreflector varies with
+twice the distance of the radar to the robot's rotation center, but only
+the orientation is interesting - the range can just be summed up over
+the range bins the target is visible in (in this case,
+\(0.45m - 0.85m\)).
+
+In figure \#REF, the same range scan lines are sorted by robot
+orientation during the scan. After the explained summing in down range
+dimension the intensity (absolute value of complex signal) data of both
+antennas is binned separately over 60 orientations from \(-\pi\) to
+\(\pi\).
+
+The manufacturer later provided angle sensitivity measurements of the
+IC's batch (see figure \#REF). The measurements show that the
+experimental approach produced valid results.
+
+The compensation factor \(f_a\) for each angle is finally composed using
+the formula
+
+\[m = \max \left( \max (s_{Rx1}), \max (s_{Rx2}) \right)\] \[
+f_a = {1\over{2}}
+  \left(
+    {{m}\over{ s_{Rx1} }} +
+    {{m}\over{ s_{Rx2} }}
+  \right)
+\]
+
+Multiplicating a peak which is to be reprojected at angle \(\alpha\)
+with angle compensation factor \(f_a(\alpha)\) results in a peak height
+that is independent of observation angle.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_angle_compensation.png}
+\caption{restrict-height}
+\end{figure}
+
+\subsubsection{Angle compensation
+window}\label{angle-compensation-window}
+
+Detected peaks are not in a single range bin, but form a curve over
+several range bins. Multiplicating each of these range bin's values with
+the same \(f_a\) does work, but leaves hard edges. It is better to
+multiplicate the peak with a window function with height \(f_a\). The
+implementation the window \(w\): \[
+w(x,f_a) = 1 + (f_a - 1)
+~e ^ {
+ -{
+    \left( {x - p_x} \right) ^ 2
+    \over{ {p_w} }
+  }
+}
+\] where \(p_x\) is the peaks subsample-interpolated peak location in
+down range space and
+\(p_w = { {{ \left( { {fwhm}\over{4} } \right) } ^2}~/~{4 ln(2)} }\) is
+the peaks width, where \(fwhm\) is the full width at half maximum as
+found by the subsample-interpolated peak fit.
+
+Figure \#REF show a glass wall in the ``Racetrack'' scan. In the top
+subplot, only range compensation is applied. In the middle subplot,
+angle compensation is switched on. In the bottom subplot, both angle
+compensation and angle compensation windowing are switched on. The
+figure shows how angle compensation helps to keep the echo intensity of
+a mapped object at the same level, regardless of the angle at which it
+is seen by the radar.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_angle_compensation_comparison.png}
+\caption{restrict-height}
+\end{figure}
+
+\subsubsection{World map resolution}\label{world-map-resolution}
+
+\section{Results and Evaluation}\label{results-and-evaluation}
+
+\subsection{Evaluation}\label{evaluation}
+
+\subsubsection{Evaluation dimensions}\label{evaluation-dimensions}
+
+Needs to be * timely * false alarm rate * missed target rate * spatially
+precise * see different types of obstacles * comparable to other sensors
+* useful (humidity of wall is not interesting for obstacle detection)
+
+\subsubsection{Evaluation scan targets}\label{evaluation-scan-targets}
+
+\begin{itemize}
+\tightlist
+\item
+  Cans (easy)
+\item
+  Walls
+\item
+  Glass walls
+\item
+  Chair legs
+\item
+  Cables on floor
+\item
+  Cliffs
+\end{itemize}
+
+\subsection{Results}\label{results}
+
+During development of the reprojection method, over 30 scans were taken.
+The environment for the scans is the BSH office in the Bosch Research
+and Technology Center in Palo Alto. The office is fairly representative
+of a typical office environment. It has carpet floors, desks, office
+chairs, walls, corridors, and even glass walls.
+
+The following list of scans is ordered by code name. It shows raw range
+scans (down range echo intensity vs.~cross-range/mileage) for each scan,
+parameters of the scan (orientation, sweep time), and resulting map. For
+some of the scans, Lidar slam maps were recorded. They are overlaid in
+the background of the reprojection map.
+
+\begin{longtable}[]{@{}lllllllllll@{}}
+\toprule
+\begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Name of scan\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Raw data\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Reprojection map\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Scan date\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Sweep duration\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Sensor orientation\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Squint angle\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Horn extension\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Slam map\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Slam localization\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+Notes\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+Attic\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/video/publicrestroom.webm}\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+Jul 10 2017 14:37:03\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+5ms\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+horizontal\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+90° left\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+Yes\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+No\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+No\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\section{Discussion and Comparison}\label{discussion-and-comparison}
+
+\subsubsection{Reflection
+directionality}\label{reflection-directionality}
+
+Many objects only become visible when their surface is oriented
+perpendicularly to the incident radar waves, so that enough scattered EM
+energy makes its way back to the sensor. This is very visible in the
+Underground scan, where a glass wall is detected as the robot passes it,
+but not while the robot sees it at an angle.
+
+In the Torture Chamber scan, the same effect is visible for chair legs,
+especially for the chair at the scene center. the legs appear in clear
+form as soon as the radar sees the leg from a point that is orthogonal
+to the office chair legs.
+
+\section{TODO snapshots from video?}\label{todo-snapshots-from-video}
+
+\subsubsection{Material-dependent echo
+strength}\label{material-dependent-echo-strength}
+
+Some materials, like metal, are obviously better at reflecting radar
+waves than others, like styrofoam. Metal objects cause particularly
+strong echos which are visible from a higher distance. This can be
+observed in the hallway scans (e.g.~Orbit, Public Restroom, Queue,
+Racetrack, Sauna, Underground), where the metal frames of doors and
+glass walls stand out in the scan.
+
+\subsubsection{Doppler vs Direction of Arrival data
+quality}\label{doppler-vs-direction-of-arrival-data-quality}
+
+In forward-facing geometry (scans D-T), the DOA is necessary to resolve
+the sign of a target's reprojection angle. This works fairly well, for
+example at the start of Sauna (see figure \#REF), the closer target
+passes on the right (more pink), while the other targets stay to the
+left side of the robot (more green).
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_doa_sign_input.png}
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_doa_sign_doa.png}
+
+In fact, for the side-facing case, the smoothed DOA data also turned out
+to be very good. It could even be used to calculate a more precise
+reprojection angle.
+
+\subsubsection{Multipath effects}\label{multipath-effects}
+
+Multipath effects are a well-known problem in ground-based radar
+applications \cite{Adams2012}. In situations where multi-path effects
+are likely, there is a higher possibility that multiple versions of a
+target's echo are visible, which can lead to detection of incorrect
+angle and ranges. Luckily, in the recorded data almost no multipath
+effects are obvious. The only scan that shows some effects is the
+Torture Chamber. There, it seems like the radar waves bounce around a
+bit in the (2m,2m) area under the desk. The effect is that some targets
+are detected behind the wall behind the desk.
+
+\section{TODO picture?}\label{todo-picture}
+
+\subsubsection{Object penetration}\label{object-penetration}
+
+Some objects are penetrated by the radar waves. For example, in the
+Attic and Basement scans, both the front and the back wall of the
+plastic bottle can be seen. However, the plastic bottle was relatively
+close to the sensor. On the other hand, in the scans with glass walls in
+them (P,P,Q,R,S,U), no significant radar echo is picked up from the
+(metal) chair legs behind the glass wall. This is because a typical
+glass pane attenuates the 60Ghz signal by about 5.5 dB \cite{Lu2014}. In
+effect, a radar sensor with higher transmission power might be able to
+see through walls, but in the conducted experiments radar echos were to
+faint to be picked up after the first bigger object (like a wall).
+
+\subsubsection{Negative obstacles}\label{negative-obstacles}
+
+With scans V,W,X the negative obstacle detection capability was
+analyzed. Cliffs, steps, and ditches are types of negative obstacles
+that cannot be traversed by the robot. In \cite{Jiang2015}, Jiang et al.
+claim that it is possible to detect this with UWB signals of various
+carrier frequencies. The experiments carried out for this thesis however
+did not show the same signal behaviour and it was not possible to detect
+cliffs.
+
+The Virtual Reality scan was carried out in the standard configuration
+with a horizontal, slightly squinting, and not downwards angled sensor.
+The assumption was that a part of the strong signal int the 10cm to 20cm
+range were reflections from the floor, that should disappear when the
+floor ends at a cliff. Visual inspection of the range profile however
+shows only a extremely slight change in signal, e.g.~at cross range
+0.8m..1.1m, down range 0.2m..0.25m., where the floor could not reflect
+due to the radar sensor overhanging the cliff.
+
+The Washroom scan has the sensor mounted in a vertical configuration and
+downward facing instead to increase sensitivity to echo scattering from
+below. The echo intensity for cross range 3.5m..4.5m is indeed just
+barely lower than 0m..2m, which maches up to where the sensor was over
+the edge and over floor, respectively.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_negobst.png}
+\caption{restrict-height}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_negobst_clipped.png}
+\caption{restrict-height}
+\end{figure}
+
+To limit the transmit crosstalk's blinding effect, the sensor was
+mounted on a much higher position (on the RGBD camera mount) in the Xray
+Room scan. One effects is that the robot chassis itself is constantly
+visible at a distance of 0.35cm down range. At 0.45cm down range, the
+floor echo is visible. There is one dip in intensity at 2.5m cross
+range, where the sensor was not over floor. Overall the signal is
+however not as conclusive as in the Washroom scan.
+
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_negobst_xray.png}
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_negobst_xray_clipped.png}
+
+Maybe the signal could be improved with improved background subtraction
+(see \#REF). However, the three scans show that it is very hard to
+detect negative obstacles with this sensor. A radar sensor of this type
+will hence not be a viable replacement for regular cliff detection
+sensors like the floor facing infrared distance sensors in the Kobuki
+base.
+
+\subsubsection{Cable detection}\label{cable-detection}
+
+Cables on the floor are another interesting target that falls into the
+category of obstacles being a very common occurrence in the real world,
+but are hard to detect with conventional obstacle sensors. The Y (Is
+There A Cable On The Floor) scan deals with the detection if this kind
+of obstacle. For this, the same camera-mounted vertical configuration as
+in X Ray Room was used. Again, there is a constant robot chassis echo at
+down range 0.35. As the robot is driving closer towards the power cable
+on the floor, the cable's echo is visibly coming closer before it
+disappears under the robot's chassis. The echos at 0.9m down range show
+the two can towers at the end of the cable.
+
+\begin{figure}
+\centering
+\includegraphics{https://raw.githubusercontent.com/lalten/ma/master/figures/fig_cable.png}
+\caption{restrict-height}
+\end{figure}
+
+\section{TODO geometry for sensor out of plane with
+targets?}\label{todo-geometry-for-sensor-out-of-plane-with-targets}
+
+Both the X Ray Room and Y (Is There A Cable On The Floor) introduce a
+new geometry that lifts the radar sensor out of the two dimensional
+mapping plane. The geometry is better described with a 3D case, for
+which more than
+
+\subsubsection{Minimum distance}\label{minimum-distance}
+
+The constant noise from the transmission crosstalk leads to a high
+minimum detection distance as explained in \#REF. The effect is that
+targets can not be projected onto the map if the robot is too close to
+them. This is an issue in the Sauna scan, where the Glass wall right at
+the beginning of the robot path cannot be mapped in its entirety.
+
+\subsubsection{Parameter tuning?}\label{parameter-tuning}
+
+\subsection{Comparison with other mapping
+techniques}\label{comparison-with-other-mapping-techniques}
+
+While some of the radar reprojection maps speak for themselves, they
+make more sense when compared to other mapping techniques. In the
+following, SAR techniques, Laser slam, and RGBD slam are compared to the
+radar reprojection.
+
+\subsubsection{SAR}\label{sar-1}
+
+Synthetic aperture radars make a lot of sense in other applications
+where the radar is moved over or through a map. The big difference to
+this application is that ``professional'' SAR applications have radar
+sensors that sit in vehicles that are not in the mapping plane.
+Airplanes, satellites and even Submarines scan the earth like that.
+
+There are a few examples for UWB radars being moved sideways (usually on
+a rail) in an effort to scan a scene with synthetic aperture radar.
+Gregory L. Charvat's ``tin can'' radar \cite{Charvat2014} might be the
+most famous one, with many examples at http://glcharvat.com/shortrange/.
+Another great resource was Henrik Forsten's Homemade Synthetic Aperture
+Radar, documented at
+http://hforsten.com/homemade-synthetic-aperture-radar.html. Forsten used
+the Omega-k algorithm \cite{Tolman2008} and Stolt interpolation (\#TODO:
+add book reference) to correct the range migration arcs. \#TODO make
+quad-subfigure with Forsten's images? Forsten was able to greatly
+improve his data quality by use of an minimum-entropy based
+auto-focusing algorithm. The trick with this is that the radar needs to
+move in a very straight line, where the ``error in path linearity should
+be around less than tenth of a wavelength''. In Forsten's radar, this is
+about 5mm. However with the 60GHz Omniradar this is around 0.5mm.
+Keeping a straight line with less than half a millimeter of linearity
+error is not realistically achievable on the Kobuki platform.
+
+\section{TODO subfigure with stolt interpolation
+stuff}\label{todo-subfigure-with-stolt-interpolation-stuff}
+
+One big inherent problem with synthetic aperture radar algorithms is
+that basically all of them assume the radar to move in a straight line.
+While changing the squint angle helps to deal with issues such as earth
+curvature in satellite applications, SAR with curved or even arbitrary
+paths is a challenging topic, particularly because auto-focusing, which
+again relies on phase information, becomes more difficult
+\cite{Axelsson2002}.
+
+\subsubsection{RGBD}\label{rgbd-1}
+
+The Kobuki robot was also carrying a depth camera. Using the rtabmap Ros
+package, some 3D scans of the office environment where made.
+
+\subsubsection{Lidar}\label{lidar-1}
+
+As stated in \#REF, the Kobuki robot used in the experiments was
+equipped with an RPLidar and a computing platform powerful enough to
+perform slam. Lidar slam is the go-to, standard approach when it comes
+to mapping the environment around a robot. After years of research and
+product development, even cheaper lidar systems have acceptable range
+resolution. While they can't provide ground truth data (see problems
+with lidar data in \#REF), it makes sense to compare the radar
+reprojection maps with laser scan maps.
+
+\section{Conclusion}\label{conclusion}
+
+\subsection{Future Work}\label{future-work}
+
+\subsubsection{Dynamic target rejection}\label{dynamic-target-rejection}
+
+\subsubsection{Online mapping}\label{online-mapping}
+
+The proof of concept implementation processes pre-recorded data. However
+the algorithm is by no means limited to offline processing. Being very
+much iterative and range scan line based it requires only the knowledge
+of current and past, but not future scans. A live version of the
+algorithm was not built, because the implementation was done in Matlab,
+which does not run on arm processors natively. Matlab's Robotics Toolbox
+does include a way to receive ROS messages live, but it is very slow and
+would miss a lot of messages. This was tested by replaying a rosbag,
+which works only at less than 10\% replay speed. This means that a 6
+minute recording takes around 60 minutes to process. On the other hand,
+just reading in all the messages in a rosbag takes around 3 minutes,
+which is the reason the implementation was not done live. In a real
+system (i.e.~not replayed from a rosbag) sending raw scan messages over
+the network requires a lot of bandwidth, so the sampling frequency also
+drops considerably.
+
+An online system would probably have to be designed as a ROS node that
+runs on the embedded platform.
+
+Another topic that needs to be looked at for an online version is the
+size of the reprojection map. It should automatically expand if a wider
+area is necessary. This could be handled in a nice way with ROS's
+\texttt{nav\_msgs/OccupancyGrid} messages and/or the
+\href{http://wiki.ros.org/grid_map}{grid\_map package}. This would also
+allow pretty and useful visualizations with RViz.
+
+\subsubsection{ROS nodelet}\label{ros-nodelet}
+
+The \texttt{omniradar\_node} ROS node spends quite some time on copying
+the radar echo into the ros message that is to be sent out. As Austin
+Hendrix points out in
+\href{https://answers.ros.org/question/208801/how-to-have-no-copy-publishing-over-multiple-cores/?answer=208805\#post-id-208805}{ROS
+answers}, ``ROS doesn't provide intra-process, zero-copy publishing.
+Nodelets can be run multi-threaded, so it is possible to have zero-copy
+between different nodelets within a single nodelet manager''. Recording
+a rosbag still involves copying the data, but in an online system a
+nodelet-based reprojecting algorithm can be expected to bring a
+reasonable performance improvement.
+
+\subsubsection{Auto-thresholding}\label{auto-thresholding}
+
+\subsubsection{Realtime}\label{realtime}
+
+An obstacle sensor's job is to provide information on impeding
+collisions before it's too late. Thus it would be great to have the
+system run under realtime constraints, so it can guarantee range
+scanning and reprojection mapping to be finished within a known time
+frame.
+
+\subsubsection{Dynamic changing of sweep time and
+bandwidth}\label{dynamic-changing-of-sweep-time-and-bandwidth}
+
+\subsubsection{Interference
+Investigation}\label{interference-investigation}
+
+Since the 60 GHz band is ISM, other sources can be present, e.g.~the
+IEEE 802.11ad standard \cite{IEEE2014} (``WiGig'') which enables very
+high throughput wireless LAN operation in frequencies around 60GHz.
+Commercial products using WiGig are already available and could cause
+some interference with the 60GHz radar sensor. Detecting or avoiding
+interference in the range signal would be an important topic if this
+causes a lot of trouble.
+
+\subsubsection{Ultrasound}\label{ultrasound}
+
+Usually, ultrasound sensors measure the distance to the closest object.
+However, K.C. Lee's project log of their ``Sonar for the visually
+impaired'' project \cite{Lee2015} shows how cheap sensors can be hacked
+to read a range profile that looks very similar (see figure \#REF) to
+what is used for the radar reprojection method. It might be possible to
+adapt the algorithms in this thesis to use ultrasound sensors.
+\includegraphics{https://cdn.hackaday.io/images/9483821436059904197.jpg}
+
+Most ultrasound range sensors use the time of flight of a pulsed echo,
+but FMCW-based ultrasound modules have been proposed
+\cite{Battaglini2014} recently. With a range resolution of
+\[dR = \frac{c_{sound, air}}{2 BW} = \frac{330 \frac{m}{s}}{2\cdot 12.5kHz} = 1.32 cm\]
+the proposed sensor would be comparable to the Omniradar sensor's range
+resolution and accuracy. However, for measurements to be very accurate
+the speed of sound in air must be known as it depends on humidity and
+temperature \cite{Bohn1987}.
+
+For forward-facing geometry DOA is necessary to resolve the sign of the
+reprojection angle. Sound waves do not not carry phase information, but
+with a transducer array, direction of arrival can still be estimated
+\cite{Kunin2010}.
+
+Extension to ultrasound sensors would be a very interesting topic for
+further work.
+
+It might even be possible to use light waves with interferometric
+modulated flash lidars and the right optics.
+
+\subsubsection{3D case}\label{d-case}
+
+Chapter \#REF describes the general geometry for 2D-cases. However, it
+is possible to extend the concept to the three dimensional space if a
+radar has more than two non-collinear receiving antennas, like
+visualized in figure \#REF. Horizontal DOA would be measured between
+antennas at positions \(Rx1\) and \(Rx2\) while vertical DOA would be
+measured between \(Rx1\) and \(Rx3\).
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/2D-DOA.svg}
+Reprojection mapping could then be used to build 3D occupancy maps. The
+reprojection angle \(\alpha\) would then describe a circle at distance
+\(R~cos(\alpha)\) around the radar path, on which the detected target
+lies. Direction of arrival in horizontal and vertical planes would then
+have to be used to pinpoint the target location on the circle.
+\includegraphics{https://rawgit.com/lalten/ma/master/diagrams/3Dcase.svg}
+This holds also for the 2D-case: The possible locations for targets are
+then at the intersection of reprojection cone circle and floor plane.
+
+This would be useful on vehicles moving in 3D space, like the TUM RCS's
+\href{https://www.rcs.ei.tum.de/forschung/mart/}{Modular Airborne
+Real-Time Testbed (MART)} that was also used in other research and
+publications \cite{Becker2015}.
+
+\subsubsection{Single receive antennas on multiple
+sensors}\label{single-receive-antennas-on-multiple-sensors}
+
+Direction of arrival is a good solution to resolve the ambiguities
+presented in the general 2D-case \#REF and 3D-case \#REF geometry for a
+sensor with a sufficient number of antennas. However, it should also be
+possible to use multiple, spatially separated sensors instead. Each
+sensor measures a reprojection angle. A target visible to both sensors
+can then be localized unambiguously with triangulation.
+
+\section{TODO}\label{todo-3}
+
+3D scenario. standard case: two intersecting spheres --\textgreater{}
+intersection circle doppler reprojection case: angle --\textgreater{}
+cones with intersecting base edge -\textgreater{} two interesection
+points (DOA to resolve, or high flying drone to assume)
+
+\subsection{Conclusion}\label{conclusion-1}
+
+Mobile robots still struggle to detect some obstacles that are invisible
+to their conventional sensors. Radar sensors have a big potential to
+improve obstacle avoidance. With reprojection mapping, this thesis
+proposes a novel method to create an obstacle map without having to
+steer the radar beam.
+
+A proof-of-concept implementation of the reprojection mapping produced
+obstacle maps from the radar scans of the experiments for this thesis.
+The maps prove that some previously undetectable obstacles, like glass
+walls and office chair legs, can now be detected and mapped.
+
+The next step on the way to a mobile indoor robot proficiently
+navigating real-world environments should be the implementation of an
+online version of reprojection mapping. This will also show if the
+results need to be further improved with more advanced noise rejection.
+
+\ldots{}

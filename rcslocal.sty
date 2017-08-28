@@ -1,0 +1,302 @@
+%% 
+%% This file is part of the RCS-Corporate Identity
+%% ----------------------------------------------- 
+%% 
+%% This system is distributed in the hope that it will be useful, 
+%% but WITHOUT ANY WARRANTY; without even the implied warranty of 
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+%% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% $Id: rcslocal.sty,v 1.15 2003-10-24 15:36:08+02 glas Exp $
+% $Source: /DIST/share/texmf/tex/latex/rcs/RCS/rcslocal.sty,v $
+%
+% HISTORY
+% $Log: rcslocal.sty,v $
+% Revision 1.15  2003-10-24 15:36:08+02  glas
+% a: Bachelorarbeit
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lokale Einstellungen und Macros
+%       am Lehrstuhl fuer Realzeit-Computersysteme
+% Based on / Geklaut bei
+%       Lehrstuhl für Rechnergestütztes Entwerfen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Inhalt:
+%       \frenchspacing     (fuer deutschen Text)
+%       \patternsnum=1     (fuer deutsche Trennung)
+%
+%   Pagestyles mit Lehrstuhlkopf:
+%       - rcsheadplain      (Header mit Seitennummer unten)
+%       - rcsheadempty      (Header ohne Seitennummer)
+%   
+%       (wenn german.sty gelesen wurde, erscheint der deutsche 
+%        Lehrstuhlkopf, andernfalls der englische Lehrstuhlkopf)
+%
+%        Lehrstuhlkopf nur auf der ersten Seite, z.B.:
+%
+%               \documentclass[12pt]{article}
+%           \usepackage{rcslocal}
+%                   \begin{document}
+%                   \thishead{rcsheadplain}
+%                   \end{document}
+%
+%        Lehrstuhlkopf auf allen Seiten, z.B.:
+%
+%               \documentclass[12pt]{article}
+%           \usepackage{rcslocal}
+%                   \pagestyle{rcsheadplain}
+%                   \begin{document}
+%                   \end{document}
+%
+%-----------------------------------------------------------------------
+\def\RCSdate{$Date: 2003-10-24 15:36:08+02 $}
+\def\RCSrevision{$Revision: 1.15 $}
+{%
+  \def\stripone $#1${\def\partone{#1}}
+  \def\striptwo Date: #1\stop{\gdef\filedate{#1}\gdef\docdate{#1}}
+  \expandafter\stripone\RCSdate
+  \expandafter\striptwo\partone\stop
+}%
+{%
+  \def\stripone $#1${\def\partone{#1}}
+  \def\striptwo Revision: #1\stop{\gdef\fileversion{#1}}
+  \expandafter\stripone\RCSrevision
+  \expandafter\striptwo\partone\stop
+}%
+\newif\ifka@db@ltxtwoe
+\ka@db@ltxtwoefalse
+\newif\ifka@db@nfss
+\ka@db@nfssfalse
+\newif\ifka@db@nfsstwo
+\ka@db@nfsstwofalse
+\expandafter\ifx\csname documentclass\endcsname\relax\else
+    \ka@db@ltxtwoetrue
+  \fi
+\expandafter\ifx\csname size\endcsname\relax\else
+    \ka@db@nfsstrue
+  \fi
+\expandafter\ifx\csname fontsize\endcsname\relax\else
+    \ka@db@nfsstwotrue
+  \fi
+\typeout{}
+\typeout{Document Class/Style 'rcslocal' V\fileversion \filedate}
+\typeout{}
+\ifka@db@ltxtwoe
+  \NeedsTeXFormat{LaTeX2e}[1994/12/01]
+  \ProvidesPackage{rcslocal}[2011/12/01 LaTeX2e package]
+% ----------------------------------------------------------------------
+% verwendete packages
+% ----------------------------------------------------------------------
+  \RequirePackage{color}
+  \RequirePackage{ifthen}
+  \RequirePackage[scaled]{helvet}
+  \renewcommand{\rmdefault}{phv}
+  \renewcommand{\sfdefault}{phv}
+  \renewcommand{\bfdefault}{b}
+
+  % Verwende das korrekte Paket für das Einbinden von Grafiken und setze
+  % die Endungen für die Typen richtig.
+    \RequirePackage[pdftex]{graphicx}
+    \DeclareGraphicsExtensions{.pdf,.jpg,.png,.tif}
+\else
+  \typeout{}
+  \typeout{WARNING: This style is intended for LaTex2e and may not work with
+  previous versions!}
+  \typeout{}
+\fi
+%\definecolor{dgreen}{rgb}{0,1,0.4}   % a blue-er green ?
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RCS specials
+%\def\rcsheader#1{\gdef\@rcsheader{#1}} \def\@rcsheader{}
+\def\rcslogodir{logos/} % This could be set if you need special logos
+%
+%
+% language dependend settings. these have to be delayed,
+% because at the moment there's no language definition active.
+%
+\AtBeginDocument{%
+  % International or german version?
+  \ifx\l@german\undefined\else\ifnum\language=\l@german
+    % German
+    \def\FIRMnamei{%
+     \makebox[80truemm][s]{\sffamily\textbf{%
+       L\hfil E\hfil H\hfil R\hfil S\hfil T\hfil U\hfil H\hfil L\hfil \space \hfil F\hfil \"U\hfil R\hfil \space \hfil R\hfil E\hfil A\hfil L\hfil Z\hfil E\hfil I\hfil T\hfil -\hfil C\hfil O\hfil M\hfil P\hfil U\hfil T\hfil E\hfil R\hfil S\hfil Y\hfil S\hfil T\hfil E\hfil M\hfil E}%
+     }%
+    }
+    \def\FIRMnameiii{%
+     \makebox[48truemm][s]{\sffamily %
+     U\hfil N\hfil I\hfil V.\hfil -\hfil P\hfil R\hfil O\hfil F.\hfil \space \hfil D\hfil R.\hfil \space \hfil S\hfil C.\hfil \space \hfil S.\hfil \space \hfil C\hfil H\hfil A\hfil K\hfil R\hfil A\hfil B\hfil O\hfil R\hfil T\hfil Y%
+      }%
+    }
+    %}{
+    \else
+    \def\FIRMnamei{%
+     \makebox[80truemm][s]{\sffamily\textbf{%
+        I\hfil N\hfil S\hfil T\hfil I\hfil T\hfil U\hfil T\hfil E\hfil \space \hfil F\hfil O\hfil R\hfil \space \hfil R\hfil E\hfil A\hfil L\hfil -\hfil T\hfil I\hfil M\hfil E\hfil \space \hfil C\hfil O\hfil M\hfil P\hfil U\hfil T\hfil E\hfil R\hfil \space \hfil S\hfil Y\hfil S\hfil T\hfil E\hfil M\hfil S}%
+     }%
+    }
+    \def\FIRMnameiii{%
+     \makebox[50truemm][s]{\sffamily%
+     P\hfil R\hfil O\hfil F\hfil E\hfil S\hfil S\hfil O\hfil R\hfil \space \hfil S\hfil A\hfil M\hfil A\hfil R\hfil J\hfil I\hfil T\hfil \space \hfil C\hfil H\hfil A\hfil K\hfil R\hfil A\hfil B\hfil O\hfil R\hfil T\hfil Y%
+     }%
+    }
+  \fi\fi%
+  %}
+  \def\FIRMnameii{%
+    \makebox[57truemm][s]{\sffamily%
+      T\hfil E\hfil C\hfil H\hfil N\hfil I\hfil S\hfil C\hfil H\hfil E\hfil \space \hfil U\hfil N\hfil I\hfil V\hfil E\hfil R\hfil S\hfil I\hfil T\hfil \"A\hfil T\hfil \space \hfil M\hfil \"U\hfil N\hfil C\hfil H\hfil E\hfil N%
+    }%
+  }
+  % " (just for vim syntax highlighting \aargh!)
+  % Generate boxes for the header
+  \newsavebox{\LOGOHEADER}
+  \newsavebox{\LOGOHEADERwoBG}
+  \newsavebox{\FIRM}
+  \newsavebox{\RCSLOGO}
+  \newsavebox{\TUMLOGO}
+  \def\empty{}
+  % Set empty defaults
+  \def\tumlogofile{}
+  \def\rcslogofile{}
+  \def\bglogo{\mbox{}}
+    \def\tumlogofile{\rcslogodir tumlogo_pantone}%
+    \def\rcslogofile{\rcslogodir rcslogo_c_hell}%
+    \sbox{\TUMLOGO}{\includegraphics[width=25.9mm]{\tumlogofile}}
+    \sbox{\RCSLOGO}{\includegraphics[width=26.1mm]{\rcslogofile}}
+    \def\bglogo{%
+	\vspace*{0.25\textheight}%
+        \includegraphics*[width=\textwidth]{\rcslogodir rcslogo_r_bw}%
+        \vspace*{-\textwidth}} % logo width = heigth
+
+  % Textbox
+  \newlength{\FIRMwd}
+  \setlength{\FIRMwd}{\textwidth}
+  \addtolength{\FIRMwd}{-25.9mm}
+  \addtolength{\FIRMwd}{-26.1mm}
+  %\addtolength{\FIRMwd}{-2mm}
+  \sbox{\FIRM}{\parbox[s][13.9mm][s]{\FIRMwd}{%
+        \fontsize{8}{0pt}\selectfont
+        \vspace*{3pt}
+        \hspace*{\fill}\FIRMnamei\hspace*{\fill}
+        \vfill
+        \hspace*{\fill}\FIRMnameii\hspace*{\fill}
+        \vfill
+        \hspace*{\fill}\FIRMnameiii\hspace*{\fill}
+        \vspace*{-2pt}
+  }}
+  
+  % Logo Header
+  % Use with: \usebox{\LOGOHEADER}
+        \sbox{\LOGOHEADER}{\parbox[t]{\textwidth}{
+        \raggedright\raisebox{-.5\LOGOheight}{\usebox{\TUMLOGO}}%
+                \usebox{\FIRM}%
+        \raggedleft \raisebox{-.5\LOGOheight}{\usebox{\RCSLOGO}}%
+        \vspace*{3mm}
+
+        \bglogo
+        \vspace*{-3mm}
+        }}
+  % Logo Header wo Background
+  % Use with: \usebox{\LOGOHEADERwoBG}
+        \sbox{\LOGOHEADERwoBG}{\parbox[t]{\textwidth}{
+        \raggedright\raisebox{-.5\LOGOheight}{\usebox{\TUMLOGO}}%
+                \usebox{\FIRM}%
+        \raggedleft \raisebox{-.5\LOGOheight}{\usebox{\RCSLOGO}}%
+        }}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\@ifundefined{ngermanTeX}{}{
+
+\@ifundefined{selectlanguage}{
+% Abfrage auf alten latex, dort muss deutsche Trennung explizit
+% eingeschalten werden
+
+% \frenchspacing fuer deutschen Text
+\frenchspacing
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \patternsnum=1 fuer deutsche Trennung
+
+\patternsnum=1
+}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Pagestyles fuer Lehrstuhlkopf
+%
+\newlength{\LOGOheight}
+\setlength{\LOGOheight}{14.1mm}
+\newlength{\headoffset}
+\setlength{\headoffset}{\LOGOheight}
+  \addtolength{\headoffset}{-\headheight}
+  \addtolength{\headoffset}{-2.5mm}
+
+\def\ps@rcsheadplain{\let\@mkboth\@gobbletwo
+        \headheight=\LOGOheight
+        \addtolength{\topmargin}{-\headoffset}
+        \headsep=20mm
+	\footskip=10mm
+        \def\@oddhead{\usebox{\LOGOHEADER}}
+        \def\@evenhead{\usebox{\LOGOHEADER}}
+        \def\@oddfoot{\hfill \thepage \hfill}
+        \let\@evenfoot\@oddfoot%
+}
+
+\def\ps@rcsheadempty{\let\@mkboth\@gobbletwo
+        \headheight=\LOGOheight
+        \addtolength{\topmargin}{-\headoffset}
+        \headsep=20mm
+	\footskip=10mm
+        \def\@oddhead{\usebox{\LOGOHEADER}}
+        \def\@evenhead{\usebox{\LOGOHEADER}}
+        \def\@oddfoot{}
+        \let\@evenfoot\@oddfoot%
+}
+\def\ps@rcsheadwobgplain{\let\@mkboth\@gobbletwo
+        \headheight=\LOGOheight
+        \addtolength{\topmargin}{-\headoffset}
+        \headsep=20mm
+	\footskip=10mm
+        \def\@oddhead{\usebox{\LOGOHEADERwoBG}}
+        \def\@evenhead{\usebox{\LOGOHEADERwoBG}}
+        \def\@oddfoot{\hfill \thepage \hfill}
+        \let\@evenfoot\@oddfoot%
+}
+
+\def\ps@rcsheadwobgempty{\let\@mkboth\@gobbletwo
+        \headheight=\LOGOheight
+        \addtolength{\topmargin}{-\headoffset}
+        \headsep=20mm
+	\footskip=10mm
+        \def\@oddhead{\usebox{\LOGOHEADERwoBG}}
+        \def\@evenhead{\usebox{\LOGOHEADERwoBG}}
+        \def\@oddfoot{}
+        \let\@evenfoot\@oddfoot%
+}
+
+\def\ps@rcsheadmyfoot{\let\@mkboth\@gobbletwo
+        \headheight=\LOGOheight
+        \addtolength{\topmargin}{-\headoffset}
+        \headsep=20mm
+	\footskip=10mm
+        \def\@oddhead{\usebox{\LOGOHEADER}}
+        \def\@evenhead{\usebox{\LOGOHEADER}}
+        \def\@oddfoot{\rightmark}\def\@evenfoot{\leftmark}%
+        \def\sectionmark##1{}\def\subsectionmark##1{}}
+
+\newcommand{\thishead}[1]{%
+        \thispagestyle{#1}
+}
+
+
+\endinput
+%% 
+%% End of file `rcslocal.sty'.

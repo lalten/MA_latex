@@ -1,0 +1,37 @@
+\usepackage{bibgerm}		% Für geralpha.bst. MUSS vor babel stehen
+\usepackage[utf8]{inputenc}	% Latin1 input encoding (umlauts)
+\usepackage[german,english]{babel} % Mehrsprachiger Text, Reihenfolge wichtig!
+				   % Die zuletzt genannte Sprache wird verwendet!
+\usepackage{version}		% handle comments and different versions
+				% \begin/end{comment},
+				% \include/excludeversion{foo}
+\usepackage{parskip}		% seperate paragraphs by skip (blank line)
+%\usepackage{amsfonts,amsmath,amssymb,array} % choose if needed
+%\usepackage{ae,aecompl}	% Benutze 'Almost European' Zeichensatz         
+%\usepackage{type1cm}	% Computer Modern type 1 fonts
+\usepackage{lmodern}	% Latin Modern nehmen, da mehr Glyphen vorhanden 
+\usepackage[T1]{fontenc}	% Verwende T1-Kodierung für Zeichensätze        
+
+\usepackage{textcomp} % to make ° work
+
+
+\usepackage{changebar}
+\usepackage{makeidx}\makeindex
+
+\usepackage{graphicx}
+
+
+% https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+\usepackage{longtable}
+\usepackage[table]{xcolor}
+\definecolor{alternatedrowcolor}{rgb}{0.93,0.95,1.0}%{gray}{0.9}
+\usepackage{booktabs}
+\usepackage{tabu}
+
+\usepackage{pdflscape} % for 'landscape' environment
+
+\usepackage{subcaption}

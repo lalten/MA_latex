@@ -1,0 +1,6 @@
+% MakeIndex Stildatei german.ist
+%
+% siehe ``Der LaTeX Begleiter'', S. 374
+actual	'='	% = anstelle des Standardzeichens @
+quote	'\''	% !				  "
+level	'!'	% >				  !

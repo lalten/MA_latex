@@ -1,0 +1,125 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+
+
+\begin{table}
+
+\label{my-label}
+
+\rowcolors{1}{}{alternatedrowcolor}
+
+\begin{tabular} { l @{}c@{} @{}c@{} @{}c@{} @{}c@{} @{}c@{} @{}c@{} }
+
+Name & Sweep & Orient. & Squint & Horn   & Map    & TF     \\
+    \midrule
+
+
+Attic                             & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
+Basement                          & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
+Cafeteria                         & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
+Dungeon                           & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+Entryway                          & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+Fallout shelter                   & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+Garden                            & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+Home cinema                       & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+Indoor swimming pool              & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+Jail cell                         & 5ms        & H           & 20°    & \cmark & \xmark & \xmark \\
+Kitchen                           & 5ms        & H           & 20°    & \xmark & \xmark & \xmark \\
+Lobby                             & 5ms        & H/I         & 0°     & \xmark & \xmark & \xmark \\
+Mancave                           & 5ms        & H/I         & 0°     & \xmark & \xmark & \xmark \\
+Nirvana                           & 5ms        & H/I         & 0°     & \xmark & \cmark & \xmark \\
+Orbit                             & 5ms        & H/I         & 0°     & \xmark & \cmark & \xmark \\
+Public Restroom                   & 5ms        & H/I         & 0°     & \xmark & \cmark & \cmark \\
+Queue                             & 20ms       & H/I         & 0°     & \xmark & \cmark & \cmark \\
+Racetrack                         & 2ms        & H/I         & 0°     & \xmark & \cmark & \cmark \\
+Sauna                             & 2.5ms      & H/I         & 0°     & \xmark & \cmark & \cmark \\
+Torture Chamber                   & 2.5ms      & H/I         & 45°    & \xmark & \cmark & \cmark \\
+Underground                       & 2.5ms      & H/I         & 45°    & \xmark & \cmark & \cmark \\
+Virtual Reality                   & 2.5ms      & H/I         & 45°    & \xmark & \cmark & \cmark \\
+Washroom                          & 2.5ms      & V           & 45°    & \xmark & \cmark & \cmark \\
+Xray-Room                         & 2.5ms      & V           & 0°     & \xmark & \cmark & \cmark \\
+Y is there a cable on the floor & 5ms        & V           & 0°     & \xmark & \cmark & \cmark \\
+Z                                 &            &             &        &        &        &        \\
+
+\bottomrule
+
+
+
+% Attic & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/attic_input}} & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/attic_doppler}} & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/attic_doa}} & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/attic_reprojection}} & 5ms & H & 90° & \cmark & \xmark & \xmark \\
+% Basement & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/basement_input}} & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/basement_doppler}} & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/basement_doa}} & \raisebox{-.5\height}{\includegraphics[width=4cm]{gfx/results/basement_reprojection}} & 5ms & H & 90° & \cmark & \xmark & \xmark \\
+% Cafeteria                         & \raisebox{-.5\height}{\includegraphics{gfx/results/cafeteria_input}}          & \raisebox{-.5\height}{\includegraphics{gfx/results/cafeteria_doppler}}          & \raisebox{-.5\height}{\includegraphics{gfx/results/cafeteria_doa}}          & \raisebox{-.5\height}{\includegraphics{gfx/results/cafeteria_reprojection}}          & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
+% Dungeon                           & \raisebox{-.5\height}{\includegraphics{gfx/results/dungeon_input}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/dungeon_doppler}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/dungeon_doa}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/dungeon_reprojection}}            & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+% Entryway                          & \raisebox{-.5\height}{\includegraphics{gfx/results/entryway_input}}           & \raisebox{-.5\height}{\includegraphics{gfx/results/entryway_doppler}}           & \raisebox{-.5\height}{\includegraphics{gfx/results/entryway_doa}}           & \raisebox{-.5\height}{\includegraphics{gfx/results/entryway_reprojection}}           & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+% Fallout shelter                   & \raisebox{-.5\height}{\includegraphics{gfx/results/falloutshelter_input}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/falloutshelter_doppler}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/falloutshelter_doa}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/falloutshelter_reprojection}}     & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+% Garden                            & \raisebox{-.5\height}{\includegraphics{gfx/results/garden_input}}             & \raisebox{-.5\height}{\includegraphics{gfx/results/garden_doppler}}             & \raisebox{-.5\height}{\includegraphics{gfx/results/garden_doa}}             & \raisebox{-.5\height}{\includegraphics{gfx/results/garden_reprojection}}             & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+% Home cinema                       & \raisebox{-.5\height}{\includegraphics{gfx/results/homecinema_input}}         & \raisebox{-.5\height}{\includegraphics{gfx/results/homecinema_doppler}}         & \raisebox{-.5\height}{\includegraphics{gfx/results/homecinema_doa}}         & \raisebox{-.5\height}{\includegraphics{gfx/results/homecinema_reprojection}}         & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+% Indoor swimming pool              & \raisebox{-.5\height}{\includegraphics{gfx/results/indoorswimmingpool_input}} & \raisebox{-.5\height}{\includegraphics{gfx/results/indoorswimmingpool_doppler}} & \raisebox{-.5\height}{\includegraphics{gfx/results/indoorswimmingpool_doa}} & \raisebox{-.5\height}{\includegraphics{gfx/results/indoorswimmingpool_reprojection}} & 5ms        & V           & 20°    & \cmark & \xmark & \xmark \\
+% Jail cell                         & \raisebox{-.5\height}{\includegraphics{gfx/results/jailcell_input}}           & \raisebox{-.5\height}{\includegraphics{gfx/results/jailcell_doppler}}           & \raisebox{-.5\height}{\includegraphics{gfx/results/jailcell_doa}}           & \raisebox{-.5\height}{\includegraphics{gfx/results/jailcell_reprojection}}           & 5ms        & H           & 20°    & \cmark & \xmark & \xmark \\
+% Kitchen                           & \raisebox{-.5\height}{\includegraphics{gfx/results/kitchen_input}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/kitchen_doppler}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/kitchen_doa}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/kitchen_reprojection}}            & 5ms        & H           & 20°    & \xmark & \xmark & \xmark \\
+% Lobby                             & \raisebox{-.5\height}{\includegraphics{gfx/results/lobby_input}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/lobby_doppler}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/lobby_doa}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/lobby_reprojection}}              & 5ms        & H/I         & 0°     & \xmark & \xmark & \xmark \\
+% Mancave                           & \raisebox{-.5\height}{\includegraphics{gfx/results/mancave_input}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/mancave_doppler}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/mancave_doa}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/mancave_reprojection}}            & 5ms        & H/I         & 0°     & \xmark & \xmark & \xmark \\
+% Nirvana                           & \raisebox{-.5\height}{\includegraphics{gfx/results/nirvana_input}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/nirvana_doppler}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/nirvana_doa}}            & \raisebox{-.5\height}{\includegraphics{gfx/results/nirvana_reprojection}}            & 5ms        & H/I         & 0°     & \xmark & \cmark & \xmark \\
+% Orbit                             & \raisebox{-.5\height}{\includegraphics{gfx/results/orbit_input}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/orbit_doppler}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/orbit_doa}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/orbit_reprojection}}              & 5ms        & H/I         & 0°     & \xmark & \cmark & \xmark \\
+% Public Restroom                   & \raisebox{-.5\height}{\includegraphics{gfx/results/publicrestroom_input}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/publicrestroom_doppler}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/publicrestroom_doa}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/publicrestroom_reprojection}}     & 5ms        & H/I         & 0°     & \xmark & \cmark & \cmark \\
+% Queue                             & \raisebox{-.5\height}{\includegraphics{gfx/results/queue_input}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/queue_doppler}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/queue_doa}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/queue_reprojection}}              & 20ms       & H/I         & 0°     & \xmark & \cmark & \cmark \\
+% Racetrack                         & \raisebox{-.5\height}{\includegraphics{gfx/results/racetrack_input}}          & \raisebox{-.5\height}{\includegraphics{gfx/results/racetrack_doppler}}          & \raisebox{-.5\height}{\includegraphics{gfx/results/racetrack_doa}}          & \raisebox{-.5\height}{\includegraphics{gfx/results/racetrack_reprojection}}          & 2ms        & H/I         & 0°     & \xmark & \cmark & \cmark \\
+% Sauna                             & \raisebox{-.5\height}{\includegraphics{gfx/results/sauna_input}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/sauna_doppler}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/sauna_doa}}              & \raisebox{-.5\height}{\includegraphics{gfx/results/sauna_reprojection}}              & 2.5ms      & H/I         & 0°     & \xmark & \cmark & \cmark \\
+% Torture Chamber                   & \raisebox{-.5\height}{\includegraphics{gfx/results/torturechamber_input}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/torturechamber_doppler}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/torturechamber_doa}}     & \raisebox{-.5\height}{\includegraphics{gfx/results/torturechamber_reprojection}}     & 2.5ms      & H/I         & 45°    & \xmark & \cmark & \cmark \\
+% Underground                       & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_input}}        & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_doppler}}        & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_doa}}        & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_reprojection}}        & 2.5ms      & H/I         & 45°    & \xmark & \cmark & \cmark \\
+
+
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+    % \centering
+    \begin{subfigure}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{gfx/results/attic_input.png}
+        \caption{\small Input energy}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.25\textwidth}  
+        \centering 
+        \includegraphics[width=.9\textwidth]{gfx/results/attic_doppler.png}
+        \caption{\small Doppler estimation}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.25\textwidth}   
+        \centering 
+        \includegraphics[width=.9\textwidth]{gfx/results/attic_doa.png}
+        \caption{\small Direction of Arrival}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.25\textwidth}   
+        \centering 
+        \includegraphics[width=.9\textwidth]{gfx/results/attic_reprojection.png}
+        \caption{\small Reprojection Map}
+    \end{subfigure}%
+    \caption{Attic scan}
+\end{figure}
+
+\begin{figure}
+    % \centering
+    \begin{subfigure}[b]{0.25\textwidth}
+        \centering
+        \includegraphics[width=.9\textwidth]{gfx/results/basement_input.png}
+        \caption{\small Input energy}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.25\textwidth}  
+        \centering 
+        \includegraphics[width=.9\textwidth]{gfx/results/basement_doppler.png}
+        \caption{\small Doppler estimation}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.25\textwidth}   
+        \centering 
+        \includegraphics[width=.9\textwidth]{gfx/results/basement_doa.png}
+        \caption{\small Direction of Arrival}
+    \end{subfigure}%
+    \begin{subfigure}[b]{0.25\textwidth}   
+        \centering 
+        \includegraphics[width=.9\textwidth]{gfx/results/basement_reprojection.png}
+        \caption{\small Reprojection Map}
+    \end{subfigure}%
+    \caption{Basement scan}
+\end{figure}
+
