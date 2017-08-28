@@ -1,0 +1,183 @@
+#!/bin/bash
+# vim: ts=8 sw=4 wm=0 tw=0
+#
+# File:		texaux
+# Description:	script to save LaTeX auxiliary files before LaTeX call and
+#		to check changes against the saved files after running LaTeX
+# Revision:	$Revision: 1.7 $
+# Created:	Wed Jan	 3 21:26:46 MET 1996
+# Author:	Herbert Thielen
+# email:	thielen@lpr.e-technik.tu-muenchen.de
+#
+# --------- Revision Control: ---------
+# $Id: texaux,v 1.7 1999-11-05 11:53:14+01 thielen Exp $
+# $Source: /DIST/share/bin/RCS/texaux,v $
+#
+# HISTORY:
+# $Log: texaux,v $
+# Revision 1.7  1999-11-05 11:53:14+01  thielen
+# made it wildcard save (also other strange filenames with blanks etc.);
+#
+# Revision 1.6  1996/07/24 17:15:40  thielen
+# allow setting of wildcards with TEXSUFFIX;
+# *.cb removed from default wildcard set;
+# -h and -? now known help options;
+#
+# Revision 1.5  1996/07/24 17:03:48  thielen
+# tabstop 4 -> 8;
+#
+# Revision 1.4	1996/04/17 09:38:53  thielen
+# cosmetic changes
+#
+# Revision 1.3	1996/04/15  12:18:23  thielen
+# AUX += cb (changebar);
+#
+# Revision 1.2	1996/01/16  15:11:52  thielen
+# bbl instead of bst!
+#
+# Revision 1.1	1996/01/03  22:39:35  thielen
+# Initial revision
+#
+# -------------------------------------
+
+PRG=${0##*/}	    # instead of PRG=`basename $0`
+DEFAULTSUFFIX="*.aux *.idx *.toc *.lof *.lot *.bbl"
+AUX=${TEXSUFFIX:-$DEFAULTSUFFIX}
+OPT=""		    # the option called
+
+CP=cp		    # need -p
+if [ -x /bsd43/bin/cp ] ; then
+    CP=/bsd43/bin/cp
+fi
+
+#
+# usage
+#
+# print usage to stderr and die
+#
+usage()
+{
+    exec >&2
+    echo "Usage: $PRG {-s|-c|-h|-?}"
+    echo "$PRG s)aves or c)hecks LaTeX auxiliary files:"
+    echo "$AUX"
+    echo "You can alter the wildcards by exporting \$TEXSUFFIX."
+    echo "If no \$TEXSUFFIX is set, \"$DEFAULTSUFFIX\" is used".
+    exit 1
+}
+
+#
+# getoptions option
+#
+# set $OPT with option if $OPT was empty, otherwise print usage
+#
+getoptions()
+{
+    while getopts :sch? opt
+    do
+	case $opt in
+	    s|c)
+		if [ -n "$OPT" ] ; then
+		    echo "$PRG: multiple options not allowed" >&2
+		    usage
+		fi
+		OPT=$opt
+		;;
+	    h|\?)	    
+		usage
+		;;
+	    *)
+		echo "$PRG: illegal option $OPTARG" >&2
+		;;
+	esac
+    done
+    if [ -z "$OPT" ] ; then
+	echo "$PRG: need an option" >&2
+	usage
+    fi
+}
+
+#
+# save_aux
+#
+# save auxiliary files defined in $AUX to filename.tmp
+#
+save_aux()
+{
+    for i in ${AUX}
+    do
+	# $i might be the wildcard if no file exists!
+	if [ -f "$i" ] ; then
+	    $CP -p "$i" "$i.tmp"	    # save the file
+	fi
+    done
+    return 0
+}
+
+#
+# check_aux
+#
+# check for $AUX whether file and file.tmp are different
+# if differnt, remove file.tmp
+# if unchanged, mv file file.tmp to let the modification time unchanged
+# return 1 if sth changed
+# return 0 if nothing changed
+#
+check_aux()
+{
+    local CHG
+    CHG=0
+
+    for i in $AUX
+    do
+	if [ -f "$i" ] ; then
+	    if [ -f "$i.tmp" ] ; then
+		# check if sth changed
+		if cmp -s "$i" "$i.tmp" ; then
+		    # unchanged
+		    mv "$i.tmp" "$i"
+		else
+		    # changed
+		    echo "$i changed."
+		    rm "$i.tmp"
+		    CHG=1
+		fi
+	    else
+		# $i.tmp didn't exist, so $i might be new!
+		CHG=1
+	    fi
+	fi
+    done
+
+    if [ $CHG -eq 0 ] ; then
+	# no changes
+	echo "Nothing changed."
+    else
+	# changes
+	: # echo "Something changed."
+    fi
+
+    return $CHG
+}
+
+#
+# main
+#
+main()
+{
+    getoptions ${1+"$@"}
+
+    case $OPT in
+	s)
+	    echo "Saving $AUX"
+	    save_aux
+	    ;;
+	c)
+	    echo "Checking $AUX:"
+	    check_aux
+	    ;;
+    esac
+    exit $?
+}
+
+main ${1+"$@"}
