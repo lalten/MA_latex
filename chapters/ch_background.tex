@@ -138,7 +138,7 @@ modulation, which combines the higher transmission energy of longer
 pulses with the resolution of short pulses. Velocity is again known from
 frequency shift.
 
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_pulsed"}
+%\includesvg[width=0.5\textwidth]{"diagrams/radar_pulsed"}
 Adapted from \cite{Adams2012} p.~52
 
 \subsection{Frequency-modulated continuous wave (FMCW)
@@ -160,13 +160,13 @@ Instead of a VCO, direct digital synthesizers together with phase-locked
 loops (PLL) can be used. They generate better (more linear) sweeps at
 the price of increased design complexity and cost \cite{Ernst2016}.
 
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/fmcw_blocks"}
+%\includesvg[width=0.5\textwidth]{"diagrams/fmcw_blocks"}
 Adapted from \cite{VanZeijl2014}
 
 After the VCO's signal is amplified and transmitted, it reflects at
 visible targets and is received as echo in the same frequency band.
 
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2_stationary"}
+%\includesvg[width=0.5\textwidth]{"diagrams/radar_fmcw_2_stationary"}
 Adapted from \cite{Adams2012} p.~57
 
 In the top subplot, figure \#REF shows the transmitted frequency sweep
@@ -228,7 +228,7 @@ f_R = \frac{2R}{c} \frac{\Delta f}{T_d} \iff R=\frac{c T_d}{2\Delta f}f_R
 dR = \frac{c}{2 \Delta f}
 \]
 
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_2"}
+%\includesvg[width=0.5\textwidth]{"diagrams/radar_fmcw_2"}
 Adapted from \cite{Adams2012} p.~57
 
 A moving target however will introduce a Doppler shift \(f_D\) in the
@@ -258,7 +258,7 @@ different target.
 
 \begin{figure}
 \centering
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/radar_fmcw_multitarget"}
+%\includesvg[width=0.5\textwidth]{"diagrams/radar_fmcw_multitarget"}
 \caption{restrict-height}
 \end{figure}
 
@@ -277,7 +277,7 @@ signal\footnote{A good explanation is available at [ping.se's I/Q Data for Dummi
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_raw_beat.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_raw_beat.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -301,7 +301,7 @@ difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/Direction of Arrival"}
+\includegraphics[width=0.5\textwidth]{diagrams/Direction_of_Arrival.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -337,12 +337,12 @@ the order of few \(cm\). At these high frequencies, RF energy
 attenuation in material increases noticably \cite{FerrisJr.1998}. The
 effect is that \(60GHz\) waves are limited to short ranges of a few
 \(m\) and don't usually penetrate walls.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/rf_attenuation.png}Source:
+\includegraphics[width=0.5\textwidth]{figures/rf_attenuation.png}Source:
 \cite{FerrisJr.1998}
 
 Atmospheric attenuation also limits long-range applications. In short
 range (a few \(m\)) it should however not present a problem.
-%\includesvg[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/ITU_0676-05}
+%\includesvg[width=0.5\textwidth]{figures/ITU_0676-05}
 Source: \cite{ITU1997}
 
 The downside is that there are some other technologies using the same
@@ -351,7 +351,7 @@ WiGig\cite{AgilentTechnologies2013}. The WiGig frequency allocations in
 figure \#REF show in which regions the \(60GHz\) band is available (also
 for radar).
 
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/spectrum"}
+%\includesvg[width=0.5\textwidth]{"diagrams/spectrum"}
 WiGig Channel Plan and Frequency Allocations by Region. Source:
 \cite{AgilentTechnologies2013}
 
@@ -389,7 +389,7 @@ operate in either mode by dividing their planar antenna into
 sub-apertures, whose phase and amplitude are controlled by the
 individual few hundred transmit/receive modules \cite{Moreira2013}.
 
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/sar"}
+%\includesvg[width=0.5\textwidth]{"diagrams/sar"}
 Illustration of different SAR operation modes which are used to increase
 the swath width (ScanSAR) or improve azimuth resolution (Spotlight)
 compared to Stripmap mode. (a) Stripmap. (b) ScanSAR. (c) Spotlight.
@@ -409,7 +409,7 @@ In a second step, azimuth compression takes place by convolving the
 signal in slow-time with the complex conjugate of the expected
 azimuth-response from a target.
 
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/sar2"}
+%\includesvg[width=0.5\textwidth]{"diagrams/sar2"}
 Summary of SAR processing steps where the range compressed data result
 from a convolution of the raw data with the range reference function. In
 a second step the azimuth compression is performed through a convolution

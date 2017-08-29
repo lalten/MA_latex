@@ -1,25 +1,34 @@
 
+
+\newlength{\colwidthA} \setlength{\colwidthA}{0.1\textwidth}
+\newlength{\colwidthB} \setlength{\colwidthB}{0.1\textwidth}
+\newlength{\colwidthC} \setlength{\colwidthC}{0.1\textwidth}
+\newlength{\colwidthD} \setlength{\colwidthD}{0.1\textwidth}
+\newlength{\colwidthE} \setlength{\colwidthE}{0.1\textwidth}
+\newlength{\colwidthF} \setlength{\colwidthF}{0.1\textwidth}
+\newlength{\colwidthG} \setlength{\colwidthG}{0.1\textwidth}
+
 \begin{longtable}[]{@{}llllllc@{}}
 
-\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[b]{\colwidthA}\raggedright\strut
     Product
 \strut\end{minipage} &
-\begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[b]{\colwidthB}\raggedright\strut
     Note
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[b]{\colwidthC}\raggedright\strut
     Center Freq.
 \strut\end{minipage} &
-\begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[b]{\colwidthD}\raggedright\strut
     BW
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[b]{\colwidthE}\raggedright\strut
     Antennas
 \strut\end{minipage} &
-\begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[b]{\colwidthF}\raggedright\strut
     Devkit price
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{\colwidthG}\centering\strut
     Picture
 \strut\end{minipage}\tabularnewline
 \midrule
@@ -27,402 +36,402 @@
 
 
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{https://www.omniradar.com/products/}{Omniradar RIC60A}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 High bandwidth. Presentation at SoC 2015\cite{Brouwer2015}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 60GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 7GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-chip, 1 Tx, 2 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$4000
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_omniradar.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_omniradar.jpg}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-	\href{https://www.infineon.com/cms/en/product/promopages/soli/}{Google/Infineon Soli}
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
+	\href{https://www.infineon.com/cms/en/product/promopages/soli/}{Google/""Infineon Soli}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Expected 2018. Sub-millimeter accuracy, running at over 10,000 frames per second \cite{Lien2016}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 60GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 7GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 In-package, 2 Tx, 4 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_soli.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_soli.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{https://walabot.com/store/us/products/walabot-developer-pack.html}{Walabot Pro}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 3D configuration. Slow update rate
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 6.8GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 7GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 9 Tx, 9 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$599
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_walabot_1.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_walabot_1.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 Bosch Prototype
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Prototype for In-wall pipe detection
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 5.15GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 6.7GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 External, 2 Tx/Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_bosch.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_bosch.jpg}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{http://www.siliconradar.de/evalkits_e.html}{Silicon Radar SiRad Simple}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Has WiFi
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 122GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 6.4GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-chip, 1 Tx, 1 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_silicon_radar.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_silicon_radar.jpg}
 
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{http://www.anokiwave.com/products/awmf-0117/index.html}{Anokiwave AWMF-0117}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 12.5GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 4.5GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-chip, 1 Tx/Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_anokiwave.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_anokiwave.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{Reuter2016}{NXP Cocoon Radar}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Relatively small board. Presentation at FTF 2016\cite{Reuter2016}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 77GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 4GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 3 Tx, 4 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_cocoon.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_cocoon.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{http://www.timedomain.com/products/pulson-440/}{TimeDomain P440}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Can operate as multistatic radar or UWB communication node
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 4GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 1.7GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 External, 2 Tx/Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$5000
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_p440.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_p440.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{https://www.xethru.com/xethru-development-platform.html}{Novelda Xethru X4M03}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 8GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 1.5GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 1 Tx/Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$399
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_xethru.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_xethru.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{https://www.rfbeam.ch/files/products/26/downloads/ProductBrief_MR2001_RD.pdf}{RFbeam MR2001\_RD}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 77GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 1GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 4 Tx, 6 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_rfbeam.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_rfbeam.jpg}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 \href{http://www.inras.at/en/products/radarbook.html}{Inras Radarbook} (77Ghz)
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Configurable FPGA processing chain
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 77GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 1GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 4 Tx, 8 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$7300
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_radarbook.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_radarbook.jpg}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{ http://www.acconeer.com/}{Acconeer A1}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Sub-mm accuracy
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 60GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-chip, ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_acconeer.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_acconeer.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 \href{dkradarbook}{Inras Radarbook} (24Ghz)
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 24GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 250MHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 4 Tx, 4 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$7300
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_radarbook.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_radarbook.jpg}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{https://www.infineon.com/dgdl/Infineon-AN380_BGT24-RFB2412_user_manual-AN-v01_00-EN.pdf?fileId=5546d46259d9a4bf0159f9f1fa503f1d}{Infineon BGT24-RFB2412-EVAL}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 24GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 250MHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 1 Tx, 2 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$1333
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_bgt24.JPG}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_bgt24.JPG}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{http://webshop.imst.de/dk-sr-1200e-development-platform-for-24-ghz-fmcw-radar-application.html
 }{IMST DK-sR-1200e}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 24GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 250MHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 1 Tx, 2 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$3333
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_IMST.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_IMST.jpg}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{http://www.innosent.de/fileadmin/media/dokumente/DATASHEETS_2016/Datenblatt_IVS-565.pdf}{InnoSenT IVS-565}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 24GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 250MHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 1 Tx, 2 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_innosent.jpg}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_innosent.jpg}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/automotive-ic-eval-boards/evb-strada431.html}{ST EVB-STradA431}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 SMA connectors for internal signals
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 24GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 250MHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 External, 1 Tx, 3 Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 ?
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_ST.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_ST.png}
 \strut\end{minipage}\tabularnewline
 
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthA}\raggedright\strut
 	\href{https://www.omnipresense.com/product/ops241-a/}{OmniPreSense OPS241-A}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthB}\raggedright\strut
 Arduino shield with BGT24LTR11
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthC}\raggedright\strut
 24GHz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthD}\raggedright\strut
 80Mhz
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthE}\raggedright\strut
 On-board, 1 Tx/Rx
 \strut\end{minipage} &
-\begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+\begin{minipage}[t]{\colwidthF}\raggedright\strut
 \$169
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_omnipresense.png}
+\begin{minipage}[t]{\colwidthG}\centering\strut
+\includegraphics[width=0.5\textwidth]{boards/img_omnipresense.png}
 \strut\end{minipage}\tabularnewline
 
 \bottomrule

@@ -17,7 +17,7 @@ TODO
 Good but not perfect odometry Ros Arm Limited performance Enough battery
 capacity Omniradar FMCW Radar development kit
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/models/kobuki.png}
+\includegraphics[width=0.5\textwidth]{models/kobuki.png}
 Image source: \cite{DesignK2013}
 
 \subsubsection{ROS integration}\label{ros-integration}
@@ -63,7 +63,7 @@ In their Python \href{https://api.walabot.com}{API documentation} they
 showcase the modes of operation: 3d imaging, 2d imaging, object
 tracking, pipe detection and raw data.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/walabot_image.png}
+\includegraphics[width=0.5\textwidth]{figures/walabot_image.png}
 Image source: https://api.walabot.com/\_features.html\#\_examples
 
 The catch is however that it is almost impossible to do imaging without
@@ -101,8 +101,8 @@ jitter completely. The reason is that the first peak is caused by
 transmit antenna crosstalk and can thus be used as a timing reference
 point.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/walabot_rangetest.png}
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/experiment_walabot_rangetest.jpg}
+\includegraphics[width=0.5\textwidth]{figures/walabot_rangetest.png}
+\includegraphics[width=0.5\textwidth]{pictures/experiment_walabot_rangetest.jpg}
 
 \subparagraph{Dynamic range test}\label{dynamic-range-test}
 
@@ -112,7 +112,7 @@ the sensor's response, an aluminum plate that gave a strong echo signal
 was taped to the Kobuki robot. The robot was then driven with a constant
 speed away from the sensor and then towards the sensor as pictured in
 \#REF.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/experiment_walabot.jpg}
+\includegraphics[width=0.5\textwidth]{pictures/experiment_walabot.jpg}
 
 The sensor was sampled at a constant frequency in raw data mode. The
 analytic signal of the range scans is stacked at the right end of the
@@ -120,7 +120,7 @@ matrix displayed in figure \#REF.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/walabot_disttest.png}
+\includegraphics[width=0.5\textwidth]{figures/walabot_disttest.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -152,7 +152,7 @@ With the RIC60-A they offer a Radar Development Kit (RDK) that gives
 handles the signal acquisition and communication. Figure \#REF shows the
 radar IC and how the three antennas are integrated in silicon.
 
-%\includesvg[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/slide_RIC60A}
+%\includesvg[width=0.5\textwidth]{pictures/slide_RIC60A}
 Source: \cite{Brouwer2015} p.9
 
 The radar sensor's beam is fan shaped, which means it is fairly
@@ -166,7 +166,7 @@ pencil-shaped beam that is very focused at a narrow field of view.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/omniradar.jpg}
+\includegraphics[width=0.5\textwidth]{pictures/omniradar.jpg}
 \caption{restrict-height}
 \end{figure}
 
@@ -180,7 +180,7 @@ mount hole positions were extracted from the mechanical drawings of the
 Kobuki Base \cite{YujinRobot2012}; the side holes from the Altium layer
 document of the version 3.2 Omniradar interface board
 \cite{Omniradar2014}.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/models/mount.png}
+\includegraphics[width=0.5\textwidth]{models/mount.png}
 When rotated to face to the left side of the robot, the RPLidar mount
 was in the way, so parts of the print had to be clipped off.
 
@@ -249,7 +249,7 @@ length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_chirp_eff.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_chirp_eff.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -258,7 +258,7 @@ shows how short chirp times
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_compare_chirp_times.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_compare_chirp_times.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -437,13 +437,13 @@ configuration (RIC configuration string, number and length of FMCW
 sweeps) that was used to attain the message's echo. The message's
 timestamp and sequential ID is contained in the regular
 \texttt{std\_msgs/Header}.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/screenshots/nodegraph.png}
+\includegraphics[width=0.5\textwidth]{screenshots/nodegraph.png}
 
 While parameters from the ROS parameter server (as configured in the
 launch) are respected, the node also offers a dynamic reconfigure server
 to change RIC configuration string, number of sweeps and length of sweep
 on the fly without the need to restart the node.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/screenshots/dynreconf.png}
+\includegraphics[width=0.5\textwidth]{screenshots/dynreconf.png}
 
 The core of the node is a while loop that continuously triggers radar
 echo acquisition and copies the result into a new
@@ -628,7 +628,7 @@ between the lower and the upper half of sample values.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_compare_means.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_compare_means.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -651,7 +651,7 @@ consecutive range profiles.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_explain_peak_gradient.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_explain_peak_gradient.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -811,7 +811,7 @@ has an optional parameter \texttt{SkipFirstPeak} which, when set to
 \(true\), ignores the first peak in each range scan line. This can help
 to ignore these echoes.
 
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_range_compensation_transmit_spike.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_range_compensation_transmit_spike.png}
 Note that the \(0\) value at \(d_{down}=0\) won't be displayed in log
 scale.
 
@@ -848,7 +848,7 @@ move together so closely that they actually form a single target.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_squiggly_doppler_at_wall.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_squiggly_doppler_at_wall.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -869,13 +869,13 @@ a gradient over targets.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_range.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_range.png}
 \caption{restrict-height}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_phase_shift.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_phase_shift.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -910,7 +910,7 @@ to 10 degrees.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_doa.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_doa.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -1024,7 +1024,7 @@ then \(p_{x_t, y_t} = 1\)
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/Sample splitting"}
+\includegraphics[width=0.5\textwidth]{diagrams/Sample_splitting.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -1058,7 +1058,7 @@ ranges in the map.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_range_compensation.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_range_compensation.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -1118,7 +1118,7 @@ that is independent of observation angle.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_angle_compensation.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_angle_compensation.png}
 \caption{restrict-height}
 \end{figure}
 
@@ -1156,7 +1156,7 @@ is seen by the radar.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_angle_compensation_comparison.png}
+\includegraphics[width=0.5\textwidth]{figures/fig_angle_compensation_comparison.png}
 \caption{restrict-height}
 \end{figure}
 

@@ -1,10 +1,12 @@
 \usepackage{subcaption}
-
+\expandafter\def\csname ver@subfig.sty\endcsname{}
 
 \usepackage{bibgerm}		% Für geralpha.bst. MUSS vor babel stehen
 \usepackage[utf8]{inputenc}	% Latin1 input encoding (umlauts)
-\usepackage[german,english]{babel} % Mehrsprachiger Text, Reihenfolge wichtig!
-				   % Die zuletzt genannte Sprache wird verwendet!
+\usepackage[ngerman,english]{babel}
+\useshorthands{"}
+\addto\extrasenglish{\languageshorthands{ngerman}}
+
 \usepackage{version}		% handle comments and different versions
 				% \begin/end{comment},
 				% \include/excludeversion{foo}

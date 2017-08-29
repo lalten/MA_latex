@@ -82,7 +82,7 @@ impaired'' project \cite{Lee2015} shows how cheap sensors can be hacked
 to read a range profile that looks very similar (see figure \#REF) to
 what is used for the radar reprojection method. It might be possible to
 adapt the algorithms in this thesis to use ultrasound sensors.
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/pictures/had_us}
+\includegraphics[width=0.5\textwidth]{pictures/had_us}
 
 Most ultrasound range sensors use the time of flight of a pulsed echo,
 but FMCW-based ultrasound modules have been proposed
@@ -112,13 +112,13 @@ radar has more than two non-collinear receiving antennas, like
 visualized in figure \#REF. Horizontal DOA would be measured between
 antennas at positions \(Rx1\) and \(Rx2\) while vertical DOA would be
 measured between \(Rx1\) and \(Rx3\).
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/2D-DOA"}
+%\includesvg[width=0.5\textwidth]{"diagrams/2D-DOA"}
 Reprojection mapping could then be used to build 3D occupancy maps. The
 reprojection angle \(\alpha\) would then describe a circle at distance
 \(R~cos(\alpha)\) around the radar path, on which the detected target
 lies. Direction of arrival in horizontal and vertical planes would then
 have to be used to pinpoint the target location on the circle.
-%\includesvg[width=0.5\textwidth]{"https://rawgit.com/lalten/ma/master/diagrams/3Dcase"}
+%\includesvg[width=0.5\textwidth]{"diagrams/3Dcase"}
 This holds also for the 2D-case: The possible locations for targets are
 then at the intersection of reprojection cone circle and floor plane.
 
