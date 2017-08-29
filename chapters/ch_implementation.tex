@@ -31,301 +31,7 @@ Image source: \cite{DesignK2013}
 There are quite a few short-range UWB FMCW radar modules. The following
 table compares some promising solutions.
 
-\begin{longtable}[]{@{}llllllc@{}}
-\toprule
-\begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
-Product\strut
-\end{minipage} & \begin{minipage}[b]{0.13\columnwidth}\raggedright\strut
-Note\strut
-\end{minipage} & \begin{minipage}[b]{0.09\columnwidth}\raggedright\strut
-Center Freq.\strut
-\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
-Bandwidth\strut
-\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
-Antennas\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
-Devkit price\strut
-\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\centering\strut
-Picture\strut
-\end{minipage}\tabularnewline
-\midrule
-\endhead
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Omniradar RIC60A{]}{[}dkomniradar{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-High bandwidth. Presentation at SoC 2015
-{[}ref{]}{[}Brouwer2015{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-60GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-7GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-chip, 1 Tx, 2 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$4000\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_omniradar.jpg}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Google/Infineon Soli{]}{[}dksoli{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Expected 2018. Sub-millimeter accuracy, running at over 10,000 frames
-per second \cite{Lien2016}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-60GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-7GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-In-package, 2 Tx, 4 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_soli.png}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Walabot Pro{]}{[}dkwalabot{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-3D configuration. Slow update rate\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-6.8GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-7GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 9 Tx, 9 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$599\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_walabot_1.png}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-Bosch Prototype\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Prototype for In-wall pipe detection\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-5.15GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-6.7GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-External, 2 Tx/Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$0\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_bosch.jpg}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Silicon Radar SiRad Simple{]}{[}dksirad{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Has WiFi\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-122GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-6.4GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-chip, 1 Tx, 1 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_silicon_radar.jpg}
-\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Anokiwave AWMF-0117{]}{[}dkanokiwave{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-12.5GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-4.5GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-chip, 1 Tx/Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_anokiwave.png}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}NXP Cocoon Radar{]}{[}Reuter2016{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Relatively small board. Presentation at FTF 2016
-{[}ref{]}{[}Reuter2016{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-77GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-4GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 3 Tx, 4 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_cocoon.png}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}TimeDomain P440{]}{[}dkpulson{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Can operate as multistatic radar or UWB communication node\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-4GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1.7GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-External, 2 Tx/Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$5000\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_p440.png}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Novelda Xethru X4M03{]}{[}dknovelda{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-8GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1.5GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 1 Tx/Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$399\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_xethru.png}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}RFbeam MR2001\_RD{]}{[}dkrfbeam{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-77GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 4 Tx, 6 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_rfbeam.jpg}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Inras Radarbook{]}{[}dkradarbook{]} (77Ghz)\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Configurable FPGA processing chain\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-77GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-1GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 4 Tx, 8 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$7300\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_radarbook.jpg}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Acconeer A1{]}{[}dkacconeer{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Sub-mm accuracy\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-60GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-chip, ?\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_acconeer.webp}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Inras Radarbook{]}{[}dkradarbook{]} (24Ghz)\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-24GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-250MHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 4 Tx, 4 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$7300\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_radarbook.jpg}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}Infineon BGT24-RFB2412-EVAL{]}{[}dkinfineon{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-24GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-250MHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 1 Tx, 2 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$1333\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_bgt24.JPG}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}IMST DK-sR-1200e{]}{[}dkimst{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-24GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-250MHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 1 Tx, 2 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$3333\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_IMST.jpg}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}InnoSenT IVS-565{]}{[}dkinnosent{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-24GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-250MHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 1 Tx, 2 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_innosent.jpg}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}ST EVB-STradA431{]}{[}dkst{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-SMA connectors for internal signals\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-24GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-250MHz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-External, 1 Tx, 3 Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-?\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_ST.png}\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-{[}OmniPreSense OPS241-A{]}{[}dkomnipresense{]}\strut
-\end{minipage} & \begin{minipage}[t]{0.13\columnwidth}\raggedright\strut
-Arduino shield with BGT24LTR11\strut
-\end{minipage} & \begin{minipage}[t]{0.09\columnwidth}\raggedright\strut
-24GHz\strut
-\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
-80Mhz\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-On-board, 1 Tx/Rx\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-\$169\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/boards/img_omnipresense.png}\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\input{chapters/ch_impl_devkitlist}
 
 The most suitable modules are the ones with the highest bandwidth as
 they give the highest resolution. Other beneficial properties are high
@@ -489,7 +195,7 @@ rotated by 90 degrees, thanks to the symmetric layout.
 The Omniradar FMCW radar is not sensitive enough to use the Doppler
 speed directly. The following example illustrates this.
 
-The RIC60A has a sensitivity of \(400 {Hz\over{m/s}}\). A target with a
+The RIC60A has a sensitivity of \(400 \frac{Hz}{m/s}\). A target with a
 doppler speed of \(0.02 m/s\) (A low speed at which the Kobuki robot
 still moves continuously and without jerking) will cause a frequency
 spike with a shift of \(8Hz\) in the FMCW beat frequency.
@@ -499,13 +205,13 @@ measurement or acquisition time. A 10 ms long acquisition gives a 100 Hz
 frequency resolution, or a speed resolution of 0.9 km/h (or 0.25 m/s).
 
 Sampling frequency \(F_s=25MHz\) and RIC60A Doppler sensitivity,
-\(S_D = 400 {Hz\over{m/s}}\) are constant values of the Omniradar RDK.
+\(S_D = 400 \frac{Hz}{m/s}\) are constant values of the Omniradar RDK.
 
 Given a chirp duration of \(T_{chirp} = 2.5ms\), we get
 \(N_s = t_{chirp} F_s = 62500\) Samples,
-\(N_r = \lfloor {N_s \over{2} }\rfloor = 31250\) Samples per
-up/downsweep, \(dF = {F_s \over{N_r - 1}} = 800 Hz\) FFT frequency bin
-width and hence a Doppler resolution of \({dF \over{S_D}} = 2 m/s\).
+\(N_r = \lfloor \frac{N_s}{2} \rfloor = 31250\) Samples per
+up/downsweep, \(dF = \frac{F_s}{N_r - 1} = 800 Hz\) FFT frequency bin
+width and hence a Doppler resolution of \(\frac{dF}{S_D} = 2 m/s\).
 
 Even with subsample peak interpolation the accuracy will not be very
 good and targets will be reprojected at imprecise angles.
@@ -971,9 +677,9 @@ distance changes the peak will shift, too. This is visible in figure
 around \(0.95m\) moves \(d_{down,2} = -0.0216m\) closer (i.e., away).
 Combined with the change in cross range,
 \(d_{cross} = 0.3752m - 0.3555m = 0.0197m\), we can calculate Doppler
-speeds of \(v_{D,1} = {d_{down,1} \over{d_{cross}}} = 109.55 \%\) (of
+speeds of \(v_{D,1} = \frac{d_{down,1}}{d_{cross}} = 109.55 \%\) (of
 radar movement speed) and
-\(v_{D,2} = {d_{down,2} \over{d_{cross}}} = -109.55 \%\). If the speeds
+\(v_{D,2} = \frac{d_{down,2}}{d_{cross}} = -109.55 \%\). If the speeds
 were \(100\%\) and \(-100\%\) it would mean that the targets are directly
 ahead and directly behind the moving radar. Speeds over 100\% are
 however impossible in a static environment where all relative target
@@ -994,13 +700,13 @@ With higher downrange resolution, peaks could be localized more
 precisely. However, the down range resolution is limited by the
 available bandwidth of the radar sensor. In the Omniradar RIC60A, up to
 7GHz are available, which is already extremely high. Its range
-resolution \(dR\) is \(c \over{2 BW}\), which is roughly \(2.1cm\). With
+resolution \(dR\) is \(\frac{c}{2 BW}\), which is roughly \(2.1cm\). With
 this method, \(dR\) is of course the smallest measurable change of
 target range.
 
 The localization of peaks is however not limited by range resolution,
 but by range accuracy, which mainly depends on SNR. It is much better
-than range resolution with \(\sigma_R = {dR \over{\sqrt{SNR}}}\). This
+than range resolution with \(\sigma_R = \frac{dR}{\sqrt{SNR}}\). This
 can be utilized with subsample peak interpolation.
 
 \subsection{Inter-scan vs Intra-scan Doppler
@@ -1063,10 +769,10 @@ too high, a single target will not change very much in both range and
 echo intensity. This allows the detection of peak matches, between which
 the Doppler speed will be calculated. The parameters for peak matching
 tolerance are therefor allowed intensity change
-\[max. ValueSearchArea = {\delta I\over{\Delta d_{cross}}}\] with
+\[max. ValueSearchArea = \delta \frac{I}{\Delta d_{cross}}\] with
 intensity change factor \(\delta I\) and cross range difference
 \(\Delta d_{cross}\) allowed range change
-\[max. LocSearchArea = {\Delta d_{down}\over{\Delta d_{cross}}} = v_D = \alpha~v_R\]
+\[max. LocSearchArea = \frac{\Delta d_{down}{\Delta d_{cross}}} = v_D = \alpha~v_R\]
 which is more easily expressed as maximum Doppler speed \(v_D\) in
 percent of robot speed \(v_R\). Good values are a factor of
 \(5 cm^{-1}\) as maximum intensity change factor and a factor of
@@ -1153,7 +859,7 @@ measured from the phase difference at the receiving antennas of a
 multistatic radar.
 
 In the case of RIC60A the antenna separation \(d\) is \(1.16mm\) and
-wavelength \(\lambda\) is \(\lambda={c\over{60GHz}}=5.0mm\) (with speed
+wavelength \(\lambda\) is \(\lambda=\frac{c}{60GHz}=5.0mm\) (with speed
 of light \(c\)).
 
 Figures \#REF and \#REF show the range profile and phase shift of the
@@ -1334,7 +1040,7 @@ This attenuation can be compensated with a range-based compensation
 factor \(f_r\) with \[f_r(d_{down}) = {
 \left(
 c_a + (
-{{d_{down}}\over{c_b}}
+\frac{{d_{down}}{c_b}}
 + c_c)^{-4}
 \right) ^ {-1}
 }\]
@@ -1399,10 +1105,10 @@ The compensation factor \(f_a\) for each angle is finally composed using
 the formula
 
 \[m = \max \left( \max (s_{Rx1}), \max (s_{Rx2}) \right)\] \[
-f_a = {1\over{2}}
+f_a = \frac{1}{2}
   \left(
-    {{m}\over{ s_{Rx1} }} +
-    {{m}\over{ s_{Rx2} }}
+    \frac{m}{ s_{Rx1} } +
+    \frac{m}{ s_{Rx2} }
   \right)
 \]
 
@@ -1426,14 +1132,17 @@ multiplicate the peak with a window function with height \(f_a\). The
 implementation the window \(w\): \[
 w(x,f_a) = 1 + (f_a - 1)
 ~e ^ {
- -{
-    \left( {x - p_x} \right) ^ 2
-    \over{ {p_w} }
-  }
+ -\frac{ \left( {x - p_x} \right) ^ 2 }
+       {p_w}
 }
 \] where \(p_x\) is the peaks subsample-interpolated peak location in
 down range space and
-\(p_w = { {{ \left( { {fwhm}\over{4} } \right) } ^2}~/~{4 ln(2)} }\) is
+$$
+p_w = \cfrac{
+\left( \frac{fwhm}{4}  \right) ^2
+}{
+4 ln(2)}
+$$ is
 the peaks width, where \(fwhm\) is the full width at half maximum as
 found by the subsample-interpolated peak fit.
 
