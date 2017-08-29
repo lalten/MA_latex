@@ -7,7 +7,7 @@
 \newlength{\colwidthF} \setlength{\colwidthF}{0.05\textwidth}
 \newlength{\colwidthG} \setlength{\colwidthG}{0.15\textwidth}
 
-{ \rowcolors{2}{}{ColorAlternatedRow}
+{ \rowcolors{1}{ColorAlternatedRow}{}
 \setlength\extrarowheight{4pt}
 \begin{tabularx}{\linewidth}% tabularx implements a version of the tabular environment in which the widths of certain columns are calculated so that the table is a specified width
 {%
@@ -18,6 +18,7 @@
   >{\setlength{\hsize}{.10\hsize}\raggedright\arraybackslash}X%
   >{\setlength{\hsize}{.20\hsize}\raggedright\arraybackslash}X%
 }
+\hiderowcolors
     Product &
     Note &
     $f_C$, $\Delta f$ &
@@ -33,6 +34,7 @@
 
 \bottomrule
 \endlastfoot
+\showrowcolors
 
 \href{https://www.omniradar.com/products/}{Omniradar RIC60A} &
 High bandwidth. Presentation at SoC 2015\cite{Brouwer2015} &
