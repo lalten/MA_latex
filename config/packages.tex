@@ -23,9 +23,11 @@
 
 \usepackage[table,dvipsnames,svgnames,x11names,hyperref]{xcolor}
 \definecolor{ColorLink}{rgb}{0,0.4549,0.8510}
+\definecolor{ColorAlternatedRow}{rgb}{0.93,0.95,1.0}%{gray}{0.9}
 
 
 \usepackage{graphicx}
+\usepackage[export]{adjustbox} % https://tex.stackexchange.com/a/124372/142289
 \usepackage{svg}
 \usepackage{mdframed}
 
@@ -36,7 +38,7 @@
 \newcommand{\xmark}{\ding{55}}%
 
 \usepackage{longtable}
-
+\usepackage{ltablex}
 \usepackage{booktabs}
 \usepackage{tabu}
 
