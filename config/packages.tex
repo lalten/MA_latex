@@ -4,12 +4,12 @@
 \usepackage{bibgerm}		% Für geralpha.bst. MUSS vor babel stehen
 \usepackage[utf8]{inputenc}	% Latin1 input encoding (umlauts)
 \usepackage[ngerman,english]{babel}
-
+\usepackage{csquotes}       % ensure that quotes are typeset in main language
 
  
 \usepackage[
     backend=biber,
-    style=authoryear-comp,
+    style=numeric-comp,
     sorting=ynt
 ]{biblatex}
 \addbibresource{mendeley.bib}
