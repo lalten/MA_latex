@@ -1,226 +1,131 @@
-%LaTeX
-\typeout{$Id$}
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%&delatex
 \documentclass[%
-	12pt,		% 12pt font size
-	headinclude,	% 
-	%openany,	% Kapitel können auch auf der linken Seite anfangen.
-	a4paper,	% Papierformat
-	pointlessnumbers, % entgegen Duden Nr. 21, S. 21 R4 als CI festgelegt
+	12pt,
+	headinclude,
+	a4paper,
+	numbers=noenddot,
 	changebar,      % Änderungsbalken mit \begin/\end{changebar}
 	liststotoc,	% Was alles in der Table of Contents stehen soll
 	bibtotoc,
 	idxtotoc,
-	%draft,		% mark overfull hboxes with a thick rule, don't include
-	%		% (EPS) files, begin bibliography on a new page
 	]{diplomarbeit}
 	% noheadsepline
 
 \areaset[20mm]{160mm}{240mm}	% Binderand, Breite und Höhe nutzbarer Bereich
 \usepackage[textwidth=160mm,textheight=240mm]{geometry}
 
-\input{pandoc}
-\input{packages}
+\input{config/pandoc}
+\input{config/packages}
 
-% --------------------------------------------------------------------
-% Typ der Arbeit
-% --------------------------------------------------------------------
-% \arbeitsart{Techreport}
-% \techreportident{TR-XXXXXYY}
-% \arbeitsart{Studienarbeit}
-% \arbeitsart{IDP}
-% \arbeitsart{Praktikumsbericht}
-% \arbeitsart{Bachelor}
-% \arbeitsart{Diplomarbeit}
 \arbeitsart{Master's Thesis}
 
-% --------------------------------------------------------------------
-% Titel, Autor und sonstige Titelblatt--Angaben:
-% \betreuer{}, \band{} und \eingereicht{} setzen die
-% Style--Option `datitlepage' voraus!
-% --------------------------------------------------------------------
 \title{Radar Reprojection Mapping Improves Obstacle Avoidance in Mobile Robots with an Unsteered Radar Sensor}
 \author{Laurenz Altenmüller}
 \authorsaddr{Pommernstr. 9\\
              80809 München}
-
 \betreuer{Michael Balszun, M.Sc.}
-% --------------------------------------------------------------------
-% bei externer Diplomarbeit
-% --------------------------------------------------------------------
 \ausgefuehrtam{at BSH Home Appliances Corporation\\Bosch Research and Technology Center\\Palo Alto, California, USA}
-%%% oder
-%\ausgefuehrtam{%
-%  am Institut für Werkzeugmaschinen und Betriebswissenschaften\\
-%   Technische Universität München}
-%%%_optional: \band{Band1}
-%%%_optional: \eingereicht{im September 2004}
+\eingereicht{September 2017}
 
-% --------------------------------------------------------------------
-% eigene Definitionen f"ur die Praeambel
-% --------------------------------------------------------------------
-\input{shorthands}
 
-% --------------------------------------------------------------------
-% PDF specials
-% --------------------------------------------------------------------
-	\pdfcompresslevel=9
-        \RequirePackage[pdftex,		
-		      %% für die DRUCK-Ausgabe bitte folgende
-		      %% Einstellungen verwenden
-% 		       pdfpagelabels=true,
-%                        bookmarks=true,
-%                        pagebackref=true,       % Rücklinks im Lit.-verz.
-%                        linktocpage=true,
-%                        plainpages=false,
-%                        hyperfootnotes=false,   % sonst doppelt definiert
-%                        breaklinks=true,
-%                        colorlinks=true,
-%                        linkcolor=black,
-%                        urlcolor=black,
-%                        citecolor=black]{hyperref} 
-		%% für die .pdf-Datei-Ausgabe bitte diese
-		%% Einstellungen verwenden und obige auskommentieren! 
-        unicode=true,
-        pdfpagelabels=true,
-        bookmarks=true,
-        pagebackref=true,	% Rücklinks im Lit.-verz.
-        linktocpage=true,
-        plainpages=false,
-        hyperfootnotes=false,	% sonst doppelt definiert
-        breaklinks=true,
-        colorlinks=true,
-        linkcolor=blue
-        ]{hyperref}
-	\makeatletter
-	\hypersetup{
-	    breaklinks=true,
-	    pdfborder={0 0 0},
-		pdftitle={\@title},
-		pdfauthor={\@author},
-		pdfsubject={Diplomarbeit},
-		pdfkeywords={keyword1,keyword2},
-	}
+\pdfcompresslevel=9
+
+\makeatletter
+
+
+\usepackage[ % some option can only be set at loading time
+    bookmarks=true,
+    pagebackref=true,
+    hyperfootnotes=false,
+    pdfpagelabels=true,
+]{hyperref}
+\hypersetup{
+    unicode=true,
+	linktoc=all,
+    plainpages=false,
+    breaklinks=true,
+    % für die DRUCK-Ausgabe
+%    plainpages=false,
+%    allcolors=black ]{hyperref} 
+% PDF stuff    
+    colorlinks=true,
+    allcolors=ColorLink,
+    pdfborder={0 0 0},
+	pdftitle={\@title},
+	pdfauthor={\@author},
+	pdfsubject={Master's Thesis},
+	pdfkeywords={Radar,Reprojection Mapping,Obstacle Sensor,Mobile Indoor Robots},
+}
+\urlstyle{same}
 	
-	
-	\def\fudge#1#2{%
-\addtolength\textheight{#1}%
-\@colroom\textheight
-\vsize\textheight
-\@colht\textheight
-\def\LS@rot{%
-  \setbox\@outputbox\vbox{\hbox{\kern-#2\rotatebox{90}{\box\@outputbox}}}}%
-\clearpage}
-	
-	\makeatother
+\makeatother
 
-% wenn nur einzelne Kapitel gedruckt werden sollen...
-%
-%\includeonly{meineergebnisse}
 
-% --------------------------------------------------------------------
-%%% Hier beginnt das eigentliche LaTeX--Dokument
-% --------------------------------------------------------------------
+
 \begin{document}
-% --------------------------------------------------------------------
-% Titelseite
-% --------------------------------------------------------------------
+
+
 \renewcommand{\thepage}{t\arabic{page}}
 \maketitle
 
-% --------------------------------------------------------------------
-% Dank 
-% --------------------------------------------------------------------
- \pagestyle{empty}
+\include{chapters/head_abstract}
+
+
+\pagestyle{empty}
 \cleardoublepage 
 \setcounter{page}{3}	% Laut VDI Richtlinien
 \renewcommand{\thepage}{\roman{page}}
 \begin{danksagung}
-  Vielen Dank \dots
-
-  München, im Monat Jahr
+    Vielen Dank \dots
+    
+    München, im Monat Jahr
 \end{danksagung}
 
-% --------------------------------------------------------------------
-% Inhaltsverzeichnis, Abbildungsverzeichnis, Tabellenverzeichnis
-% --------------------------------------------------------------------
+
 \clearpage
 \pagestyle{headings}
-% Inhaltsverzeichnis soll (nur) in den PDF Bookmarks erscheinen
 \pdfbookmark[1]{\contentsname}{toc}
 \tableofcontents
 
-\listoffigures
-\listoftables
-\input{listofsymbols}
+\include{chapters/head_listofabbrev}
+\include{chapters/head_listofsymbols}
 
-% --------------------------------------------------------------------
-% Abstract (Kurzfassung)
-% In Deutsch und Englisch zu verfassen laut Promotionsordnung, zumindest
-% bei elektronischer Veröffentlichung.
-% --------------------------------------------------------------------
-%\pagestyle{empty}
-\cleardoublepage 
-\begin{abstract}
-Mobile indoor robots mostly rely on lidar and vision sensors to remotely detect obstacles in their path. These sensors have trouble detecting some common real-world obstacles like transparent surfaces and chair legs. Recent affordable near-range miniature radar sensors enable new solutions.
-This thesis explores a simple solution for a radar sensor being moving through a static environment without the need for beamforming or a mechanically scanning radar. The idea is put to test in experiments with an Omniradar FMCW radar mounted on a Kobuki robot platform. A comparison against lidar and RGBD sensors shows how promising the setup is for navigation in unstructured environments.
-\end{abstract}
 
-% Man muss erzwingen, dass die Seite mit Nummer 1 rechts ist, sonst
-% kommt latex aus dem Tritt, weil ungerade Seiten immer rechts sein
-% müssen!
+% start with page 1
 \newpage{\pagestyle{plain}\cleardoublepage}
-\rmfamily	% ab jetzt mit Serifen, weil besser lesbar
-% Die Seitennumerierung wird hier mit "1" begonnen
+\rmfamily
 \renewcommand{\thepage}{\arabic{page}}
 \setcounter{page}{1}
 
+% content
+\include{chapters/ch_input}
+\include{chapters/ch_background}
+\include{chapters/ch_approach}
+\include{chapters/ch_implementation}
+\include{chapters/ch_results}
+\include{chapters/ch_discussion}
+\include{chapters/ch_conclusion}
 
 
-
-
-% --------------------------------------------------------------------
-% Hier beginnt der eigentliche Text
-% --------------------------------------------------------------------
-% Die Identifikation wesentlicher eigener Beiträge muß schon im
-% Inhaltsverzeichnis möglich sein.
-
-\include{text}
-
-
-% --------------------------------------------------------------------
 % Anhang
-% --------------------------------------------------------------------
 \clearpage
 \begin{appendix}
 
-\chapter{List of Scans}
-\include{resultstable}
+\include{chapters/ap_resultstable}
 
 \end{appendix}
 
-% --------------------------------------------------------------------
+\listoffigures
+\listoftables
+
 % Index
-% --------------------------------------------------------------------
 \clearpage
 \printindex
 
-% --------------------------------------------------------------------
 % Literaturverzeichnis
-% --------------------------------------------------------------------
-% Nicht direkt referenzierte, aber benutzte Literatur
 %\nocite{wasauchimmer}
-%
 \clearpage
 %\bibliographystyle{geralpha}
 \bibliographystyle{gerplain}
-% \bibliography{literatur} % welche bib-Dateien
-\bibliography{mendeley} % welche bib-Dateien
+\bibliography{mendeley}
 
-% --------------------------------------------------------------------
-% Dokument-Ende
-% --------------------------------------------------------------------
 \end{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
