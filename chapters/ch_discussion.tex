@@ -1,0 +1,221 @@
+
+\chapter{Discussion and Comparison}\label{discussion-and-comparison}
+
+\subsection{Reflection
+directionality}\label{reflection-directionality}
+
+Many objects only become visible when their surface is oriented
+perpendicularly to the incident radar waves, so that enough scattered EM
+energy makes its way back to the sensor. This is very visible in the
+Underground scan, where a glass wall is detected as the robot passes it,
+but not while the robot sees it at an angle.
+
+In the Torture Chamber scan, the same effect is visible for chair legs,
+especially for the chair at the scene center. the legs appear in clear
+form as soon as the radar sees the leg from a point that is orthogonal
+to the office chair legs.
+
+
+
+\subsection{Material-dependent echo
+strength}\label{material-dependent-echo-strength}
+
+Some materials, like metal, are obviously better at reflecting radar
+waves than others, like styrofoam. Metal objects cause particularly
+strong echos which are visible from a higher distance. This can be
+observed in the hallway scans (e.g.~Orbit, Public Restroom, Queue,
+Racetrack, Sauna, Underground), where the metal frames of doors and
+glass walls stand out in the scan.
+
+\subsection{Doppler vs Direction of Arrival data
+quality}\label{doppler-vs-direction-of-arrival-data-quality}
+
+In forward-facing geometry (scans D-T), the DOA is necessary to resolve
+the sign of a target's reprojection angle. This works fairly well, for
+example at the start of Sauna (see figure \#REF), the closer target
+passes on the right (more pink), while the other targets stay to the
+left side of the robot (more green).
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_doa_sign_input.png}
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_doa_sign_doa.png}
+
+In fact, for the side-facing case, the smoothed DOA data also turned out
+to be very good. It could even be used to calculate a more precise
+reprojection angle.
+
+\subsection{Multipath effects}\label{multipath-effects}
+
+Multipath effects are a well-known problem in ground-based radar
+applications \cite{Adams2012}. In situations where multi-path effects
+are likely, there is a higher possibility that multiple versions of a
+target's echo are visible, which can lead to detection of incorrect
+angle and ranges. Luckily, in the recorded data almost no multipath
+effects are obvious. The only scan that shows some effects is the
+Torture Chamber. There, it seems like the radar waves bounce around a
+bit in the (2m,2m) area under the desk. The effect is that some targets
+are detected behind the wall behind the desk.
+
+
+
+\subsection{Object penetration}\label{object-penetration}
+
+Some objects are penetrated by the radar waves. For example, in the
+Attic and Basement scans, both the front and the back wall of the
+plastic bottle can be seen. However, the plastic bottle was relatively
+close to the sensor. On the other hand, in the scans with glass walls in
+them (P,P,Q,R,S,U), no significant radar echo is picked up from the
+(metal) chair legs behind the glass wall. This is because a typical
+glass pane attenuates the 60Ghz signal by about 5.5 dB \cite{Lu2014}. In
+effect, a radar sensor with higher transmission power might be able to
+see through walls, but in the conducted experiments radar echos were to
+faint to be picked up after the first bigger object (like a wall).
+
+\subsection{Negative obstacles}\label{negative-obstacles}
+
+With scans V,W,X the negative obstacle detection capability was
+analyzed. Cliffs, steps, and ditches are types of negative obstacles
+that cannot be traversed by the robot. In \cite{Jiang2015}, Jiang et al.
+claim that it is possible to detect this with UWB signals of various
+carrier frequencies. The experiments carried out for this thesis however
+did not show the same signal behaviour and it was not possible to detect
+cliffs.
+
+The Virtual Reality scan was carried out in the standard configuration
+with a horizontal, slightly squinting, and not downwards angled sensor.
+The assumption was that a part of the strong signal int the 10cm to 20cm
+range were reflections from the floor, that should disappear when the
+floor ends at a cliff. Visual inspection of the range profile however
+shows only a extremely slight change in signal, e.g.~at cross range
+0.8m..1.1m, down range 0.2m..0.25m., where the floor could not reflect
+due to the radar sensor overhanging the cliff.
+
+The Washroom scan has the sensor mounted in a vertical configuration and
+downward facing instead to increase sensitivity to echo scattering from
+below. The echo intensity for cross range 3.5m..4.5m is indeed just
+barely lower than 0m..2m, which maches up to where the sensor was over
+the edge and over floor, respectively.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_negobst.png}
+\caption{restrict-height}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_negobst_clipped.png}
+\caption{restrict-height}
+\end{figure}
+
+To limit the transmit crosstalk's blinding effect, the sensor was
+mounted on a much higher position (on the RGBD camera mount) in the Xray
+Room scan. One effects is that the robot chassis itself is constantly
+visible at a distance of 0.35cm down range. At 0.45cm down range, the
+floor echo is visible. There is one dip in intensity at 2.5m cross
+range, where the sensor was not over floor. Overall the signal is
+however not as conclusive as in the Washroom scan.
+
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_negobst_xray.png}
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_negobst_xray_clipped.png}
+
+Maybe the signal could be improved with improved background subtraction
+(see \#REF). However, the three scans show that it is very hard to
+detect negative obstacles with this sensor. A radar sensor of this type
+will hence not be a viable replacement for regular cliff detection
+sensors like the floor facing infrared distance sensors in the Kobuki
+base.
+
+\subsection{Cable detection}\label{cable-detection}
+
+Cables on the floor are another interesting target that falls into the
+category of obstacles being a very common occurrence in the real world,
+but are hard to detect with conventional obstacle sensors. The Y (Is
+There A Cable On The Floor) scan deals with the detection if this kind
+of obstacle. For this, the same camera-mounted vertical configuration as
+in X Ray Room was used. Again, there is a constant robot chassis echo at
+down range 0.35. As the robot is driving closer towards the power cable
+on the floor, the cable's echo is visibly coming closer before it
+disappears under the robot's chassis. The echos at 0.9m down range show
+the two can towers at the end of the cable.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth]{https://rawgit.com/lalten/ma/master/figures/fig_cable.png}
+\caption{restrict-height}
+\end{figure}
+
+
+
+Both the X Ray Room and Y (Is There A Cable On The Floor) introduce a
+new geometry that lifts the radar sensor out of the two dimensional
+mapping plane. The geometry is better described with a 3D case, for
+which more than
+
+\subsection{Minimum distance}\label{minimum-distance}
+
+The constant noise from the transmission crosstalk leads to a high
+minimum detection distance as explained in \#REF. The effect is that
+targets can not be projected onto the map if the robot is too close to
+them. This is an issue in the Sauna scan, where the Glass wall right at
+the beginning of the robot path cannot be mapped in its entirety.
+
+\subsection{Parameter tuning?}\label{parameter-tuning}
+
+\section{Comparison with other mapping
+techniques}\label{comparison-with-other-mapping-techniques}
+
+While some of the radar reprojection maps speak for themselves, they
+make more sense when compared to other mapping techniques. In the
+following, SAR techniques, Laser slam, and RGBD slam are compared to the
+radar reprojection.
+
+\subsection{SAR}\label{sar-1}
+
+Synthetic aperture radars make a lot of sense in other applications
+where the radar is moved over or through a map. The big difference to
+this application is that ``professional'' SAR applications have radar
+sensors that sit in vehicles that are not in the mapping plane.
+Airplanes, satellites and even Submarines scan the earth like that.
+
+There are a few examples for UWB radars being moved sideways (usually on
+a rail) in an effort to scan a scene with synthetic aperture radar.
+Gregory L. Charvat's ``tin can'' radar \cite{Charvat2014} might be the
+most famous one, with many examples at http://glcharvat.com/shortrange/.
+Another great resource was Henrik Forsten's Homemade Synthetic Aperture
+Radar, documented at
+http://hforsten.com/homemade-synthetic-aperture-radar.html. Forsten used
+the Omega-k algorithm \cite{Tolman2008} and Stolt interpolation (\#TODO:
+add book reference) to correct the range migration arcs. \#TODO make
+quad-subfigure with Forsten's images? Forsten was able to greatly
+improve his data quality by use of an minimum-entropy based
+auto-focusing algorithm. The trick with this is that the radar needs to
+move in a very straight line, where the ``error in path linearity should
+be around less than tenth of a wavelength''. In Forsten's radar, this is
+about 5mm. However with the 60GHz Omniradar this is around 0.5mm.
+Keeping a straight line with less than half a millimeter of linearity
+error is not realistically achievable on the Kobuki platform.
+
+
+
+One big inherent problem with synthetic aperture radar algorithms is
+that basically all of them assume the radar to move in a straight line.
+While changing the squint angle helps to deal with issues such as earth
+curvature in satellite applications, SAR with curved or even arbitrary
+paths is a challenging topic, particularly because auto-focusing, which
+again relies on phase information, becomes more difficult
+\cite{Axelsson2002}.
+
+\subsection{RGBD}\label{rgbd-1}
+
+The Kobuki robot was also carrying a depth camera. Using the rtabmap Ros
+package, some 3D scans of the office environment where made.
+
+\subsection{Lidar}\label{lidar-1}
+
+As stated in \#REF, the Kobuki robot used in the experiments was
+equipped with an RPLidar and a computing platform powerful enough to
+perform slam. Lidar slam is the go-to, standard approach when it comes
+to mapping the environment around a robot. After years of research and
+product development, even cheaper lidar systems have acceptable range
+resolution. While they can't provide ground truth data (see problems
+with lidar data in \#REF), it makes sense to compare the radar
+reprojection maps with laser scan maps.

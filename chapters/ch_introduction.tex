@@ -1,0 +1,71 @@
+\chapter{Introduction}\label{introduction}
+
+Mobile indoor robots have become a common sight. Over 15 million units
+of iRobot's Roomba vacuum robots have been sold since their introduction
+in 2002
+\footnote{http://www.irobot.com/About-iRobot/Company-Information/History.aspx}.
+Applications are not limited to vacuuming: There are service robots,
+entertainment robots, mapping robots, security robots, and many others.
+Mobile indoor robots in commercial spaces are upheld as ``the next big
+thing''
+\footnote{http://spectrum.ieee.org/automaton/robotics/robotics-hardware/indoor-robots-for-commercial-spaces}.
+
+Robotic navigation has also come a long way. The first vacuum robots
+were merely equipped with a bumper sensor that let them to traverse a
+room like a TV's DVD logo animation screensaver. In 2010, Neato Robotics
+managed to develop and integrate a low-cost Lidar
+\footnote{https://www.sparkfun.com/news/490} that first enabled path
+planning for their vacuum robot. Some robots like LG's
+Hom-bot\footnote{https://www.youtube.com/watch?v=UANWyiDf3hA} later used
+ceiling cameras with visual slam (simultaneous localization and mapping)
+for optical odometry information, but it was not before 2014 that iRobot
+brought a vacuum robot to the market that used visual slam to create a
+map of its environment
+\footnote{https://www.technologyreview.com/s/541326/the-roomba-now-sees-and-maps-a-home/}.
+
+There are still stories about vacuum robots failing hilariously in their
+navigation capabilities, including one woman's hair being eaten as she
+slept\footnote{https://www.theguardian.com/world/2015/feb/09/south-korean-womans-hair-eaten-by-robot-vacuum-cleaner-as-she-slept},
+and of course countless examples of the joke ``What is worse than
+finding dog poop on the carpet? Your robot vacuum finding dog poop on
+the
+carpet''\footnote{http://www.boredpanda.com/robot-vacuum-cleaner-spreads-dog-shit-everywhere/}.
+Other obstacles that are really difficult to see with the sensors of
+today's vacuum robots are very thin objects (like thin chair legs) in
+the case of visual navigation, and transparent surfaces like windows and
+glass walls with both visual and laser sensors. While theoretically it
+would be possible to detect mirrors just the way humans do it, by
+observing the geometry visible during movement and inferring the mirrors
+position and orientation, no home robot has demonstrated that capability
+so far.
+
+Of course, the home robot owners want their robot to have better
+navigational skills. A robot is more efficient if it can plan a path
+with knowledge of all obstacles on it. That translates to quicker
+cleaning. On the other hand it is safer, because the robot won't break
+things and won't get hurt if it does not bump into potentially dangerous
+things.
+
+Thanks to recent efforts in miniaturization and falling costs, there is
+a new option in the search for better navigation and obstacle sensors.
+Usually associated with ship and aircraft localization, radar technology
+made its way to the automotive industry in the form of weather-proof
+range sensors. The newest sensors are even quite small (some sensors
+come with antennas integrated in silicon) and cheap, with prices
+projected to fall below 1€\cite{Brouwer2015}. Today's embedded
+processors are also powerful enough to handle any kind of radar signal
+processing. Combined with the easy licensing in the Industrial,
+Scientific, Medical (ISM) frequency bands, it seems very worthwhile to
+investigate how the use of radar will improve obstacle sensing in mobile
+home robots.
+
+To understand if, and how radar should be integrated in next-generation
+home robots the next Section will give a brief overview of conventional
+sensing techniques, followed by the theoretical background of radar
+sensing. In section \#REF, reprojection mapping, a novel technique for
+mapping with unsteered sensors, is proposed. Section \#REF then details
+a proof-of-concept implementation of the method, Results of experiments
+with this method are listed in Section \#REF and discussed and compared
+in Section \#REF. Section \#REF finally concludes the thesis with an
+outlook and how everything fits in the bigger picture of obstacle
+sensing.
