@@ -1,2 +1,595 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="689px" height="242px" version="1.1" content="&lt;mxfile userAgent=&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36&quot; version=&quot;7.1.8&quot; editor=&quot;www.draw.io&quot; type=&quot;github&quot;&gt;&lt;diagram id=&quot;2141d44a-9e13-517f-1666-977fa975e885&quot; name=&quot;Page-1&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;"><defs/><g transform="translate(0.5,0.5)"><ellipse cx="305" cy="80" rx="20" ry="20" fill="#ffffff" stroke="#000000" pointer-events="none"/><path d="M 295 80 C 295.78 77.91 297.77 76.52 300 76.52 C 302.23 76.52 304.22 77.91 305 80 C 305.78 82.09 307.77 83.48 310 83.48 C 312.23 83.48 314.22 82.09 315 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 402 60 L 438 80 L 402 100 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 400 80 L 402 80 M 438 80 L 440 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 560 0 L 580 32 L 600 0 M 580 0 L 580 80" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 439.72 79.9 L 573.36 79.9" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 578.61 79.9 L 571.61 83.4 L 573.36 79.9 L 571.61 76.4 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 325 79.98 L 393.36 79.9" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 398.61 79.9 L 391.61 83.41 L 393.36 79.9 L 391.6 76.41 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><rect x="320" y="180" width="40" height="40" fill="#ffffff" stroke="#000000" pointer-events="none"/><path d="M 324.62 200 C 329 195.57 335.62 195.57 340 200 C 344.38 204.43 351 204.43 355.38 200 M 324.62 191.3 C 329 186.88 335.62 186.88 340 191.3 C 344.38 195.73 351 195.73 355.38 191.3 M 324.62 208.7 C 329 204.27 335.62 204.27 340 208.7 C 344.38 213.12 351 213.12 355.38 208.7 M 336.92 210.43 L 341.54 205.22 M 336.92 193.04 L 341.54 187.83" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><ellipse cx="500" cy="200" rx="20" ry="20" fill="#ffffff" stroke="#000000" pointer-events="none"/><path d="M 485.76 185.76 L 514.24 214.24 M 514.24 185.76 L 485.76 214.24" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 402 180 L 438 200 L 402 220 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" transform="rotate(-180,420,200)" pointer-events="none"/><path d="M 400 200 L 402 200 M 438 200 L 440 200" fill="none" stroke="#000000" stroke-miterlimit="10" transform="rotate(-180,420,200)" pointer-events="none"/><path d="M 560 120 L 580 152 L 600 120 M 580 120 L 580 200" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 500 80 L 499.74 173.53" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 499.73 178.78 L 496.25 171.77 L 499.74 173.53 L 503.25 171.79 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 579.72 199.9 L 526.09 199.9" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 520.84 199.9 L 527.84 196.4 L 526.09 199.9 L 527.84 203.4 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 479.72 199.9 L 446.09 199.9" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 440.84 199.9 L 447.84 196.4 L 446.09 199.9 L 447.84 203.4 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 399.72 199.9 L 366.09 199.9" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 360.84 199.9 L 367.84 196.4 L 366.09 199.9 L 367.84 203.4 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><rect x="0" y="40" width="200" height="200" fill="none" stroke="#000000" stroke-dasharray="3 3" pointer-events="none"/><path d="M 239.72 199.9 L 166.37 199.97" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 161.12 199.98 L 168.11 196.47 L 166.37 199.97 L 168.12 203.47 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 240 180 L 265.71 180 L 280 200 L 265.71 220 L 240 220 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" transform="rotate(180,260,200)" pointer-events="none"/><path d="M 319.72 199.9 L 286.09 199.9" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 280.84 199.9 L 287.84 196.4 L 286.09 199.9 L 287.84 203.4 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(242.5,218.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="34" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">ADC</div></div></foreignObject><text x="17" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">ADC</text></switch></g><g transform="translate(315.5,218.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="49" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">IF filter</div></div></foreignObject><text x="25" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">IF filter</text></switch></g><g transform="translate(381.5,218.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="77" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">IF amplifier</div></div></foreignObject><text x="39" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">IF amplifier</text></switch></g><g transform="translate(480.5,218.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="39" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Mixer</div></div></foreignObject><text x="20" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">Mixer</text></switch></g><g transform="translate(598.5,138.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="72" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Rx antenna</div></div></foreignObject><text x="36" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">Rx antenna</text></switch></g><g transform="translate(378.5,38.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="82" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">RF amplifier</div></div></foreignObject><text x="41" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">RF amplifier</text></switch></g><g transform="translate(287.5,38.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="34" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">VCO</div></div></foreignObject><text x="17" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">VCO</text></switch></g><path d="M 79.72 79.9 Q 79.72 79.9 113.36 79.9" fill="none" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/><path d="M 118.61 79.9 L 118.64 79.97 L 117.16 80.5 L 115.88 81.44 L 114.45 82.09 L 113.04 82.76 L 111.61 83.4 L 111.53 83.36 L 111.82 82.63 L 112.17 81.93 L 112.47 81.2 L 113.08 80.64 L 113.36 79.9 L 113.56 80 L 113.02 79.2 L 112.64 78.49 L 112.34 77.81 L 112.08 77.16 L 111.61 76.4 L 111.54 76.27 L 113.02 77.12 L 114.43 77.85 L 115.76 78.4 L 117.31 79.41 L 118.61 79.9 Z Z" fill="#000000" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/><rect x="40" y="60" width="40" height="40" fill="#ffffff" stroke="#000000" pointer-events="none"/><path d="M 70.07 95.07 L 45 95 L 45 70" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><g fill="#666666" font-family="LMRoman" font-style="italic" text-anchor="middle" font-size="8px"><text x="74.5" y="96.5">t</text></g><g fill="#666666" font-family="LMRoman" font-style="italic" text-anchor="middle" font-size="8px"><text x="44.5" y="66.5">V</text></g><path d="M 50 90 Q 51 80 59.5 78.5 Q 68 77 70 70" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(51.5,18.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="96" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Radar backend</div></div></foreignObject><text x="48" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">Radar backend</text></switch></g><path d="M 159.72 79.9 Q 159.72 79.9 278.63 79.98" fill="none" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/><path d="M 283.88 79.98 L 283.92 80.07 L 282.56 80.83 L 281.13 81.48 L 279.58 81.88 L 278.28 82.77 L 276.88 83.48 L 276.99 83.53 L 277.3 82.81 L 277.75 82.17 L 277.96 81.4 L 278.44 80.76 L 278.63 79.98 L 278.85 80.09 L 278.08 79.18 L 277.92 78.57 L 277.77 77.98 L 277.24 77.19 L 276.88 76.48 L 276.83 76.37 L 278.37 77.34 L 279.67 77.86 L 281.09 78.59 L 282.45 79.22 L 283.88 79.98 Z Z" fill="#000000" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/><path d="M 120 60 L 145.71 60 L 160 80 L 145.71 100 L 120 100 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(122.5,98.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="34" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">DAC</div></div></foreignObject><text x="17" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">DAC</text></switch></g><g transform="translate(23.5,98.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="83" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Predistortion</div></div></foreignObject><text x="42" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">Predistortion</text></switch></g><rect x="40" y="180" width="40" height="40" fill="#ffffff" stroke="#000000" pointer-events="none"/><path d="M 70 215 L 45 215 L 45 190" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><g fill="#666666" font-family="LMRoman" font-style="italic" text-anchor="middle" font-size="8px"><text x="74.5" y="216.5">f</text></g><path d="M 48 209 Q 49 210 49.5 210 Q 50 210 50.5 208 Q 51 206 51.5 208 Q 52 210 52.5 207.5 Q 53 205 53.5 206.5 Q 54 208 54.5 208.5 Q 55 209 55.5 208 Q 56 207 56.5 208.5 Q 57 210 57.5 209.5 Q 58 209 58.5 208 Q 59 207 59.5 198.5 Q 60 190 60.5 198 Q 61 206 61.5 208 Q 62 210 62.5 209 Q 63 208 63.5 209 Q 64 210 64.5 209.5 Q 65 209 65.5 209.5 Q 66 210 66.5 210 Q 67 210 67.5 210 Q 68 210 68.5 210 Q 69 210 70 210" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#666666" font-family="LMRoman" font-style="italic" text-anchor="middle" font-size="8px"><text x="44.5" y="186.5">F</text></g><g transform="translate(45.5,158.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="28" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">FFT</div></div></foreignObject><text x="14" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">FFT</text></switch></g><rect x="120" y="180" width="40" height="40" fill="#ffffff" stroke="#000000" pointer-events="none"/><path d="M 125 210 Q 130 210 135 197.5 Q 140 185 145 197.5 Q 150 210 155 210" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(112.5,158.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="54" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Window</div></div></foreignObject><text x="27" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">Window</text></switch></g><path d="M 86.09 199.9 Q 86.09 199.9 119.72 199.9" fill="none" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/><path d="M 80.84 199.9 L 80.76 199.74 L 82.27 199.25 L 83.54 198.3 L 84.99 197.7 L 86.39 197 L 87.84 196.4 L 87.93 196.44 L 87.46 197.08 L 87.24 197.84 L 86.97 198.59 L 86.54 199.25 L 86.09 199.9 L 86.16 199.93 L 86.47 200.61 L 86.97 201.39 L 87.23 202.04 L 87.37 202.63 L 87.84 203.4 L 87.9 203.52 L 86.52 202.85 L 85.15 202.2 L 83.55 201.12 L 82.32 200.75 L 80.84 199.9 Z Z" fill="#000000" stroke="#000000" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(469.5,128.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="21" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">LO</div></div></foreignObject><text x="11" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">LO</text></switch></g><path d="M 610 40 L 660 40 L 630 60 L 673.63 60" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 678.88 60 L 671.88 63.5 L 673.63 60 L 671.88 56.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 606.37 180 L 650 180 L 620 160 L 670 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 601.12 180 L 608.12 176.5 L 606.37 180 L 608.12 183.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(598.5,18.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="72" height="17" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 16px; font-family: LMRoman; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">Tx antenna</div></div></foreignObject><text x="36" y="17" fill="#000000" text-anchor="middle" font-size="16px" font-family="LMRoman">Tx antenna</text></switch></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="680.49805"
+   height="240.765"
+   version="1.1"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="fmcw_blocks.svg">
+  <metadata
+     id="metadata180">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1176"
+     id="namedview178"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.2233255"
+     inkscape:cx="282.43456"
+     inkscape:cy="248.99549"
+     inkscape:window-x="1145"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g6" />
+  <defs
+     id="defs4" />
+  <g
+     transform="translate(0.5,0.26499947)"
+     id="g6">
+    <circle
+       cx="305"
+       cy="80"
+       pointer-events="none"
+       id="ellipse8"
+       r="20"
+       style="fill:#ffffff;stroke:#000000" />
+    <path
+       d="m 295,80 c 0.78,-2.09 2.77,-3.48 5,-3.48 2.23,0 4.22,1.39 5,3.48 0.78,2.09 2.77,3.48 5,3.48 2.23,0 4.22,-1.39 5,-3.48"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path10"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 402,60 36,20 -36,20 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path12"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 400,80 2,0 m 36,0 2,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path14"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 560,0 20,32 20,-32 m -20,0 0,80"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path16"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 440,80 133.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path18"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 578.88,80 -7,3.5 1.75,-3.5 -1.75,-3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path20"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 325,80 68.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path22"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 398.88,80 -7,3.5 1.75,-3.5 -1.75,-3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path24"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <rect
+       x="320"
+       y="180"
+       width="40"
+       height="40"
+       pointer-events="none"
+       id="rect26"
+       style="fill:#ffffff;stroke:#000000" />
+    <path
+       d="m 324.62,200 c 4.38,-4.43 11,-4.43 15.38,0 4.38,4.43 11,4.43 15.38,0 m -30.76,-8.7 c 4.38,-4.42 11,-4.42 15.38,0 4.38,4.43 11,4.43 15.38,0 m -30.76,17.4 c 4.38,-4.43 11,-4.43 15.38,0 4.38,4.42 11,4.42 15.38,0 m -18.46,1.73 4.62,-5.21 m -4.62,-12.18 4.62,-5.21"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path28"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <circle
+       cx="500"
+       cy="200"
+       pointer-events="none"
+       id="ellipse30"
+       r="20"
+       style="fill:#ffffff;stroke:#000000" />
+    <path
+       d="m 485.76,185.76 28.48,28.48 m 0,-28.48 -28.48,28.48"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path32"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 402,180 36,20 -36,20 z"
+       stroke-miterlimit="10"
+       transform="matrix(-1,0,0,-1,840,400)"
+       pointer-events="none"
+       id="path34"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 400,200 2,0 m 36,0 2,0"
+       stroke-miterlimit="10"
+       transform="matrix(-1,0,0,-1,840,400)"
+       pointer-events="none"
+       id="path36"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 560,120 20,32 20,-32 m -20,0 0,80"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path38"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 500,80 0,93.63"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path40"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 500,178.88 -3.5,-7 3.5,1.75 3.5,-1.75 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path42"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 580,200 -53.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path44"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 521.12,200 7,-3.5 -1.75,3.5 1.75,3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path46"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 480,200 -33.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path48"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 441.12,200 7,-3.5 -1.75,3.5 1.75,3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path50"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 400,200 -33.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path52"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 361.12,200 7,-3.5 -1.75,3.5 1.75,3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path54"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <rect
+       x="0"
+       y="40"
+       width="200"
+       height="200"
+       pointer-events="none"
+       id="rect56"
+       style="fill:none;stroke:#000000;stroke-dasharray:3, 3" />
+    <path
+       d="m 240,200 -73.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path58"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 161.12,200 7,-3.5 -1.75,3.5 1.75,3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path60"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 240,180 25.71,0 14.29,20 -14.29,20 -25.71,0 z"
+       stroke-miterlimit="10"
+       transform="matrix(-1,0,0,-1,520,400)"
+       pointer-events="none"
+       id="path62"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 320,200 -33.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path64"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 281.12,200 7,-3.5 -1.75,3.5 1.75,3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path66"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <g
+       font-size="16px"
+       id="g68"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="259.5"
+         y="233.5"
+         id="text70">ADC</text>
+    </g>
+    <g
+       font-size="16px"
+       id="g72"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="339.5"
+         y="233.5"
+         id="text74">IF filter</text>
+    </g>
+    <g
+       font-size="16px"
+       id="g76"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="419.5"
+         y="233.5"
+         id="text78">IF amplifier</text>
+    </g>
+    <g
+       font-size="16px"
+       id="g80"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="499.5"
+         y="233.5"
+         id="text82">Mixer</text>
+    </g>
+    <g
+       font-size="16px"
+       id="g84"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="634.5"
+         y="153.5"
+         id="text86">Rx antenna</text>
+    </g>
+    <g
+       font-size="16px"
+       id="g88"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="419.5"
+         y="53.5"
+         id="text90">RF amplifier</text>
+    </g>
+    <g
+       font-size="16px"
+       id="g92"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="304.5"
+         y="53.5"
+         id="text94">VCO</text>
+    </g>
+    <path
+       d="m 80,80 q 0,0 33.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path96"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    <path
+       d="m 118.88,80 0.07,0.13 -1.39,0.72 -1.51,0.49 -1.3,0.9 -1.42,0.65 -1.45,0.61 -0.16,-0.08 0.43,-0.66 0.45,-0.65 0.16,-0.8 0.64,-0.55 0.23,-0.76 0.1,0.05 -0.39,-0.72 -0.51,-0.78 -0.15,-0.6 -0.42,-0.74 -0.38,-0.71 -0.06,-0.11 1.45,0.78 1.46,0.83 1.35,0.6 1.46,0.82 1.34,0.58 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path98"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    <rect
+       x="40"
+       y="60"
+       width="40"
+       height="40"
+       pointer-events="none"
+       id="rect100"
+       style="fill:#ffffff;stroke:#000000" />
+    <path
+       d="M 70,95 45,95 45,70"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path102"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#666666;stroke-miterlimit:10" />
+    <g
+       font-style="italic"
+       font-size="8px"
+       id="g104"
+       style="font-style:italic;font-size:8px;font-family:LMRoman;text-anchor:middle;fill:#666666">
+      <g
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:125%;font-family:'Latin Modern Roman Slanted';-inkscape-font-specification:'Latin Modern Roman Slanted, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+         id="text106">
+        <path
+           d="m 75.769312,95.508 0.072,-0.456 -0.2,0 -0.072,0.44 c -0.096,0.592 -0.392,0.896 -0.687999,0.896 -0.536,0 -0.408,-0.728 -0.392001,-0.864 l 0.376001,-2.224 1.143999,0 0.04,-0.248 -1.144,0 0.248,-1.472 -0.2,0 c -0.119999,0.656 -0.503999,1.512 -1.295999,1.544 l -0.024,0.176 0.679999,0 -0.368,2.208 c -0.168,0.984 0.560001,1.08 0.848,1.08 0.568,0 0.888001,-0.568 0.976,-1.08 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:125%;font-family:'Latin Modern Roman Slanted';-inkscape-font-specification:'Latin Modern Roman Slanted, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="path4321"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       font-style="italic"
+       font-size="8px"
+       id="g108"
+       style="font-style:italic;font-size:8px;font-family:LMRoman;text-anchor:middle;fill:#666666">
+      <g
+         style="line-height:125%"
+         id="text110">
+        <path
+           d="m 48.212,61.284 0.04,-0.248 c -0.248,0.016 -0.576,0.024 -0.784,0.024 l -0.904,-0.024 -0.04,0.248 c 0.416,0.008 0.544,0.216 0.512,0.4 -0.008,0.064 -0.04,0.112 -0.064,0.16 L 44.868,65.7 44.012,61.66 c -0.032,-0.112 -0.024,-0.144 -0.024,-0.144 0.04,-0.232 0.496,-0.232 0.696,-0.232 l 0.04,-0.248 c -0.296,0.024 -0.848,0.024 -1.152,0.024 l -1.008,-0.024 -0.04,0.248 c 0.52,0 0.672,0 0.728,0.304 l 1.04,4.912 c 0.032,0.152 0.064,0.176 0.168,0.176 0.136,0 0.16,-0.04 0.216,-0.152 l 2.576,-4.704 c 0.16,-0.296 0.416,-0.528 0.96,-0.536 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:125%;font-family:'Latin Modern Roman Slanted';-inkscape-font-specification:'Latin Modern Roman Slanted, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="path4324"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <path
+       d="M 50,90 Q 51,80 59.5,78.5 68,77 70,70"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path112"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <g
+       font-size="16px"
+       id="g114"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="99.5"
+         y="33.5"
+         id="text116">Radar backend</text>
+    </g>
+    <path
+       d="m 160,80 q 0,0 118.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path118"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    <path
+       d="m 283.88,80 -0.01,-0.02 -1.42,0.65 -1.36,0.78 -1.46,0.59 -1.35,0.79 -1.4,0.71 0.18,0.09 0.24,-0.76 0.35,-0.69 0.37,-0.7 0.45,-0.65 0.16,-0.79 0.14,0.07 -0.51,-0.78 -0.36,-0.71 -0.16,-0.6 -0.69,-0.87 -0.17,-0.61 -0.01,-0.02 1.4,0.69 1.44,0.79 1.35,0.61 1.45,0.79 1.37,0.64 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path120"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    <path
+       d="M 120,60 145.71,60 160,80 145.71,100 120,100 Z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path122"
+       inkscape:connector-curvature="0"
+       style="fill:#ffffff;stroke:#000000;stroke-miterlimit:10" />
+    <g
+       font-size="16px"
+       id="g124"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="139.5"
+         y="113.5"
+         id="text126">DAC</text>
+    </g>
+    <g
+       font-size="16px"
+       id="g128"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="64.5"
+         y="113.5"
+         id="text130">Predistortion</text>
+    </g>
+    <rect
+       x="40"
+       y="180"
+       width="40"
+       height="40"
+       pointer-events="none"
+       id="rect132"
+       style="fill:#ffffff;stroke:#000000" />
+    <path
+       d="m 70,215 -25,0 0,-25"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path134"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#666666;stroke-miterlimit:10" />
+    <g
+       font-style="italic"
+       font-size="8px"
+       id="g136"
+       style="font-style:italic;font-size:8px;font-family:LMRoman;text-anchor:middle;fill:#666666">
+      <g
+         style="line-height:125%"
+         id="text138">
+        <path
+           d="m 76.977437,211.42 c 0.048,-0.296 -0.199999,-0.56 -0.624,-0.56 -0.56,0 -1.312,0.424 -1.456,1.272 l -0.152,0.92 -0.631999,0 -0.04,0.248 0.632001,0 -0.432001,2.592 c -0.064,0.36 -0.152,0.36 -0.688,0.36 l -0.04,0.248 0.919999,-0.024 c 0.32,0 0.696001,0 1.008001,0.024 l 0.04,-0.248 -0.167999,0 c -0.592,0 -0.592,-0.088 -0.544,-0.376 l 0.431999,-2.576 0.912,0 0.04,-0.248 -0.936001,0 0.152,-0.928 c 0.120001,-0.704 0.568,-1.088 0.920001,-1.088 0.024,0 0.144,0 0.256,0.056 -0.104,0.032 -0.264,0.136 -0.296001,0.336 -0.032,0.184 0.072,0.344 0.288001,0.344 0.232,0 0.375999,-0.16 0.407999,-0.352 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:125%;font-family:'Latin Modern Roman Slanted';-inkscape-font-specification:'Latin Modern Roman Slanted, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="path4318"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <path
+       d="m 48,209 q 1,1 1.5,1 0.5,0 1,-2 0.5,-2 1,0 0.5,2 1,-0.5 0.5,-2.5 1,-1 0.5,1.5 1,2 0.5,0.5 1,-0.5 0.5,-1 1,0.5 0.5,1.5 1,1 0.5,-0.5 1,-1.5 0.5,-1 1,-9.5 0.5,-8.5 1,-0.5 0.5,8 1,10 0.5,2 1,1 0.5,-1 1,0 0.5,1 1,0.5 0.5,-0.5 1,0 0.5,0.5 1,0.5 0.5,0 1,0 0.5,0 1,0 0.5,0 1.5,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path140"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <g
+       font-style="italic"
+       font-size="8px"
+       id="g142"
+       style="font-style:italic;font-size:8px;font-family:LMRoman;text-anchor:middle;fill:#666666">
+      <g
+         style="line-height:125%"
+         id="text144">
+        <path
+           d="m 47.378625,182.86 0.072,-1.8 -4.392,0 -0.04,0.248 0.192,0 c 0.616,0 0.616,0.088 0.568,0.376 l -0.696,4.192 c -0.048,0.288 -0.08,0.376 -0.696,0.376 l -0.192,0 -0.04,0.248 c 0.288,-0.024 0.912,-0.024 1.224,-0.024 0.328,0 1.056,0 1.336,0.024 l 0.04,-0.248 -0.264,0 c -0.76,0 -0.744,-0.104 -0.696,-0.384 l 0.328,-1.968 0.688,0 c 0.768,0 0.808,0.256 0.696,0.936 l 0.2,0 0.352,-2.12 -0.2,0 c -0.112,0.672 -0.24,0.936 -1.008,0.936 l -0.688,0 0.344,-2.024 c 0.04,-0.264 0.064,-0.32 0.44,-0.32 l 0.96,0 c 1.2,0 1.328,0.448 1.272,1.552 l 0.2,0 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8px;line-height:125%;font-family:'Latin Modern Roman Slanted';-inkscape-font-specification:'Latin Modern Roman Slanted, Normal';text-align:center;writing-mode:lr-tb;text-anchor:middle"
+           id="path4315"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       font-size="16px"
+       id="g146"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="59.5"
+         y="173.5"
+         id="text148">FFT</text>
+    </g>
+    <rect
+       x="120"
+       y="180"
+       width="40"
+       height="40"
+       pointer-events="none"
+       id="rect150"
+       style="fill:#ffffff;stroke:#000000" />
+    <path
+       d="m 125,210 q 5,0 10,-12.5 5,-12.5 10,0 5,12.5 10,12.5"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path152"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <g
+       font-size="16px"
+       id="g154"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="139.5"
+         y="173.5"
+         id="text156">Window</text>
+    </g>
+    <path
+       d="m 86.37,200 q 0,0 33.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path158"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    <path
+       d="m 81.12,200 0.07,0.14 1.23,-1.04 1.53,-0.44 1.39,-0.71 1.49,-0.53 1.29,-0.92 -0.2,-0.1 -0.08,0.83 -0.3,0.73 -0.4,0.68 -0.26,0.74 -0.51,0.62 -0.12,-0.06 0.49,0.77 0.12,0.59 0.63,0.84 0.12,0.58 0.51,0.78 0,0 -1.35,-0.6 -1.55,-1 -1.19,-0.28 -1.41,-0.71 -1.5,-0.91 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path160"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10" />
+    <g
+       font-size="16px"
+       id="g162"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="479.5"
+         y="143.5"
+         id="text164">LO</text>
+    </g>
+    <path
+       d="m 610,40 50,0 -30,20 43.63,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path166"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 678.88,60 -7,3.5 1.75,-3.5 -1.75,-3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path168"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 606.37,180 43.63,0 -30,-20 50,0"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path170"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+    <path
+       d="m 601.12,180 7,-3.5 -1.75,3.5 1.75,3.5 z"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path172"
+       inkscape:connector-curvature="0"
+       style="fill:#000000;stroke:#000000;stroke-miterlimit:10" />
+    <g
+       font-size="16px"
+       id="g174"
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+      <text
+         x="634.5"
+         y="33.5"
+         id="text176">Tx antenna</text>
+    </g>
+  </g>
+</svg>

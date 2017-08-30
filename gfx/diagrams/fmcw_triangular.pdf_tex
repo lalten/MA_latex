@@ -1,0 +1,78 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'fmcw_triangular.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{455.54619976bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.96388555)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{fmcw_triangular.pdf}}%
+    \put(0.13406116,0.11905531){\makebox(0,0)[rb]{\smash{\(f_R\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{fmcw_triangular.pdf}}%
+    \put(0.13430701,0.89175412){\makebox(0,0)[rb]{\smash{\(f_0+\Delta f\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{fmcw_triangular.pdf}}%
+    \put(0.13430701,0.75126343){\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{fmcw_triangular.pdf}}%
+    \put(0.99756962,0.70260097){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.15813775,0.94845967){\makebox(0,0)[lb]{\smash{transmitted frequency}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{fmcw_triangular.pdf}}%
+    \put(0.32446117,0.66345676){\makebox(0,0)[b]{\smash{\(T-d\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{fmcw_triangular.pdf}}%
+    \put(0.13430701,0.54052741){\makebox(0,0)[rb]{\smash{\(f_0+\Delta f\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{fmcw_triangular.pdf}}%
+    \put(0.13430701,0.40003669){\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{fmcw_triangular.pdf}}%
+    \put(0.15462548,0.59372068){\makebox(0,0)[lb]{\smash{\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{fmcw_triangular.pdf}}%
+    \put(0.13406116,0.01368734){\makebox(0,0)[rb]{\smash{\(0\)}}}%
+    \put(0.15813775,0.24600622){\makebox(0,0)[lb]{\smash{| beat frequency |}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{fmcw_triangular.pdf}}%
+    \put(0.42682619,0.31625157){\makebox(0,0)[b]{\smash{\(\tau\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{fmcw_triangular.pdf}}%
+    \put(0.99756962,0.35137424){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.99756962,0.00014752){\makebox(0,0)[b]{\smash{t}}}%
+  \end{picture}%
+\endgroup%

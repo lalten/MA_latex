@@ -1,0 +1,79 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'geometry_forward.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{315.86439388bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.25925178)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{geometry_forward.pdf}}%
+    \put(0.23546938,1.16164027){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}}}}%
+    \put(0.23546938,1.1565748){\makebox(0,0)[b]{\smash{v_D = v_R~\cos(\alpha)\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{geometry_forward.pdf}}%
+    \put(0.55423909,1.14527882){\color[rgb]{0.72156863,0.32941176,0.31372549}\makebox(0,0)[b]{\smash{\textcolor{DiagramRed}{C}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{geometry_forward.pdf}}%
+    \put(0.54008112,0.34584711){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{geometry_forward.pdf}}%
+    \put(0.09074905,1.2060644){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{\textcolor{DiagramBlue}{C}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{geometry_forward.pdf}}%
+    \put(0.94934535,0.89453831){\color[rgb]{0.50980392,0.70196078,0.4}\makebox(0,0)[b]{\smash{\textcolor{DiagramGreen}{C}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{geometry_forward.pdf}}%
+    \put(0.58979864,1.06646018){\makebox(0,0)[b]{\smash{\(\color{DiagramRed}v_D = v_R\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{geometry_forward.pdf}}%
+    \put(0.79239192,0.90178192){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}}}}%
+    \put(0.79239192,0.89671646){\makebox(0,0)[b]{\smash{v_D = v_R~\cos(-\alpha)\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{geometry_forward.pdf}}%
+    \put(0.36993214,0.7208182){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}\alpha\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{geometry_forward.pdf}}%
+    \put(0.41914315,0.70169606){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}-\alpha\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=10]{geometry_forward.pdf}}%
+    \put(0.91140563,0.77579063){\rotatebox{-110}{\makebox(0,0)[b]{\smash{\textcolor{white}}}}}%
+    \put(0.90664565,0.77752312){\rotatebox{-110}{\makebox(0,0)[b]{\smash{{DOA \curvearrowright}}}}}%
+    \put(0.05280933,1.08731672){\rotatebox{-110}{\makebox(0,0)[b]{\smash{\textcolor{white}}}}}%
+    \put(0.04804935,1.08904921){\rotatebox{-110}{\makebox(0,0)[b]{\smash{{DOA \curvearrowleft}}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=11]{geometry_forward.pdf}}%
+  \end{picture}%
+\endgroup%

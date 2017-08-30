@@ -141,7 +141,8 @@ frequency shift.
 \begin{figure}[htp]
     \centering
     \label{fig:radar_pulse}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_pulsed}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/radar_pulsed.pdf_tex}
     \caption{Pulse radars measure the time between stransmission and reception of a short EM burst. Adapted from \cite{Adams2012} p.~52}
 \end{figure}
 
@@ -168,7 +169,8 @@ the price of increased design complexity and cost \cite{Ernst2016}.
 \begin{figure}[htp]
     \centering
     \label{fig:fmcw_blocks}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/fmcw_blocks}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/fmcw_blocks.pdf_tex}
     \caption{Simplified FMCW architecture. Adapted from \cite{VanZeijl2014}}
 \end{figure}
 
@@ -177,12 +179,13 @@ visible targets and is received as echo in the same frequency band.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:radar_fmcw_2_stationary}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_fmcw_2_stationary}
+    \label{fig:fmcw_triangular}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/fmcw_triangular.pdf_tex}
     \caption{FMCW radars detect targets in the beat frequency, which is a frequency mix of the transmitted and received modulation. Adapted from \cite{Adams2012} p.~57}
 \end{figure}
 
-In the top subplot, figure \ref{fig:radar_fmcw_2_stationary} shows the transmitted frequency sweep
+In the top subplot, figure \ref{fig:fmcw_triangular} shows the transmitted frequency sweep
 from \(f_0\) to \(f_0 + \Delta f\) over a sweep length of \(T_d\) of a
 triangular modulation. The middle plot also shows the received signal as
 caused by a single stationary ideal reflector. Time of flight causes a
@@ -243,8 +246,9 @@ dR = \frac{c}{2 \Delta f}
 
 \begin{figure}[htp]
     \centering
-    \label{fig:radar_fmcw_2}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_fmcw_2}
+    \label{fig:fmcw_doppler}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/fmcw_doppler.pdf_tex}
     \caption{Target motion introduces a Doppler shift in the received signal, which changes the beat frequency during up- and down-sweep. Adapted from \cite{Adams2012} p.~57}
 \end{figure}
 
@@ -275,12 +279,13 @@ different target.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:radar_fmcw_multitarget}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_fmcw_multitarget}
+    \label{fig:fmcw_multitarget}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/fmcw_multitarget.pdf_tex}
     \caption{Each target contributes a frequency corresponding to its range in the beat spectrum.}
 \end{figure}
 
-Figure \ref{fig:radar_fmcw_multitarget} shows a real-world example of how the beat signal \(f_b\)
+Figure \ref{fig:fmcw_multitarget} shows a real-world example of how the beat signal \(f_b\)
 (top subplot) and its frequency spectrum (bottom subplot) look like. At
 \(t=T_d=32ms\), a jump in the beat frequency is caused by the modulation
 change from upsweep to downsweep. In the frequency spectrum, three
@@ -321,7 +326,8 @@ difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
 \begin{figure}[htp]
     \centering
     \label{fig:doa}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/Direction_of_Arrival}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/doa.pdf_tex}
     \caption{Direction of Arrival \(\theta\) can be estimated from phase difference \(\Delta\Phi\)}
 \end{figure}
 

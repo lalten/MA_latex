@@ -1,16 +1,15 @@
 \documentclass[%
-	fontsize=12pt,
-	headinclude,
-	paper=a4,
-	numbers=noenddot,
-	listof=totoc,	% Was alles in der Table of Contents stehen soll
-	bibliography=totoc,
-	index=totoc,
-	]{diplomarbeit}
-	% noheadsepline
+    fontsize=12pt,
+    headinclude,
+    paper=a4,
+    numbers=noenddot,
+    listof=totoc,
+    bibliography=totoc,
+    index=totoc,
+]{diplomarbeit}
 
 \areaset[20mm]{160mm}{240mm}	% Binderand, Breite und Höhe nutzbarer Bereich
-\usepackage[textwidth=160mm,textheight=240mm]{geometry}
+%\usepackage[textwidth=160mm,textheight=240mm]{geometry}
 
 \input{config/pandoc}
 \input{config/packages}
@@ -39,20 +38,20 @@
 ]{hyperref}
 \hypersetup{
     unicode=true,
-	linktoc=all,
+    linktoc=all,
     plainpages=false,
     breaklinks=true,
-    % für die DRUCK-Ausgabe
+% für die DRUCK-Ausgabe
 %    plainpages=false,
 %    allcolors=black ]{hyperref} 
 % PDF stuff    
     colorlinks=true,
     allcolors=ColorLink,
     pdfborder={0 0 0},
-	pdftitle={\@title},
-	pdfauthor={\@author},
-	pdfsubject={Master's Thesis},
-	pdfkeywords={Radar,Reprojection Mapping,Obstacle Sensor,Mobile Indoor Robots},
+    pdftitle={\@title},
+    pdfauthor={\@author},
+    pdfsubject={Master's Thesis},
+    pdfkeywords={Radar,Reprojection Mapping,Obstacle Sensor,Mobile Indoor Robots},
 }
 \urlstyle{same}
 

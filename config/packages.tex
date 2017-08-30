@@ -1,5 +1,5 @@
-% \usepackage{subcaption}
-% \expandafter\def\csname ver@subfig.sty\endcsname{}
+\usepackage{subcaption}
+\expandafter\def\csname ver@subfig.sty\endcsname{}
 
 \usepackage{bibgerm}		% Für geralpha.bst. MUSS vor babel stehen
 \usepackage[utf8]{inputenc}	% Latin1 input encoding (umlauts)
@@ -31,13 +31,18 @@
 \usepackage[table,dvipsnames,svgnames,x11names,hyperref]{xcolor}
 \definecolor{ColorLink}{rgb}{0,0.4549,0.8510}
 \colorlet{ColorAlternatedRow}{lightgray!25}
+\definecolor{DiagramRed}{HTML}{B85450}
+\definecolor{DiagramGreen}{HTML}{82B366}
+\definecolor{DiagramBlue}{HTML}{6C8EBF}
+\definecolor{DiagramGray}{HTML}{666666}
 
 
 \usepackage{graphicx}
+\graphicspath{{gfx/}{gfx/boards/}{gfx/diagrams/}{gfx/figures/}{gfx/logos/}{gfx/models/}{gfx/pictures/}{gfx/results/}{gfx/screenshots/}}
 \usepackage[export]{adjustbox} % https://tex.stackexchange.com/a/124372/142289
 \usepackage{svg}
 \usepackage{mdframed}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 
 % https://tex.stackexchange.com/questions/42619/x-mark-to-match-checkmark
 \usepackage{pifont}% http://ctan.org/pkg/pifont
