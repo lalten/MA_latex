@@ -1,0 +1,70 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'geometry_side.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{372.87131348bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.09891211)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{geometry_side.pdf}}%
+    \put(0.45962439,1.00335098){\makebox(0,0)[b]{\smash{\(color{DiagramBlue}v_D = v_R~\cos(\alpha)\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{geometry_side.pdf}}%
+    \put(0.74682267,0.89723395){\color[rgb]{0.72156863,0.32941176,0.31372549}\makebox(0,0)[b]{\smash{\textcolor{DiagramRed}{A}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{geometry_side.pdf}}%
+    \put(0.77295499,0.5600667){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{geometry_side.pdf}}%
+    \put(0.34561186,1.04312879){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{\textcolor{DiagramBlue}{B}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{geometry_side.pdf}}%
+    \put(0.19757151,0.63977247){\color[rgb]{0.50980392,0.70196078,0.4}\makebox(0,0)[b]{\smash{\textcolor{DiagramGreen}{C}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{geometry_side.pdf}}%
+    \put(0.78966855,0.82990778){\makebox(0,0)[b]{\smash{\(color{DiagramRed}v_D = v_R\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{geometry_side.pdf}}%
+    \put(0.33076492,0.64391329){\makebox(0,0)[b]{\smash{\(color{DiagramGreen}v_D = 0\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{geometry_side.pdf}}%
+    \put(0.59955471,0.59920082){\makebox(0,0)[b]{\smash{\(color{DiagramBlue}\alpha\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{geometry_side.pdf}}%
+  \end{picture}%
+\endgroup%

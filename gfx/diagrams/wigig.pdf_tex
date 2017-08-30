@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{381.02524022bp}%
+    \setlength{\unitlength}{425.406368bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,33 +48,32 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.60736933)%
+  \begin{picture}(1,0.56390135)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{wigig.pdf}}%
-    \put(0.33284347,0.54596546){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Spectrum Mask}}}%
+    \put(0.3869373,0.50185684){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{Spectrum Mask}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{wigig.pdf}}%
-    \put(0.82404325,0.08581601){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Channel 4}}}%
+    \put(0.86479898,0.04066773){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{Channel 4}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{wigig.pdf}}%
-    \put(0.58749066,0.08581601){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Channel 3}}}%
+    \put(0.62597718,0.04066773){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{Channel 3}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{wigig.pdf}}%
-    \put(0.35092461,0.08581601){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Channel 2}}}%
+    \put(0.38705615,0.04066773){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{Channel 2}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{wigig.pdf}}%
-    \put(0.11437154,0.08581601){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Channel 1}}}%
+    \put(0.14845743,0.04066773){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{Channel 1}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{wigig.pdf}}%
-    \put(0.2420363,0.42275629){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{U.S. and Canada (57.05 GHz – 64.00 GHz)}}}%
+    \put(0.39316776,0.37409039){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{U.S. and Canada (57.05 GHz – 64.00 GHz)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{wigig.pdf}}%
-    \put(0.35225112,0.36799665){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{European Union (57.00 GHz – 66.00 GHz)}}}%
+    \put(0.50106083,0.31875894){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{European Union (57.00 GHz – 66.00 GHz)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{wigig.pdf}}%
-    \put(0.38704903,0.25849081){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Japan (57.00 GHz – 66.00 GHz)}}}%
+    \put(0.5009336,0.20811189){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{Japan (57.00 GHz – 66.00 GHz)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{wigig.pdf}}%
-    \put(0.38791171,0.14897104){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{China (59.00 GHz – 64.00 GHz)}}}%
+    \put(0.50070157,0.09744895){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{China (59.00 GHz – 64.00 GHz)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{wigig.pdf}}%
-    \put(0.25562365,0.3132503){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{South Korea (57.00 GHz – 64.00 GHz)}}}%
-    \put(0.00039666,0.07087605){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{-90}{\makebox(0,0)[lb]{\smash{57.00 GHz57.24 GHz59.40 GHz61.56 GHz63.72 GHz65.88 GHz66.00 GHz}}}}%
-    \put(0.09032961,0.05314306){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Fc= 58.32 GHz}}}%
+    \put(0.39003992,0.26344071){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{South Korea (57.00 GHz – 64.00 GHz)}}}%
+    \put(0.14791243,0.00389275){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{$F_C$ = 58.32 GHz}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{wigig.pdf}}%
-    \put(0.34062189,0.20373117){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Australia (59.40 GHz – 62.90 GHz)}}}%
-    \put(0.32688348,0.05314306){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Fc= 60.48 GHz}}}%
-    \put(0.56344921,0.05314306){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Fc= 62.64 GHz}}}%
-    \put(0.80000051,0.05314306){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Fc= 64.80 GHz}}}%
+    \put(0.46175334,0.1527804){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{Australia (59.40 GHz – 62.90 GHz)}}}%
+    \put(0.38693431,0.00389275){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{$F_C$ = 60.48 GHz}}}%
+    \put(0.62596811,0.00389275){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{$F_C$ = 62.64 GHz}}}%
+    \put(0.86498739,0.00389275){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[b]{\smash{$F_C$ = 64.80 GHz}}}%
   \end{picture}%
 \endgroup%

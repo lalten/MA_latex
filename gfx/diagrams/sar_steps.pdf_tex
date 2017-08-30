@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{441.7448002bp}%
+    \setlength{\unitlength}{444.77192511bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,22 +48,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.55082732)%
-    \put(0.11299964,0.53805976){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Raw Data\\ Azimuth Reference Function\\ Far Range\\ Near Range\\ Range Reference Function\\ Range Compressed DataImage Data}}}%
+  \begin{picture}(1,0.5615991)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{sar_steps.pdf}}%
-    \put(0.65762835,0.00351334){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Azimuth}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{sar_steps.pdf}}%
-    \put(0.57489278,0.07012403){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{90}{\makebox(0,0)[lb]{\smash{Amplitude}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{sar_steps.pdf}}%
-    \put(0.27765782,0.00351334){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Amplitude}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{sar_steps.pdf}}%
-    \put(0.20359491,0.08060521){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{90}{\makebox(0,0)[lb]{\smash{Range}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{sar_steps.pdf}}%
-    \put(0.10624686,0.32176479){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Azimuth}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{sar_steps.pdf}}%
-    \put(0.01243954,0.39608597){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{90}{\makebox(0,0)[lb]{\smash{Range}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{sar_steps.pdf}}%
-    \put(0.47305344,0.3200533){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{Azimuth}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=8]{sar_steps.pdf}}%
+    \put(0.12163244,0.57398803){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
+    \put(0.15758603,0.53761376){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Raw Data}}}%
+    \put(0.52178618,0.54257812){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Range Compressed Data}}}%
+    \put(0.87658149,0.54257812){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Image Data}}}%
+    \put(0.33548045,0.23921699){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Range Reference Function}}}%
+    \put(0.7046528,0.23425266){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth Reference Function}}}%
+    \put(0.88638046,0.20848663){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Far Range}}}%
+    \put(0.8947854,0.03685483){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Near Range}}}%
+    \put(0.70465259,0.00579736){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
+    \put(0.33561154,0.00523414){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Amplitude}}}%
+    \put(0.01842742,0.43369114){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Range}}}}%
+    \put(0.57697008,0.12197413){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Amplitude}}}}%
+    \put(0.20686805,0.12250146){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Range}}}}%
+    \put(0.52188927,0.32425498){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
+    \put(0.15768911,0.32425498){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
   \end{picture}%
 \endgroup%

@@ -376,7 +376,8 @@ range (a few \(m\)) it should however not present a problem.
 \begin{figure}[htp]
     \centering
     \label{fig:attenuation_air}
-    \includegraphics[max height=10cm,max width=10cm]{figures/ITU_0676-05}
+    \def\svgscale{1}
+    \input{gfx//figures/ITU_0676-05.pdf_tex}
     \caption{Specific RF attenuation due to atmospheric gases. Source: \cite{ITU1997}}
 \end{figure}
 
@@ -389,7 +390,8 @@ for radar).
 \begin{figure}[htp]
     \centering
     \label{fig:wigig}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/spectrum}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/wigig.pdf_tex}
     \caption{WiGig Channel Plan and Frequency Allocations by Region. Source: \cite{AgilentTechnologies2013}}
 \end{figure}
 
@@ -429,10 +431,25 @@ individual few hundred transmit/receive modules \cite{Moreira2013}.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:sarmodes}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/sar}
-    \caption{Illustration of different SAR operation modes which are used to increase the swath width (ScanSAR) or improve azimuth resolution (Spotlight) compared to Stripmap mode.
-    (a) Stripmap. (b) ScanSAR. (c) Spotlight. Source: \cite{Moreira2013}}
+    \label{fig:sar_modes}\frame{
+    \begin{subfigure}{\linewidth}
+        \def\svgscale{1.0}
+        \input{gfx/diagrams/sar_modes_strip.pdf_tex}
+        \caption{Stripmap}
+    \end{subfigure}}
+    \bigskip
+    \frame{
+    \begin{subfigure}{0.45\linewidth}
+        \def\svgscale{0.75}
+        \input{gfx/diagrams/sar_modes_scan.pdf_tex}
+        \caption{ScanSAR}
+    \end{subfigure}
+    \begin{subfigure}{0.45\linewidth}
+        \def\svgscale{0.75}
+        \input{gfx/diagrams/sar_modes_spot.pdf_tex}
+        \caption{Spotlight}
+    \end{subfigure}}
+    \caption{Illustration of different SAR operation modes which are used to increase the swath width (ScanSAR) or improve azimuth resolution (Spotlight) compared to Stripmap mode. Adapted from \cite{Moreira2013}}
 \end{figure}
 
 Radar echo data is sampled in both fast-time and slow-time, with
@@ -451,8 +468,9 @@ azimuth-response from a target.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:sarsteps}
-    \includegraphics[max height=10cm,max width=10cm]{diagrams/sar2}
+    \label{fig:sar_steps}
+    \def\svgwidth{\linewidth}
+    \input{gfx/diagrams/sar_steps.pdf_tex}
     \caption{Summary of SAR processing steps where the range compressed data result from a convolution of the raw data with the range reference function. In a second step the azimuth compression is performed through a convolution with the azimuth reference function, which changes from near to far range. Source: \cite{Moreira2013}}
 \end{figure}
 

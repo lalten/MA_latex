@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{315.86439388bp}%
+    \setlength{\unitlength}{413.3390625bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,32 +48,29 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.25925178)%
+  \begin{picture}(1,1.06208095)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{geometry_forward.pdf}}%
-    \put(0.23546938,1.16164027){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}}}}%
-    \put(0.23546938,1.1565748){\makebox(0,0)[b]{\smash{v_D = v_R~\cos(\alpha)\)}}}%
+    \put(0.14266576,0.82455131){\rotatebox{70}{\makebox(0,0)[b]{\smash{\textcolor{white}{DOA $\curvearrowleft$}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{geometry_forward.pdf}}%
-    \put(0.55423909,1.14527882){\color[rgb]{0.72156863,0.32941176,0.31372549}\makebox(0,0)[b]{\smash{\textcolor{DiagramRed}{C}}}}%
+    \put(0.79685024,0.5864901){\rotatebox{70}{\makebox(0,0)[b]{\smash{\textcolor{white}{DOA $\curvearrowright$}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{geometry_forward.pdf}}%
-    \put(0.54008112,0.34584711){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
+    \put(0.3002547,0.87624141){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}v_D = v_R~\cos(\alpha)\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{geometry_forward.pdf}}%
-    \put(0.09074905,1.2060644){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{\textcolor{DiagramBlue}{C}}}}%
+    \put(0.52275485,0.86551897){\color[rgb]{0.72156863,0.32941176,0.31372549}\makebox(0,0)[b]{\smash{\textcolor{DiagramRed}{A}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{geometry_forward.pdf}}%
-    \put(0.94934535,0.89453831){\color[rgb]{0.50980392,0.70196078,0.4}\makebox(0,0)[b]{\smash{\textcolor{DiagramGreen}{C}}}}%
+    \put(0.51373561,0.25488227){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{geometry_forward.pdf}}%
-    \put(0.58979864,1.06646018){\makebox(0,0)[b]{\smash{\(\color{DiagramRed}v_D = v_R\)}}}%
+    \put(0.16856621,0.91196994){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{\textcolor{DiagramBlue}{B}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{geometry_forward.pdf}}%
-    \put(0.79239192,0.90178192){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}}}}%
-    \put(0.79239192,0.89671646){\makebox(0,0)[b]{\smash{v_D = v_R~\cos(-\alpha)\)}}}%
+    \put(0.82468615,0.67390872){\color[rgb]{0.50980392,0.70196078,0.4}\makebox(0,0)[b]{\smash{\textcolor{DiagramGreen}{C}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{geometry_forward.pdf}}%
-    \put(0.36993214,0.7208182){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}\alpha\)}}}%
+    \put(0.55186414,0.80586819){\makebox(0,0)[b]{\smash{\(\color{DiagramRed}v_D = v_R\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{geometry_forward.pdf}}%
-    \put(0.41914315,0.70169606){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}-\alpha\)}}}%
+    \put(0.66779801,0.66221858){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}v_D = v_R~\cos(-\alpha)\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{geometry_forward.pdf}}%
-    \put(0.91140563,0.77579063){\rotatebox{-110}{\makebox(0,0)[b]{\smash{\textcolor{white}}}}}%
-    \put(0.90664565,0.77752312){\rotatebox{-110}{\makebox(0,0)[b]{\smash{{DOA \curvearrowright}}}}}%
-    \put(0.05280933,1.08731672){\rotatebox{-110}{\makebox(0,0)[b]{\smash{\textcolor{white}}}}}%
-    \put(0.04804935,1.08904921){\rotatebox{-110}{\makebox(0,0)[b]{\smash{{DOA \curvearrowleft}}}}}%
+    \put(0.3835955,0.54123314){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}\alpha\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{geometry_forward.pdf}}%
+    \put(0.42131754,0.52627206){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}-\alpha\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=12]{geometry_forward.pdf}}%
   \end{picture}%
 \endgroup%

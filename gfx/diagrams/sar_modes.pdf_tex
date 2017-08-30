@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{456.04879274bp}%
+    \setlength{\unitlength}{449.71450775bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,41 +48,37 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.30146664)%
+  \begin{picture}(1,0.303947)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{sar_modes.pdf}}%
-    \put(0.1539414,0.00415975){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{(a)(b)(c)}}}%
-    \put(0.02537555,0.15541545){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{90}{\makebox(0,0)[lb]{\smash{Platform\\ Height\\ Platform\\ Height\\ Platform\\ Height}}}}%
-    \put(0.21923926,0.2611127){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.34841731}{\makebox(0,0)[lb]{\smash{Flight Path\\ Flight Path}}}}%
-    \put(0.23388242,0.2371918){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.67569494}{\makebox(0,0)[lb]{\smash{Azimuth}}}}%
-    \put(0.23989931,0.19480155){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{103.40533669}{\makebox(0,0)[lb]{\smash{Range}}}}%
-    \put(0.23582737,0.17891727){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{9.44937058}{\makebox(0,0)[lb]{\smash{Nadir Track\\ Nadir Track}}}}%
-    \put(0.60449188,0.1347006){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{11.13089384}{\makebox(0,0)[lb]{\smash{ssw 1\\ ssw 2\\ ssw 3\\ ssw 4}}}}%
-    \put(0.90972675,0.26142318){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.34841731}{\makebox(0,0)[lb]{\smash{Flight Path}}}}%
-    \put(0.90915247,0.18001594){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{9.44937058}{\makebox(0,0)[lb]{\smash{Nadir Track}}}}%
-    \put(0.03826913,0.27329686){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.04802251,0.27329686){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{=}}}%
-    \put(0.06658187,0.27329686){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.07250999,0.26891137){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.13614379,0.28432337){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.14589713,0.28432337){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{=}}}%
-    \put(0.16445656,0.28432337){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.17038355,0.27993788){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.37946214,0.26756686){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.38921549,0.26756686){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{=}}}%
-    \put(0.40777488,0.26756686){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.41370188,0.26318137){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.48899776,0.28808212){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.49875116,0.28808212){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{=}}}%
-    \put(0.51731056,0.28808212){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.52323756,0.28369662){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.71887612,0.2698179){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.72862945,0.2698179){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{=}}}%
-    \put(0.74718891,0.2698179){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.75311585,0.2654324){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.81187876,0.28344234){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.82163209,0.28344234){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{=}}}%
-    \put(0.84019156,0.28344234){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{t}}}%
-    \put(0.84611846,0.27905684){\color[rgb]{0.1372549,0.12156863,0.1254902}\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.0015369,0.06802784){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{12.04623609}{\makebox(0,0)[lb]{\smash{Swath\\ Width\\ Swath\\ Width}}}}%
+    \put(0.24945458,0.24005103){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.67569533}{\makebox(0,0)[b]{\smash{Azimuth}}}}%
+    \put(0.23017529,0.21640151){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{103.40533592}{\makebox(0,0)[b]{\smash{Range}}}}%
+    \put(0.25950954,0.18291969){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{9.44937113}{\makebox(0,0)[b]{\smash{Nadir Track}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{sar_modes.pdf}}%
+    \put(0.25070879,0.262841){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.67569533}{\makebox(0,0)[b]{\smash{Flight Path}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{sar_modes.pdf}}%
+    \put(0.61175764,0.24614232){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.67569533}{\makebox(0,0)[b]{\smash{Azimuth}}}}%
+    \put(0.59247838,0.22249281){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{103.40533953}{\makebox(0,0)[b]{\smash{Range}}}}%
+    \put(0.62181262,0.18901103){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{9.44937056}{\makebox(0,0)[b]{\smash{Nadir Track}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{sar_modes.pdf}}%
+    \put(0.93147181,0.24008746){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.67569533}{\makebox(0,0)[b]{\smash{Azimuth}}}}%
+    \put(0.91219255,0.21643803){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{103.40533953}{\makebox(0,0)[b]{\smash{Range}}}}%
+    \put(0.94152672,0.18295608){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{9.44937056}{\makebox(0,0)[b]{\smash{Nadir Track}}}}%
+    \put(0.00729041,0.27061981){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(t=t_1\)}}}%
+    \put(0.35863591,0.27211883){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(t=t_1\)}}}%
+    \put(0.69553757,0.26970159){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(t=t_1\)}}}%
+    \put(0.10512873,0.28390284){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(t=t_2\)}}}%
+    \put(0.46227471,0.2893416){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(t=t_2\)}}}%
+    \put(0.79766561,0.28601789){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(t=t_2\)}}}%
+    \put(0.60953983,0.26916057){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.67569533}{\makebox(0,0)[b]{\smash{Flight Path}}}}%
+    \put(0.94583295,0.26616945){\color[rgb]{0.1372549,0.12156863,0.1254902}\rotatebox{6.67569533}{\makebox(0,0)[b]{\smash{Flight Path}}}}%
+    \put(0.14237429,0.00333545){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{(a)}}}%
+    \put(0.48903627,0.00333545){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{(b)}}}%
+    \put(0.83720963,0.00333545){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{(c)}}}%
+    \put(0.19810904,-0.39253352){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.08546204\unitlength}\raggedright \end{minipage}}}%
+    \put(0.00208955,0.25590836){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\begin{minipage}{0.04603556\unitlength}\centering Plattform\\ Height\\ \end{minipage}}}}%
+    \put(0.35664156,0.26002764){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\begin{minipage}{0.04603556\unitlength}\centering Plattform\\ Height\\ \end{minipage}}}}%
+    \put(0.69132496,0.2564954){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[lt]{\begin{minipage}{0.04603556\unitlength}\centering Plattform\\ Height\\ \end{minipage}}}}%
+    \put(-0.01247841,0.09384103){\color[rgb]{0,0,0}\rotatebox{12.48099765}{\makebox(0,0)[lt]{\begin{minipage}{0.06632132\unitlength}\centering Swath\\ Width\end{minipage}}}}%
+    \put(0.34098068,0.09969641){\color[rgb]{0,0,0}\rotatebox{12.48099765}{\makebox(0,0)[lt]{\begin{minipage}{0.06632132\unitlength}\centering Swath\\ Width\end{minipage}}}}%
   \end{picture}%
 \endgroup%
