@@ -20,7 +20,7 @@
    sodipodi:docname="sar_modes.svg"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><marker
        inkscape:isstock="true"
        style="overflow:visible"
@@ -1923,9 +1923,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="2.7597264"
-     inkscape:cx="260.13972"
-     inkscape:cy="80.145042"
+     inkscape:zoom="3.9028425"
+     inkscape:cx="155.2674"
+     inkscape:cy="90.906047"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -2676,32 +2676,6 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6px;line-height:1.25;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"
          x="40.797043"
          y="-362.53574">Nadir Track</tspan></text>
-<text
-       y="-310.49658"
-       x="197.00984"
-       transform="matrix(0.98118871,0.19305105,0.19305105,-0.98118871,0,0)"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, ';text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#231f20;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="text2536"><tspan
-         x="197.00984 200.00981 202.82982 207.16179 208.22978"
-         y="-310.49658"
-         sodipodi:role="line"
-         id="tspan2538"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.58820009px;line-height:1.25;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, '">ssw 1</tspan><tspan
-         x="197.76582 200.76582 203.5858 207.91777 208.98576"
-         y="-304.30463"
-         sodipodi:role="line"
-         id="tspan2540"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.58820009px;line-height:1.25;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, '">ssw 2</tspan><tspan
-         x="198.94783 201.9478 204.76781 209.09978 210.16777"
-         y="-299.25262"
-         sodipodi:role="line"
-         id="tspan2542"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.58820009px;line-height:1.25;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, '">ssw 3</tspan><tspan
-         x="199.43382 202.43382 205.2538 209.58577 210.89375"
-         y="-294.47064"
-         sodipodi:role="line"
-         id="tspan2544"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.58820009px;line-height:1.25;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, '">ssw 4</tspan></text>
 <g
        transform="matrix(27.673096,-8.3900146,3.421814,11.286301,-94.177571,374.09922)"
        id="g1528"
