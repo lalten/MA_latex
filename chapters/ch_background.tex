@@ -138,8 +138,13 @@ modulation, which combines the higher transmission energy of longer
 pulses with the resolution of short pulses. Velocity is again known from
 frequency shift.
 
-%\includesvg[width=0.5\textwidth]{"diagrams/radar_pulsed"}
-Adapted from \cite{Adams2012} p.~52
+\begin{figure}[htp]
+    \centering
+    \label{fig:radar_pulse}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_pulsed}
+    \caption{Pulse radars measure the time between stransmission and reception of a short EM burst. Adapted from \cite{Adams2012} p.~52}
+\end{figure}
+
 
 \subsection{Frequency-modulated continuous wave (FMCW)
 radar}\label{frequency-modulated-continuous-wave-fmcw-radar}
@@ -160,16 +165,24 @@ Instead of a VCO, direct digital synthesizers together with phase-locked
 loops (PLL) can be used. They generate better (more linear) sweeps at
 the price of increased design complexity and cost \cite{Ernst2016}.
 
-%\includesvg[width=0.5\textwidth]{"diagrams/fmcw_blocks"}
-Adapted from \cite{VanZeijl2014}
+\begin{figure}[htp]
+    \centering
+    \label{fig:fmcw_blocks}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/fmcw_blocks}
+    \caption{Simplified FMCW architecture. Adapted from \cite{VanZeijl2014}}
+\end{figure}
 
 After the VCO's signal is amplified and transmitted, it reflects at
 visible targets and is received as echo in the same frequency band.
 
-%\includesvg[width=0.5\textwidth]{"diagrams/radar_fmcw_2_stationary"}
-Adapted from \cite{Adams2012} p.~57
+\begin{figure}[htp]
+    \centering
+    \label{fig:radar_fmcw_2_stationary}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_fmcw_2_stationary}
+    \caption{FMCW radars detect targets in the beat frequency, which is a frequency mix of the transmitted and received modulation. Adapted from \cite{Adams2012} p.~57}
+\end{figure}
 
-In the top subplot, figure \#REF shows the transmitted frequency sweep
+In the top subplot, figure \ref{fig:radar_fmcw_2_stationary} shows the transmitted frequency sweep
 from \(f_0\) to \(f_0 + \Delta f\) over a sweep length of \(T_d\) of a
 triangular modulation. The middle plot also shows the received signal as
 caused by a single stationary ideal reflector. Time of flight causes a
@@ -228,8 +241,12 @@ f_R = \frac{2R}{c} \frac{\Delta f}{T_d} \iff R=\frac{c T_d}{2\Delta f}f_R
 dR = \frac{c}{2 \Delta f}
 \]
 
-%\includesvg[width=0.5\textwidth]{"diagrams/radar_fmcw_2"}
-Adapted from \cite{Adams2012} p.~57
+\begin{figure}[htp]
+    \centering
+    \label{fig:radar_fmcw_2}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_fmcw_2}
+    \caption{Target motion introduces a Doppler shift in the received signal, which changes the beat frequency during up- and down-sweep. Adapted from \cite{Adams2012} p.~57}
+\end{figure}
 
 A moving target however will introduce a Doppler shift \(f_D\) in the
 received signal \(v_{Rx}\), which will shift the target's beat frequency
@@ -251,18 +268,19 @@ moving target a range and Doppler speed corresponding to the same
 resulting frequencies would not be distinguishable.
 
 Of course, more than one target can be visible at a time. If multiple
-echos are received, as in figure \#REF , the intermediate frequency will
+echos are received, as in figure \ref{fig:radar_fmcw_multitarget}, the intermediate frequency will
 contain multiple frequencies. The beat signal will have more than one
 dominant frequency in its spectrum, with each one corresponding to a
 different target.
 
-\begin{figure}
-\centering
-%\includesvg[width=0.5\textwidth]{"diagrams/radar_fmcw_multitarget"}
-\caption{restrict-height}
+\begin{figure}[htp]
+    \centering
+    \label{fig:radar_fmcw_multitarget}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/radar_fmcw_multitarget}
+    \caption{Each target contributes a frequency corresponding to its range in the beat spectrum.}
 \end{figure}
 
-Figure \#REF shows a real-world example of how the beat signal \(f_b\)
+Figure \ref{fig:radar_fmcw_multitarget} shows a real-world example of how the beat signal \(f_b\)
 (top subplot) and its frequency spectrum (bottom subplot) look like. At
 \(t=T_d=32ms\), a jump in the beat frequency is caused by the modulation
 change from upsweep to downsweep. In the frequency spectrum, three
@@ -275,10 +293,11 @@ in bottom subplot however shows the magnitude \(\|S\|\) of the analytic
 signal\footnote{A good explanation is available at [ping.se's I/Q Data for Dummies](http://whiteboard.ping.se/SDR/IQ)}
 \(S = S_I + j~S_Q\) with the imaginary unit \(j\).
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{figures/fig_raw_beat.png}
-\caption{restrict-height}
+\begin{figure}[htp]
+    \centering
+    \label{fig:fig_raw_beat}
+    \includegraphics[max height=10cm,max width=10cm]{figures/fig_raw_beat.png}
+    \caption{Beat signal and spectrum / range profile in a real-world measurement.}
 \end{figure}
 
 \subsection{Direction of Arrival}\label{direction-of-arrival}
@@ -299,14 +318,14 @@ difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
 \(\angle S_1 - \angle S_2\) of the complex analytic antenna signals
 \(S = S_I + j~S_Q\).
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{diagrams/Direction_of_Arrival.png}
-\caption{restrict-height}
+\begin{figure}[htp]
+    \centering
+    \label{fig:doa}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/Direction_of_Arrival}
+    \caption{Direction of Arrival \(\theta\) can be estimated from phase difference \(\Delta\Phi\)}
 \end{figure}
 
-
-
+TODO
 \cite{Hacker2010} \cite{Cho2017}
 
 \subsection{Frequencies}\label{frequencies}
@@ -331,29 +350,42 @@ The drawback is the very limited maximum bandwidth of \(250MHz\) in this
 band.
 
 Some newer radars use the \(60 GHz\) ISM band. It allows a rather wide
-bandwidth of up to \(9GHz\) in some regions (see figure \#REF ).
+bandwidth of up to \(9GHz\) in some regions (see figure \ref{fig:wigig} ).
 According to equation \#REF, this gives a very good range resolution in
 the order of few \(cm\). At these high frequencies, RF energy
 attenuation in material increases noticably \cite{FerrisJr.1998}. The
 effect is that \(60GHz\) waves are limited to short ranges of a few
 \(m\) and don't usually penetrate walls.
-\includegraphics[width=0.5\textwidth]{figures/rf_attenuation.png}Source:
-\cite{FerrisJr.1998}
+
+\begin{figure}[htp]
+    \centering
+    \label{fig:attenuation}
+    \includegraphics[max height=10cm,max width=10cm]{figures/rf_attenuation}
+    \caption{Totl attenuation of RF energy when transmitted through various materials as a function of frequency. Source: \cite{FerrisJr.1998}}
+\end{figure}
 
 Atmospheric attenuation also limits long-range applications. In short
 range (a few \(m\)) it should however not present a problem.
-%\includesvg[width=0.5\textwidth]{figures/ITU_0676-05}
-Source: \cite{ITU1997}
+
+\begin{figure}[htp]
+    \centering
+    \label{fig:attenuation_air}
+    \includegraphics[max height=10cm,max width=10cm]{figures/ITU_0676-05}
+    \caption{Specific RF attenuation due to atmospheric gases. Source: \cite{ITU1997}}
+\end{figure}
 
 The downside is that there are some other technologies using the same
 frequency bands, most notably 802.11ad a.k.a.
 WiGig\cite{AgilentTechnologies2013}. The WiGig frequency allocations in
-figure \#REF show in which regions the \(60GHz\) band is available (also
+figure \ref{fig:wigig} show in which regions the \(60GHz\) band is available (also
 for radar).
 
-%\includesvg[width=0.5\textwidth]{"diagrams/spectrum"}
-WiGig Channel Plan and Frequency Allocations by Region. Source:
-\cite{AgilentTechnologies2013}
+\begin{figure}[htp]
+    \centering
+    \label{fig:wigig}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/spectrum}
+    \caption{WiGig Channel Plan and Frequency Allocations by Region. Source: \cite{AgilentTechnologies2013}}
+\end{figure}
 
 \section{Overview of Radar
 Research}\label{overview-of-radar-research}
@@ -389,11 +421,13 @@ operate in either mode by dividing their planar antenna into
 sub-apertures, whose phase and amplitude are controlled by the
 individual few hundred transmit/receive modules \cite{Moreira2013}.
 
-%\includesvg[width=0.5\textwidth]{"diagrams/sar"}
-Illustration of different SAR operation modes which are used to increase
-the swath width (ScanSAR) or improve azimuth resolution (Spotlight)
-compared to Stripmap mode. (a) Stripmap. (b) ScanSAR. (c) Spotlight.
-Source: \cite{Moreira2013}
+\begin{figure}[htp]
+    \centering
+    \label{fig:sarmodes}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/sar}
+    \caption{Illustration of different SAR operation modes which are used to increase the swath width (ScanSAR) or improve azimuth resolution (Spotlight) compared to Stripmap mode.
+    (a) Stripmap. (b) ScanSAR. (c) Spotlight. Source: \cite{Moreira2013}}
+\end{figure}
 
 Radar echo data is sampled in both fast-time and slow-time, with
 fast-time meaning the range scan dimension (fast, because the EM waves
@@ -409,12 +443,12 @@ In a second step, azimuth compression takes place by convolving the
 signal in slow-time with the complex conjugate of the expected
 azimuth-response from a target.
 
-%\includesvg[width=0.5\textwidth]{"diagrams/sar2"}
-Summary of SAR processing steps where the range compressed data result
-from a convolution of the raw data with the range reference function. In
-a second step the azimuth compression is performed through a convolution
-with the azimuth reference function, which changes from near to far
-range. Source: \cite{Moreira2013}
+\begin{figure}[htp]
+    \centering
+    \label{fig:sarsteps}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/sar2}
+    \caption{Summary of SAR processing steps where the range compressed data result from a convolution of the raw data with the range reference function. In a second step the azimuth compression is performed through a convolution with the azimuth reference function, which changes from near to far range. Source: \cite{Moreira2013}}
+\end{figure}
 
 An elemental scatterer at range \(R(t)\) will return an echo \(s_a(t)\)
 over time \(t\): \[
@@ -441,7 +475,7 @@ and also called the Doppler frequency.
 
 The most challenging aspect of SAR is the correction of range cell
 migration induced defocusing. Range cell migration is visible in figure
-\#REF's curvature of range compressed data. It occurs when a point
+\ref{fig:sarsteps}'s curvature of range compressed data. It occurs when a point
 target's echo energy is distributed over several range cells, causing
 azimuth defocusing. This effect is range-variant, as the curvature
 depends on \(R_0\). Hence a non-stationary two-dimensional reference

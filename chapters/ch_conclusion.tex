@@ -79,10 +79,16 @@ causes a lot of trouble.
 Usually, ultrasound sensors measure the distance to the closest object.
 However, K.C. Lee's project log of their ``Sonar for the visually
 impaired'' project \cite{Lee2015} shows how cheap sensors can be hacked
-to read a range profile that looks very similar (see figure \#REF) to
+to read a range profile that looks very similar (see figure \ref{fig:had_us}) to
 what is used for the radar reprojection method. It might be possible to
 adapt the algorithms in this thesis to use ultrasound sensors.
-\includegraphics[width=0.5\textwidth]{pictures/had_us}
+
+\begin{figure}[htp]
+    \centering
+    \label{fig:had_us}
+    \includegraphics[max height=10cm,max width=10cm]{pictures/had_us}
+    \caption{Range profile measurement with a hacked HCSR04 ultrasound module. Source: \cite{Lee2015}}
+\end{figure}
 
 Most ultrasound range sensors use the time of flight of a pulsed echo,
 but FMCW-based ultrasound modules have been proposed
@@ -106,19 +112,33 @@ modulated flash lidars and the right optics.
 
 \subsection{3D case}\label{d-case}
 
-Chapter \#REF describes the general geometry for 2D-cases. However, it
+Chapter \ref{idea} describes the geometry for 2D-cases. However, it
 is possible to extend the concept to the three dimensional space if a
 radar has more than two non-collinear receiving antennas, like
-visualized in figure \#REF. Horizontal DOA would be measured between
+visualized in figure \ref{fig:2ddoa}. Horizontal DOA would be measured between
 antennas at positions \(Rx1\) and \(Rx2\) while vertical DOA would be
 measured between \(Rx1\) and \(Rx3\).
-%\includesvg[width=0.5\textwidth]{"diagrams/2D-DOA"}
+
+\begin{figure}[htp]
+    \centering
+    \label{fig:2ddoa}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/2D-DOA}
+    \caption{Non-collinear triple receive antenna arrangement.}
+\end{figure}
+
 Reprojection mapping could then be used to build 3D occupancy maps. The
 reprojection angle \(\alpha\) would then describe a circle at distance
 \(R~cos(\alpha)\) around the radar path, on which the detected target
 lies. Direction of arrival in horizontal and vertical planes would then
 have to be used to pinpoint the target location on the circle.
-%\includesvg[width=0.5\textwidth]{"diagrams/3Dcase"}
+
+\begin{figure}[htp]
+    \centering
+    \label{fig:3dcase}
+    \includegraphics[max height=10cm,max width=10cm]{diagrams/3Dcase}
+    \caption{A target detected at range \(R\) and relative Doppler speed corresponding to reprojection angle \(\alpha\) will be at a point on a circle (green) around the flight path (blue).}
+\end{figure}
+
 This holds also for the 2D-case: The possible locations for targets are
 then at the intersection of reprojection cone circle and floor plane.
 
@@ -131,13 +151,13 @@ publications \cite{Becker2015}.
 sensors}\label{single-receive-antennas-on-multiple-sensors}
 
 Direction of arrival is a good solution to resolve the ambiguities
-presented in the general 2D-case \#REF and 3D-case \#REF geometry for a
+presented in the general 2D-case \ref{geometry-for-the-general-case} and 3D-case geometry (figure \label{fig:3dcase}) for a
 sensor with a sufficient number of antennas. However, it should also be
 possible to use multiple, spatially separated sensors instead. Each
 sensor measures a reprojection angle. A target visible to both sensors
 can then be localized unambiguously with triangulation.
 
-
+TODO
 
 3D scenario. standard case: two intersecting spheres --\textgreater{}
 intersection circle doppler reprojection case: angle --\textgreater{}
@@ -162,4 +182,4 @@ navigating real-world environments should be the implementation of an
 online version of reprojection mapping. This will also show if the
 results need to be further improved with more advanced noise rejection.
 
-\ldots{}
+TODO
