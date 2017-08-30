@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{138.42744995bp}%
+    \setlength{\unitlength}{138.42716824bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,14 +48,14 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1)%
+  \begin{picture}(1,1.00000407)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{outlook_3d.pdf}}%
-    \put(0.4687348,0.28137253){\makebox(0,0)[b]{\smash{$\color{DiagramRed}\alpha$}}}%
+    \put(0.41591376,0.35153482){\makebox(0,0)[b]{\smash{$\color{DiagramRed}\alpha$}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{outlook_3d.pdf}}%
-    \put(0.62477322,0.5645534){\makebox(0,0)[b]{\smash{$\color{DiagramRed}\alpha$}}}%
+    \put(0.6239654,0.56536567){\makebox(0,0)[b]{\smash{$\color{DiagramRed}\alpha$}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{outlook_3d.pdf}}%
-    \put(0.73203517,0.73740927){\makebox(0,0)[b]{\smash{$\color{DiagramGreen}R$}}}%
+    \put(0.72984062,0.73937774){\makebox(0,0)[b]{\smash{$\color{DiagramGreen}R$}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{outlook_3d.pdf}}%
-    \put(0.4225012,0.5067614){\makebox(0,0)[b]{\smash{$\color{DiagramRed}\alpha$}}}%
+    \put(0.42169297,0.50757355){\makebox(0,0)[b]{\smash{$\color{DiagramRed}\alpha$}}}%
   \end{picture}%
 \endgroup%
