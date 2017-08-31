@@ -1,2 +1,486 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="468px" height="530px" version="1.1"><defs><linearGradient x1="0%" y1="100%" x2="0%" y2="0%" id="mx-gradient-82b366-1-6c8ebf-1-s-0"><stop offset="0%" style="stop-color:#6C8EBF"/><stop offset="100%" style="stop-color:#82B366"/></linearGradient><linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-6c8ebf-1-82b366-1-s-0"><stop offset="0%" style="stop-color:#6C8EBF"/><stop offset="100%" style="stop-color:#82B366"/></linearGradient><linearGradient x1="0%" y1="100%" x2="0%" y2="0%" id="mx-gradient-cccccc-1-ffffff-1-s-0"><stop offset="0%" style="stop-color:#ffffff"/><stop offset="100%" style="stop-color:#CCCCCC"/></linearGradient></defs><g transform="translate(0.5,0.5)"><path d="M 170.4 282.8 L 382.88 183.46" fill="none" stroke="#82b366" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><path d="M 35 66 L 55 66 L 55 127.12 L 45 136 L 35 127.12 Z" fill="url(#mx-gradient-82b366-1-6c8ebf-1-s-0)" stroke="none" transform="rotate(20,45,101)" pointer-events="none"/><g fill="#000000" font-family="LMRoman" text-anchor="middle" font-size="12px" transform="rotate(-70,45,101)"><text x="44.5" y="104.5">\textcolor{white}{DOA $\curvearrowleft$}</text></g><path d="M 373 189 L 393 189 L 393 250.12 L 383 259 L 373 250.12 Z" fill="url(#mx-gradient-6c8ebf-1-82b366-1-s-0)" stroke="none" transform="rotate(20,383,224)" pointer-events="none"/><g fill="#000000" font-family="LMRoman" text-anchor="middle" font-size="12px" transform="rotate(-70,383,224)"><text x="382.5" y="227.5">\textcolor{white}{DOA $\curvearrowright$}</text></g><rect x="157" y="341" width="20" height="190" fill="url(#mx-gradient-cccccc-1-ffffff-1-s-0)" stroke="none" transform="rotate(20,167,436)" pointer-events="none"/><rect x="63" y="307" width="20" height="190" fill="url(#mx-gradient-cccccc-1-ffffff-1-s-0)" stroke="none" transform="rotate(20,73,402)" pointer-events="none"/><path d="M 95.3 123.23 L 70.49 70.11" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/><path d="M 97.53 127.99 L 91.39 123.13 L 95.3 123.23 L 97.74 120.16 Z" fill="#6c8ebf" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="LMRoman" text-anchor="middle" font-size="12px"><text x="129.54" y="75.96">\(\color{DiagramBlue}v_D = v_R~\cos(\alpha)\)</text></g><ellipse cx="245" cy="76" rx="20" ry="20" fill="#f8cecc" stroke="#b85450" transform="rotate(360,245,76)" pointer-events="none"/><g transform="translate(184.5,62.5)rotate(360,60,13)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="120" height="26" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: LMRoman; color: rgb(184, 84, 80); line-height: 1.2; vertical-align: top; width: 120px; white-space: normal; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">\textcolor{DiagramRed}{A}</div></div></foreignObject><text x="60" y="19" fill="#B85450" text-anchor="middle" font-size="12px" font-family="LMRoman">\textcolor{DiagramRed}{A}</text></switch></g><path d="M 208 441 L 243.81 342.98" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 245.62 338.05 L 246.5 345.83 L 243.81 342.98 L 239.93 343.42 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="LMRoman" text-anchor="middle" font-size="12px"><text x="239.84" y="397">\(v_R\)</text></g><ellipse cx="62" cy="52" rx="20" ry="20" fill="#dae8fc" stroke="#6c8ebf" transform="rotate(360,62,52)" pointer-events="none"/><g transform="translate(-0.5,38.5)rotate(360,61.5,13)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="123" height="26" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: LMRoman; color: rgb(108, 142, 191); line-height: 1.2; vertical-align: top; width: 123px; white-space: normal; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">\textcolor{DiagramBlue}{B}</div></div></foreignObject><text x="62" y="19" fill="#6C8EBF" text-anchor="middle" font-size="12px" font-family="LMRoman">\textcolor{DiagramBlue}{B}</text></switch></g><ellipse cx="401" cy="175" rx="20" ry="20" fill="#d5e8d4" stroke="#82b366" transform="rotate(360,401,175)" pointer-events="none"/><g transform="translate(335.5,161.5)rotate(360,65,13)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="130" height="26" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: LMRoman; color: rgb(130, 179, 102); line-height: 1.2; vertical-align: top; width: 130px; white-space: normal; word-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;">\textcolor{DiagramGreen}{C}</div></div></foreignObject><text x="65" y="19" fill="#82B366" text-anchor="middle" font-size="12px" font-family="LMRoman">\textcolor{DiagramGreen}{C}</text></switch></g><path d="M 203.16 192.01 L 238.21 94.81" fill="none" stroke="#b85450" stroke-miterlimit="10" pointer-events="none"/><path d="M 201.38 196.95 L 200.46 189.18 L 203.16 192.01 L 207.05 191.55 Z" fill="#b85450" stroke="#b85450" stroke-miterlimit="10" pointer-events="none"/><g fill="#B85450" font-family="LMRoman" text-anchor="middle" font-size="12px"><text x="259.54" y="112.32">\(\color{DiagramRed}v_D = v_R\)</text></g><path d="M 329.77 208.3 L 382.89 183.49" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/><path d="M 325.01 210.53 L 329.87 204.39 L 329.77 208.3 L 332.84 210.74 Z" fill="#82b366" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/><g fill="#82B366" font-family="LMRoman" text-anchor="middle" font-size="12px"><text x="319.44" y="186.54">\(\color{DiagramGreen}v_D = v_R~\cos(-\alpha)\)</text></g><path d="M 70.5 70.1 L 170.4 282.8" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><path d="M 187 236 Q 167 229 156.36 240.35" fill="none" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/><path d="M 152.76 244.18 L 155 236.68 L 156.36 240.35 L 160.11 241.47 Z" fill="#6c8ebf" stroke="#6c8ebf" stroke-miterlimit="10" pointer-events="none"/><g fill="#6C8EBF" font-family="LMRoman" text-anchor="middle" font-size="12px"><text x="172.6" y="249.05">\(\color{DiagramBlue}\alpha\)</text></g><ellipse cx="143" cy="358" rx="80" ry="80" fill="#f5f5f5" stroke="#666666" transform="rotate(20,143,358)" pointer-events="none"/><rect x="180" y="345" width="20" height="60" rx="3" ry="3" fill="#ffffff" stroke="#666666" transform="rotate(20,190,375)" pointer-events="none"/><rect x="86" y="311" width="20" height="60" rx="3" ry="3" fill="#ffffff" stroke="#666666" transform="rotate(20,96,341)" pointer-events="none"/><path d="M 187 236 Q 206 243 207.42 258.66" fill="none" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/><path d="M 207.9 263.89 L 203.78 257.23 L 207.42 258.66 L 210.75 256.6 Z" fill="#82b366" stroke="#82b366" stroke-miterlimit="10" pointer-events="none"/><g fill="#82B366" font-family="LMRoman" text-anchor="middle" font-size="12px"><text x="192.09" y="256.78">\(\color{DiagramGreen}-\alpha\)</text></g><rect x="157" y="281" width="20" height="20" fill="#ffffff" stroke="#000000" transform="rotate(20,167,291)" pointer-events="none"/><path d="M 160 263 L 180 283 L 160 303 Z" fill="#ffffff" stroke="#000000" stroke-miterlimit="10" transform="rotate(110,170,283)" pointer-events="none"/><path d="M 173.41 273.6 L 238.2 94.81" fill="none" stroke="#b85450" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:xhtml="http://www.w3.org/1999/xhtml"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="394.83051"
+   height="497.19101"
+   version="1.1"
+   id="svg125"
+   sodipodi:docname="geometry_forward.svg"
+   inkscape:version="0.92.2 (unknown)">
+  <metadata
+     id="metadata129">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     id="namedview127"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.7811321"
+     inkscape:cx="139.53536"
+     inkscape:cy="310.76076"
+     inkscape:window-x="1145"
+     inkscape:window-y="1224"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg125" />
+  <defs
+     id="defs17">
+    <linearGradient
+       x1="65.479004"
+       y1="72.695061"
+       x2="65.479004"
+       y2="35.278484"
+       id="mx-gradient-82b366-1-6c8ebf-1-s-0"
+       gradientTransform="matrix(0.50228683,0.18281746,-0.6398611,1.7580039,10.588358,-40.799861)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         style="stop-color:#6C8EBF"
+         id="stop2" />
+      <stop
+         offset="100%"
+         style="stop-color:#82B366"
+         id="stop4" />
+    </linearGradient>
+    <linearGradient
+       x1="697.81909"
+       y1="101.02475"
+       x2="697.81909"
+       y2="138.44131"
+       id="mx-gradient-6c8ebf-1-82b366-1-s-0"
+       gradientTransform="matrix(0.50228683,0.18281746,-0.6398611,1.7580039,73.040732,-148.98486)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         style="stop-color:#6C8EBF"
+         id="stop7" />
+      <stop
+         offset="100%"
+         style="stop-color:#82B366"
+         id="stop9" />
+    </linearGradient>
+    <linearGradient
+       x1="0"
+       y1="1"
+       x2="0"
+       y2="0"
+       id="mx-gradient-cccccc-1-ffffff-1-s-0">
+      <stop
+         offset="0%"
+         style="stop-color:#ffffff"
+         id="stop12" />
+      <stop
+         offset="100%"
+         style="stop-color:#CCCCCC"
+         id="stop14" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-cccccc-1-ffffff-1-s-0"
+       id="linearGradient936"
+       x1="483.90649"
+       y1="172.27914"
+       x2="483.90649"
+       y2="110.63501"
+       gradientTransform="matrix(0.32444284,0,0,3.082207,103.21468,-103.89019)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#mx-gradient-cccccc-1-ffffff-1-s-0"
+       id="linearGradient938"
+       x1="194.17905"
+       y1="161.24809"
+       x2="194.17905"
+       y2="99.603951"
+       gradientTransform="matrix(0.32444284,0,0,3.082207,97.254889,-69.689846)"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     style="fill:none;stroke:#82b366;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path19"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 143.73049,251.3 212.48,-99.34" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:url(#mx-gradient-82b366-1-6c8ebf-1-s-0);stroke:none"
+     id="path21"
+     pointer-events="none"
+     d="M 20.904271,33.190557 39.698123,40.03096 18.793852,97.46497 6.359787,102.38924 0,90.62457 Z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+     id="g25"
+     transform="matrix(0.06986683,-0.19195753,0.19195753,0.06986683,-2.464079,73.88179)"
+     font-size="12px">
+    <text
+       id="text23"
+       y="104.5"
+       x="44.5">\textcolor{white}{\tiny DOA $\curvearrowleft$}</text>
+  </g>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:url(#mx-gradient-6c8ebf-1-82b366-1-s-0);stroke:none"
+     id="path27"
+     pointer-events="none"
+     d="m 358.90427,156.19056 18.79385,6.8404 -20.90427,57.43401 -12.43407,4.92427 L 338,213.62457 Z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+     id="g31"
+     transform="matrix(0.0787315,-0.21631303,0.21631303,0.0787315,279.46792,260.48622)"
+     font-size="12px">
+    <text
+       id="text29"
+       y="227.5"
+       x="382.5">\textcolor{white}{\tiny DOA $\curvearrowright$}</text>
+  </g>
+  <rect
+     style="fill:url(#linearGradient936);stroke:none"
+     id="rect33"
+     pointer-events="none"
+     transform="rotate(20)"
+     height="190"
+     width="20"
+     y="237.1098"
+     x="260.21469" />
+  <rect
+     style="fill:url(#linearGradient938);stroke:none"
+     id="rect35"
+     pointer-events="none"
+     transform="rotate(20)"
+     height="190"
+     width="20"
+     y="237.31015"
+     x="160.25488" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path37"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 68.630492,91.73 -24.81,-53.12" />
+  <path
+     style="fill:#6c8ebf;stroke:#6c8ebf;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path39"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 70.860492,96.49 -6.14,-4.86 3.91,0.1 2.44,-3.07 z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+     id="g43"
+     font-size="12px"
+     transform="matrix(0.13603861,0,0,1,64.026727,-28.131356)">
+    <text
+       id="text41"
+       y="73.714233"
+       x="-43.796886"
+       style="text-align:start;text-anchor:start">\(\color{DiagramBlue}v_D = v_R~\cos(\alpha)\)</text>
+  </g>
+  <circle
+     style="fill:#f8cecc;stroke:#b85450"
+     r="20"
+     id="ellipse45"
+     pointer-events="none"
+     cy="44.5"
+     cx="218.33049" />
+  <g
+     id="g51"
+     transform="translate(157.83049,31)">
+    <switch
+       id="switch49">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="26"
+         width="120"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: LMRoman; color: rgb(184, 84, 80); line-height: 1.2; vertical-align: top; width: 120px; white-space: normal; word-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;">\textcolor{DiagramRed}{A}</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#b85450"
+         id="text47"
+         font-size="12px"
+         y="19"
+         x="60">\textcolor{DiagramRed}{A}</text>
+    </switch>
+  </g>
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path53"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 181.33049,409.5 35.81,-98.02" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path55"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 218.95049,306.55 0.88,7.78 -2.69,-2.85 -3.88,0.44 z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+     id="g59"
+     font-size="12px"
+     transform="translate(-26.669508,-31.5)">
+    <text
+       id="text57"
+       y="397"
+       x="239.84">\(v_R\)</text>
+  </g>
+  <circle
+     style="fill:#dae8fc;stroke:#6c8ebf"
+     r="20"
+     id="ellipse61"
+     pointer-events="none"
+     cy="20.5"
+     cx="35.33049" />
+  <g
+     id="g67"
+     transform="matrix(0.16116331,0,0,1,24.206781,7)">
+    <switch
+       id="switch65">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="26"
+         width="123"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: LMRoman; color: rgb(108, 142, 191); line-height: 1.2; vertical-align: top; width: 123px; white-space: normal; word-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;">\textcolor{DiagramBlue}{B}</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#6c8ebf"
+         id="text63"
+         font-size="12px"
+         y="19"
+         x="62">\textcolor{DiagramBlue}{B}</text>
+    </switch>
+  </g>
+  <circle
+     style="fill:#d5e8d4;stroke:#82b366"
+     r="20"
+     id="ellipse69"
+     pointer-events="none"
+     cy="143.5"
+     cx="374.33051" />
+  <g
+     id="g75"
+     transform="matrix(0.07792261,0,0,1,368.07126,130)">
+    <switch
+       id="switch73">
+      <foreignObject
+         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+         height="26"
+         width="130"
+         pointer-events="all"
+         style="overflow:visible;">
+        <xhtml:div
+           style="display: inline-block; font-size: 12px; font-family: LMRoman; color: rgb(130, 179, 102); line-height: 1.2; vertical-align: top; width: 130px; white-space: normal; word-wrap: normal; text-align: center;">
+          <xhtml:div
+             style="display:inline-block;text-align:inherit;text-decoration:inherit;">\textcolor{DiagramGreen}{C}</xhtml:div>
+        </xhtml:div>
+      </foreignObject>
+      <text
+         style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#82b366"
+         id="text71"
+         font-size="12px"
+         y="19"
+         x="65">\textcolor{DiagramGreen}{C}</text>
+    </switch>
+  </g>
+  <path
+     style="fill:none;stroke:#b85450;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path77"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 176.49049,160.51 35.05,-97.2" />
+  <path
+     style="fill:#b85450;stroke:#b85450;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path79"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 174.71049,165.45 -0.92,-7.77 2.7,2.83 3.89,-0.46 z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#b85450"
+     id="g83"
+     font-size="12px"
+     transform="matrix(0.21850869,0,0,1,175.75351,-31.5)">
+    <text
+       id="text81"
+       y="110.63568"
+       x="185.02682"
+       style="text-align:start;text-anchor:start">\(\color{DiagramRed}v_D = v_R\)</text>
+  </g>
+  <path
+     style="fill:none;stroke:#82b366;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path85"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 303.10049,176.8 53.12,-24.81" />
+  <path
+     style="fill:#82b366;stroke:#82b366;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path87"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 298.34049,179.03 4.86,-6.14 -0.1,3.91 3.07,2.44 z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#82b366"
+     id="g91"
+     font-size="12px"
+     transform="matrix(0.32646851,0,0,1,193.1871,-34.868644)">
+    <text
+       id="text89"
+       y="182.04846"
+       x="475.06979"
+       style="text-align:end;text-anchor:end">\(\color{DiagramGreen}v_D = v_R~\cos(-\alpha)\)</text>
+  </g>
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path93"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 43.830492,38.6 143.73049,251.3" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path95"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 160.33049,204.5 q -20,-7 -30.64,4.35" />
+  <path
+     style="fill:#6c8ebf;stroke:#6c8ebf;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path97"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 126.09049,212.68 2.24,-7.5 1.36,3.67 3.75,1.12 z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#6c8ebf"
+     id="g101"
+     font-size="12px"
+     transform="translate(-26.669508,-31.5)">
+    <text
+       id="text99"
+       y="249.05"
+       x="172.60001">\(\color{DiagramBlue}\alpha\)</text>
+  </g>
+  <circle
+     style="fill:#f5f5f5;stroke:#666666"
+     r="80"
+     id="ellipse103"
+     pointer-events="none"
+     transform="rotate(20)"
+     cy="267.02228"
+     cx="220.98448" />
+  <rect
+     style="fill:#ffffff;stroke:#666666"
+     id="rect105"
+     pointer-events="none"
+     transform="rotate(20)"
+     ry="3"
+     rx="3"
+     height="60"
+     width="20"
+     y="236.92209"
+     x="260.96439" />
+  <rect
+     style="fill:#ffffff;stroke:#666666"
+     id="rect107"
+     pointer-events="none"
+     transform="rotate(20)"
+     ry="3"
+     rx="3"
+     height="60"
+     width="20"
+     y="237.12244"
+     x="161.00458" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path109"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 160.33049,204.5 q 19,7 20.42,22.66" />
+  <path
+     style="fill:#82b366;stroke:#82b366;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path111"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 181.23049,232.39 -4.12,-6.66 3.64,1.43 3.33,-2.06 z" />
+  <g
+     style="font-size:12px;font-family:LMRoman;text-anchor:middle;fill:#82b366"
+     id="g115"
+     font-size="12px"
+     transform="translate(-26.669508,-31.5)">
+    <text
+       id="text113"
+       y="256.78"
+       x="192.09">\(\color{DiagramGreen}-\alpha\)</text>
+  </g>
+  <rect
+     style="fill:#ffffff;stroke:#000000"
+     id="rect117"
+     pointer-events="none"
+     transform="rotate(20)"
+     height="20"
+     width="20"
+     y="185.85437"
+     x="210.62175" />
+  <path
+     style="fill:#ffffff;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path119"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 165.54454,248.94347 -25.63425,11.95345 -11.95345,-25.63425 z" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path121"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 146.74049,242.1 64.79,-178.79" />
+</svg>

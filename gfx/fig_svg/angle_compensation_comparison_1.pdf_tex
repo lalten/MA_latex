@@ -1,0 +1,80 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'angle_compensation_comparison_1.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{413.86619568bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.51490292)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{angle_compensation_comparison_1.pdf}}%
+    \put(0.12737376,0.03953381){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.26206257,0.03953381){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.41849736,0.03953381){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.55318616,0.03953381){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.70962118,0.03953381){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.37938618,0.00452337){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{X range [m]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{angle_compensation_comparison_1.pdf}}%
+    \put(0.03094385,0.07698087){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-0.4}}}%
+    \put(0.03094385,0.13520566){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-0.2}}}%
+    \put(0.06175091,0.19343027){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.04000475,0.25165506){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.2}}}%
+    \put(0.04000475,0.30987985){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.04000475,0.36810448){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.6}}}%
+    \put(0.04000475,0.42632928){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.06175091,0.48455407){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.01652198,0.21283892){\color[rgb]{0.14901961,0.14901961,0.14901961}\rotatebox{90}{\makebox(0,0)[lb]{\smash{Y range [m]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{angle_compensation_comparison_1.pdf}}%
+    \put(0.68156391,0.46473172){\makebox(0,0)[lb]{\smash{Robot path}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{angle_compensation_comparison_1.pdf}}%
+    \put(0.91581626,0.13260447){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-130}}}%
+    \put(0.91581626,0.21537488){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-128}}}%
+    \put(0.91581626,0.29814544){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-126}}}%
+    \put(0.91581626,0.38091585){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-124}}}%
+    \put(0.91581626,0.46368628){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-122}}}%
+    \put(0.99547663,0.16119179){\color[rgb]{0.14901961,0.14901961,0.14901961}\rotatebox{90}{\makebox(0,0)[lb]{\smash{Echo Intensity [dBVrms]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{angle_compensation_comparison_1.pdf}}%
+  \end{picture}%
+\endgroup%

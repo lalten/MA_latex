@@ -1,0 +1,77 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'raw_beat_1.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{387.72367859bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.61652845)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{raw_beat_1.pdf}}%
+    \put(0.09504046,0.04119628){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.21563626,0.04119628){\makebox(0,0)[lb]{\smash{0.01}}}%
+    \put(0.35557555,0.04119628){\makebox(0,0)[lb]{\smash{0.02}}}%
+    \put(0.49551484,0.04119628){\makebox(0,0)[lb]{\smash{0.03}}}%
+    \put(0.63545432,0.04119628){\makebox(0,0)[lb]{\smash{0.04}}}%
+    \put(0.7753938,0.04119628){\makebox(0,0)[lb]{\smash{0.05}}}%
+    \put(0.91533308,0.04119628){\makebox(0,0)[lb]{\smash{0.06}}}%
+    \put(0.49382473,0.00382527){\makebox(0,0)[lb]{\smash{Time [s]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{raw_beat_1.pdf}}%
+    \put(0.03743926,0.0678478){\makebox(0,0)[lb]{\smash{1.16}}}%
+    \put(0.03743926,0.14356435){\makebox(0,0)[lb]{\smash{1.17}}}%
+    \put(0.03743926,0.2192809){\makebox(0,0)[lb]{\smash{1.18}}}%
+    \put(0.03743926,0.29499842){\makebox(0,0)[lb]{\smash{1.19}}}%
+    \put(0.0529142,0.37071498){\makebox(0,0)[lb]{\smash{1.2}}}%
+    \put(0.03743926,0.44643153){\makebox(0,0)[lb]{\smash{1.21}}}%
+    \put(0.03743926,0.52214828){\makebox(0,0)[lb]{\smash{1.22}}}%
+    \put(0.03743926,0.59786483){\makebox(0,0)[lb]{\smash{1.23}}}%
+    \put(0.02204499,0.34270148){\rotatebox{90}{\makebox(0,0)[b]{\smash{Amplitude [V]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{raw_beat_1.pdf}}%
+    \put(0.88870671,0.55214316){\makebox(0,0)[lb]{\smash{Rx1 I}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{raw_beat_1.pdf}}%
+    \put(0.88870671,0.51785224){\makebox(0,0)[lb]{\smash{Rx1 Q}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{raw_beat_1.pdf}}%
+  \end{picture}%
+\endgroup%

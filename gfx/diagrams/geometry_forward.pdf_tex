@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'geometry_forward.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{413.3390625bp}%
+    \setlength{\unitlength}{296.12287903bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,29 +48,29 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.06208095)%
+  \begin{picture}(1,1.25925176)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{geometry_forward.pdf}}%
-    \put(0.14266576,0.82455131){\rotatebox{70}{\makebox(0,0)[b]{\smash{\textcolor{white}{DOA $\curvearrowleft$}}}}}%
+    \put(0.0524391,1.07527215){\rotatebox{69.99999925}{\makebox(0,0)[b]{\smash{\textcolor{white}{\tiny DOA $\curvearrowleft$}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{geometry_forward.pdf}}%
-    \put(0.79685024,0.5864901){\rotatebox{70}{\makebox(0,0)[b]{\smash{\textcolor{white}{DOA $\curvearrowright$}}}}}%
+    \put(0.90872901,0.76370266){\rotatebox{70.00000098}{\makebox(0,0)[b]{\smash{\textcolor{white}{\tiny DOA $\curvearrowright$}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{geometry_forward.pdf}}%
-    \put(0.3002547,0.87624141){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}v_D = v_R~\cos(\alpha)\)}}}%
+    \put(0.14707237,1.14380253){\makebox(0,0)[lb]{\smash{\(\color{DiagramBlue}v_D = v_R~\cos(\alpha)\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{geometry_forward.pdf}}%
-    \put(0.52275485,0.86551897){\color[rgb]{0.72156863,0.32941176,0.31372549}\makebox(0,0)[b]{\smash{\textcolor{DiagramRed}{A}}}}%
+    \put(0.55170633,1.13261514){\color[rgb]{0.72156863,0.32941176,0.31372549}\makebox(0,0)[b]{\smash{\textcolor{DiagramRed}{A}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{geometry_forward.pdf}}%
-    \put(0.51373561,0.25488227){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
+    \put(0.5399038,0.33353808){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{geometry_forward.pdf}}%
-    \put(0.16856621,0.91196994){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{\textcolor{DiagramBlue}{B}}}}%
+    \put(0.08661668,1.19340072){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{\textcolor{DiagramBlue}{B}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{geometry_forward.pdf}}%
-    \put(0.82468615,0.67390872){\color[rgb]{0.50980392,0.70196078,0.4}\makebox(0,0)[b]{\smash{\textcolor{DiagramGreen}{C}}}}%
+    \put(0.94505421,0.88187464){\color[rgb]{0.50980392,0.70196078,0.4}\makebox(0,0)[b]{\smash{\textcolor{DiagramGreen}{C}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{geometry_forward.pdf}}%
-    \put(0.55186414,0.80586819){\makebox(0,0)[b]{\smash{\(\color{DiagramRed}v_D = v_R\)}}}%
+    \put(0.54753489,1.05882226){\makebox(0,0)[lb]{\smash{\(\color{DiagramRed}v_D = v_R\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{geometry_forward.pdf}}%
-    \put(0.66779801,0.66221858){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}v_D = v_R~\cos(-\alpha)\)}}}%
+    \put(0.88210618,0.88648467){\makebox(0,0)[rb]{\smash{\(\color{DiagramGreen}v_D = v_R~\cos(-\alpha)\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{geometry_forward.pdf}}%
-    \put(0.3835955,0.54123314){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}\alpha\)}}}%
+    \put(0.3696029,0.70825583){\makebox(0,0)[b]{\smash{\(\color{DiagramBlue}\alpha\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{geometry_forward.pdf}}%
-    \put(0.42131754,0.52627206){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}-\alpha\)}}}%
+    \put(0.41896582,0.68867782){\makebox(0,0)[b]{\smash{\(\color{DiagramGreen}-\alpha\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{geometry_forward.pdf}}%
   \end{picture}%
 \endgroup%

@@ -1,0 +1,76 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'chirp_comp_4.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{388.57672119bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.60807911)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{chirp_comp_4.pdf}}%
+    \put(0.09290165,0.04331096){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.30473241,0.04331096){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.53972461,0.04331096){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.75155537,0.04331096){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.98654757,0.04331096){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.43067317,0.00602219){\makebox(0,0)[lb]{\smash{Down range [m]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{chirp_comp_4.pdf}}%
+    \put(0.09918535,0.08437969){\makebox(0,0)[rb]{\smash{$10^{-5}$}}}%
+    \put(0.09918535,0.37775805){\makebox(0,0)[rb]{\smash{$10^{-4}$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{chirp_comp_4.pdf}}%
+    \put(0.87785,0.54829585){\makebox(0,0)[lb]{\smash{{\tiny 1ms}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{chirp_comp_4.pdf}}%
+    \put(0.87785,0.51070602){\makebox(0,0)[lb]{\smash{{\tiny 2ms}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{chirp_comp_4.pdf}}%
+    \put(0.87785,0.4731162){\makebox(0,0)[lb]{\smash{{\tiny 4ms}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{chirp_comp_4.pdf}}%
+    \put(0.87785,0.43552617){\makebox(0,0)[lb]{\smash{{\tiny 8ms}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{chirp_comp_4.pdf}}%
+    \put(0.87785,0.39793636){\makebox(0,0)[lb]{\smash{{\tiny 16ms}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=8]{chirp_comp_4.pdf}}%
+    \put(0.87785,0.36034652){\makebox(0,0)[lb]{\smash{{\tiny 32ms}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=9]{chirp_comp_4.pdf}}%
+  \end{picture}%
+\endgroup%

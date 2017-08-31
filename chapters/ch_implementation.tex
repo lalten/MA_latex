@@ -17,7 +17,7 @@ TODO
 Good but not perfect odometry Ros Arm Limited performance Enough battery
 capacity Omniradar FMCW Radar development kit
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:kobuki}
     \includegraphics[max height=10cm,max width=10cm]{models/kobuki}
@@ -67,7 +67,7 @@ In their Python \href{https://api.walabot.com}{API documentation} they
 showcase the modes of operation: 3d imaging, 2d imaging, object
 tracking, pipe detection and raw data.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:walabot_image}
     \includegraphics[max height=10cm,max width=10cm]{figures/walabot_image}
@@ -109,20 +109,21 @@ jitter completely. The reason is that the first peak is caused by
 transmit antenna crosstalk and can thus be used as a timing reference
 point.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:walabot_rangetest}
     \begin{subfigure}{\textwidth}
         \centering
-        \includegraphics[max height=10cm,max width=10cm]{pictures/experiment_walabot_rangetest}
+        \includegraphics[width=\linewidth]{pictures/experiment_walabot_rangetest}
         \caption{Setup with three towers of cans in front of the Walabot sensor}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
         \centering
-        \includegraphics[max height=10cm,max width=10cm]{figures/walabot_rangetest}
-        \caption{Range profile measurement with two antenna pairs. After the transmit peak at \(t=0\), three peaks corresponding to the three can targets are vaguely perceptible. }
+        \def\svgwidth{\linewidth}
+        \input{gfx/fig_svg/walabot_rangetest.pdf_tex}
+        \caption{Normalized echo intensity of range profile measurement with two antenna pairs. After the transmit peak at \(t=0\), three peaks corresponding to the three can targets are vaguely perceptible. }
     \end{subfigure}
-    \caption{Static range test}
+    \caption{Static range test with the Walabot sensor}
 \end{figure}
 
 \subparagraph{Dynamic range test}\label{dynamic-range-test}
@@ -139,7 +140,7 @@ analytic signal magnitude of the range scans is stacked at the right end of the
 matrix displayed in figure \ref{fig:walabot_dynamic_data}.
 
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \subcaptionbox{Setup with a reflective metal plate mounted on the robot.}
         {\includegraphics[max height=10cm,max width=10cm]{pictures/experiment_walabot}}
@@ -148,7 +149,7 @@ matrix displayed in figure \ref{fig:walabot_dynamic_data}.
     \subcaptionbox{Range profile (\textit{y-axis}) over time (\textit{x-axis}) while the robot was moved at constant speed away and towards the Walabot sensor.}
         {\includegraphics[max height=10cm,max width=10cm]{figures/walabot_disttest}}
         \label{fig:walabot_dynamic_data}
-    \caption{Dynamic range test}
+    \caption{Dynamic range test with the Walabot sensor}
 \end{figure}
 
 The figure shows that the Walabot has problems with what looks like
@@ -179,7 +180,7 @@ With the RIC60-A they offer a Radar Development Kit (RDK) that gives
 handles the signal acquisition and communication. Figure \#REF shows the
 radar IC and how the three antennas are integrated in silicon.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:slide_RIC60A}
     \def\svgwidth{\linewidth}
@@ -196,7 +197,7 @@ the sensor can also be rotated. Omniradar also supplies a horn-like
 extension for the sensor board, which forms the radar sensitivity into a
 pencil-shaped beam that is very focused at a narrow field of view.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:omniradar}
     \includegraphics[max height=10cm,max width=10cm]{pictures/omniradar}
@@ -214,7 +215,12 @@ Kobuki Base \cite{YujinRobot2012}; the side holes from the Altium layer
 document of the version 3.2 Omniradar interface board
 \cite{Omniradar2014}.
 
-\includegraphics[width=0.5\textwidth]{models/mount.png}
+\begin{figure}[htbp]
+    \centering
+    \label{fig:omniradar}
+    \includegraphics[max width=10cm]{models/mount.png}
+    \caption{3D model of the radar sensor mount, designed with OpenSCAD.}
+\end{figure}
 
 When rotated to face to the left side of the robot, the RPLidar mount
 was in the way, so parts of the print had to be clipped off.
@@ -284,23 +290,50 @@ Figure \#REF shows the chirp efficiency
 consecutive sweeps \(n_{chirp}\) (two in the graph's data source), chirp
 length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_chirp_eff}
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_chirp_eff}
+    \def\svgwidth{10cm}
+    \input{gfx/fig_svg/chirp_eff.pdf_tex}
     \caption{Chirp efficiency \(\eta\) for various chirp lengths}
 \end{figure}
 
 The chirp length has an effect on accuracy and resolution. Figure \#REF
 shows how short chirp times
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_compare_chirp_times}
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_compare_chirp_times}
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_2.pdf_tex}
+        \caption{Normalized echo intensity of range profiles without horn extension}
+        \bigskip
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_1.pdf_tex}
+        \caption{Normalized echo intensity of range profiles with horn extension}
+        \bigskip
+    \end{subfigure}
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_4.pdf_tex}
+        \caption{Normalized harmonic mean of range profiles, without horn extension}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_3.pdf_tex}
+        \caption{Normalized harmonic mean of range profiles, with horn extension}
+    \end{subfigure}
     \caption{Effect of chirp length on SNR; with and without Horn extension}
 \end{figure}
-
 
 
 \section{Omniradar ROS driver}\label{omniradar-ros-driver}
@@ -477,7 +510,7 @@ sweeps) that was used to attain the message's echo. The message's
 timestamp and sequential ID is contained in the regular
 \texttt{std\_msgs/Header}.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:nodegraph}
     \includegraphics[max height=10cm,max width=10cm]{screenshots/nodegraph}
@@ -489,7 +522,7 @@ launch) are respected, the node also offers a dynamic reconfigure server
 to change RIC configuration string, number of sweeps and length of sweep
 on the fly without the need to restart the node.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:dynreconf}
     \includegraphics[max height=10cm,max width=10cm]{screenshots/dynreconf}
@@ -677,7 +710,7 @@ the highest and lowest \(\frac{n}4\) data points, where \(n\) is the
 number of data points. The median is defined as the value that lies
 between the lower and the upper half of sample values.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_compare_means}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_compare_means}
@@ -703,7 +736,7 @@ consecutive range profiles.
 
 TODO put this in latex-subfigures?
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_explain_peak_gradient}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_explain_peak_gradient.png}
@@ -866,7 +899,7 @@ has an optional parameter \texttt{SkipFirstPeak} which, when set to
 \(true\), ignores the first peak in each range scan line. This can help
 to ignore these echoes.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_range_compensation_transmit_spike}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_range_compensation_transmit_spike.png}
@@ -909,7 +942,7 @@ move together so closely that they actually form a single target.
 
 
 TODO subcaption with explanation of "simulation"
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_squiggly_doppler_at_wall}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_squiggly_doppler_at_wall}
@@ -931,14 +964,14 @@ Figures \#REF and \#REF show the range profile and phase shift of the
 a target peak in the range profile but exhibits steady values following
 a gradient over targets.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_range}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_range}
     \caption{Range profile of Attic scan with color coded echo intensities at cross range over down range}
 \end{figure}
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_phase_shift}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_phase_shift}
@@ -984,7 +1017,7 @@ arcs. At the pericenter the line of sight to a target is orthogonal to
 the robot's movement direction, but the DOA value shows to be around 5
 to 10 degrees.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_doa}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_doa}
@@ -1101,7 +1134,7 @@ p_{x_t, \lceil y_t \rceil} = (1 - \nu_v)
 (\(y_t = \lceil y_t \rceil = \lfloor y_t \rfloor ) \land (x_t = \lceil x_t \rceil = \lfloor x_t \rfloor )\),
 then \(p_{x_t, y_t} = 1\)
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:Sample_splitting}
     \def\svgwidth{10cm}
@@ -1138,7 +1171,7 @@ helps to keep a target's intensity at at least similar values over all
 ranges in the map.
 
 TODO subfigures
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_range_compensation}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_range_compensation}
@@ -1199,8 +1232,7 @@ Multiplicating a peak which is to be reprojected at angle \(\alpha\)
 with angle compensation factor \(f_a(\alpha)\) results in a peak height
 that is independent of observation angle.
 
-TODO subfigures
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_angle_compensation}
     \begin{subfigure}{\textwidth}
@@ -1224,7 +1256,7 @@ TODO subfigures
         \caption{Echo intensity between 0.4m and 0.8m down range, and compensation factor normalizing intensity}
         \bigskip
     \end{subfigure}
-    \caption{Angle compensation}
+    \caption{Angle compensation factor}
 \end{figure}
 
 \subsection{Angle compensation
@@ -1259,13 +1291,33 @@ figure shows how angle compensation helps to keep the echo intensity of
 a mapped object at the same level, regardless of the angle at which it
 is seen by the radar.
 
-TODO subfigures
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
     \label{fig:fig_angle_compensation_comparison}
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_angle_compensation_comparison}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \def\svgscale{0.8} \small
+        \input{gfx/fig_svg/angle_compensation_comparison_1.pdf_tex}
+        \caption{Reprojected energy, without angle compensation}
+        \bigskip
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \def\svgscale{0.8} \small
+        \input{gfx/fig_svg/angle_compensation_comparison_2.pdf_tex}
+        \caption{Reprojected energy, with angle compensation}
+        \bigskip
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \def\svgscale{0.8} \small
+        \input{gfx/fig_svg/angle_compensation_comparison_3.pdf_tex}
+        \caption{Reprojected energy, with windowed angle compensation}
+        \bigskip
+    \end{subfigure}
     \caption{Effect of angle compensation and windowed angle compensation}
 \end{figure}
+
 
 \subsection{World map resolution}\label{world-map-resolution}
 TODO
