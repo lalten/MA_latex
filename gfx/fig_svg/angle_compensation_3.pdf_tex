@@ -83,6 +83,5 @@
     \put(0.57139548,0.4506689){\makebox(0,0)[lb]{\smash{Rx2 intensity}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{angle_compensation_3.pdf}}%
     \put(0.57139548,0.42474916){\makebox(0,0)[lb]{\smash{compensation factor}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{angle_compensation_3.pdf}}%
   \end{picture}%
 \endgroup%
