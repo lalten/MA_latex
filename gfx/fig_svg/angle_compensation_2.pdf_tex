@@ -1,0 +1,84 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'angle_compensation_2.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{478.4bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.56354515)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{angle_compensation_2.pdf}}%
+    \put(0.09531773,0.03966923){\makebox(0,0)[lb]{\smash{-90}}}%
+    \put(0.20847274,0.03966923){\makebox(0,0)[lb]{\smash{-60}}}%
+    \put(0.32162759,0.03966923){\makebox(0,0)[lb]{\smash{-30}}}%
+    \put(0.44565217,0.03966923){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.55211823,0.03966923){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.66527308,0.03966923){\makebox(0,0)[lb]{\smash{60}}}%
+    \put(0.77842809,0.03966923){\makebox(0,0)[lb]{\smash{90}}}%
+    \put(0.32357893,0.00736254){\makebox(0,0)[lb]{\smash{Robot orientation [°]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{angle_compensation_2.pdf}}%
+    \put(0.06976957,0.09413211){\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.05639164,0.14167124){\makebox(0,0)[lb]{\smash{0.45}}}%
+    \put(0.06976957,0.18921054){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.05639164,0.23674967){\makebox(0,0)[lb]{\smash{0.55}}}%
+    \put(0.06976957,0.2842888){\makebox(0,0)[lb]{\smash{0.6}}}%
+    \put(0.05639164,0.33182793){\makebox(0,0)[lb]{\smash{0.65}}}%
+    \put(0.06976957,0.37936706){\makebox(0,0)[lb]{\smash{0.7}}}%
+    \put(0.05639164,0.42690635){\makebox(0,0)[lb]{\smash{0.75}}}%
+    \put(0.06976957,0.47444548){\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.04308344,0.19398027){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Down range [m]}}}}%
+    \put(0.1555189,0.53302676){\makebox(0,0)[lb]{\smash{\textbf{Range profile, sorted by robot orientation}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{angle_compensation_2.pdf}}%
+    \put(0.88129415,0.12117592){\makebox(0,0)[lb]{\smash{-82.5}}}%
+    \put(0.88129415,0.18087659){\makebox(0,0)[lb]{\smash{-80}}}%
+    \put(0.88129415,0.24057742){\makebox(0,0)[lb]{\smash{-77.5}}}%
+    \put(0.88129415,0.30027826){\makebox(0,0)[lb]{\smash{-75}}}%
+    \put(0.88129415,0.3599791){\makebox(0,0)[lb]{\smash{-72.5}}}%
+    \put(0.88129415,0.41967993){\makebox(0,0)[lb]{\smash{-70}}}%
+    \put(0.88129415,0.47938077){\makebox(0,0)[lb]{\smash{-67.5}}}%
+    \put(0.96149197,0.17391321){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Echo intensity [dBVrms]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{angle_compensation_2.pdf}}%
+  \end{picture}%
+\endgroup%

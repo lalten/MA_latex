@@ -1,0 +1,88 @@
+%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'angle_compensation_3.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{478.4bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.56354515)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{angle_compensation_3.pdf}}%
+    \put(0.11204013,0.03966906){\makebox(0,0)[lb]{\smash{-90}}}%
+    \put(0.22491639,0.03966906){\makebox(0,0)[lb]{\smash{-60}}}%
+    \put(0.33779264,0.03966906){\makebox(0,0)[lb]{\smash{-30}}}%
+    \put(0.46153846,0.03966906){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.56772575,0.03966906){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.68060201,0.03966906){\makebox(0,0)[lb]{\smash{60}}}%
+    \put(0.79347826,0.03966906){\makebox(0,0)[lb]{\smash{90}}}%
+    \put(0.33946522,0.00736237){\makebox(0,0)[lb]{\smash{Robot orientation [°]}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{angle_compensation_3.pdf}}%
+    \put(0.08481973,0.06270903){\makebox(0,0)[lb]{\smash{-70}}}%
+    \put(0.08481973,0.13795987){\makebox(0,0)[lb]{\smash{-69}}}%
+    \put(0.08481973,0.2132107){\makebox(0,0)[lb]{\smash{-68}}}%
+    \put(0.08481973,0.28846154){\makebox(0,0)[lb]{\smash{-67}}}%
+    \put(0.08481973,0.36371237){\makebox(0,0)[lb]{\smash{-66}}}%
+    \put(0.08481973,0.43896321){\makebox(0,0)[lb]{\smash{-65}}}%
+    \put(0.08481973,0.51421405){\makebox(0,0)[lb]{\smash{-64}}}%
+    \put(0.07151154,0.14381271){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Echo intensity [dBVrms]}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{angle_compensation_3.pdf}}%
+    \put(0.81651806,0.11705786){\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.81651806,0.1789709){\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.81651806,0.24088395){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.81651806,0.30279699){\makebox(0,0)[lb]{\smash{2.5}}}%
+    \put(0.81651806,0.36471003){\makebox(0,0)[lb]{\smash{3}}}%
+    \put(0.81651806,0.42662308){\makebox(0,0)[lb]{\smash{3.5}}}%
+    \put(0.81651806,0.48853612){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.88166572,0.16471589){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Compensation factor}}}}%
+    \put(0.19230819,0.53302676){\makebox(0,0)[lb]{\smash{\textbf{Echo Intensity between 0.4m and 0.8m}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{angle_compensation_3.pdf}}%
+    \put(0.57139548,0.47658863){\makebox(0,0)[lb]{\smash{Rx1 intensity}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{angle_compensation_3.pdf}}%
+    \put(0.57139548,0.4506689){\makebox(0,0)[lb]{\smash{Rx2 intensity}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{angle_compensation_3.pdf}}%
+    \put(0.57139548,0.42474916){\makebox(0,0)[lb]{\smash{compensation factor}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{angle_compensation_3.pdf}}%
+  \end{picture}%
+\endgroup%
