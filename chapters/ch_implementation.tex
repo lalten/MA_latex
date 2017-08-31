@@ -679,11 +679,14 @@ big part of the noise signal is statistically uncorrelated. Table \#REF
 compares the RMS of the difference of each signal to the harmonic mean,
 which gives the cleanest signal.
 
-\begin{longtable}[]{@{}ll@{}}
+{ \rowcolors{1}{ColorAlternatedRow}{}
+\begin{tabularx}{0.5\textwidth}{XX}
+\hiderowcolors
 \toprule
 Signal & RMS of difference to harmonic mean\tabularnewline
 \midrule
 \endhead
+\showrowcolors
 Harmonic mean & 0\tabularnewline
 Geometric mean & 0.144\tabularnewline
 Arithmetic mean & 0.275\tabularnewline
@@ -691,7 +694,8 @@ Arithmetic mean & 0.275\tabularnewline
 Median & 0.318\tabularnewline
 Raw & 1.064\tabularnewline
 \bottomrule
-\end{longtable}
+\end{tabularx}
+}
 
 The harmonic mean is defined as
 \[harmmean(x_{1,2,...,n}) = \frac{n}{\frac1{x_1} + \frac1{x_2} + \cdots + \frac1{x_n}} = \frac{n}{\sum\limits_{i=1}^n \frac1{x_i}}\]

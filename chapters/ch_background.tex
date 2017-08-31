@@ -141,7 +141,7 @@ frequency shift.
 \begin{figure}[htp]
     \centering
     \label{fig:radar_pulse}
-    \def\svgwidth{\linewidth}
+    \def\svgwidth{10cm}
     \input{gfx/diagrams/radar_pulsed.pdf_tex}
     \caption{Pulse radars measure the time between stransmission and reception of a short EM burst. Adapted from \cite{Adams2012} p.~52}
 \end{figure}
@@ -180,7 +180,7 @@ visible targets and is received as echo in the same frequency band.
 \begin{figure}[htp]
     \centering
     \label{fig:fmcw_triangular}
-    \def\svgwidth{\linewidth}
+    \def\svgwidth{10cm}
     \input{gfx/diagrams/fmcw_triangular.pdf_tex}
     \caption{FMCW radars detect targets in the beat frequency, which is a frequency mix of the transmitted and received modulation. Adapted from \cite{Adams2012} p.~57}
 \end{figure}
@@ -247,7 +247,7 @@ dR = \frac{c}{2 \Delta f}
 \begin{figure}[htp]
     \centering
     \label{fig:fmcw_doppler}
-    \def\svgwidth{\linewidth}
+    \def\svgwidth{10cm}
     \input{gfx/diagrams/fmcw_doppler.pdf_tex}
     \caption{Target motion introduces a Doppler shift in the received signal, which changes the beat frequency during up- and down-sweep. Adapted from \cite{Adams2012} p.~57}
 \end{figure}
@@ -280,7 +280,7 @@ different target.
 \begin{figure}[htp]
     \centering
     \label{fig:fmcw_multitarget}
-    \def\svgwidth{\linewidth}
+    \def\svgwidth{10cm}
     \input{gfx/diagrams/fmcw_multitarget.pdf_tex}
     \caption{Each target contributes a frequency corresponding to its range in the beat spectrum.}
 \end{figure}
@@ -295,7 +295,7 @@ at ranges of \(0.5m\), \(1m\), and \(1.5m\). Note that the in-phase part
 \(S_I\) and quadrature part \(S_Q\) of the analytic signal are measured
 in separate channels to retain phase information. The Fourier transform
 in bottom subplot however shows the magnitude \(\|S\|\) of the analytic
-signal\footnote{A good explanation is available at [ping.se's I/Q Data for Dummies](http://whiteboard.ping.se/SDR/IQ)}
+signal\footnote{A good explanation is available at \textit{ping.se}'s ``I/Q Data for Dummies'': \url{http://whiteboard.ping.se/SDR/IQ}}
 \(S = S_I + j~S_Q\) with the imaginary unit \(j\).
 
 \begin{figure}[htp]
@@ -336,7 +336,7 @@ difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
 \begin{figure}[htp]
     \centering
     \label{fig:doa}
-    \def\svgwidth{\linewidth}
+    \def\svgwidth{10cm}
     \input{gfx/diagrams/doa.pdf_tex}
     \caption{Direction of Arrival \(\theta\) can be estimated from phase difference \(\Delta\Phi\)}
 \end{figure}
@@ -369,26 +369,28 @@ Some newer radars use the \(60 GHz\) ISM band. It allows a rather wide
 bandwidth of up to \(9GHz\) in some regions (see figure \ref{fig:wigig} ).
 According to equation \#REF, this gives a very good range resolution in
 the order of few \(cm\). At these high frequencies, RF energy
-attenuation in material increases noticably \cite{FerrisJr.1998}. The
+attenuation in material increases noticeably \cite{FerrisJr.1998}. The
 effect is that \(60GHz\) waves are limited to short ranges of a few
 \(m\) and don't usually penetrate walls.
-
-\begin{figure}[htp]
-    \centering
-    \label{fig:attenuation}
-    \includegraphics[max height=10cm,max width=10cm]{figures/rf_attenuation}
-    \caption{Totl attenuation of RF energy when transmitted through various materials as a function of frequency. Source: \cite{FerrisJr.1998}}
-\end{figure}
 
 Atmospheric attenuation also limits long-range applications. In short
 range (a few \(m\)) it should however not present a problem.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:attenuation_air}
-    \def\svgscale{1}
-    \input{gfx//figures/ITU_0676-05.pdf_tex}
-    \caption{Specific RF attenuation due to atmospheric gases. Source: \cite{ITU1997}}
+    \begin{subfigure}[b]{0.475\textwidth}
+        \label{fig:attenuation}
+        \includegraphics[width=\linewidth]{figures/rf_attenuation}
+        \caption{Total attenuation of RF energy when transmitted through various materials as a function of frequency. Source: \cite{FerrisJr.1998}}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}
+        \label{fig:attenuation_air}
+        \def\svgwidth{\linewidth} \footnotesize
+        \input{gfx/figures/ITU_0676-05.pdf_tex}
+        \caption{Specific RF attenuation due to atmospheric gases. Source: \cite{ITU1997}\bigskip}
+    \end{subfigure}
+    \caption{RF attenuation in different mediums.}
 \end{figure}
 
 The downside is that there are some other technologies using the same
