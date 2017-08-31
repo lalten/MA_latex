@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{366.58139118bp}%
+    \setlength{\unitlength}{450.48075999bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,19 +48,18 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.26031267)%
+  \begin{picture}(1,0.21183101)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{angle_compensation_1.pdf}}%
-    \put(0.26669587,0.0690135){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.4436467,0.0690135){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.62059753,0.0690135){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.79754835,0.0690135){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.96577009,0.0690135){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.33309444,0.02685228){\makebox(0,0)[lb]{\smash{Cross range (mileage) [m]}}}%
+    \put(0.21702535,0.05616015){\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.36102013,0.05616015){\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.50501492,0.05616015){\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.6490097,0.05616015){\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.78590114,0.05616015){\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.27105758,0.0218512){\makebox(0,0)[lb]{\smash{Cross range (mileage) [m]}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{angle_compensation_1.pdf}}%
-    \put(0.04223844,0.10200525){\makebox(0,0)[lb]{\smash{0.4}}}%
-    \put(0.04223844,0.13739537){\makebox(0,0)[lb]{\smash{0.8}}}%
-    \put(0.02487084,-0.00321275){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Down range [m]}}}}%
-    \put(0.30363326,0.16564732){\makebox(0,0)[lb]{\smash{\textbf{Range profile, as recorded}}}}%
+    \put(0.03437178,0.08300738){\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.03437178,0.1118063){\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.02023879,-0.00261439){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Down range [m]}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{angle_compensation_1.pdf}}%
   \end{picture}%
 \endgroup%

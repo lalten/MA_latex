@@ -1203,7 +1203,27 @@ TODO subfigures
 \begin{figure}[htp]
     \centering
     \label{fig:fig_angle_compensation}
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_angle_compensation}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \def\svgscale{0.8} \small
+        \input{gfx/fig_svg/angle_compensation_1.pdf_tex}
+        \caption{Range profile, as recorded}
+        \bigskip
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \def\svgscale{0.8} \small
+        \input{gfx/fig_svg/angle_compensation_2.pdf_tex}
+        \caption{Range profile, sorted by robot orientation}
+        \bigskip
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \def\svgscale{0.8} \small
+        \input{gfx/fig_svg/angle_compensation_3.pdf_tex}
+        \caption{Echo intensity between 0.4m and 0.8m down range, and compensation factor normalizing intensity}
+        \bigskip
+    \end{subfigure}
     \caption{Angle compensation}
 \end{figure}
 
