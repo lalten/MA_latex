@@ -367,41 +367,35 @@ Matlab bindings.
 To include the library, some files need to be installed or pointed to by
 the binary that needs to use it.
 
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-\begin{minipage}[b]{0.06\columnwidth}\raggedright\strut
-File\strut
-\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
-Default install destination\strut
-\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
-Purpose\strut
-\end{minipage}\tabularnewline
+{ \rowcolors{1}{}{ColorAlternatedRow}
+\begin{tabularx}{\textwidth}
+{%
+  >{\setlength{\hsize}{.25\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.325\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.425\hsize}}X%
+}
+\hiderowcolors
+  File &
+  Default install destination &
+  Purpose \\
 \midrule
 \endhead
-\begin{minipage}[t]{0.06\columnwidth}\raggedright\strut
-omniradar.h\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-/usr/local/include\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Library header file\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.06\columnwidth}\raggedright\strut
-libomniradar.so\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-/usr/local/lib\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-dynamically linked shared object\strut
-\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.06\columnwidth}\raggedright\strut
-51-omniradar.rules, 52-omniradar.rules\strut
-\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
-/etc/udev/rules.d/\strut
-\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
-Udev rules to unbind ftdi\_sio\strut
-\end{minipage}\tabularnewline
-\bottomrule
-\end{longtable}
+\showrowcolors
 
+omniradar.h &
+/usr/local/include &
+Library header file \\
+
+libomniradar.so &
+/usr/local/lib &
+dynamically linked shared object \\
+
+51-omniradar.rules, 52-omniradar.rules &
+/etc/udev/rules.d/ &
+Udev rules to unbind ftdi\_sio \\
+\bottomrule
+\end{tabularx}
+} % rowcolors
 If the driver source is available, installing the files can be
 accomplished from the source directory with
 
