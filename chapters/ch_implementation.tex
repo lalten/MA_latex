@@ -199,10 +199,21 @@ pencil-shaped beam that is very focused at a narrow field of view.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:omniradar}
-    \includegraphics[max height=10cm,max width=10cm]{pictures/omniradar}
-    \caption{Omniradar's RIC60-A with horn antenna extension, attached to the 3D-printed Kobuki mount}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \label{fig:omniradar}
+        \includegraphics[max width=\linewidth]{pictures/omniradar}
+        \caption{Omniradar's RIC60-A sensor with horn antenna extension, attached to the 3D-printed Kobuki mount}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \label{fig:mount}
+        \includegraphics[max width=\linewidth]{models/mount.png}
+        \caption{3D model of the radar sensor mount, designed with OpenSCAD.\bigskip}
+    \end{subfigure}
+    \caption{Radar sensor on mount and model of the mount.}
 \end{figure}
+
 
 \subsection{Radar mount}\label{radar-mount}
 
@@ -214,13 +225,6 @@ mount hole positions were extracted from the mechanical drawings of the
 Kobuki Base \cite{YujinRobot2012}; the side holes from the Altium layer
 document of the version 3.2 Omniradar interface board
 \cite{Omniradar2014}.
-
-\begin{figure}[htbp]
-    \centering
-    \label{fig:omniradar}
-    \includegraphics[max width=10cm]{models/mount.png}
-    \caption{3D model of the radar sensor mount, designed with OpenSCAD.}
-\end{figure}
 
 When rotated to face to the left side of the robot, the RPLidar mount
 was in the way, so parts of the print had to be clipped off.
@@ -268,13 +272,15 @@ The chirp duration \(t_{chirp}\) is configurable and has an effect on
 how the raw range profile data will look like.
 
 \textbf{Very short durations} (\(<2ms\)) incur a considerable processing
-overhead to acquisition time ratio and have a very low SNR.
+overhead to acquisition time ratio and have a very low SNR.\\
 \textbf{Short durations} (\(<5ms\)) have acceptable SNR, and are more
-efficient with respect to overhead. \textbf{Long durations} (\(>15ms\))
+efficient with respect to overhead.\\
+\textbf{Long durations} (\(>15ms\))
 have good SNR, and don't create a lot of overhead. However at higher
 robot speeds, target peaks get blurred over several range bins as they
 move in range. Less intense target echos are more difficult to detect
-then. \textbf{Very long durations} (\(>20ms\)) required the Omniradar
+then.\\
+\textbf{Very long durations} (\(>20ms\)) required the Omniradar
 driver to be patched on Linux so as not to freeze when chirps longer
 than \(20ms\) are requested. Even with the patched driver the RDK's FPGA
 firmware is not very reliable at sending large volumes of data at once
@@ -285,7 +291,7 @@ The optimal range was empirically found to lie between \(2ms\) and
 
 TODO wording here
 
-Figure \#REF shows the chirp efficiency
+Figure \ref{fig:fig_chirp_eff} shows the chirp efficiency
 \(\eta = \frac{n_{chirp}~t_{chirp}}{t_{msg}}\), with number of
 consecutive sweeps \(n_{chirp}\) (two in the graph's data source), chirp
 length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
@@ -295,11 +301,10 @@ length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
     \label{fig:fig_chirp_eff}
     \def\svgwidth{10cm}
     \input{gfx/fig_svg/chirp_eff.pdf_tex}
-    \caption{Chirp efficiency \(\eta\) for various chirp lengths}
+    \caption{Chirp efficiency \(\eta\) (measurement time per time spent) for various chirp lengths}
 \end{figure}
 
-The chirp length has an effect on accuracy and resolution. Figure \#REF
-shows how short chirp times
+The chirp length has an effect on accuracy and resolution. Figure \ref{fig:fig_compare_chirp_times} shows the range profiles of one scene, recorded over $10s$. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a slimmer band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Especially with the horn extension attached longer measurement time also improves SNR.
 
 \begin{figure}[htbp]
     \centering
@@ -348,9 +353,8 @@ the MEX driver for Linux systems. There were some issues with FTDI's
 D2XX serial communication library that had to be fixed for Linux
 systems. One challenge with the D2XX driver was that Ubuntu
 automatically loads the regular FTDI serial IO driver,
-\texttt{ftdi\_sio}. This could be solved by unbinding the driver in a
-set of udev rules
-\href{https://stackoverflow.com/questions/44529376}{{[}ref{]}}. Another
+\texttt{ftdi\_sio}. This was be solved by unbinding the driver using a
+set of udev rules \footnote{\url{https://stackoverflow.com/questions/44529376}}. Another
 issue was that due to a bug in the D2XX implementation, the Omniradar
 driver would freeze when more than 2MB of data (equivalent to a 20ms
 FMCW chirp) were requested. After a lot of debugging, this could be
@@ -435,7 +439,8 @@ the
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\AttributeTok{static} \BuiltInTok{std::}\NormalTok{shared_ptr< }\BuiltInTok{std::}\NormalTok{vector<}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint8_t}\NormalTok{> > > demultiplex(}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint32_t}\NormalTok{> \&packed_data);}
+\AttributeTok{static} \BuiltInTok{std::}\NormalTok{shared_ptr< }\BuiltInTok{std::}\NormalTok{vector< }\BuiltInTok{std::}\NormalTok{vector< }\DataTypeTok{uint8_t}\NormalTok{ > > >}\\
+\NormalTok{    demultiplex(}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint32_t}\NormalTok{> \&packed_data);}
 \end{Highlighting}
 \end{Shaded}
 
@@ -454,7 +459,8 @@ it as C style array, e.g.~with
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{[}\StringTok{'#pragma once'} \FloatTok{10} \StringTok{'std::vector<double>'} \FloatTok{10} \StringTok{'vco_tune \{'}\NormalTok{, sprintf(}\StringTok{'\%.100g, '}\NormalTok{, VCOtune), }\StringTok{'\};'}\NormalTok{]}
+\NormalTok{[ }\StringTok{'#pragma once'} \FloatTok{10} \StringTok{'std::vector<double>'} \FloatTok{10} \KeywordTok{...}\\
+\NormalTok{    }\StringTok{'vco_tune \{'}\NormalTok{, sprintf(}\StringTok{'\%.100g, '}\NormalTok{, VCOtune), }\StringTok{'\};'}\NormalTok{ ]}
 \end{Highlighting}
 \end{Shaded}
 
@@ -474,25 +480,31 @@ with lidar-based Cartographer slam, AMCL localization and an Astra
 Orbbec RGBD camera. A simple version to start the only the node to get
 radar data would be:
 
-\begin{verbatim}
-<launch>
-  <node pkg="omniradar" type="omniradar_node" name="omniradar_node" output="screen">
-    <param name="n_sweeps" value="1" />
-    <param name="t_sweep" value="5" />
-  </node>
-</launch>
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{<launch>}\\
+\NormalTok{  <node }\AttributeTok{pkg=} \StringTok{"omniradar"} \AttributeTok{type=} \StringTok{"omniradar_node"} \AttributeTok{name=}\StringTok{"omniradar_node"}\\
+\NormalTok{    }\AttributeTok{output=}\StringTok{"screen"}\NormalTok{>}\\
+\NormalTok{    <param }\AttributeTok{name=}\StringTok{"n_sweeps"} \AttributeTok{value=}"1"\NormalTok{ />}\\
+\NormalTok{    <param }\AttributeTok{name=}\StringTok{"t_sweep"}  \AttributeTok{value=}"5"\NormalTok{ />}\\
+\NormalTok{  </node>}\\
+\NormalTok{</launch>}
+\end{Highlighting}
+\end{Shaded}
 
 The node sends out the ROS topic \texttt{/omniradar\_node/radar\_raw} of
 the custom \texttt{RadarEcho} type, which is defined in RadarEcho.msg as
 
-\begin{verbatim}
-Header header
-string ric_config
-uint8 n_sweeps
-float64 t_sweep
-uint32[] packed_echo
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{Header} header
+\DataTypeTok{string} ric_config
+\DataTypeTok{uint8} n_sweeps
+\DataTypeTok{float64} t_sweep
+\DataTypeTok{uint32[]} packed_echo
+\end{Highlighting}
+\end{Shaded}
+
 
 Early versions of the driver unpacked the radar echo bitstream inside
 the node and were able to use standard ROS message types like the
@@ -529,6 +541,7 @@ echo acquisition and copies the result into a new
 could be increased by offloading the message assembly and data copying
 into a C++11 lambda thread that is immediately detached.
 
+\begin{samepage}
 \begin{Shaded}
 \begin{Highlighting}[]
 \BuiltInTok{std::}\NormalTok{lock_guard<}\BuiltInTok{std::}\NormalTok{mutex> lock_rdk(mtx_rdk);}
@@ -549,6 +562,7 @@ into a C++11 lambda thread that is immediately detached.
 \NormalTok{t.detach();}
 \end{Highlighting}
 \end{Shaded}
+\end{samepage}
 
 The multithreading approach lets the node use between 100\% and 140\%
 CPU (observed with \texttt{htop}).
@@ -672,14 +686,16 @@ distance. All samples in one bin are averaged to represent that bin's
 value. This greatly improves processing time (to less than a second for
 some minutes of recorded data).
 
-Figure \#REF shows in gray the raw data of the first 20 range scan lines
+Figure \ref{fig:fig_compare_means} shows in gray the raw data of the first 20 range scan lines
 from the ``Mancave'' dataset. It then compares different ways of
 averaging over these 20 scans. All of them increase the SNR, because a
-big part of the noise signal is statistically uncorrelated. Table \#REF
+big part of the noise signal is statistically uncorrelated. Table \ref{tab:mean}
 compares the RMS of the difference of each signal to the harmonic mean,
 which gives the cleanest signal.
 
-{ \rowcolors{1}{ColorAlternatedRow}{}
+\begin{table}[htbp]
+\label{tab:mean}
+\rowcolors{1}{ColorAlternatedRow}{}
 \begin{tabularx}{0.5\textwidth}{XX}
 \hiderowcolors
 \toprule
@@ -695,7 +711,8 @@ Median & 0.318\tabularnewline
 Raw & 1.064\tabularnewline
 \bottomrule
 \end{tabularx}
-}
+\caption{Comparison of mean types by RMS}
+\end{table}
 
 The harmonic mean is defined as
 \[harmmean(x_{1,2,...,n}) = \frac{n}{\frac1{x_1} + \frac1{x_2} + \cdots + \frac1{x_n}} = \frac{n}{\sum\limits_{i=1}^n \frac1{x_i}}\]
