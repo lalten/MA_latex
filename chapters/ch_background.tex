@@ -410,24 +410,16 @@ for radar).
 \section{Overview of Radar
 Research}\label{overview-of-radar-research}
 
-Radar is used and researched since the 1940s. While it was historically
-only used to detect aircraft and ships, it is an active research domain
-in many fields today. Identification and localization of vessels is of
-course still an important application in both civil and military
-sectors. There is a great amount of research going into synthetic
-aperture radar, in terrestrial imaging, but also general and concealed
-imaging. Another area of research is radar antenna technology and
-quasi-optics, which aims to find design improvements and more adapted
-antennas for the manifold applications. Radar is used in human presence
-detection and monitoring, including heartbeat detection. A new and very
-promising discipline is radar-based gesture recognition, which enables
-innovative human machine interaction applications. Indoor communication
-and localization with radar beacons is another interesting and upcoming
-technology. The radar-related research area that is most relevant for
-mobile robots is radar-based slam.
+Radar is used and researched since the 1940s. While it was historically only used to detect aircraft and ships, it is an active research domain in many fields today.
+Identification and localization of vessels is of course still an important application in both civil and military sectors.
+There is a great amount of research going into synthetic aperture radar, in terrestrial imaging, but also general and concealed imaging \cite{Cumming2004,Axelsson2002,Bury2007,Wang2008,Sarmap.ch2009,Moreira2013,Watts2016}.
+Another area of research is radar antenna technology and quasi-optics, which aims to find design improvements and more adapted antennas for the manifold applications \cite{Lu2014,Tewari2015,Gorniak2008,Vinicchayakul2016,Bisognin2014,Ernst2016a,Nordin2016,Craeye2008}.
+Radar is used in human presence detection and monitoring, including heartbeat detection \cite{Valmori2016,Novak2017,Zhong2016,Mabrouk2015,Ernst2016,Molchanov2011,Sakamoto2015,Molchanov2011a,Jian2014}.
+A new and very promising discipline is radar-based gesture recognition, which enables innovative human machine interaction applications \cite{Lien2016,Kim2016,Molchanov2015}.
+Indoor communication and localization with radar beacons is another interesting and upcoming technology \cite{Vinicchayakul2016,Albaidhani2016,Zhong2016,Zhu2016,Segura2012,Marano2010}.
+The radar-related research area that is most relevant for mobile robots is radar-based slam \cite{Adams2012,Guan2017,Rapp2016,Rouveure2008,Ristic2016,Marck2013,Deissler2010,Kauffman2014,Guerra2016,Jose2004,Jose2004a,Jose2004b,Jose2005,Gerossier2009,Mullane2010,Deissler2013,Schuster2016,Adams2013,Deissler2012,Seitz2008,Deissler2010,Deissler2009}.
 
-\section{Existing radar-based solutions for map
-building}\label{existing-radar-based-solutions-for-map-building}
+\section{Existing radar-based solutions for map building}\label{existing-radar-based-solutions-for-map-building}
 
 \subsection{SAR}\label{sar}
 
@@ -521,9 +513,19 @@ function is necessary. There are several approaches in tackling this,
 including the omega-k / wavenumber processor, range-Doppler, and chirp
 scaling algorithms \cite{Moreira2013}.
 
+As far as moved radar sensors go, SAR is a great technique for imaging a scene while it is passed on the side. If obstacle detection is to be performedd, it is however necessary to know what lies ahead. Today, robots that use a radar sensor for this task therefore use a scanning radar.
+
 \subsection{Scanning radar}\label{scanning-radar}
 
-TODO
+A radar system that changes the direction of its beam in a scanning pattern is called a scanning radar. This allows covering a larger overall search space by sampling a set of smaller regions, usually with a tighter beam shape for higher spatial accuracy. The scanning process can be implemented by mechanically rotating the radar's antenna, electronically through phased arrays, or even both in active electronically scanned arrays (AESA), which are used in fighter jets.
+
+% \begin{figure}[htbp]
+%     \centering
+%     \label{fig:aesa}
+%     \includegraphics[max width=10cm]{gfx/pictures/ILA_Berlin_2012_PD_193-Detail-2.jpg}
+%     \caption{AESA antenna CAPTOR-E inside a Eurofighter's nose cone (removed). Source: \url{https://commons.wikimedia.org/wiki/File:ILA_Berlin_2012_PD_193-Detail-2.jpg}}
+%     \label{fig:aesa}
+% \end{figure}
 
 Small ground robots
 

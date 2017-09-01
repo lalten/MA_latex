@@ -8,122 +8,122 @@
     index=totoc,
 ]{diplomarbeit}
 
-\areaset[20mm]{160mm}{240mm}	% Binderand, Breite und Höhe nutzbarer Bereich
-%\usepackage[textwidth=160mm,textheight=240mm]{geometry}
+% \areaset[20mm]{160mm}{240mm}	% Binderand, Breite und Höhe nutzbarer Bereich
+% % \usepackage[textwidth=160mm,textheight=240mm]{geometry}
 
-\input{config/pandoc}
+% \input{config/pandoc}
 \input{config/packages}
 
-\arbeitsart{Master's Thesis}
+% \arbeitsart{Master's Thesis}
 
-\title{Radar Reprojection Mapping Improves Obstacle Avoidance in Mobile Robots with an Unsteered Radar Sensor}
-\author{Laurenz Altenmüller}
-\authorsaddr{Pommernstr. 9\\
-             80809 München}
-\betreuer{Michael Balszun, M.Sc.}
-\ausgefuehrtam{at BSH Home Appliances Corporation\\Bosch Research and Technology Center\\Palo Alto, California, USA}
-\eingereicht{September 2017}
-
-
-\pdfcompresslevel=9
-
-\makeatletter
+% \title{Radar Reprojection Mapping Improves Obstacle Avoidance in Mobile Robots with an Unsteered Radar Sensor}
+% \author{Laurenz Altenmüller}
+% \authorsaddr{Pommernstr. 9\\
+%              80809 München}
+% \betreuer{Michael Balszun, M.Sc.}
+% \ausgefuehrtam{at BSH Home Appliances Corporation\\Bosch Research and Technology Center\\Palo Alto, California, USA}
+% \eingereicht{September 2017}
 
 
-\PassOptionsToPackage{hyphens}{url}
-\usepackage[ % some option can only be set at loading time
-    bookmarks=true,
-    hyperfootnotes=false,
-    pdfpagelabels=true,
-]{hyperref}
-\hypersetup{
-    unicode=true,
-    linktoc=all,
-    plainpages=false,
-    breaklinks=true,
-% für die DRUCK-Ausgabe
-%    plainpages=false,
-%    allcolors=black ]{hyperref} 
-% PDF stuff    
-    colorlinks=true,
-    allcolors=ColorLink,
-    pdfborder={0 0 0},
-    pdftitle={\@title},
-    pdfauthor={\@author},
-    pdfsubject={Master's Thesis},
-    pdfkeywords={Radar,Reprojection Mapping,Obstacle Sensor,Mobile Indoor Robots},
-}
-\urlstyle{same}
+% \pdfcompresslevel=9
 
-\usepackage[all]{hypcap} %https://tex.stackexchange.com/a/27102/142289
+% \makeatletter
 
-\makeatother
+
+% \PassOptionsToPackage{hyphens}{url}
+% \usepackage[ % some option can only be set at loading time
+%     bookmarks=true,
+%     hyperfootnotes=false,
+%     pdfpagelabels=true,
+% ]{hyperref}
+% \hypersetup{
+%     unicode=true,
+%     linktoc=all,
+%     plainpages=false,
+%     breaklinks=true,
+% % für die DRUCK-Ausgabe
+% %    plainpages=false,
+% %    allcolors=black ]{hyperref} 
+% % PDF stuff    
+%     colorlinks=true,
+%     allcolors=ColorLink,
+%     pdfborder={0 0 0},
+%     pdftitle={\@title},
+%     pdfauthor={\@author},
+%     pdfsubject={Master's Thesis},
+%     pdfkeywords={Radar,Reprojection Mapping,Obstacle Sensor,Mobile Indoor Robots},
+% }
+% \urlstyle{same}
+
+% \usepackage[all]{hypcap} %https://tex.stackexchange.com/a/27102/142289
+
+% \makeatother
 
 
 
 \begin{document}
 
 
-\renewcommand{\thepage}{t\arabic{page}}
-\maketitle
+% \renewcommand{\thepage}{t\arabic{page}}
+% \maketitle
 
-\include{chapters/head_abstract}
+% \include{chapters/head_abstract}
 
 
-\pagestyle{empty}
-\cleardoublepage 
-\setcounter{page}{3}	% Laut VDI Richtlinien
-\renewcommand{\thepage}{\roman{page}}
-\begin{danksagung}
-    Vielen Dank \dots
+% \pagestyle{empty}
+% \cleardoublepage 
+% \setcounter{page}{3}	% Laut VDI Richtlinien
+% \renewcommand{\thepage}{\roman{page}}
+% \begin{danksagung}
+%     Vielen Dank \dots
     
-    München, im Monat Jahr
-\end{danksagung}
+%     München, im Monat Jahr
+% \end{danksagung}
 
 
-\clearpage
-\pagestyle{headings}
-\pdfbookmark[1]{\contentsname}{toc}
-\tableofcontents
+% \clearpage
+% \pagestyle{headings}
+% \pdfbookmark[1]{\contentsname}{toc}
+% \tableofcontents
 
-\include{chapters/head_listofabbrev}
-\include{chapters/head_listofsymbols}
-
-
-% start with page 1
-\newpage{\pagestyle{plain}\cleardoublepage}
-\rmfamily
-\renewcommand{\thepage}{\arabic{page}}
-\setcounter{page}{1}
-
-% content
-\include{chapters/ch_input}
-\include{chapters/ch_background}
-\include{chapters/ch_approach}
-\include{chapters/ch_implementation}
-\include{chapters/ch_results}
-\include{chapters/ch_discussion}
-\include{chapters/ch_conclusion}
+% % \include{chapters/head_listofabbrev}
+% % \include{chapters/head_listofsymbols}
 
 
-% Anhang
-\clearpage
-\begin{appendix}
+% % start with page 1
+% \newpage{\pagestyle{plain}\cleardoublepage}
+% \rmfamily
+% \renewcommand{\thepage}{\arabic{page}}
+% \setcounter{page}{1}
 
-% \include{chapters/ap_resultstable}
+% % content
+% % \include{chapters/ch_introduction}
+% % \include{chapters/ch_background}
+% % \include{chapters/ch_approach}
+% % \include{chapters/ch_implementation}
+% % \include{chapters/ch_results}
+% % \include{chapters/ch_discussion}
+% % \include{chapters/ch_conclusion}
 
-\end{appendix}
 
-\listoffigures
-\listoftables
+% % Anhang
+% \clearpage
+% \begin{appendix}
 
-% Index
-\clearpage
-\printindex
+% % \include{chapters/ap_resultstable}
 
-% Literaturverzeichnis
-%\nocite{wasauchimmer}
-\clearpage
-\printbibliography
+% \end{appendix}
+
+% % \listoffigures
+% % \listoftables
+
+% % Index
+% \clearpage
+% \printindex
+
+% % Literaturverzeichnis
+% %\nocite{wasauchimmer}
+% \clearpage
+% % \printbibliography
 
 \end{document}
