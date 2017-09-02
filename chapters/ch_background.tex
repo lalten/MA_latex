@@ -6,8 +6,7 @@ robots monitor information like temperature or track odometry from
 intertial measurement units (IMU) and wheel encoders. This section
 focuses on how a robot can avoid or detect collisions.
 
-\section{Traditional Obstacle
-Sensors}\label{traditional-obstacle-sensors}
+\section{Traditional Obstacle Sensors}\label{traditional-obstacle-sensors}
 
 The fallback option of obstacle sensing is almost always a bumper
 sensor. If the robot runs into an obstacle in its path, a bumper switch
@@ -60,20 +59,24 @@ intercepted by a receiving antenna. This signal is amplified and checked
 for time delay, frequency shift, phase shift and amplitude attenuation
 with respect to the transmitted signal. This allows to capture certain
 target properties like range, radial velocity, size, shape and, among
-others, even surface smoothness and orientation. \cite{Skolnik2008}
+others, even surface smoothness and orientation \cite{Skolnik2008}.
 
 The return signal's echo power is described for the interference-free
-case in vacuum by the radar equation, \[
-P_r = 
-\frac{P_t G_t}{4\pi R^2}
-\cdot
-\frac{\sigma}{4\pi R^2}
-\cdot
-A_r
-\] where \(P_r\) received target echo power \(P_t\) transmission power
-\(G_t\) transmit antenna gain \(R\) range of target (distance)
-\(\sigma\) radar cross section (RCS) of target \(A_r\) effective area of
-receiving antenna. Of the three factors in the equation, the first
+case in vacuum by the radar equation,
+\begin{equation} \label{eq:radar}
+    P_r =  \frac{P_t G_t}{4\pi R^2} \cdot \frac{\sigma}{4\pi R^2} \cdot A_r
+\end{equation}
+where
+\begin{tabbing}
+\hspace{1cm} \= \kill
+$P_r$ \> received target echo power \\
+$P_t$ \> transmission power \\
+$G_t$ \> transmit antenna gain \\
+$R$ \> range of target (distance) \\
+$\sigma$ \> radar cross section (RCS) of target \\
+$A_r$ \> effective area of receiving antenna.
+\end{tabbing}
+Of the three factors in the equation, the first
 factor represents the power density at the radar-illuminated target's
 distance. The second factor represents how much of the radar energy is
 scattered back by the target. The third factor finally denotes how much
@@ -83,13 +86,18 @@ antennas. The antenna gain \(G_t\) is defined as the ratio of increased
 power in a particular direction compared with that from an isotropic
 antenna \cite{Adams2012}. Antenna theory shows \cite{Balanis2015} the
 relation of receive antenna gain \(G_r\) with radiation wavelength
-\(\lambda\): \[G_r = \frac{4\pi A_r}{\lambda^2}\] With constant antenna
-loss factor \(L>1\), substituting equation \#REF into equation \#REF
-yields the classical radar equation \[
-P_r =
-\frac{P_t G_t G_r \lambda^2 \sigma}{(4\pi)^3R^4L}
-\propto \frac{\sigma}{R^4}
-\] In practice, the actual received power is lower than predicted by
+\(\lambda\):
+\begin{equation} \label{eq:recvgain}
+    G_r = \frac{4\pi A_r}{\lambda^2}    
+\end{equation}
+With constant antenna loss factor \(L>1\), substituting \cref{eq:recvgain} into \cref{eq:radar}
+yields the classical radar equation
+\begin{equation} \label{eq:radarclassical}
+    P_r =
+    \frac{P_t G_t G_r \lambda^2 \sigma}{(4\pi)^3R^4L}
+    \propto \frac{\sigma}{R^4}
+\end{equation}
+In practice, the actual received power is lower than predicted by
 this equation due to many factors, including interference and
 atmospheric conditions. \(\sigma\) is also not constant but varies with
 viewing angle and material properties of the target. \cite{Adams2012}
@@ -101,9 +109,11 @@ shift. Austrian physicist Christian Doppler described the kinematic
 effect in 1842. It describes the change of wavelength caused by the
 motion. A common example is the change of pitch that can be heard when a
 race car or ambulance passes the observer. The Doppler frequency shift
-\(f_D\) is \[
-f_D = 2 \frac{v_r}{\lambda} = 2 \frac{v \cos ( \theta )}{\lambda}
-\] where \(v_r\) is the radial velocity component of the target, which
+\(f_D\) is
+\begin{equation} \label{eq:doppler}
+    f_D = 2 \frac{v_r}{\lambda} = 2 \frac{v \cos ( \theta )}{\lambda}
+\end{equation}
+where \(v_r\) is the radial velocity component of the target, which
 travels at a speed \(v\) at angle \(\theta\) between the target's
 direction and the radar beam with wavelength \(\lambda\)
 \cite{Skolnik2008}. The factor \(2\) is caused by the Doppler shift
@@ -128,9 +138,16 @@ effect.
 
 Pulse radars send series of short bursts. The time delay \(\tau\)
 between transmission and reception of a pulse, called time of flight
-(TOF), gives a target's range \(R\), so that \[ R = \frac{c\tau}{2} \]
+(TOF), gives a target's range \(R\), so that 
+\begin{equation} \label{eq:tof}
+	 R = \frac{c\tau}{2} 
+\end{equation}
 The range resolution \(\Delta R\) is given by
-\[\Delta R = \frac{c\tau_m}{2}\] with \(\tau_m\) the pulse high time. To
+
+\begin{equation} \label{eq:tof_res}
+	\Delta R = \frac{c\tau_m}{2}
+\end{equation}
+with \(\tau_m\) the pulse high time. To
 achieve high range resolution pulses must be very short, which requires
 very high peak transmission power to still produce a detectable echo
 signal. Pulse compression radars send a longer pulse with an internal
@@ -140,15 +157,13 @@ frequency shift.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:radar_pulse}
     \def\svgwidth{10cm}
     \input{gfx/diagrams/radar_pulsed.pdf_tex}
-    \caption{Pulse radars measure the time between stransmission and reception of a short EM burst. Adapted from \cite{Adams2012} p.~52}
+    \caption{\label{fig:radar_pulse}Pulse radars measure the time between transmission and reception of a short EM burst. Adapted from \cite{Adams2012} p.~52}
 \end{figure}
 
 
-\subsection{Frequency-modulated continuous wave (FMCW)
-radar}\label{frequency-modulated-continuous-wave-fmcw-radar}
+\subsection{Frequency-modulated continuous wave (FMCW) radar}\label{frequency-modulated-continuous-wave-fmcw-radar}
 
 FMCW radars use a frequency modulation to measure range and speed at the
 same time. The transmitted modulation is compared to the modulation in
@@ -168,10 +183,9 @@ the price of increased design complexity and cost \cite{Ernst2016}.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:fmcw_blocks}
     \def\svgwidth{\linewidth}
     \input{gfx/diagrams/fmcw_blocks.pdf_tex}
-    \caption{Simplified FMCW architecture. Adapted from \cite{VanZeijl2014}}
+    \caption{\label{fig:fmcw_blocks}Simplified FMCW architecture. Adapted from \cite{VanZeijl2014}}
 \end{figure}
 
 After the VCO's signal is amplified and transmitted, it reflects at
@@ -179,13 +193,12 @@ visible targets and is received as echo in the same frequency band.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:fmcw_triangular}
     \def\svgwidth{10cm}
     \input{gfx/diagrams/fmcw_triangular.pdf_tex}
-    \caption{FMCW radars detect targets in the beat frequency, which is a frequency mix of the transmitted and received modulation. Adapted from \cite{Adams2012} p.~57}
+    \caption{\label{fig:fmcw_triangular}FMCW radars detect targets in the beat frequency, which is a frequency mix of the transmitted and received modulation. Adapted from \cite{Adams2012} p.~57}
 \end{figure}
 
-In the top subplot, figure \ref{fig:fmcw_triangular} shows the transmitted frequency sweep
+In the top subplot, \cref{fig:fmcw_triangular} shows the transmitted frequency sweep
 from \(f_0\) to \(f_0 + \Delta f\) over a sweep length of \(T_d\) of a
 triangular modulation. The middle plot also shows the received signal as
 caused by a single stationary ideal reflector. Time of flight causes a
@@ -197,96 +210,105 @@ received signal \(v_{Rx}\) and a portion of the transmitted signal
 analog multiplier to get the intermediate frequency (IF) \(v_{Mixer}\).
 The IF contains a target's beat frequency, which is proportional to the
 target's range. With the transmitted signal \(v_{Tx}\) and the received
-signal \(v_{Rx}\) as a function of time \(t\), \[
-\begin{aligned}
-v_{Tx}(t) &= A_{Tx} \cos\bigl(\omega_{Tx}(t)~t\bigr)\\
-v_{Rx}(t) &= A_{Rx} \cos\bigl(\omega_{Tx}(t-\tau)~t\bigr)\\
-\end{aligned}
-\] where \(\omega_{Tx}\) is the angular frequency of the transmitted
-signal, \[
-\begin{aligned}
-\omega_{Tx}(t) &= \underbrace{\omega_c}_\text{Carrier frequency} + \underbrace{\pi \frac{\Delta f}{T_d} t}_\text{Upsweep modulation}
-\end{aligned}
-\] the signal behind the frequency mixer \(v_{Mixer}\) can be calculated
-as \[
-\begin{aligned}
-v_{Mixer}(t) &= v_{Tx}(t) ~ v_{Rx}(t) \\
-&= A_{Tx}A_{Rx}~\cos(t\omega_{Tx}(t))t~\cos(\omega_{Tx}(t-\tau)t)
-\end{aligned}
-\] With the trigonometric identity
-\[ \cos A \cdot \cos B = \frac{ \cos(A+B)~+~\cos(A-B) }{2} \]
-\(v_{Mixer}\) can be written as \[
-v_{Mixer}(t-\tau) = \frac{A_{Tx} A_{Rx}}{2}(B_1 + B_2)
-\] where \[
-\begin{aligned}
-B_1 &= \cos\bigl[ 2\omega_{Tx}(t-\tau) t - \omega_{Tx}(\tau)\tau \bigr]\\
-    &= \cos\left[ 2\left(\omega_c + \pi\frac{\Delta f}{T_d}(t-\tau)\right)t - \left(\omega_c - \pi\frac{\Delta f}{T_d}\tau\right)\tau \right]\\
-B_2 &= \cos\left[ 2\left(\pi\frac{\Delta f}{T_d}t\right)\tau - \omega_{Tx}(\tau)\tau \right]\\
-    &= \cos\left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau\right)\tau \right]
-\end{aligned}
-\] Note that \(B_1\) consists of high angular frequencies around the
+signal \(v_{Rx}\) as a function of time \(t\), 
+\begin{align*} \label{eq:fmcw1}
+    v_{Tx}(t) &= A_{Tx} \cos\bigl(\omega_{Tx}(t)~t\bigr)\\
+    v_{Rx}(t) &= A_{Rx} \cos\bigl(\omega_{Tx}(t-\tau)~t\bigr)
+\end{align*}
+where
+\begin{equation*}
+    \omega_{Tx}(t) = \underbrace{\omega_c}_\text{Carrier frequency} + \underbrace{\pi \frac{\Delta f}{T_d} t}_\text{Upsweep modulation}
+\end{equation*}
+is the (angular) frequency of the transmitted signal. The signal \(v_{Mixer}\) behind the frequency mixer can be calculated as 
+\begin{align*}
+    v_{Mixer}(t) &= v_{Tx}(t) ~ v_{Rx}(t) \\
+    &= A_{Tx}A_{Rx}~\cos(t\omega_{Tx}(t))t~\cos(\omega_{Tx}(t-\tau)t)
+\end{align*}
+With the trigonometric identity
+\begin{equation*}
+	 \cos A \cdot \cos B = \frac{ \cos(A+B)~+~\cos(A-B) }{2} 
+\end{equation*}
+\(v_{Mixer}\) can be rewritten as 
+\begin{equation*}
+	v_{Mixer}(t-\tau) = \frac{A_{Tx} A_{Rx}}{2}(B_1 + B_2)
+\end{equation*}
+where
+\begin{align*}
+	B_1 &= \cos\bigl[ 2\omega_{Tx}(t-\tau) t - \omega_{Tx}(\tau)\tau \bigr]\\
+        &= \cos\left[ 2\left(\omega_c + \pi\frac{\Delta f}{T_d}(t-\tau)\right)t - \left(\omega_c - \pi\frac{\Delta f}{T_d}\tau\right)\tau \right]\\
+    B_2 &= \cos\left[ 2\left(\pi\frac{\Delta f}{T_d}t\right)\tau - \omega_{Tx}(\tau)\tau \right]\\
+        &= \cos\left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau\right)\tau \right]
+\end{align*}
+
+Note that \(B_1\) consists of high angular frequencies around the
 carrier frequency, from \(f_0 = \frac{\omega_c}{2\pi}\) to
 \(f_0 + \Delta f\). \(B_2\) is a lower frequency (theoretically up to
 \(2\pi\Delta f\) at \(\tau = T_d\), but much lower in practice, as echos
 from targets this far away have very low intensity \(A_{Rx}\) and can't
 be detected) signal containing the beat frequency. The output of the
 low-pass filter intrinsic in the mixer stage will thus only consist of
-the beat frequency (plus noise of similar frequencies): \[
-v_{beat}(t,\tau) = \frac{A{Tx}A_{Rx}}{2} \cos \left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau \right) \tau \right]
-\] The term \(\frac{\Delta f}{T_d}\tau\) in \(v_{beat}(t,\tau)\) is
+the beat frequency (plus noise of similar frequencies):
+\begin{equation} \label{eq:vbeat}
+    v_{beat}(t,\tau) = \frac{A{Tx}A_{Rx}}{2} \cos \left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau \right) \tau \right]
+\end{equation}
+The term \(\frac{\Delta f}{T_d}\tau\) in \cref{eq:vbeat}'s \(v_{beat}(t,\tau)\) is
 known as the beat frequency \(f_b\). For stationary targets, the
 range-specific frequency \(f_R = f_b\). Knowing that the delay time
 \(\tau\) depends on the speed of light \(c\) and the range \(R\), the
 relationship between a target's \(f_R\) and range \(R\) can be given as
-\[
-f_R = \frac{2R}{c} \frac{\Delta f}{T_d} \iff R=\frac{c T_d}{2\Delta f}f_R
-\] This also gives the range resolution \(dR\), \[
-dR = \frac{c}{2 \Delta f}
-\]
 
-\begin{figure}[htp]
-    \centering
-    \label{fig:fmcw_doppler}
-    \def\svgwidth{10cm}
-    \input{gfx/diagrams/fmcw_doppler.pdf_tex}
-    \caption{Target motion introduces a Doppler shift in the received signal, which changes the beat frequency during up- and down-sweep. Adapted from \cite{Adams2012} p.~57}
-\end{figure}
+\begin{equation}
+	f_R = \frac{2R}{c} \frac{\Delta f}{T_d} \iff R=\frac{c T_d}{2\Delta f}f_R
+\end{equation}
+
+This also gives the range resolution \(dR\),
+
+\begin{equation}
+	dR = \frac{c}{2 \Delta f}
+\end{equation}
 
 A moving target however will introduce a Doppler shift \(f_D\) in the
 received signal \(v_{Rx}\), which will shift the target's beat frequency
 \(f_b\) away from its range-specific frequency \(f_R\). The direction of
 the frequency shift depends on the modulation: An up-sweep will have a
-corresponding \[f_{b,up} = f_R - f_D\] while the down-sweep has
-\[f_{b,down} = f_R + f_D\] The range-specific frequency and Doppler
-frequency can be extracted from the two beat frequencies by averaging
-them: \[
-\begin{aligned}
-f_R &= \frac{f_{b,down} + f_{b,up}}{2} \\
-f_D &= \frac{f_{b,down} - f_{b,up}}{2}
-\end{aligned}
-\]
+corresponding $f_{b,up}$, while the down-sweep will have $f_{b,down}$
+\begin{align*}
+	f_{b,up}    &= f_R - f_D \\
+	f_{b,down}  &= f_R + f_D
+\end{align*}
 
+\begin{figure}[htp]
+    \centering
+    \def\svgwidth{10cm}
+    \input{gfx/diagrams/fmcw_doppler.pdf_tex}
+    \caption{\label{fig:fmcw_doppler}Target motion introduces a Doppler shift in the received signal, which changes the beat frequency during up- and down-sweep. Adapted from \cite{Adams2012} p.~57}
+\end{figure}
+
+The range-specific frequency and Doppler frequency can be extracted from the two beat frequencies by averaging them: 
+\begin{align*}
+	f_R &= \frac{f_{b,down} + f_{b,up}}{2} \\
+    f_D &= \frac{f_{b,down} - f_{b,up}}{2}
+\end{align*}
 The benefit of the triangular sweep becomes clear here: with a sawtooth
 waveform, only \(f_b,up\) can be determined. A stationary target and a
 moving target a range and Doppler speed corresponding to the same
 resulting frequencies would not be distinguishable.
 
 Of course, more than one target can be visible at a time. If multiple
-echos are received, as in figure \ref{fig:radar_fmcw_multitarget}, the intermediate frequency will
+echos are received, as in \cref{fig:fmcw_multitarget}, the intermediate frequency will
 contain multiple frequencies. The beat signal will have more than one
 dominant frequency in its spectrum, with each one corresponding to a
 different target.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:fmcw_multitarget}
     \def\svgwidth{10cm}
     \input{gfx/diagrams/fmcw_multitarget.pdf_tex}
-    \caption{Each target contributes a frequency corresponding to its range in the beat spectrum.}
+    \caption{\label{fig:fmcw_multitarget}Each target contributes a frequency corresponding to its range in the beat spectrum.}
 \end{figure}
 
-Figure \ref{fig:fmcw_multitarget} shows a real-world example of how the beat signal \(f_b\)
-(top subplot) and its frequency spectrum (bottom subplot) look like. At
+\Cref{fig:fig_raw_beat} shows a real-world example of how the beat signal \(f_b\)
+(\cref{fig:rawbeat_t}) and its frequency spectrum (\cref{fig:rawbeat_f}) look like. At
 \(t=T_d=32ms\), a jump in the beat frequency is caused by the modulation
 change from upsweep to downsweep. In the frequency spectrum, three
 stationary targets are visible at ca. \(3kHz\), \(6kHz\), and \(9kHz\).
@@ -300,19 +322,18 @@ signal\footnote{A good explanation is available at \textit{ping.se}'s ``I/Q Data
 
 \begin{figure}[htp]
     \centering
-    \label{fig:fig_raw_beat}
     \begin{subfigure}{0.475\textwidth}
       \def\svgwidth{\linewidth} \small
       \input{gfx/fig_svg/raw_beat_1.pdf_tex}
-      \caption{Time-domain beat signal}
+      \caption{\label{fig:rawbeat_t}Time-domain beat signal}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.475\textwidth}
       \def\svgwidth{\linewidth} \small
       \input{gfx/fig_svg/raw_beat_2.pdf_tex}
-      \caption{Beat signal frequency spectrum}
+      \caption{\label{fig:rawbeat_f}Beat signal frequency spectrum}
     \end{subfigure}
-    \caption{Beat signal and spectrum / range profile in a real-world measurement.}
+    \caption{\label{fig:fig_raw_beat}Beat signal and spectrum / range profile in a real-world measurement.}
 \end{figure}
 
 \subsection{Direction of Arrival}\label{direction-of-arrival}
@@ -326,8 +347,10 @@ difference between the different antenna signals is measurable.
 In the case of a pair of receiving antennas, the direction of arrival
 \(\theta\) can be estimated \cite{VanZeijl2014} as
 
-\[\theta = sin^{-1}\left({\frac{\lambda~\Delta\Phi}{2\pi ~d}}\right)\]
 
+\begin{equation} \label{eq:doa}
+	\theta = sin^{-1}\left({\frac{\lambda~\Delta\Phi}{2\pi ~d}}\right)
+\end{equation}
 with wavelength \(\lambda\), antenna separation \(d\) and phase
 difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
 \(\angle S_1 - \angle S_2\) of the complex analytic antenna signals
@@ -335,10 +358,9 @@ difference \(\Delta\Phi\). \(\Delta\Phi\) is the angle difference
 
 \begin{figure}[htp]
     \centering
-    \label{fig:doa}
     \def\svgwidth{10cm}
     \input{gfx/diagrams/doa.pdf_tex}
-    \caption{Direction of Arrival \(\theta\) can be estimated from phase difference \(\Delta\Phi\)}
+    \caption{\label{fig:doa}Direction of Arrival \(\theta\) can be estimated from phase difference \(\Delta\Phi\)}
 \end{figure}
 
 TODO
@@ -366,7 +388,7 @@ The drawback is the very limited maximum bandwidth of \(250MHz\) in this
 band.
 
 Some newer radars use the \(60 GHz\) ISM band. It allows a rather wide
-bandwidth of up to \(9GHz\) in some regions (see figure \ref{fig:wigig} ).
+bandwidth of up to \(9GHz\) in some regions (see \cref{fig:wigig} ).
 According to equation \#REF, this gives a very good range resolution in
 the order of few \(cm\). At these high frequencies, RF energy
 attenuation in material increases noticeably \cite{FerrisJr.1998}. The
@@ -379,16 +401,14 @@ range (a few \(m\)) it should however not present a problem.
 \begin{figure}[htp]
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
-        \label{fig:attenuation}
         \includegraphics[width=\linewidth]{figures/rf_attenuation}
-        \caption{Total attenuation of RF energy when transmitted through various materials as a function of frequency. Source: \cite{FerrisJr.1998}}
+        \caption{\label{fig:attenuation}Total attenuation of RF energy when transmitted through various materials as a function of frequency. Source: \cite{FerrisJr.1998}}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}
-        \label{fig:attenuation_air}
         \def\svgwidth{\linewidth} \footnotesize
         \input{gfx/figures/ITU_0676-05.pdf_tex}
-        \caption{Specific RF attenuation due to atmospheric gases. Source: \cite{ITU1997}\bigskip}
+        \caption{\label{fig:attenuation_air}Specific RF attenuation due to atmospheric gases. Source: \cite{ITU1997}\bigskip}
     \end{subfigure}
     \caption{RF attenuation in different mediums.}
 \end{figure}
@@ -396,19 +416,17 @@ range (a few \(m\)) it should however not present a problem.
 The downside is that there are some other technologies using the same
 frequency bands, most notably 802.11ad a.k.a.
 WiGig\cite{AgilentTechnologies2013}. The WiGig frequency allocations in
-figure \ref{fig:wigig} show in which regions the \(60GHz\) band is available (also
+\cref{fig:wigig} show in which regions the \(60GHz\) band is available (also
 for radar).
 
 \begin{figure}[htp]
     \centering
-    \label{fig:wigig}
     \def\svgwidth{\linewidth}
     \input{gfx/diagrams/wigig.pdf_tex}
-    \caption{WiGig Channel Plan and Frequency Allocations by Region. Source: \cite{AgilentTechnologies2013}}
+    \caption{\label{fig:wigig}WiGig Channel Plan and Frequency Allocations by Region. Source: \cite{AgilentTechnologies2013}}
 \end{figure}
 
-\section{Overview of Radar
-Research}\label{overview-of-radar-research}
+\section{Overview of Radar Research}\label{overview-of-radar-research}
 
 Radar is used and researched since the 1940s. While it was historically only used to detect aircraft and ships, it is an active research domain in many fields today.
 Identification and localization of vessels is of course still an important application in both civil and military sectors.
@@ -434,7 +452,6 @@ sub-apertures, whose phase and amplitude are controlled by the
 individual few hundred transmit/receive modules \cite{Moreira2013}.
 
 \begin{figure}[htp]
-    \label{fig:sar_modes}
     \begin{subfigure}{\linewidth}
         \centering
         \def\svgscale{1.0}
@@ -455,7 +472,7 @@ individual few hundred transmit/receive modules \cite{Moreira2013}.
         \input{gfx/diagrams/sar_modes_spot.pdf_tex}
         \caption{Spotlight}
     \end{subfigure}
-    \caption{Illustration of different SAR operation modes which are used to increase the swath width (ScanSAR) or improve azimuth resolution (Spotlight) compared to Stripmap mode. Adapted from \cite{Moreira2013}}
+    \caption{\label{fig:sar_modes}Illustration of different SAR operation modes which are used to increase the swath width (ScanSAR) or improve azimuth resolution (Spotlight) compared to Stripmap mode. Adapted from \cite{Moreira2013}}
 \end{figure}
 
 Radar echo data is sampled in both fast-time and slow-time, with
@@ -474,30 +491,32 @@ azimuth-response from a target.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:sar_steps}
     \def\svgwidth{\linewidth}
     \input{gfx/diagrams/sar_steps.pdf_tex}
-    \caption{Summary of SAR processing steps where the range compressed data result from a convolution of the raw data with the range reference function. In a second step the azimuth compression is performed through a convolution with the azimuth reference function, which changes from near to far range. Source: \cite{Moreira2013}}
+    \caption{\label{fig_sar_steps}Summary of SAR processing steps where the range compressed data result from a convolution of the raw data with the range reference function. In a second step the azimuth compression is performed through a convolution with the azimuth reference function, which changes from near to far range. Source: \cite{Moreira2013}}
 \end{figure}
 
 An elemental scatterer at range \(R(t)\) will return an echo \(s_a(t)\)
-over time \(t\): \[
-s_a(t) = P_r \sqrt{\sigma\vphantom{1}} \exp(j\varphi_s)\exp(j \underbrace{\frac{-4\pi}{\lambda}R(t)}_\text{az. phase var. $\omega_D$})
-\] where \(P_r\) is the echo power of the received target, accounting
+over time \(t\): 
+\begin{equation} \label{eq:scatterer}
+	s_a(t) = P_r \sqrt{\sigma\vphantom{1}} \exp(j\varphi_s)\exp(j \underbrace{\frac{-4\pi}{\lambda}R(t)}_\text{az. phase var. $\omega_D$})
+\end{equation}
+where \(P_r\) is the echo power of the received target, accounting
 for dependencies like transmit power and path loss, \(\sigma\) is the
 target's RCS, imaginary unit \(j\), \(\varphi_s\) the scattering phase,
 and \(\frac{4\pi}{\lambda}R(t)\) the azimuth phase variation due to
 changing distance \cite{Cumming2004}. The target's range \(R(t)\) is
 described by the range at closest approach \(R_0\) and the radar's
-(constant) movement speed \(v_R\): \[
-R(t) = \sqrt{R_0^2+\left(v_Rt\right)^2} \approx R_0 + \frac{(v_Rt)^2}{2R_0} ~\text{for}~ \frac{v_Rt}{R_0} \ll 1
-\] Substituting \#REF into the azimuth phase in \#REF and derivating
-with respect to time yields the azimuth frequency \(f_D\) \[
-\begin{aligned}
-f_D &= \underbrace{\frac{1}{2\pi}}_{\omega_D = 2\pi f_D} \frac{\partial}{\partial t} \frac{-4\pi}{\lambda}  \underbrace{\left( R_0 + \frac{(v_Rt)^2}{2R_0}  \right)}_{R(t)} \\
-&= -\frac{2v_R^2}{\lambda R_0}t
-\end{aligned}
-\] The azimuth frequency varies linearly with time \(t\) and is
+(constant) movement speed \(v_R\): 
+\begin{equation} \label{eq:azphvar}
+	R(t) = \sqrt{R_0^2+\left(v_Rt\right)^2} \approx R_0 + \frac{(v_Rt)^2}{2R_0} ~\text{for}~ \frac{v_Rt}{R_0} \ll 1
+\end{equation}
+Substituting \cref{eq:azphvar} into the azimuth phase in \cref{eq:scatterer} and derivating
+with respect to time yields the azimuth frequency \(f_D\) 
+\begin{equation}
+	f_D = \underbrace{\frac{1}{2\pi}}_{\omega_D = 2\pi f_D} \frac{\partial}{\partial t} \frac{-4\pi}{\lambda}  \underbrace{\left( R_0 + \frac{(v_Rt)^2}{2R_0}  \right)}_{R(t)} = -\frac{2v_R^2}{\lambda R_0}t
+\end{equation}
+The azimuth frequency varies linearly with time \(t\) and is
 inversely proportional to the closest approach (slant range) \(R_0\),
 hence the azimuth reference function depends on geometry and is adapted
 to range. Because of the frequency-shifting effect it is analogous to
@@ -505,7 +524,7 @@ and also called the Doppler frequency.
 
 The most challenging aspect of SAR is the correction of range cell
 migration induced defocusing. Range cell migration is visible in figure
-\ref{fig:sarsteps}'s curvature of range compressed data. It occurs when a point
+\cref{fig_sar_steps}'s curvature of range compressed data. It occurs when a point
 target's echo energy is distributed over several range cells, causing
 azimuth defocusing. This effect is range-variant, as the curvature
 depends on \(R_0\). Hence a non-stationary two-dimensional reference
@@ -517,38 +536,75 @@ As far as moved radar sensors go, SAR is a great technique for imaging a scene w
 
 \subsection{Scanning radar}\label{scanning-radar}
 
-A radar system that changes the direction of its beam in a scanning pattern is called a scanning radar. This allows covering a larger overall search space by sampling a set of smaller regions, usually with a tighter beam shape for higher spatial accuracy. The scanning process can be implemented by mechanically rotating the radar's antenna, electronically through phased arrays, or even both in active electronically scanned arrays (AESA), which are used in fighter jets.
+A radar system that changes the direction of its beam in a scanning pattern is called a scanning radar. This allows covering a larger overall search space by sampling a set of smaller regions, usually with a tighter beam shape for higher spatial accuracy. The scanning process can be implemented by mechanically rotating the radar's antenna, electronically through phased arrays (see \cref{fig:phased}), or even both in active electronically scanned arrays (AESA), which are used in fighter jets (see \cref{fig:aesa}). Some research robots use the K2PI radar sensor \cite{Rouveure2008}, which rotates a pencil-shape beam over 360° (see \cref{fig:k2pi}).
 
-% \begin{figure}[htbp]
-%     \centering
-%     \label{fig:aesa}
-%     \includegraphics[max width=10cm]{gfx/pictures/ILA_Berlin_2012_PD_193-Detail-2.jpg}
-%     \caption{AESA antenna CAPTOR-E inside a Eurofighter's nose cone (removed). Source: \url{https://commons.wikimedia.org/wiki/File:ILA_Berlin_2012_PD_193-Detail-2.jpg}}
-%     \label{fig:aesa}
-% \end{figure}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.3\textwidth}
+        \def\svgwidth{\linewidth} \footnotesize
+        \input{gfx/diagrams/phased.pdf_tex}
+        \caption{The waves of a phased array's individual antennas superpose as plane wave and travel in a specific direction. Source: \url{https://wikimedia.org/wiki/File:Phased_array_antenna_system.svg}}
+        \label{fig:phased}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[max width=\linewidth]{gfx/pictures/ILA_Berlin_2012_PD_193-Detail-2}
+        \caption{AESA antenna CAPTOR-E inside a Eurofighter's nose cone (removed). Source: \url{https://wikimedia.org/wiki/File:ILA_Berlin_2012_PD_193-Detail-2.jpg}}
+        \label{fig:aesa}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.3\textwidth}
+        \includegraphics[max width=\linewidth]{gfx/pictures/k2pi}
+        \caption{K2PI FMCW radar. Named for operating in the K band frequency (24 GHz) and rotating by $2\pi$ radian. Source: \cite{Rouveure2008}}
+        \label{fig:k2pi}
+    \end{subfigure}
+    \caption{Scanning radars.}
+\end{figure}
 
-Small ground robots
-
-\begin{itemize}
-\item
-  Martin Adams
-\item
-  Henrik Forsten
-\item
-  Gregory Charvat
-\item
-  Bat type radar
-\end{itemize}
 
 \subsection{Radar slam}\label{radar-slam}
 
-TODO
 
-Radar Slam
+Simultaneous localization and mapping algorithms are of course a very useful tool in the effort to create an accurate map of a robot's surroundings and has been referred to as the ``holy grail'' of autonomous robotics research \cite{Dissanayake2001}.
 
-\begin{itemize}
-\item
-  Martin Adams
-\item
-  K2Pi
-\end{itemize}
+Most newer slam navigation algorithms are derived from the classcial Bayesian probabilistic recursion. They model the system by a probabilistic density function (PDF) on map and agent location. At the discrete time step $t$ the joint PDF for location $X_t$ and map $M_t$ is based on the history of (noisy) control inputs $U$, state $X$ (usually map location in terms of translation and rotation from known location $X_0$), and exteroceptive measurements of the environment $Z$ \cite{Adams2012}:
+\begin{equation} \label{eq:slam}
+    P_{t|t}(X_t,M_t|Z_{1:t},U_{1:t-1},X_0)
+\end{equation}
+Recursive probabilistic solutions then first \textit{predict} the joint state \( P_{t|t-1}(X_t,M_t|Z_{1:t-1},U_{1:t-1},X_0) \) from control inputs and then \textit{correct} the state with the observations, to get the posterior of \cref{eq:slam}.
+
+Many current applications using slam acquire observation data with laser scanners or vision sensors (VSLAM), but this is not an inherent limitation of slam. In fact, any kind of sensor can be used as long as it delivers reproducible data where features can easily be re-detected from different locations.
+
+For feature-based slam algorithms, representative landmarks are extracted from observation data. For multistatic radar sensors \cite{Deissler2013,Deissler2012,Seitz2008,Deissler2009} offer a solution that classifies walls, edges and corners from multipath signal propagation round trip times.
+
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[max width=12cm]{diagrams/missed_detections}
+    \caption{Radar (heatmap) has fewer missed detections than lidar (black dots), because of its wider beam with and foliage penetration capability. Adapted from \cite{Adams2015}}
+    \label{fig:missed_detections}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[max width=\linewidth]{diagrams/radar_map_1}
+        \caption{Aerial picture of the scene}
+        \label{fig:radar_map_1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[max width=\linewidth]{diagrams/radar_map_2}
+        \caption{Laser based gridmap}
+        \label{fig:radar_map_2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[max width=\linewidth]{diagrams/radar_map_3}
+        \caption{Radar based gridmap}
+        \label{fig:radar_map_3}
+    \end{subfigure}
+    \caption{Comparison of radar and lidar occupancy gridmaps. Source: \cite{Adams2015}}
+\end{figure}

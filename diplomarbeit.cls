@@ -60,8 +60,8 @@
       \def\bearbeitertext{Bearbeiter:}
       \renewcommand*\indexname{Stichwortverzeichnis}
     }{% English and all others
-      \def\listofsymbolsname{List of Symbols}
-      \def\listofabbrevsname{List of Acronyms}
+      \def\listofsymbolsname{Nomenclature}
+      \def\listofabbrevsname{Acronyms}
       \def\month@english{\ifcase\month\or
         January\or February\or March\or April\or May\or June\or
         July\or August\or September\or October\or November\or December\fi

@@ -20,7 +20,7 @@ case}\label{geometry-for-the-side-facing-case}
 
 If the radar is moving directly towards a target, the target's Doppler
 speed \(v_D\) will be equal to radar speed \(v_R\) (target \(A\) in
-figure \ref{fig:geometry}). If the radar passes the target on the side, so that the
+\cref{fig:geometry}). If the radar passes the target on the side, so that the
 distance to the target stops decreasing and begins to grow, \(v_D = 0\)
 (target \(C\) in figure). If a target has an absolute Doppler speed
 \(\|v_D\|\) between \(0\) and \(v_R\) (target \(B\) in figure), it is seen
@@ -30,7 +30,6 @@ from the radar under an angle \(\alpha\), such that
 \begin{figure}[htp]
     \centering
     \footnotesize
-    \label{fig:geometry}
     \begin{subfigure}{0.45\textwidth}
         \def\svgwidth{\linewidth}
         \input{gfx/diagrams/geometry_side.pdf_tex}
@@ -42,7 +41,7 @@ from the radar under an angle \(\alpha\), such that
         \input{gfx/diagrams/geometry_forward.pdf_tex}
         \caption{Forward-facing / general 2D case}
     \end{subfigure}
-    \caption{Reprojection geometries}
+    \caption{\label{fig:geometry}Reprojection geometries}
 \end{figure}
 
 Positive values for \(\alpha\) indicate targets on the left side of the
@@ -53,8 +52,7 @@ side-facing, such that only targets on one side of the motion path are
 visible. Like this, the angle ambiguity is resolved, because only one
 side is visible.
 
-\subsection{Geometry for the General
-case}\label{geometry-for-the-general-case}
+\subsection{Geometry for the General case}\label{geometry-for-the-general-case}
 
 In the general case such as with a forward facing radar, or with radar
 antennas with angle sensitivities that allow a field of view of over

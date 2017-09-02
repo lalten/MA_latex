@@ -1,8 +1,3 @@
-
-
-
-
-
 \chapter{Conclusion}\label{conclusion}
 
 \section{Future Work}\label{future-work}
@@ -41,9 +36,7 @@ allow pretty and useful visualizations with RViz.
 
 The \texttt{omniradar\_node} ROS node spends quite some time on copying
 the radar echo into the ros message that is to be sent out. As Austin
-Hendrix points out in
-\href{https://answers.ros.org/question/208801/how-to-have-no-copy-publishing-over-multiple-cores/?answer=208805\#post-id-208805}{ROS
-answers}, ``ROS doesn't provide intra-process, zero-copy publishing.
+Hendrix points out in \textit{ROS answers}\footnote{\url{https://answers.ros.org/question/208801/how-to-have-no-copy-publishing-over-multiple-cores/?answer=208805\#post-id-208805}}, ``ROS doesn't provide intra-process, zero-copy publishing.
 Nodelets can be run multi-threaded, so it is possible to have zero-copy
 between different nodelets within a single nodelet manager''. Recording
 a rosbag still involves copying the data, but in an online system a
@@ -51,6 +44,10 @@ nodelet-based reprojecting algorithm can be expected to bring a
 reasonable performance improvement.
 
 \subsection{Auto-thresholding}\label{auto-thresholding}
+
+TODO
+
+CFAR
 
 \subsection{Realtime}\label{realtime}
 
@@ -60,11 +57,9 @@ system run under realtime constraints, so it can guarantee range
 scanning and reprojection mapping to be finished within a known time
 frame.
 
-\subsection{Dynamic changing of sweep time and
-bandwidth}\label{dynamic-changing-of-sweep-time-and-bandwidth}
+\subsection{Dynamic changing of sweep time and bandwidth}\label{dynamic-changing-of-sweep-time-and-bandwidth}
 
-\subsection{Interference
-Investigation}\label{interference-investigation}
+\subsection{Interference Investigation}\label{interference-investigation}
 
 Since the 60 GHz band is ISM, other sources can be present, e.g.~the
 IEEE 802.11ad standard \cite{IEEE2014} (``WiGig'') which enables very
@@ -79,15 +74,14 @@ causes a lot of trouble.
 Usually, ultrasound sensors measure the distance to the closest object.
 However, K.C. Lee's project log of their ``Sonar for the visually
 impaired'' project \cite{Lee2015} shows how cheap sensors can be hacked
-to read a range profile that looks very similar (see figure \ref{fig:had_us}) to
+to read a range profile that looks very similar (see figure \cref{fig:had_us}) to
 what is used for the radar reprojection method. It might be possible to
 adapt the algorithms in this thesis to use ultrasound sensors.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:had_us}
     \includegraphics[max height=10cm,max width=10cm]{pictures/had_us}
-    \caption{Range profile measurement with a hacked HCSR04 ultrasound module. Source: \cite{Lee2015}}
+    \caption{\label{fig:had_us}Range profile measurement with a hacked HCSR04 ultrasound module. Source: \cite{Lee2015}}
 \end{figure}
 
 Most ultrasound range sensors use the time of flight of a pulsed echo,
@@ -112,19 +106,18 @@ modulated flash lidars and the right optics.
 
 \subsection{3D case}\label{d-case}
 
-Chapter \ref{idea} describes the geometry for 2D-cases. However, it
+Chapter \cref{idea} describes the geometry for 2D-cases. However, it
 is possible to extend the concept to the three dimensional space if a
 radar has more than two non-collinear receiving antennas, like
-visualized in figure \ref{fig:2ddoa}. Horizontal DOA would be measured between
+visualized in figure \cref{fig:2ddoa}. Horizontal DOA would be measured between
 antennas at positions \(Rx1\) and \(Rx2\) while vertical DOA would be
 measured between \(Rx1\) and \(Rx3\).
 
 \begin{figure}[htp]
     \centering
-    \label{fig:2ddoa}
     \def\svgwidth{5cm}
     \input{gfx/diagrams/outlook_doa.pdf_tex}
-    \caption{Non-collinear triple receive antenna arrangement.}
+    \caption{\label{fig:2ddoa}Non-collinear triple receive antenna arrangement.}
 \end{figure}
 
 Reprojection mapping could then be used to build 3D occupancy maps. The
@@ -135,10 +128,9 @@ have to be used to pinpoint the target location on the circle.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:3dcase}
     \def\svgwidth{5cm}
     \input{gfx/diagrams/outlook_3d.pdf_tex}
-    \caption{A target detected at range \(R\) and relative Doppler speed corresponding to reprojection angle \(\alpha\) will be at a point on a circle (green) around the flight path (blue).}
+    \caption{\label{fig:3dcase}A target detected at range \(R\) and relative Doppler speed corresponding to reprojection angle \(\alpha\) will be at a point on a circle (green) around the flight path (blue).}
 \end{figure}
 
 This holds also for the 2D-case: The possible locations for targets are
@@ -149,11 +141,10 @@ This would be useful on vehicles moving in 3D space, like the TUM RCS's
 Real-Time Testbed (MART)} that was also used in other research and
 publications \cite{Becker2015}.
 
-\subsection{Single receive antennas on multiple
-sensors}\label{single-receive-antennas-on-multiple-sensors}
+\subsection{Single receive antennas on multiple sensors}\label{single-receive-antennas-on-multiple-sensors}
 
 Direction of arrival is a good solution to resolve the ambiguities
-presented in the general 2D-case \ref{geometry-for-the-general-case} and 3D-case geometry (figure \label{fig:3dcase}) for a
+presented in the general 2D-case \cref{geometry-for-the-general-case} and 3D-case geometry (\cref{fig:3dcase}) for a
 sensor with a sufficient number of antennas. However, it should also be
 possible to use multiple, spatially separated sensors instead. Each
 sensor measures a reprojection angle. A target visible to both sensors

@@ -1,4 +1,3 @@
-
 \chapter{Implementation}\label{implementation}
 
 \section{Implementation Platform}\label{implementation-platform}
@@ -19,9 +18,9 @@ capacity Omniradar FMCW Radar development kit
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:kobuki}
     \includegraphics[max height=10cm,max width=10cm]{models/kobuki}
     \caption{Yujin's iClebo Kobuki robot platform. Source: \cite{DesignK2013}}
+    \label{fig:kobuki}
 \end{figure}
 
 \subsubsection{ROS integration}\label{ros-integration}
@@ -35,7 +34,9 @@ capacity Omniradar FMCW Radar development kit
 There are quite a few short-range UWB FMCW radar modules. The following
 table compares some promising solutions.
 
+
 \input{chapters/ch_impl_devkitlist}
+
 
 The most suitable modules are the ones with the highest bandwidth as
 they give the highest resolution. Other beneficial properties are high
@@ -54,8 +55,8 @@ the time the board arrived, the decision to focus on Omniradar was made.
 
 \subsubsection{Walabot}\label{walabot}
 
-\href{https://www.vayyar.com/}{Vayyar} is an Israeli
-\href{https://www.crunchbase.com/organization/vayyar}{startup} that was
+Vayyar\footnote{\url{https://www.vayyar.com/}} is an Israeli
+startup\footnote{\url{https://www.crunchbase.com/organization/vayyar}} that was
 founded in 2011. Coming from a medical background, they moved away from
 use cases such as breast cancer detection towards general 3D imaging in
 the consumer market with their Walabot sensor.
@@ -69,9 +70,9 @@ tracking, pipe detection and raw data.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:walabot_image}
     \includegraphics[max height=10cm,max width=10cm]{figures/walabot_image}
     \caption{Vayyar's Walabot Pro sensor is claimed to have Target localization and tracking. Source: \url{https://api.walabot.com/\_features.html\#\_examples}}
+    \label{fig:walabot_image}
 \end{figure}
 
 The catch is however that it is almost impossible to do imaging without
@@ -88,8 +89,8 @@ heatmaps.
 
 \subparagraph{Static range test}\label{static-range-test}
 
-Figure \#REF shows the signal from two Walabot antenna pairs as it
-records the scene in image \#REF with can stacks at \(0.5m\) \(1m\) and
+\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it
+records the scene in image \cref{fig:walabot_rangetest_setup} with can stacks at \(0.5m\) \(1m\) and
 \(1.5m\). The signal is very stable over time and shows next to no
 noise. Unfortunately however it doesn't seem like the radar sensor can
 detect the metal cans at all. The high frequency signal is the raw
@@ -103,7 +104,7 @@ Another problem with the data is that the peaks of the envelope jitter
 in range. This can be fixed by combination with another oddity: The last
 180 samples rise very strongly in magnitude. If they are cut and
 prepended to the first sample, they match up perfectly. Peaks can then
-be detected in the signal (represented by the dots figure \#REF ) and
+be detected in the signal (represented by the dots \cref{fig:walabot_rangetest_data}) and
 the range set to zero at the first peak. This eliminates the range
 jitter completely. The reason is that the first peak is caused by
 transmit antenna crosstalk and can thus be used as a timing reference
@@ -111,19 +112,21 @@ point.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:walabot_rangetest}
     \begin{subfigure}{\textwidth}
         \centering
         \includegraphics[width=\linewidth]{pictures/experiment_walabot_rangetest}
         \caption{Setup with three towers of cans in front of the Walabot sensor}
+        \label{fig:walabot_rangetest_setup}
     \end{subfigure}
     \begin{subfigure}{\textwidth}
         \centering
         \def\svgwidth{\linewidth}
         \input{gfx/fig_svg/walabot_rangetest.pdf_tex}
         \caption{Normalized echo intensity of range profile measurement with two antenna pairs. After the transmit peak at \(t=0\), three peaks corresponding to the three can targets are vaguely perceptible. }
+        \label{fig:walabot_rangetest_data}
     \end{subfigure}
     \caption{Static range test with the Walabot sensor}
+    \label{fig:walabot_rangetest}
 \end{figure}
 
 \subparagraph{Dynamic range test}\label{dynamic-range-test}
@@ -133,11 +136,11 @@ was difficult to interpret the data conclusively. To objectively test
 the sensor's response, an aluminum plate that gave a strong echo signal
 was taped to the Kobuki robot. The robot was then driven with a constant
 speed away from the sensor and then towards the sensor as pictured in
-\ref{:walabot_dynamic_setup}.
+\cref{fig:walabot_dynamic_setup}.
 
 The sensor was sampled at a constant frequency in raw data mode. The
 analytic signal magnitude of the range scans is stacked at the right end of the
-matrix displayed in figure \ref{fig:walabot_dynamic_data}.
+matrix displayed in \cref{fig:walabot_dynamic_data}.
 
 
 \begin{figure}[htbp]
@@ -170,22 +173,22 @@ With its good range resolution and a good idea of its capabilities from
 a basis for the proof of concept implementation, it receives a more
 detailed look.
 
-Founded in 2010, \href{https://www.omniradar.com/}{Omniradar} is a Dutch
-\href{https://www.crunchbase.com/organization/omniradar}{startup} that
+Founded in 2010, Omniradar\footnote{\url{https://www.omniradar.com/}} is a Dutch
+startup\footnote{\url{https://www.crunchbase.com/organization/omniradar}} that
 claims to be the first to integrate a complete 60 GHz radar including
 antennas and analog to digital conversion in one chip.
 
 With the RIC60-A they offer a Radar Development Kit (RDK) that gives
 7GHz of bandwidth on two receiving antennas. An Altera Cyclone IV FPGA
-handles the signal acquisition and communication. Figure \#REF shows the
+handles the signal acquisition and communication. \Cref{fig:slide_RIC60A} shows the
 radar IC and how the three antennas are integrated in silicon.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:slide_RIC60A}
     \def\svgwidth{\linewidth}
     \input{gfx/pictures/slide_RIC60A.pdf_tex}
     \caption{Decapped Omniradar IC; five cent coin as size reference; and antenna directionality pattern of Omniradar's RIC60-A. Source: \cite{Brouwer2015} p.9}
+    \label{fig:slide_RIC60A}
 \end{figure}
 
 The radar sensor's beam is fan shaped, which means it is fairly
@@ -291,24 +294,23 @@ The optimal range was empirically found to lie between \(2ms\) and
 
 TODO wording here
 
-Figure \ref{fig:fig_chirp_eff} shows the chirp efficiency
+\Cref{fig:fig_chirp_eff} shows the chirp efficiency
 \(\eta = \frac{n_{chirp}~t_{chirp}}{t_{msg}}\), with number of
 consecutive sweeps \(n_{chirp}\) (two in the graph's data source), chirp
 length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_chirp_eff}
     \def\svgwidth{10cm}
     \input{gfx/fig_svg/chirp_eff.pdf_tex}
     \caption{Chirp efficiency \(\eta\) (measurement time per time spent) for various chirp lengths}
+    \label{fig:fig_chirp_eff}
 \end{figure}
 
-The chirp length has an effect on accuracy and resolution. Figure \ref{fig:fig_compare_chirp_times} shows the range profiles of one scene, recorded over $10s$. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a slimmer band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Especially with the horn extension attached longer measurement time also improves SNR.
+The chirp length has an effect on accuracy and resolution. \Cref{fig:fig_compare_chirp_times} shows the range profiles of one scene, recorded over $10s$. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a slimmer band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Especially with the horn extension attached longer measurement time also improves SNR.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_compare_chirp_times}
     \begin{subfigure}{0.475 \textwidth}
         \centering
         \def\svgwidth{\linewidth} \small
@@ -338,6 +340,7 @@ The chirp length has an effect on accuracy and resolution. Figure \ref{fig:fig_c
         \caption{Normalized harmonic mean of range profiles, with horn extension}
     \end{subfigure}
     \caption{Effect of chirp length on SNR; with and without Horn extension}
+    \label{fig:fig_compare_chirp_times}
 \end{figure}
 
 
@@ -518,21 +521,21 @@ timestamp and sequential ID is contained in the regular
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:nodegraph}
     \includegraphics[max height=10cm,max width=10cm]{screenshots/nodegraph}
     \caption{Omniradar rosnode node graph with leaf topics}
+    \label{fig:nodegraph}
 \end{figure}
 
 While parameters from the ROS parameter server (as configured in the
 launch) are respected, the node also offers a dynamic reconfigure server
 to change RIC configuration string, number of sweeps and length of sweep
-on the fly without the need to restart the node.
+on the fly without the need to restart the node (see \cref{fig:dynreconf}).
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:dynreconf}
     \includegraphics[max height=10cm,max width=10cm]{screenshots/dynreconf}
     \caption{Dynamic reconfigure options for the Omniradar rosnode}
+    \label{fig:dynreconf}
 \end{figure}
 
 The core of the node is a while loop that continuously triggers radar
@@ -686,15 +689,14 @@ distance. All samples in one bin are averaged to represent that bin's
 value. This greatly improves processing time (to less than a second for
 some minutes of recorded data).
 
-Figure \ref{fig:fig_compare_means} shows in gray the raw data of the first 20 range scan lines
+\Cref{fig:fig_compare_means} shows in gray the raw data of the first 20 range scan lines
 from the ``Mancave'' dataset. It then compares different ways of
 averaging over these 20 scans. All of them increase the SNR, because a
-big part of the noise signal is statistically uncorrelated. Table \ref{tab:mean}
+big part of the noise signal is statistically uncorrelated. Table \cref{tab:mean}
 compares the RMS of the difference of each signal to the harmonic mean,
 which gives the cleanest signal.
 
 \begin{table}[htbp]
-\label{tab:mean}
 \rowcolors{1}{ColorAlternatedRow}{}
 \begin{tabularx}{0.5\textwidth}{XX}
 \hiderowcolors
@@ -712,6 +714,7 @@ Raw & 1.064\tabularnewline
 \bottomrule
 \end{tabularx}
 \caption{Comparison of mean types by RMS}
+\label{tab:mean}
 \end{table}
 
 The harmonic mean is defined as
@@ -727,9 +730,9 @@ between the lower and the upper half of sample values.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_compare_means}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_compare_means}
     \caption{Range profile quality comparison with different averaging functions. Higher peak-to-trough ratio is better.}
+    \label{fig:fig_compare_means}
 \end{figure}
 
 Due to the good signal quality, the implementation uses the harmonic
@@ -743,24 +746,23 @@ scan need to be averaged as well. These parameters are mileage at scan
 time, robot position and orientation, and robot speed. Sweep time and
 down range bins don't change.
 
-\section{Doppler Estimation with the Peak Gradient
-Algorithm}\label{doppler-estimation-with-the-peak-gradient-algorithm}
+\section{Doppler Estimation with the Peak Gradient Algorithm}\label{doppler-estimation-with-the-peak-gradient-algorithm}
 
 The peak gradient algorithm is a way to find Doppler speeds from
 consecutive range profiles.
 
-TODO put this in latex-subfigures?
+TODO subfigures, adjust references
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_explain_peak_gradient}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_explain_peak_gradient.png}
     \caption{Peak detection and subsample peak interpolation to find peak distance between two range profiles}
+    \label{fig:fig_explain_peak_gradient}
 \end{figure}
 
-In figure \ref{fig:fig_explain_peak_gradient} the scans at radar mileage \(0.355m\) and \(0.375m\) of
+In \cref{fig:fig_explain_peak_gradient} the scans at radar mileage \(0.355m\) and \(0.375m\) of
 a scene (``Basement'') are overlaid. Obviously the range profiles of the
-two scans are very similar. However, as visible in figure \#REF some
+two scans are very similar. However, as visible in \cref{fig:fig_explain_peak_gradient} some
 peaks from target echoes are shifted, as the distance to the targets
 changes with the radar moving through the scene. The rate at which the
 distance to a target changes is its relative speed to the radar, the
@@ -774,8 +776,7 @@ become time independent and hence radar movement speed independent.
 
 A target's distance from the radar is assumed to be at the range bin of
 the corresponding peak in a scan's range profile. When a target's
-distance changes the peak will shift, too. This is visible in figure
-\#REF and we can read the Doppler speed from the figure. The peak around
+distance changes the peak will shift, too. This is visible in \cref{fig:fig_explain_peak_gradient} and we can read the Doppler speed from the figure. The peak around
 \(0.67m\) moves \(d_{down,1} = 0.0216m\) closer in range, while the peak
 around \(0.95m\) moves \(d_{down,2} = -0.0216m\) closer (i.e., away).
 Combined with the change in cross range,
@@ -812,8 +813,7 @@ but by range accuracy, which mainly depends on SNR. It is much better
 than range resolution with \(\sigma_R = \frac{dR}{\sqrt{SNR}}\). This
 can be utilized with subsample peak interpolation.
 
-\subsection{Inter-scan vs Intra-scan Doppler
-estimation}\label{inter-scan-vs-intra-scan-doppler-estimation}
+\subsection{Inter-scan vs Intra-scan Doppler estimation}\label{inter-scan-vs-intra-scan-doppler-estimation}
 
 For correct Doppler estimation it is important to have the exact timing,
 or for relative Doppler speed, exact cross range mileage of the range
@@ -837,25 +837,23 @@ adjusted to \(t_{msg} + i\cdot t_{sweep}\) (with message timestamp
 \(t_{msg}\), consecutive sweep index \(i\) and sweep duration
 \(t_{sweep}\)) and cross range mileage interpolated at that timestamp.
 
-\subsection{Subsample peak
-interpolation}\label{subsample-peak-interpolation}
+\subsection{Subsample peak interpolation}\label{subsample-peak-interpolation}
 
 In subsample peak interpolation a curve is fitted on several supporting
 points in the coarse-resolution data. In the case of a single,
 non-overlapping radar echo peak, a Gaussian pulse of the form
 \[g_i(x) = a_i e^{-b_i ( x - c_i )^2}\] is a good approximation. In
-figure \#REF, the data point of the respective peak as well as its left
+figure \cref{fig:fig_explain_peak_gradient}, the data point of the respective peak as well as its left
 and right neighbors are fitted with a Gaussian. The fit parameters
-\(a\), \(b\) and \(c\) are calculated using
-\href{https://www.mathworks.com/matlabcentral/fileexchange/24465}{Travis
-Wiens's crit\_interp\_g} function.
+\(a\), \(b\) and \(c\) are calculated using Travis
+Wiens's crit\_interp\_g function\footnote{\url{https://www.mathworks.com/matlabcentral/fileexchange/24465}}.
 
 As evident by visual inspection, the intensity and location of the
 fitted function's maximum are much closer to the real value.
 
 With the same procedure as explained above, we measure peak distance
 shifts of \(d_{down,1}=9.510mm\) and \(d_{down,2}=-13.52mm\) in figure
-\#REF and can hence estimate Doppler speeds of \(v_{D,1}=48.26\%\) and
+\cref{fig:fig_explain_peak_gradient} and can hence estimate Doppler speeds of \(v_{D,1}=48.26\%\) and
 \(v_{D,2}=-68.63\%\) of radar movement speed. These values are a much
 more plausible estimation and generally work very well when used to
 calculate the reprojection angle in the reprojection method.
@@ -882,9 +880,9 @@ percent of robot speed \(v_R\). Good values are a factor of
 \(2 v_R\) as maximum Doppler speed.
 
 \subsubsection{Minimum Peak height}\label{minimum-peak-height}
+TODO
 
-\subsection{Transmit crosstalk
-suppression}\label{transmit-crosstalk-suppression}
+\subsection{Transmit crosstalk suppression}\label{transmit-crosstalk-suppression}
 
 At low range, spurious peaks occur. The first one is caused by transmit
 antenna crosstalk and is visible as very high intensity echo around
@@ -902,7 +900,7 @@ Hence these spurious peaks must be ignored during peak detection. This
 can be achieved in two ways. The first is to simply replace all data
 values under a down range limit \(d_{mute}\) (usually
 \(d_{mute}=0.30m\)) with \(NaN\) values. For the second way, one effect
-of range compensation is exploited. As shown in figure \#REF, the spike
+of range compensation is exploited. As shown in \cref{fig:fig_range_compensation_transmit_spike}, the spike
 that previously had its maximum in the first range bin, at
 \(d_{down}=0\), now has its maximum in a later range bin. The reason is
 that the range compensation factor at \(d_{down}=0\) is \(r(0) = 0\) but
@@ -916,26 +914,31 @@ to ignore these echoes.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_range_compensation_transmit_spike}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_range_compensation_transmit_spike.png}
     \caption{Attenuating effect of range compensation on transmit peak in range profile}
+    \label{fig:fig_range_compensation_transmit_spike}
 \end{figure}
 
 Note that the \(0\) value at \(d_{down}=0\) won't be displayed in log
 scale.
 
-\subsection{Peaks overlaps at crossing target
-arcs}\label{peaks-overlaps-at-crossing-target-arcs}
+\subsection{Peaks overlaps at crossing target arcs}\label{peaks-overlaps-at-crossing-target-arcs}
+
+TODO
 
 \subsection{Output}\label{output}
 
+TODO
+
 \subsection{Limitations}\label{limitations-1}
 
-\subsubsection{Problems with imperfect fit function for
-subsampling}\label{problems-with-imperfect-fit-function-for-subsampling}
+TODO
 
-\subsubsection{Problems with close
-targets}\label{problems-with-close-targets}
+\subsubsection{Problems with imperfect fit function for subsampling}\label{problems-with-imperfect-fit-function-for-subsampling}
+
+TODO
+
+\subsubsection{Problems with close targets}\label{problems-with-close-targets}
 
 When Doppler speed is measured directly using FMCW, there will be
 several Doppler peaks, each representing a different target at the same
@@ -955,18 +958,18 @@ around the common speed. To combat this effect, a higher accumulation
 distance can be used during oversampling preprocessing, so the peaks
 move together so closely that they actually form a single target.
 
-
 TODO subcaption with explanation of "simulation"
+
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_squiggly_doppler_at_wall}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_squiggly_doppler_at_wall}
     \caption{The target echo at the closest range usually has the brightest intensity. This can lead to errors in Doppler speed estimation.}
+    \label{fig:fig_squiggly_doppler_at_wall}
 \end{figure}
 
 \section{DOA Implementation}\label{doa-implementation}
 
-As described in \#REF, the Direction of Arrival (DOA) angle can be
+As described in \cref{direction-of-arrival}, the Direction of Arrival (DOA) angle can be
 measured from the phase difference at the receiving antennas of a
 multistatic radar.
 
@@ -974,23 +977,23 @@ In the case of RIC60A the antenna separation \(d\) is \(1.16mm\) and
 wavelength \(\lambda\) is \(\lambda=\frac{c}{60GHz}=5.0mm\) (with speed
 of light \(c\)).
 
-Figures \#REF and \#REF show the range profile and phase shift of the
+\Cref{fig:fig_range,fig:fig_phase_shift} show the range profile and phase shift of the
 ``Basement'' scan. The phase shift is very noisy in the regions without
 a target peak in the range profile but exhibits steady values following
 a gradient over targets.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_range}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_range}
     \caption{Range profile of Attic scan with color coded echo intensities at cross range over down range}
+    \label{fig:fig_range}
 \end{figure}
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_phase_shift}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_phase_shift}
     \caption{Phase profile of Attic scan with color coded inter-antenna phase difference at cross range over down range}
+    \label{fig:fig_phase_shift}
 \end{figure}
 
 Four steps are performed to get a reasonable estimation of direction of
@@ -1017,12 +1020,10 @@ accumulation distance in cross range dimension.
 \textbf{Cut out}. Noisy
 values at non-target peak range bins are masked out.
 
-\textbf{DOA
-calculation}. In each scan line, each peaks direction of arrival
-\(\theta\) is calculated from the smoothed phase shift values, using
-formula \#REF.
+\textbf{DOA calculation}. In each scan line, each peaks direction of arrival
+\(\theta\) is calculated from the smoothed phase shift values, using \cref{eq:doa}.
 
-Figure \#REF shows the result of these four steps applied on the data of
+\Cref{fig:fig_doa} shows the result of these four steps applied on the data of
 the ``Basement'' scan. The direction of arrival seems plausible: In this
 side-facing scan the robot passed some metal cans. Apparently the radar
 sensor was not mounted perfectly orthogonal to the robot's movement
@@ -1034,9 +1035,9 @@ to 10 degrees.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_doa}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_doa}
     \caption{Direction of arrival estimation for Attic scan}
+    \label{fig:fig_doa}
 \end{figure}
 
 Note that if the radar sensor is mounted inverted (rotated by 180°), DOA
@@ -1151,15 +1152,15 @@ then \(p_{x_t, y_t} = 1\)
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:Sample_splitting}
     \def\svgwidth{10cm}
     \input{gfx/diagrams/sample_splitting.pdf_tex}
     \caption{Illustration of a pixel value (white circle) being distributed over the four nearest grid neighbors. The shade of the neighbor's area indicates the individual distrution weight.}
+    \label{fig:Sample_splitting}
 \end{figure}
 
 \subsection{Range compensation}\label{range-compensation}
 
-As evident from the radar equation \#REF, echo intensity decreases with
+As evident from the classical radar \cref{eq:radarclassical}, echo intensity decreases with
 the fourth power of distance. This has the effect that reprojected
 targets appear brighter when they are mapped from close distance; but
 most importantly, when targets are detected from a far distance, mapped
@@ -1176,7 +1177,7 @@ c_a + (
 
 
 
-Figure \#REF shows the range profile of the ``Torture Chamber'' scan
+\Cref{fig:fig_range_compensation} shows the range profile of the ``Torture Chamber'' scan
 both as oversampled raw values (top subplot) and with range compensation
 enabled (bottom subplot). The middle subplot details the range scan line
 at one cross range highlighted by the red lines. Inspecting this detail
@@ -1185,16 +1186,15 @@ near range, while the noise floor stays constant in the far range. This
 helps to keep a target's intensity at at least similar values over all
 ranges in the map.
 
-TODO subfigures
+TODO subfigures, adjust refs
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_range_compensation}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_range_compensation}
     \caption{Range compensation}
+    \label{fig:fig_range_compensation}
 \end{figure}
 
-\subsection{Angle sensitivity
-compensation}\label{angle-sensitivity-compensation}
+\subsection{Angle sensitivity compensation}\label{angle-sensitivity-compensation}
 
 The intensity of a target peak depends on its angle with respect to the
 antenna. The angle is unknown before the Doppler speed is estimated, so
@@ -1215,21 +1215,21 @@ together with robot odometry were recorded.
 The radar was not mounted over the center of rotation of the robot. This
 way, the radar did describe a circular path whose mileage can be
 calculated. The angle compensation measurement can hence be visualized
-in figure \#REF in the usual range profile with echo intensities over
+in figure \cref{fig:fig_range_compensation} in the usual range profile with echo intensities over
 cross versus down range. The range of the retroreflector varies with
 twice the distance of the radar to the robot's rotation center, but only
 the orientation is interesting - the range can just be summed up over
 the range bins the target is visible in (in this case,
 \(0.45m - 0.85m\)).
 
-In figure \#REF, the same range scan lines are sorted by robot
+In figure \cref{fig:fig_range_compensation}, the same range scan lines are sorted by robot
 orientation during the scan. After the explained summing in down range
 dimension the intensity (absolute value of complex signal) data of both
 antennas is binned separately over 60 orientations from \(-\pi\) to
 \(\pi\).
 
 The manufacturer later provided angle sensitivity measurements of the
-IC's batch (see figure \#REF). The measurements show that the
+IC's batch (see figure TODO). The measurements show that the
 experimental approach produced valid results.
 
 The compensation factor \(f_a\) for each angle is finally composed using
@@ -1249,7 +1249,6 @@ that is independent of observation angle.
 
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_angle_compensation}
     \begin{subfigure}{\textwidth}
         \centering
         \def\svgscale{0.8} \small
@@ -1272,48 +1271,46 @@ that is independent of observation angle.
         \bigskip
     \end{subfigure}
     \caption{Angle compensation factor}
+    \label{fig:fig_angle_compensation}
 \end{figure}
 
-\subsection{Angle compensation
-window}\label{angle-compensation-window}
+\subsection{Angle compensation window}\label{angle-compensation-window}
 
 Detected peaks are not in a single range bin, but form a curve over
 several range bins. Multiplicating each of these range bin's values with
 the same \(f_a\) does work, but leaves hard edges. It is better to
 multiplicate the peak with a window function with height \(f_a\). The
-implementation the window \(w\): \[
-w(x,f_a) = 1 + (f_a - 1)
-~e ^ {
- -\frac{ \left( {x - p_x} \right) ^ 2 }
-       {p_w}
-}
+implementation the window \(w\):
+\[
+w(x,f_a) = 1 + (f_a - 1) ~e ^ { -\frac{ \left( {x - p_x} \right) ^ 2 } {p_w} }
 \] where \(p_x\) is the peaks subsample-interpolated peak location in
 down range space and
-$$
+\[
 p_w = \cfrac{
 \left( \frac{fwhm}{4}  \right) ^2
 }{
 4 ln(2)}
-$$ is
+\]
+is
 the peaks width, where \(fwhm\) is the full width at half maximum as
 found by the subsample-interpolated peak fit.
 
-Figure \#REF show a glass wall in the ``Racetrack'' scan. In the top
-subplot, only range compensation is applied. In the middle subplot,
-angle compensation is switched on. In the bottom subplot, both angle
+\Cref{fig:fig_angle_compensation_comparison} show a glass wall in the ``Racetrack'' scan. In \cref{fig:fig_angle_compensation_comparison_1}, only range compensation is applied. In \cref{fig:fig_angle_compensation_comparison_2},
+angle compensation is switched on. In \cref{fig:fig_angle_compensation_comparison_3}, both angle
 compensation and angle compensation windowing are switched on. The
 figure shows how angle compensation helps to keep the echo intensity of
 a mapped object at the same level, regardless of the angle at which it
 is seen by the radar.
 
+TODO replace vector heatmap with bitmap
 \begin{figure}[htbp]
     \centering
-    \label{fig:fig_angle_compensation_comparison}
     \begin{subfigure}{\textwidth}
         \centering
         \def\svgscale{0.8} \small
         \input{gfx/fig_svg/angle_compensation_comparison_1.pdf_tex}
         \caption{Reprojected energy, without angle compensation}
+        \label{fig:fig_angle_compensation_comparison_1}
         \bigskip
     \end{subfigure}
     \begin{subfigure}{\textwidth}
@@ -1321,6 +1318,7 @@ is seen by the radar.
         \def\svgscale{0.8} \small
         \input{gfx/fig_svg/angle_compensation_comparison_2.pdf_tex}
         \caption{Reprojected energy, with angle compensation}
+        \label{fig:fig_angle_compensation_comparison_2}
         \bigskip
     \end{subfigure}
     \begin{subfigure}{\textwidth}
@@ -1328,11 +1326,14 @@ is seen by the radar.
         \def\svgscale{0.8} \small
         \input{gfx/fig_svg/angle_compensation_comparison_3.pdf_tex}
         \caption{Reprojected energy, with windowed angle compensation}
+        \label{fig:fig_angle_compensation_comparison_3}
         \bigskip
     \end{subfigure}
     \caption{Effect of angle compensation and windowed angle compensation}
+    \label{fig:fig_angle_compensation_comparison}
 \end{figure}
 
 
 \subsection{World map resolution}\label{world-map-resolution}
+
 TODO

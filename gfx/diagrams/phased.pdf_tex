@@ -1,0 +1,71 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'phased.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{226.77163192bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,1.03389483)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{phased.pdf}}%
+    \put(0.08268072,0.17618434){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textit{$\phi$}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{phased.pdf}}%
+    \put(0.66372902,0.55717398){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{ }}}%
+    \put(0.04739062,0.41898602){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{TX}}}%
+    \put(0.08211439,0.03214182){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{C}}}%
+    \put(0.31296013,0.71938933){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0.31296013,0.63483763){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0.31296013,0.55028637){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0.31296013,0.46573511){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0.31296013,0.38118342){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0.31296013,0.29663216){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0.37968453,-0.00000006){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{A}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{phased.pdf}}%
+    \put(0.31296013,0.21083506){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0.31296013,0.12594144){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$\varphi$}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{phased.pdf}}%
+    \put(0.67371885,0.47189486){\color[rgb]{0,0,1}\makebox(0,0)[b]{\smash{$\theta$}}}%
+  \end{picture}%
+\endgroup%

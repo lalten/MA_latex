@@ -1,4 +1,3 @@
-
 \chapter{Discussion and Comparison}\label{discussion-and-comparison}
 
 \section{Discussion}
@@ -18,8 +17,7 @@ to the office chair legs.
 
 
 
-\subsection{Material-dependent echo
-strength}\label{material-dependent-echo-strength}
+\subsection{Material-dependent echo strength}\label{material-dependent-echo-strength}
 
 Some materials, like metal, are obviously better at reflecting radar
 waves than others, like styrofoam. Metal objects cause particularly
@@ -28,16 +26,28 @@ observed in the hallway scans (e.g.~Orbit, Public Restroom, Queue,
 Racetrack, Sauna, Underground), where the metal frames of doors and
 glass walls stand out in the scan.
 
-\subsection{Doppler vs Direction of Arrival data
-quality}\label{doppler-vs-direction-of-arrival-data-quality}
+\subsection{Doppler vs Direction of Arrival data quality}\label{doppler-vs-direction-of-arrival-data-quality}
 
 In forward-facing geometry (scans D-T), the DOA is necessary to resolve
 the sign of a target's reprojection angle. This works fairly well, for
-example at the start of Sauna (see figure \#REF), the closer target
+example at the start of Sauna (see \cref{fig:sauna_doa}), the closer target
 passes on the right (more pink), while the other targets stay to the
 left side of the robot (more green).
-\includegraphics[width=0.5\textwidth]{figures/fig_doa_sign_input.png}
-\includegraphics[width=0.5\textwidth]{figures/fig_doa_sign_doa.png}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=0.5\textwidth]{figures/fig_doa_sign_input.png}
+        \caption{\label{fig:sauna_input}Echo intensity}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=0.5\textwidth]{figures/fig_doa_sign_doa.png}
+        \caption{\label{fig:sauna_doa}Direction of arrival estimation}
+    \end{subfigure}
+    \caption{Range profile and DOA of Sauna scan.}
+    \label{fig:sauna}
+\end{figure}
 
 In fact, for the side-facing case, the smoothed DOA data also turned out
 to be very good. It could even be used to calculate a more precise
@@ -99,18 +109,18 @@ TODO picture of scene
 
 \begin{figure}[htp]
     \centering
-    \label{fig:negobst}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst}
     \caption{Input energy for the Washroom scan.}
+    \label{fig:negobst}
 \end{figure}
 
 TODO annotation-arrow pointing to darker region?
 
 \begin{figure}[htp]
     \centering
-    \label{fig:negobst_clipped}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_clipped}
     \caption{Input Energy of the Washroom scan, zoomed and intensity-clipped for better visibility of the effect.}
+    \label{fig:negobst_clipped}
 \end{figure}
 
 To limit the transmit crosstalk's blinding effect, the sensor was
@@ -123,18 +133,18 @@ however not as conclusive as in the Washroom scan.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:negobst_xray_clipped}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_xray}
     \caption{Input Energy of the XRay Room scan}
+    \label{fig:negobst_xray}
 \end{figure}
 
 TODO annotation-arrow pointing to darker region?
 
 \begin{figure}[htp]
     \centering
-    \label{fig:negobst_xray_clipped}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_xray_clipped}
     \caption{Input Energy of the XRay Room scan, zoomed and intensity-clipped for better visibility of the effect.}
+    \label{fig:negobst_xray_clipped}
 \end{figure}
 
 Maybe the signal could be improved with improved background subtraction
@@ -159,9 +169,9 @@ the two can towers at the end of the cable.
 
 \begin{figure}[htp]
     \centering
-    \label{fig:cable}
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_cable}
     \caption{Input energy of the Y (Is There A Cable On The Ground) scan. The center arc represents the echo of a cable on the floor as the robot approaches.}
+    \label{fig:cable}
 \end{figure}
 
 Both the X Ray Room and Y (Is There A Cable On The Floor) introduce a
@@ -178,6 +188,8 @@ them. This is an issue in the Sauna scan, where the Glass wall right at
 the beginning of the robot path cannot be mapped in its entirety.
 
 \subsection{Parameter tuning?}\label{parameter-tuning}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Comparison with other mapping
@@ -202,8 +214,7 @@ Gregory L. Charvat's ``tin can'' radar \cite{Charvat2014} might be the
 most famous one, with many examples at \url{http://glcharvat.com/shortrange/}.
 Another great resource was Henrik Forsten's Homemade Synthetic Aperture
 Radar, documented at \url{http://hforsten.com/homemade-synthetic-aperture-radar.html}. Forsten used
-the Omega-k algorithm \cite{Tolman2008} and Stolt interpolation (\#TODO:
-add book reference) to correct the range migration arcs.
+the Omega-k algorithm \cite{Tolman2008} and Stolt interpolation \cite{Cumming2004} to correct the range migration arcs.
 
 TODO make quad-subfigure with Forsten's images?
 
@@ -233,11 +244,11 @@ package, some 3D scans of the office environment where made.
 
 \subsection{Lidar}\label{lidar-1}
 
-As stated in \#REF, the Kobuki robot used in the experiments was
+As stated in \cref{kobuki}, the Kobuki robot used in the experiments was
 equipped with an RPLidar and a computing platform powerful enough to
 perform slam. Lidar slam is the go-to, standard approach when it comes
 to mapping the environment around a robot. After years of research and
 product development, even cheaper lidar systems have acceptable range
 resolution. While they can't provide ground truth data (see problems
-with lidar data in \#REF), it makes sense to compare the radar
+with lidar data in \cref{traditional-obstacle-sensors}), it makes sense to compare the radar
 reprojection maps with laser scan maps.
