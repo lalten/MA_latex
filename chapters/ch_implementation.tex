@@ -69,16 +69,9 @@ At the time of writing, the only interesting published project is a fall detecti
 
 \subparagraph{Static range test}\label{static-range-test}
 
-\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it records the scene in image \cref{fig:walabot_rangetest_setup} with metal can stacks at \(0.5m\) \(1m\) and \(1.5m\). The signal is very stable over time and shows next to no noise. Unfortunately however it doesn't seem like the radar sensor can detect the metal cans at all. The high frequency signal is the raw signal as reported by the Walabot sensor. It is however hardly believable that it was measured like this, as the visible base frequency of the signal is around 7GHz. It was not possible to get any useful information from Vayyar's technical support regarding this. The envelope signal is a more interesting data source. It can easily be obtained from the analytic signal, using \texttt{scipy.signal}'s Hilbert transform.
-Another problem with the data is that the peaks of the envelope jitter
-in range. This can be fixed by combination with another oddity: The last
-180 samples rise very strongly in magnitude. If they are cut and
-prepended to the first sample, they match up perfectly. Peaks can then
-be detected in the signal (represented by the dots \cref{fig:walabot_rangetest_data}) and
-the range set to zero at the first peak. This eliminates the range
-jitter completely. The reason is that the first peak is caused by
-transmit antenna crosstalk and can thus be used as a timing reference
-point.
+\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it records the scene in image \cref{fig:walabot_rangetest_setup} with metal can stacks at \(0.5m\) \(1m\) and \(1.5m\). The signal is very stable over time and shows next to no noise. Unfortunately however it doesn't seem like the radar sensor can detect the metal cans very well. The higher frequency signal in \cref{fig:walabot_rangetest_data} is the ``raw signal'' as reported by the Walabot sensor. It is however hardly believable that the signal was measured like this, as its base frequency is around 7GHz. It was not possible to get any useful information from Vayyar's technical support regarding this. A more interesting data source is the envelope signal, which can easily be constructed from the analytic signal, using the \texttt{scipy.signal} package's Hilbert transform.
+
+Another problem with the data is that the peaks of the envelope jitter in range. This can be fixed by combination with another oddity: The last 180 samples rise very strongly in magnitude. If they are cut and prepended to the first sample, they match up perfectly. Peaks can then be detected in the signal (represented by the dots \cref{fig:walabot_rangetest_data}) and the range set to zero at the first peak. This eliminates the range jitter completely. The reason is that the first peak is caused by transmit antenna crosstalk and can thus be used as a timing reference point.
 
 \begin{figure}[htbp]
     \centering
@@ -114,13 +107,21 @@ matrix displayed in \cref{fig:walabot_dynamic_data}.
 
 \begin{figure}[htbp]
     \centering
-    \subcaptionbox{Setup with a reflective metal plate mounted on the robot.}
-        {\includegraphics[max height=10cm,max width=10cm]{pictures/experiment_walabot}}
+
+    % A = 0.95 * wA*hB/hA / (wA*hB/hA + wB) = 0.95 * 1320*877/839 / (1320*877/839 + 525) = 0.68815948789
+    % B = 0.95 * wB / (wA*hB/hA + wB) = 0.95 * 525 / (1320*877/839 + 525) = 0.2618405121
+
+    \begin{subfigure}[t]{0.2618405121\textwidth}
+        \includegraphics[max width=\linewidth]{pictures/experiment_walabot}
+        \caption{Setup with a reflective metal plate mounted on the robot}
         \label{fig:walabot_dynamic_setup}
-    \quad
-    \subcaptionbox{Range profile (\textit{y-axis}) over time (\textit{x-axis}) while the robot was moved at constant speed away and towards the Walabot sensor.}
-        {\includegraphics[max height=10cm,max width=10cm]{figures/walabot_disttest}}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{0.68815948789\textwidth}
+        \includegraphics[max width=\linewidth]{figures/walabot_disttest}
+        \caption{Range profile (\textit{y-axis}) over time (\textit{x-axis}) while the robot was moved at constant speed away and towards the Walabot sensor}
         \label{fig:walabot_dynamic_data}
+    \end{subfigure}%
     \caption{Dynamic range test with the Walabot sensor}
 \end{figure}
 
@@ -133,14 +134,12 @@ This makes the signal processing very difficult.
 
 Walabot advertises object detection capabilities. The catch with this
 mode is however that the number of objects to be detected must be
-configured first.
+configured as a fixed parameter first.
 
 \section{Omniradar RIC60-A}\label{omniradar}
 
 With its good range resolution and a good idea of its capabilities from
-\cite{Ernst2016}, this sensor promised good results. As it was chosen as
-a basis for the proof of concept implementation, it receives a more
-detailed look.
+\cite{Ernst2016}, this sensor promised good results. It will provide the basis for the proof of concept implementation, so it receives a more detailed look.
 
 Founded in 2010, Omniradar\footnote{\url{https://www.omniradar.com/}} is a Dutch
 startup\footnote{\url{https://www.crunchbase.com/organization/omniradar}} that
