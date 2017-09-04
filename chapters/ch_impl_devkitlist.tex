@@ -6,26 +6,31 @@
 \newlength{\colwidthE} \setlength{\colwidthE}{0.10\textwidth}
 \newlength{\colwidthF} \setlength{\colwidthF}{0.05\textwidth}
 \newlength{\colwidthG} \setlength{\colwidthG}{0.15\textwidth}
+\newlength{\maximheight} \setlength{\maximheight}{2cm}
 
-{ \rowcolors{1}{ColorAlternatedRow}{}
+{
+\rowcolors{1}{ColorAlternatedRow}{}
 \setlength\extrarowheight{4pt}
-\begin{tabularx}{\linewidth}% tabularx implements a version of the tabular environment in which the widths of certain columns are calculated so that the table is a specified width
-{%
+    
+\begin{tabularx}{\linewidth}{%
   >{\setlength{\hsize}{.20\hsize}\raggedright\arraybackslash}X%
-  >{\setlength{\hsize}{.25\hsize}\arraybackslash}X%
+  >{\setlength{\hsize}{.25\hsize}}X%
   >{\setlength{\hsize}{.15\hsize}\raggedright\arraybackslash}X%
   >{\setlength{\hsize}{.15\hsize}\raggedright\arraybackslash}X%
   >{\setlength{\hsize}{.10\hsize}\raggedright\arraybackslash}X%
-  >{\setlength{\hsize}{.20\hsize}}X%
-}
+  >{\setlength{\hsize}{.20\hsize}\centering\arraybackslash}X%
+}%
+%\caption{Comparison of UWB radar development kits}\label{tab:devkits}
+
 \hiderowcolors
+\toprule
     Product &
     Note &
     $f_C$, $\Delta f$ &
     Antennas &
     DK Price &
     Picture \\
-\toprule
+    \midrule
 \endhead
 
 \midrule
@@ -41,7 +46,7 @@ High bandwidth. Presentation at SoC 2015\cite{Brouwer2015} &
 60~GHz, 7~GHz &
 On-chip, 1~Tx,~2~Rx &
 \$4000 &
-\includegraphics[width=\hsize,valign=t]{boards/img_omniradar.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_omniradar.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -50,7 +55,7 @@ Expected 2018. Sub-millimeter accuracy, running at over 10,000 frames per second
 60~GHz, 7~GHz &
 In\nobreakdash-package, 2~Tx,~4~Rx &
 ? &
-\includegraphics[width=\hsize,valign=t]{boards/img_soli.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_soli.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -59,7 +64,7 @@ Walabot Pro\footnote{\url{https://walabot.com/store/us/products/walabot-develope
 6.8~GHz, 7~GHz &
 On\nobreakdash-board, 9~Tx,~9~Rx&
 \$599&
-\includegraphics[width=\hsize,valign=t]{boards/img_walabot_1.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_walabot_1.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -68,7 +73,7 @@ Prototype for In-wall pipe detection&
 5.15~GHz, 6.7~GHz &
 External, 2~Tx/Rx&
 - &
-\includegraphics[width=\hsize,valign=t]{boards/img_bosch.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_bosch.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -77,7 +82,7 @@ Has WiFi&
 122~GHz, 6.4~GHz &
 On-chip, 1~Tx,~1~Rx&
 ?&
-\includegraphics[width=\hsize,valign=t]{boards/img_silicon_radar.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_silicon_radar.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -86,7 +91,7 @@ Anokiwave AWMF-0117\footnote{\url{http://www.anokiwave.com/products/awmf-0117/in
 12.5~GHz, 4.5~GHz &
 On-chip, 1~Tx/Rx&
 ?&
-\includegraphics[width=\hsize,valign=t]{boards/img_anokiwave.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_anokiwave.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -95,7 +100,7 @@ Relatively small board. Presentation at FTF 2016\cite{Reuter2016}&
 77~GHz, 4~GHz &
 On\nobreakdash-board, 3~Tx,~4~Rx&
 ?&
-\includegraphics[width=\hsize,valign=t]{boards/img_cocoon.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_cocoon.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -104,7 +109,7 @@ Can operate as multistatic radar or UWB communication node&
 4~GHz, 1.7~GHz &
 External, 2~Tx/Rx&
 \$5000&
-\includegraphics[width=\hsize,valign=t]{boards/img_p440.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_p440.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -113,7 +118,7 @@ Novelda Xethru X4M03\footnote{\url{https://www.xethru.com/xethru-development-pla
 8~GHz, 1.5~GHz &
 On\nobreakdash-board, 1~Tx/Rx&
 \$399&
-\includegraphics[width=\hsize,valign=t]{boards/img_xethru.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_xethru.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -122,7 +127,7 @@ RFbeam MR2001\_RD\footnote{\url{https://www.rfbeam.ch/files/products/26/download
 77~GHz, 1~GHz &
 On\nobreakdash-board, 4~Tx,~6~Rx&
 ?&
-\includegraphics[width=\hsize,valign=t]{boards/img_rfbeam.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_rfbeam.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -131,7 +136,7 @@ Configurable FPGA processing chain&
 77~GHz, 1~GHz &
 On\nobreakdash-board, 4~Tx,~8~Rx&
 \$7300&
-\includegraphics[width=\hsize,valign=t]{boards/img_radarbook.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_radarbook.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -140,7 +145,7 @@ Sub-mm accuracy&
 60~GHz, ? &
 On-chip, ?&
 ?&
-\includegraphics[width=\hsize,valign=t]{boards/img_acconeer.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_acconeer.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -149,7 +154,7 @@ Inras 24Ghz Radarbook\footnote{\url{dkradarbook}}&
 24~GHz, 250~MHz &
 On\nobreakdash-board, 4~Tx,~4~Rx&
 \$7300&
-\includegraphics[width=\hsize,valign=t]{boards/img_radarbook.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_radarbook.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -158,7 +163,7 @@ Infineon BGT24-RFB2412-EVAL\footnote{\url{https://www.infineon.com/dgdl/?fileId=
 24~GHz, 250~MHz &
 On\nobreakdash-board, 1~Tx,~2~Rx&
 \$1333&
-\includegraphics[width=\hsize,valign=t]{boards/img_bgt24.JPG}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_bgt24.JPG}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -167,7 +172,7 @@ IMST DK-sR-1200e\footnote{\url{http://webshop.imst.de/dk-sr-1200e-development-pl
 24~GHz, 250~MHz &
 On\nobreakdash-board, 1~Tx,~2~Rx&
 \$3333&
-\includegraphics[width=\hsize,valign=t]{boards/img_IMST.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_IMST.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -176,7 +181,7 @@ InnoSenT IVS-565\footnote{\url{http://www.innosent.de/fileadmin/media/dokumente/
 24~GHz, 250~MHz &
 On\nobreakdash-board, 1~Tx,~2~Rx&
 ?&
-\includegraphics[width=\hsize,valign=t]{boards/img_innosent.jpg}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_innosent.jpg}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -185,7 +190,7 @@ SMA connectors for internal signals&
 24~GHz, 250~MHz &
 External, 1~Tx,~3~Rx&
 ?&
-\includegraphics[width=\hsize,valign=t]{boards/img_ST.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_ST.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
@@ -194,14 +199,12 @@ Arduino shield with BGT24LTR11&
 24~GHz, 80~MHz &
 On\nobreakdash-board, 1~Tx/Rx&
 \$169&
-\includegraphics[width=\hsize,valign=t]{boards/img_omnipresense.png}
+\includegraphics[max width=\hsize,max height=\maximheight,valign=t]{boards/img_omnipresense.png}
 \par\vspace{\extrarowheight}
 \tabularnewline
 
-
 \bottomrule
+
 \end{tabularx}
 
-} % \rowcolors{1}{}{ColorAlternatedRow}
-
-
+}

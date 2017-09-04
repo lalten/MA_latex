@@ -1,72 +1,60 @@
 \chapter{Implementation}\label{implementation}
 
-\section{Implementation Platform}\label{implementation-platform}
+The validity and performance of reprojection mapping is put to test with a proof of concept implementation in Matlab for a system based on an Omniradar RIC60-A mounted on a Kobuki robot platform.
 
-The validity and performance of the concept is put to test with a proof
-of concept implementation. The reprojection method requires that the
-radar position and velocity is known at all times. While there was no
-precise source of ground truth data (like an IR ceiling camera system)
-was easily available, the Kobuki robot platform provides a fairly good
-odometry system and also allows to move the radar in a controlled way.
+\section{Implementation Platform}\label{implementation-platform}
 
 \subsection{Kobuki}\label{kobuki}
 
-TODO
-
-Good but not perfect odometry Ros Arm Limited performance Enough battery
-capacity Omniradar FMCW Radar development kit
+The reprojection method requires that the radar is moved through the scene with a known position and velocity. The Kobuki robot platform (shown in \cref{fig:kobuki}) was developed by Yujin Robot\footnote{\url{http://kobuki.yujinrobot.com/}}, a Korean robotics and toy company. As base for the second Turtlebot, the reference design for the Robot Operating System (ROS), it not only provides a fairly good odometry system, but also allows to move the radar in a controlled way. Its shape and performance are very comparable to a real-world vacuum robot (it is actually based off Yujin's iClebo vacuum robot series), which makes the application relatively realistic.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max height=10cm,max width=10cm]{models/kobuki}
-    \caption{Yujin's iClebo Kobuki robot platform. Source: \cite{DesignK2013}}
-    \label{fig:kobuki}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[max width=\linewidth]{models/kobuki}
+        \caption{Yujin's iClebo Kobuki robot platform. Source: \cite{DesignK2013}}
+        \label{fig:kobuki}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[max width=\linewidth]{pictures/odroid}
+        \caption{Hardkernel Odroid XU4. Source: \url{https://wikimedia.org/wiki/File:Hardkernel_Odroid_XU4_Board.jpg}}
+        \label{fig:odroid}
+    \end{subfigure}
 \end{figure}
 
-\subsubsection{ROS integration}\label{ros-integration}
+\subsection{ROS integration}\label{ros-integration}
 
-\subsubsection{Odroid}\label{odroid}
+The Robot Operating System (ROS)\footnote{\url{http://www.ros.org/}} is widely used in robotics research. It provides a framework of robotic hardware drivers, software libraries with state-of-the-art algorithms, and powerful developer tools for building robot applications. The Kobuki ROS package\footnote{\url{http://wiki.ros.org/kobuki}} is widely used and tested. With \texttt{rosbag}s, the ROS system also provides a convenient way to record data for later playback and analysis.
+
+\subsection{Odroid}\label{odroid}
+
+In the Kobuki platform, only an embeddded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 2GHz Octa core CPUs paired with 2GB ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
 
 \subsection{Radar sensor}\label{radar-sensor}
 
+One of the most important aspects of the implementation is the choice of radar sensor.
+
 \subsubsection{Devkit list}\label{devkit-list}
 
-There are quite a few short-range UWB FMCW radar modules. The following
-table compares some promising solutions.
-
+There are quite a few short-range UWB FMCW radar modules available. They are all small enough to be integrated in a product of a size Important features are high bandwidth to achieve high range resolution, good update rate, and easy configuration and integration of both hardware and software. Of course the sensor must also be available for sampling or purchase. The following table compares some promising solutions, roughly sorted by bandwidth. $f_C$ and $\Delta f$ denote the center frequency and bandwidth of the product, respectively. Note that the development kit (DK) price is usually much higher than the price of the radar chip sold for integration in products.
 
 \input{chapters/ch_impl_devkitlist}
 
+The antenna solutions are diverse. Some products provide only one antenna for transceiving, while others have up to 18 multiple-in-multiple-out (MIMO) antennas. A sufficient number of transmit antennas enables electronic beamforming, while enough receiving antennas provide DOA estimation capabilities. Some products require external antennas (and hence some additional design efforts), others with antennas integrated in the copper layer or in ceramic packages on the printed circuit board (PCB). Very interesting are also the radar sensors with antennas integrated in the integrated circuit's (IC) package or even silicon die. They miniaturize the product and take a lot of RF design work off the integrating engineer.
 
-The most suitable modules are the ones with the highest bandwidth as
-they give the highest resolution. Other beneficial properties are high
-update rate, and higher number of antennas. A high degree of
-configurability also helps during development. In the end, the Walabot
-Pro, Omniradar RIC60A and a proprietary Bosch prototype were available
-to be tested.
+In the given time frame, the Walabot Pro, Omniradar RIC60-A and a proprietary Bosch prototype were available to be tested.
 
 \subsubsection{Bosch Radar}\label{bosch-radar}
 
-The Bosch radar presented some challenges under a Linux environment.
-After its Matlab driver was patched for cross-platform compatibility, it
-turned out that the on-board MCU's firmware had an incompatible protocol
-format. A newer version of the prototype did work under Windows, but by
-the time the board arrived, the decision to focus on Omniradar was made.
+The Bosch radar presented some challenges under a Linux environment. After its Matlab driver was patched for cross-platform compatibility, it turned out that the on-board MCU's firmware had an incompatible protocol format. A newer version of the prototype that was later provided did work under Windows, but by the time the board arrived, the decision to focus on Omniradar's chip was made and the newer driver was not cross-plattform patched.
 
-\subsubsection{Walabot}\label{walabot}
+\subsubsection{Vayyar Walabot}\label{walabot}
 
 Vayyar\footnote{\url{https://www.vayyar.com/}} is an Israeli
-startup\footnote{\url{https://www.crunchbase.com/organization/vayyar}} that was
-founded in 2011. Coming from a medical background, they moved away from
-use cases such as breast cancer detection towards general 3D imaging in
-the consumer market with their Walabot sensor.
+startup\footnote{\url{https://www.crunchbase.com/organization/vayyar}} that was founded in 2011. Coming from a medical background, they moved away from use cases such as breast cancer detection towards general 3D imaging in the consumer market with their Walabot sensor. Vayyar's Walabot Pro sensor uses an 18-antenna MIMO array for 3D radar imaging. Vayyar is very quiet about the technology and algorithms used in their product and even the nature of the data that the sensor sends.
 
-Vayyar's Walabot Pro sensor uses an 18-antenna MIMO array for 3D radar
-imaging. Vayyar is very quiet about the technology and algorithms used
-in their product and even the nature of the data that the sensor sends.
-In their Python \href{https://api.walabot.com}{API documentation} they
-showcase the modes of operation: 3d imaging, 2d imaging, object
-tracking, pipe detection and raw data.
+In their Python \href{https://api.walabot.com}{API documentation} they showcase the available sensor operation modes: 3D imaging, 2D imaging, object tracking, pipe detection and raw data (see \cref{fig:walabot_image}).
 
 \begin{figure}[htbp]
     \centering
@@ -75,31 +63,13 @@ tracking, pipe detection and raw data.
     \label{fig:walabot_image}
 \end{figure}
 
-The catch is however that it is almost impossible to do imaging without
-background subtraction, which they do in all their examples. This works
-well in scenarios where the sensor is at a fixed position or if the
-region of interest is very small, like in the pipe detection scenario.
-However, In the case of a robot-mounted sensor this does not work so
-well.
+The catch is that it is almost impossible to do imaging without background subtraction, which they do in all their examples. Granted, this works well in scenarios where the sensor is at a fixed position or if the region of interest is very small, like in the pipe detection scenario. However, In the case of a robot-mounted sensor this does not provide great data quality, because not only a small part, but the whole scene changes when the robot moves.
 
-At the time of writing, the only interesting published project is a fall
-detection scenario \cite{Haider2017} by Haider, in which people can be
-localized at intersections of vertically and horizontally oriented
-heatmaps.
+At the time of writing, the only interesting published project is a fall detection scenario \cite{Haider2017} by Haider, in which people can be localized at intersections of vertically and horizontally oriented heatmaps.
 
 \subparagraph{Static range test}\label{static-range-test}
 
-\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it
-records the scene in image \cref{fig:walabot_rangetest_setup} with can stacks at \(0.5m\) \(1m\) and
-\(1.5m\). The signal is very stable over time and shows next to no
-noise. Unfortunately however it doesn't seem like the radar sensor can
-detect the metal cans at all. The high frequency signal is the raw
-signal as reported by the Walabot sensor. It is however hardly
-believable that it was measured like this, as the visible base frequency
-of the signal is around 7GHz. It was not possible to get any useful
-information from Vayyar's technical support regarding this. The envelope
-signal is a more interesting data source. It can easily be obtained from
-the analytic signal, using \texttt{scipy.signal}'s Hilbert transform.
+\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it records the scene in image \cref{fig:walabot_rangetest_setup} with metal can stacks at \(0.5m\) \(1m\) and \(1.5m\). The signal is very stable over time and shows next to no noise. Unfortunately however it doesn't seem like the radar sensor can detect the metal cans at all. The high frequency signal is the raw signal as reported by the Walabot sensor. It is however hardly believable that it was measured like this, as the visible base frequency of the signal is around 7GHz. It was not possible to get any useful information from Vayyar's technical support regarding this. The envelope signal is a more interesting data source. It can easily be obtained from the analytic signal, using \texttt{scipy.signal}'s Hilbert transform.
 Another problem with the data is that the peaks of the envelope jitter
 in range. This can be fixed by combination with another oddity: The last
 180 samples rise very strongly in magnitude. If they are cut and
@@ -142,7 +112,6 @@ The sensor was sampled at a constant frequency in raw data mode. The
 analytic signal magnitude of the range scans is stacked at the right end of the
 matrix displayed in \cref{fig:walabot_dynamic_data}.
 
-
 \begin{figure}[htbp]
     \centering
     \subcaptionbox{Setup with a reflective metal plate mounted on the robot.}
@@ -166,7 +135,7 @@ Walabot advertises object detection capabilities. The catch with this
 mode is however that the number of objects to be detected must be
 configured first.
 
-\section{Omniradar}\label{omniradar}
+\section{Omniradar RIC60-A}\label{omniradar}
 
 With its good range resolution and a good idea of its capabilities from
 \cite{Ernst2016}, this sensor promised good results. As it was chosen as
@@ -268,8 +237,7 @@ It would be possible to use higher precision equipment. But another
 solution is to track the movement of target peaks in the range profile,
 using the Peak Gradient algorithm.
 
-\subsection{Optimal chirp time
-configuration}\label{optimal-chirp-time-configuration}
+\subsection{Optimal chirp time configuration}\label{optimal-chirp-time-configuration}
 
 The chirp duration \(t_{chirp}\) is configurable and has an effect on
 how the raw range profile data will look like.

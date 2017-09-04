@@ -577,21 +577,29 @@ Many current applications using slam acquire observation data with laser scanner
 
 For feature-based slam algorithms, representative landmarks are extracted from observation data. For multistatic radar sensors \cite{Deissler2013,Deissler2012,Seitz2008,Deissler2009} offer a solution that classifies walls, edges and corners from multipath signal propagation round trip times.
 
+In \cite{Adams2012}, Adams \textit{et al} explore robotic navigation and mapping with radar. Grid-based radar mapping is shown to have advantages over other slam sensors, because of it's wider beam width and foliage penetration capability. \Cref{fig:missed_detections} shows superimposed radar and lidar scans of the scene in \cref{fig:missed_detections_scene}. Radar tends to spatially blur scene information, but penetrates further than optical sensors (laser, vision) as it is less suceptible to occlusions.\\
+\Cref{fig:radar_map} shows occupancy gridmaps collected with a laser-based and a radar-based slam. The concrete walls of the moat in the upper left of the scene as well as foliage was captured much better in the radar gridmap.
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[max width=12cm]{diagrams/missed_detections}
-    \caption{Radar (heatmap) has fewer missed detections than lidar (black dots), because of its wider beam with and foliage penetration capability. Adapted from \cite{Adams2015}}
-    \label{fig:missed_detections}
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[max width=\linewidth]{pictures/missed_detections_scene}
+        \caption{Picture of the scene on the right. Source: \cite{Jose2010}}
+        \label{fig:missed_detections_scene}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[max width=\linewidth]{diagrams/missed_detections}
+        \caption{Radar (heatmap) has fewer missed detections than lidar (black dots), because of its wider beam width and foliage penetration capability. Adapted from \cite{Adams2015}}
+        \label{fig:missed_detections}
+    \end{subfigure}
+    \caption{Superimposed radar and lidar plan position indicator display.}
 \end{figure}
-
-
-
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[max width=\linewidth]{diagrams/radar_map_1}
-        \caption{Aerial picture of the scene}
+        \caption{Aerial image of the scene}
         \label{fig:radar_map_1}
     \end{subfigure}
     \hfill
@@ -607,4 +615,7 @@ For feature-based slam algorithms, representative landmarks are extracted from o
         \label{fig:radar_map_3}
     \end{subfigure}
     \caption{Comparison of radar and lidar occupancy gridmaps. Source: \cite{Adams2015}}
+    \label{fig:radar_map}
 \end{figure}
+
+TODO expand on slam?

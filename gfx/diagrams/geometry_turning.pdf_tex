@@ -1,0 +1,67 @@
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'geometry_turning.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{555.75bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.64912281)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{geometry_turning.pdf}}%
+    \put(0.88604589,0.53805668){\makebox(0,0)[lb]{\smash{\(\color{DiagramBlue}v_D = v_R~\cos(\alpha - \Delta\alpha)\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{geometry_turning.pdf}}%
+    \put(0.88557358,0.10662619){\makebox(0,0)[lb]{\smash{\(\color{DiagramRed}v_D = v_R~\cos(\alpha + \Delta\alpha)\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{geometry_turning.pdf}}%
+    \put(0.41730095,0.33809716){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{geometry_turning.pdf}}%
+    \put(0.70701758,0.10551957){\makebox(0,0)[rb]{\smash{\(\color{DiagramRed}v_D = v_R~\cos(\alpha)\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{geometry_turning.pdf}}%
+    \put(0.70431852,0.53862349){\makebox(0,0)[rb]{\smash{\(\color{DiagramBlue}v_D = v_R~\cos(\alpha)\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=6]{geometry_turning.pdf}}%
+    \put(0.80985152,0.37049932){\makebox(0,0)[b]{\smash{\(v_R\)}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=7]{geometry_turning.pdf}}%
+    \put(0.91295546,0.35222672){\makebox(0,0)[lb]{\smash{\(\color{DiagramGreen}\Delta\alpha\)}}}%
+  \end{picture}%
+\endgroup%

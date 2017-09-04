@@ -4,28 +4,31 @@ Mapping}\label{novel-approach-reprojection-mapping}
 
 \section{Idea}\label{idea}
 
-With the Reprojection method, a radar echo's source can be determined
-without scanning the radar sensor. The distance to a target is already
-available in the radar data, so only the direction is needed to update a
-map. Under certain circumstances, this direction can also be extracted
-from the sensor's data.
+A radar range reading reveals the distance to detected targets, but not what angle they are seen under. As explained in \cref{scanning-radar}, this can be solved by scanning the radar antenna to exploit its directionality. There are however some drawbacks to scanned radars. The increased design complexity and cost of electronic scanning with phased arrays makes a sensor design more expensive. Passive phased arrays have a limited field of view. The motorized parts of mechanical scanning and active phased arrays not only increase cost compared to scanless antennas, but also introduce additional points of failure, higher maintenance requirements and increased power consumption.
 
-The prerequisite to the method is that the sensor has to move with a
-known speed \(v_R\) through an otherwise static environment. Caused by
-the radar's motion, the distance to all visible targets changes, which
-causes a Doppler speed \(v_D\) for every target point.
+This thesis proposes the reprojection method, with which a radar target's source can be determined without the need to scan the sensor. While the target distance is of course already available in the radar range data the target angle must be known in order to build or update a map of the environment. Under certain circumstances the target angle can be extracted from range readings with the reprojection method.
 
-\subsection{Geometry for the side-facing
-case}\label{geometry-for-the-side-facing-case}
+The method requires that the sensor moves at a known speed \(v_R\) through an otherwise static environment. Through the sensor's motion the distance to visible targets will then change over time, which causes a Doppler effect for the entire visible scene. Based on the deviation of a target's measured Doppler speed \(v_D\) from the known sensor movement speed \(v_R\) the magnitude of the angle between the movement vector and the line-of-sight to the same target can then be calculated.
 
-If the radar is moving directly towards a target, the target's Doppler
-speed \(v_D\) will be equal to radar speed \(v_R\) (target \(A\) in
-\cref{fig:geometry}). If the radar passes the target on the side, so that the
-distance to the target stops decreasing and begins to grow, \(v_D = 0\)
-(target \(C\) in figure). If a target has an absolute Doppler speed
-\(\|v_D\|\) between \(0\) and \(v_R\) (target \(B\) in figure), it is seen
-from the radar under an angle \(\alpha\), such that
-\[v_D = v_R cos(\alpha)\]
+\section{Geometry for the side-facing case}\label{geometry-for-the-side-facing-case}
+
+Assume that the sensor's antenna is sensitive only to co-planar targets --- this can be achieved with antennas that feature a fan-shaped beam pattern that has high sensitivity only around zero elevation. In the simplest case, the antenna is also sensitive only to targets on one side of the path of motion described by the sensor. \Cref{fig:geometry-side} depicts a robot (gray circle) with a radar sensor (triangle) moving at speed $v_R$. The three targets A, B, and C (colored circles) are detected. Targets A and C represent the edge cases: The radar is moving straight towards target A (i.e. $\alpha=0$) and measures its Doppler speed as
+\begin{equation} \label{eq:geometry_side_A}
+    v_D = v_R\text{, for }\alpha=0.
+\end{equation}
+At the same time it just passes target B at the point of closest approach with $alpha=\frac{\pi}{2}$. Target B's Doppler speed will be measured as
+\begin{equation} \label{eq:geometry_side_C}
+    v_D = 0\text{, for }\alpha=\frac{\pi}{2}.
+\end{equation}
+Target B finally shows the relationship of $v_D$, $v_R$ and $\alpha$ for all targets on one side of the radar's path, including the extremes in \cref{eq:geometry_side_A,eq:geometry_side_C}:
+\begin{equation} \label{eq:geometry_side_B}
+    v_D = v_R~\cos(\alpha)\text{, for }0 \leq \alpha \leq \pi
+\end{equation}
+This is of course also true for already passed targets, which will yield a negative Doppler speed $v_D < 0$. Simply rearranging \cref{eq:geometry_side_B} for $\alpha$ then gives the target's \textit{reprojection angle}
+\begin{equation} \label{eq:geometry_side_alpha}
+    \alpha = \arccos{\frac{v_D}{v_R}}.
+\end{equation}
+Note that \cref{eq:geometry_side_alpha} holds, because the scene must be static and hence $-v_R \leq v_D \leq v_R$.
 
 \begin{figure}[htp]
     \centering
@@ -34,66 +37,57 @@ from the radar under an angle \(\alpha\), such that
         \def\svgwidth{\linewidth}
         \input{gfx/diagrams/geometry_side.pdf_tex}
         \caption{Side-facing case}
+        \label{fig:geometry-side}
     \end{subfigure}
     \hfill
     \begin{subfigure}{0.45\textwidth}
         \def\svgwidth{\linewidth}
         \input{gfx/diagrams/geometry_forward.pdf_tex}
         \caption{Forward-facing / general 2D case}
+        \label{fig:geometry-forward}
     \end{subfigure}
-    \caption{\label{fig:geometry}Reprojection geometries}
+    \caption{Reprojection geometries}
 \end{figure}
 
-Positive values for \(\alpha\) indicate targets on the left side of the
-robot, while negative values for \(\alpha\) indicate right hand side
-targets. The caveat is that from \(v_D\) only the absolute value of
-angle \(\alpha\) is known. This is OK if the radar is mounted
-side-facing, such that only targets on one side of the motion path are
-visible. Like this, the angle ambiguity is resolved, because only one
-side is visible.
+\section{Geometry for the General case}\label{geometry-for-the-general-case}
 
-\subsection{Geometry for the General case}\label{geometry-for-the-general-case}
+In the planar side-facing case, only the principal value of the inverse cosine in \cref{eq:geometry_side_alpha} is used. However, as soon as the radar antenna features angle sensitivities that allow the detection of targets on both sides of the motion path, there will be an angle ambiguity. This is the case for a sensor that is mounted forward-facing or that can detect targets in a field of view of over 180°. This case is practically very relevant as it is of high importance for an obstacle sensor to be sensitive to obstacles in its path rather than just objects located on the side.
 
-In the general case such as with a forward facing radar, or with radar
-antennas with angle sensitivities that allow a field of view of over
-\(180^\circ\), the angle ambiguity must be resolved differently.
+\Cref{fig:geometry-forward} visualizes this geometry: For target A the angle is still clear, because according to \cref{eq:geometry_side_A} $\alpha = 0$. Targets B and C however are located at angles $\alpha$ and $-\alpha$, which according to \cref{eq:geometry_side_B} causes the same Doppler speed. In this case, \cref{eq:geometry_side_alpha} will yield an ambiguous result.
 
-One solution to resolving the angle ambiguity is to use direction of
-arrival (DOA) information from a multistatic radar. If the radar is
-facing straight forward, a target's DOA will be lower or higher,
-depending on the antenna configuration and the side the target is being
-passed on. If the radar is not facing straight but still has parts of
-both sides of the motion paths visible in it's FOV the DOA gradient
-should be used instead of its value: If a target's DOA is gradually
-shifting towards left (i.e.~lower or higher, depending on the system),
-it will pass the radar on the left side. If it is gradually shifting
-towards right, it will pass on the right side.
+It would be possible to resolve this ambiguity by tracking the targets while changing the robot's movement direction. If the robot's bearing is changed by $\Delta\alpha$, the targets B and C appear at angles $\alpha+\Delta\alpha$ and $\alpha-\Delta\alpha$, respectively (see \cref{fig:geometry-turn}). The target whose Doppler speed changes to $v_D = v_R~\cos(\alpha+\Delta\alpha)$ is the one that the robot turned away from, and vice versa for the other target. The drawback is that newly detected targets can only be mapped after a change of bearing, which means that the robot has to drive in a zig-zag path to properly map its environment.
 
-\subsection{Reprojection Method}\label{reprojection-method}
+\begin{figure}
+    \centering
+    \def\svgwidth{0.5\linewidth}
+    \input{gfx/diagrams/geometry_turning.pdf_tex}
+    \caption{Ambiguity resolution through target tracking during turns}
+    \label{fig:geometry-turn}
+\end{figure}
 
-TODO
+For multistatic radars there is however another solution to resolving the angle ambiguity: Using direction of arrival (DOA) information obtained from inter-antenna phase difference measurements (see \cref{direction-of-arrival}). \Cref{fig:geometry-forward} shows that if the radar is mounted at a straight forward angle, a target's DOA indicates the side it is being passed on. If the radar is not facing straight ahead, the DOA value should be tracked so its gradient can be used instead --- If a target's DOA is gradually shifting towards left (target B in \cref{fig:geometry-forward}), it will pass the radar on the left side. On the other hand, if it is gradually shifting towards right, it will pass on the right side (target C in \cref{fig:geometry-forward}).
 
-When a target's range and angle are known, it can be mapped in relation
-to the radar's position.
+\section{Doppler speed estimation}\label{doppler-speed-estimation}
 
-This allows intelligent path planning and obstacle avoidance for mobile
-robots.
+In order to estimate the reprojection angle with \cref{eq:geometry_side_alpha}, the target Doppler speed $v_D$ must be measured. If the measurement is not precise, the reprojection angle \(\alpha\) will be imprecise and noisy. A map built with noisy observations will contain smeared-out targets or even false positive detections on the map.
 
+With FMCW radar, a target's range and Doppler speed can be simultaneously registered, but Doppler speed can also be detected as a target's change in range over time.
 
+\section{Reprojection Method}\label{reprojection-method}
 
-\subsection{Peak Gradient algorithm}\label{peak-gradient-algorithm}
+As soon as a target's range and angle are known, it can be mapped in relation
+to the radar's position. The radar position can be assumed at the map's origin for the first measurement; however the radar's translation and rotation relative to this start position needs to be known for subsequent measurements. This can easily be achieved with proprioceptive sensors such as inertial measurement units (IMUs) and encoder odometry. To compensate odometry drift in longer scans position corrections from absolute position sources should be integrated. Such a source is usually available from a magnetometer for heading, from global navigation satellite system (GNSS) sensors (e.g. GPS), MoCap camera systems or other ground truth systems \cite{Godil2013}. It is also possible to run a slam algorithm or probabilistic localization like adaptive monte carlo localization (AMCL) for localization.
 
-TODO
+Bulding and updating of the map at a detected target location can either be in form of a binary target indicator, or with a probabilistic distribution. The latter can be taken from the target peak in the sensor's range profile.
 
-One pillar of the Reprojection Method is the Doppler speed of static
-targets. If the Doppler speed is not precisely measured, the
-reprojection angle \(\alpha\) is imprecise or noisy, which leads to
-smeared-out targets or even false positive detections on the map.
+The map can then be further processed with path planning algorithms such as Dijkstra, A*, D*, probabilistic road maps (PRM), and rapidly-exploring random trees (RRT) to allow intelligent path planning and obstacle avoidance for mobile robots \cite{Correll2016}.
 
-With FMCW radar, a target's range and Doppler speed can be
-simultaneously registered.
+\section{Limitations}\label{limitations}
 
-\subsection{Limitations}\label{limitations}
+The reprojection method has some inherent limitations. The most obvious one is that since target angles are calculated from radial target speed, all objects must not have a speed of their own, i.e. they must be static. This limitation however sounds more severe than it is in practice. On the one hand, robots often operate alone and without any other moving objects present, such as a vacuum robot cleaning the house while its owner is at work. On the other hand, if moving objects appear, such as a cat quickly escaping the vacuuming noise, they can be detected and tracked as soon as their radial speed exceeds the robot speed.
 
+In the preceding explanation, all visible targets are assumed to be in the same plane as the radar sensor. If this is not the case, target elevation needs to be estimated in addition to target azimuth. Yet, with an antenna beam pattern that limits sensitivity to planar elevation, coplanarity of all targets can be assumed. An extension to three-dimensional mapping is an interesting topic for future work and discussed in \cref{three-d-case}.
 
-TODO
+Another noteworthy issue is that real-world targets may not be adequately represented by a point target. However, especially if Doppler speed is estimated from peak gradient, any target visible in a range scan can only have one radial speed associated with it. If a long wall is visible over many range bins, the reprojection angle will be calculated from the speed of the peak point in the wall's echo. A map entry will be line-shaped with an angle corresponding to the point of strongest echo intensity, which is usually orthogonal to wall orientation, and with a length corresponding to detected peak width, which depends on the objects reflectivity at different incident angles. In effect, a wall will be built up on the map as the robot passes it, and the mapped wall thickness will mostly depend on how much of it is visible in a single range scan (usually a few centimeters).
+
+Lastly, without direct Doppler measurement, only one target can be detected at any range bin. This limitation does not strongly affect practical operation, because situations where several targets are at the same range for more than a few seconds are very rare or can be easily avoided. For example, both walls of a corridor can be detected if the radar is not moving exactly in the middle of the corridor.
