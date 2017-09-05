@@ -1,0 +1,315 @@
+\chapter{Implementation}\label{implementation}
+
+The validity and performance of reprojection mapping is put to test with a proof of concept implementation in Matlab for a system based on an Omniradar RIC60-A mounted on a Kobuki robot platform.
+
+\section{Hardware Platform}\label{implementation-platform}
+
+\subsection{Kobuki}\label{kobuki}
+
+The reprojection method requires that the radar is moved through the scene with a known position and velocity. The Kobuki robot platform (shown in \cref{fig:kobuki}) was developed by Yujin Robot\footnote{\url{http://kobuki.yujinrobot.com/}}, a Korean robotics and toy company. As base for the second Turtlebot, the reference design for the Robot Operating System (ROS), it not only provides a fairly good odometry system, but also allows to move the radar in a controlled way. Its shape and performance are very comparable to a real-world vacuum robot (it is actually based off Yujin's iClebo vacuum robot series), which makes the application relatively realistic.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[max width=\linewidth]{models/kobuki}
+        \caption{Yujin's iClebo Kobuki robot platform. Source: \cite{DesignK2013}}
+        \label{fig:kobuki}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[max width=\linewidth]{pictures/odroid}
+        \caption{Hardkernel Odroid XU4. Source: \url{https://wikimedia.org/wiki/File:Hardkernel_Odroid_XU4_Board.jpg}}
+        \label{fig:odroid}
+    \end{subfigure}
+\end{figure}
+
+\subsection{ROS integration}\label{ros-integration}
+
+The Robot Operating System (ROS)\footnote{\url{http://www.ros.org/}} is widely used in robotics research. It provides a framework of robotic hardware drivers, software libraries with state-of-the-art algorithms, and powerful developer tools for building robot applications. The Kobuki ROS package\footnote{\url{http://wiki.ros.org/kobuki}} is widely used and tested. With \texttt{rosbag}s, the ROS system also provides a convenient way to record data for later playback and analysis.
+
+\subsection{Odroid}\label{odroid}
+
+In the Kobuki platform, only an embeddded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 2GHz Octa core CPUs paired with 2GB ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
+
+\subsection{Lidar Slam}\label{lidar}
+A RoboPeak / Slamtec RPLidar A1\footnote{\url{https://www.slamtec.com/en/Lidar/A1}} lidar sensor is mounted on the Kobuki base to enable laser-based slam. This is very useful to both provide odometry correction during reprojection mapping and to build a lidar slam occupancy gridmap that can then be compared with the radar reprojection map.
+
+The slam algorithm used in the implementation is Google's Cartographer \cite{Hess2016} with the Cartopgrapher ROS Integration\footnote{\url{https://github.com/googlecartographer/cartographer_ros}}. Cartographer ROS for TurtleBots\footnote{\url{https://github.com/googlecartographer/cartographer_turtlebot}} conveniently provides configuration files that work well with the Kobuki.
+
+\subsection{Radar sensor}\label{radar-sensor}
+
+One of the most important aspects of the implementation is the choice of radar sensor.
+
+\subsubsection{Devkit list}\label{devkit-list}
+
+There are quite a few short-range UWB FMCW radar modules available. They are all small enough to be integrated in a product of a size Important features are high bandwidth to achieve high range resolution, good update rate, and easy configuration and integration of both hardware and software. Of course the sensor must also be available for sampling or purchase. The following table compares some promising solutions, roughly sorted by bandwidth. $f_C$ and $\Delta f$ denote the center frequency and bandwidth of the product, respectively. Note that the development kit (DK) price is usually much higher than the price of the radar chip sold for integration in products.
+
+\input{chapters/ch_impl_devkitlist}
+
+The antenna solutions are diverse. Some products provide only one antenna for transceiving, while others have up to 18 multiple-in-multiple-out (MIMO) antennas. A sufficient number of transmit antennas enables electronic beamforming, while enough receiving antennas provide DOA estimation capabilities. Some products require external antennas (and hence some additional design efforts), others with antennas integrated in the copper layer or in ceramic packages on the printed circuit board (PCB). Very interesting are also the radar sensors with antennas integrated in the integrated circuit's (IC) package or even silicon die. They miniaturize the product and take a lot of RF design work off the integrating engineer.
+
+In the given time frame, the Walabot Pro, Omniradar RIC60-A and a proprietary Bosch prototype were available to be tested.
+
+\subsubsection{Bosch Radar}\label{bosch-radar}
+
+The Bosch radar presented some challenges under a Linux environment. After its Matlab driver was patched for cross-platform compatibility, it turned out that the on-board MCU's firmware had an incompatible protocol format. A newer version of the prototype that was later provided did work under Windows, but by the time the board arrived, the decision to focus on Omniradar's chip was made and the newer driver was not cross-plattform patched.
+
+\subsubsection{Vayyar Walabot}\label{walabot}
+
+Vayyar\footnote{\url{https://www.vayyar.com/}} is an Israeli
+startup\footnote{\url{https://www.crunchbase.com/organization/vayyar}} that was founded in 2011. Coming from a medical background, they moved away from use cases such as breast cancer detection towards general 3D imaging in the consumer market with their Walabot sensor. Vayyar's Walabot Pro sensor uses an 18-antenna MIMO array for 3D radar imaging. Vayyar is very quiet about the technology and algorithms used in their product and even the nature of the data that the sensor sends.
+
+In their Python \href{https://api.walabot.com}{API documentation} they showcase the available sensor operation modes: 3D imaging, 2D imaging, object tracking, pipe detection and raw data (see \cref{fig:walabot_image}).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[max height=10cm,max width=10cm]{figures/walabot_image}
+    \caption{Vayyar's Walabot Pro sensor is claimed to have Target localization and tracking. Source: \url{https://api.walabot.com/\_features.html\#\_examples}}
+    \label{fig:walabot_image}
+\end{figure}
+
+The catch is that it is almost impossible to do imaging without background subtraction, which they do in all their examples. Granted, this works well in scenarios where the sensor is at a fixed position or if the region of interest is very small, like in the pipe detection scenario. However, In the case of a robot-mounted sensor this does not provide great data quality, because not only a small part, but the whole scene changes when the robot moves.
+
+At the time of writing, the only interesting published project is a fall detection scenario \cite{Haider2017} by Haider, in which people can be localized at intersections of vertically and horizontally oriented heatmaps.
+
+\subparagraph{Static range test}\label{static-range-test}
+
+\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it records the scene in image \cref{fig:walabot_rangetest_setup} with metal can stacks at \(0.5m\) \(1m\) and \(1.5m\). The signal is very stable over time and shows next to no noise. Unfortunately however it doesn't seem like the radar sensor can detect the metal cans very well. The higher frequency signal in \cref{fig:walabot_rangetest_data} is the ``raw signal'' as reported by the Walabot sensor. It is however hardly believable that the signal was measured like this, as its base frequency is around 7GHz. It was not possible to get any useful information from Vayyar's technical support regarding this. A more interesting data source is the envelope signal, which can easily be constructed from the analytic signal, using the \texttt{scipy.signal} package's Hilbert transform.
+
+Another problem with the data is that the peaks of the envelope jitter in range. This can be fixed by combination with another oddity: The last 180 samples rise very strongly in magnitude. If they are cut and prepended to the first sample, they match up perfectly. Peaks can then be detected in the signal (represented by the dots \cref{fig:walabot_rangetest_data}) and the range set to zero at the first peak. This eliminates the range jitter completely. The reason is that the first peak is caused by transmit antenna crosstalk and can thus be used as a timing reference point.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{pictures/experiment_walabot_rangetest}
+        \caption{Setup with three towers of cans in front of the Walabot sensor}
+        \label{fig:walabot_rangetest_setup}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}
+        \centering
+        \def\svgwidth{\linewidth}
+        \input{gfx/fig_svg/walabot_rangetest.pdf_tex}
+        \caption{Normalized echo intensity of range profile measurement with two antenna pairs. After the transmit peak at \(t=0\), three peaks corresponding to the three can targets are vaguely perceptible. }
+        \label{fig:walabot_rangetest_data}
+    \end{subfigure}
+    \caption{Static range test with the Walabot sensor}
+    \label{fig:walabot_rangetest}
+\end{figure}
+
+\subparagraph{Dynamic range test}\label{dynamic-range-test}
+
+Waving hands in front of the sensor did give a change in signal, but it
+was difficult to interpret the data conclusively. To objectively test
+the sensor's response, an aluminum plate that gave a strong echo signal
+was taped to the Kobuki robot. The robot was then driven with a constant
+speed away from the sensor and then towards the sensor as pictured in
+\cref{fig:walabot_dynamic_setup}.
+
+The sensor was sampled at a constant frequency in raw data mode. The
+analytic signal magnitude of the range scans is stacked at the right end of the
+matrix displayed in \cref{fig:walabot_dynamic_data}.
+
+\begin{figure}[htbp]
+    \centering
+
+    % A = 0.95 * wA*hB/hA / (wA*hB/hA + wB) = 0.95 * 1320*877/839 / (1320*877/839 + 525) = 0.68815948789
+    % B = 0.95 * wB / (wA*hB/hA + wB) = 0.95 * 525 / (1320*877/839 + 525) = 0.2618405121
+
+    \begin{subfigure}[t]{0.2618405121\textwidth}
+        \includegraphics[max width=\linewidth]{pictures/experiment_walabot}
+        \caption{Setup with a reflective metal plate mounted on the robot}
+        \label{fig:walabot_dynamic_setup}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{0.68815948789\textwidth}
+        \includegraphics[max width=\linewidth]{figures/walabot_disttest}
+        \caption{Range profile (\textit{y-axis}) over time (\textit{x-axis}) while the robot was moved at constant speed away and towards the Walabot sensor}
+        \label{fig:walabot_dynamic_data}
+    \end{subfigure}%
+    \caption{Dynamic range test with the Walabot sensor}
+\end{figure}
+
+The figure shows that the Walabot has problems with what looks like
+standing waves. The great amount of background signal is also visible.
+Because of its static nature, this can easily removed for a fixed radar.
+As some Walabot reviewers have noticed \cite{Valens2016} this background
+signal changes heavily and seemingly random when the sensor is moved.
+This makes the signal processing very difficult.
+
+Walabot advertises object detection capabilities. The catch with this
+mode is however that the number of objects to be detected must be
+configured as a fixed parameter first.
+
+\subsubsection{Omniradar RIC60-A}\label{omniradar}
+
+With its good range resolution and a good idea of its capabilities from \cite{Ernst2016}, this sensor promised good results. It will provide the basis for the proof of concept implementation, so it receives a more detailed look.
+
+Founded in 2010, Omniradar\footnote{\url{https://www.omniradar.com/}} is a Dutch
+startup\footnote{\url{https://www.crunchbase.com/organization/omniradar}} that
+claims to be the first to integrate a complete 60 GHz radar including
+antennas and analog to digital conversion in one chip.
+
+With the RIC60-A they offer a Radar Development Kit (RDK) that gives
+7GHz of bandwidth on two receiving antennas. An Altera Cyclone IV FPGA
+handles the signal acquisition and communication. \Cref{fig:slide_RIC60A} shows the
+radar IC and how the three antennas are integrated in silicon.
+
+\begin{figure}[htbp]
+    \centering
+    \def\svgwidth{\linewidth}
+    \input{gfx/pictures/slide_RIC60A.pdf_tex}
+    \caption{Decapped Omniradar IC; five cent coin as size reference; and antenna directionality pattern of Omniradar's RIC60-A. Source: \cite{Brouwer2015} p.9}
+    \label{fig:slide_RIC60A}
+\end{figure}
+
+The radar sensor's beam is fan shaped, which means it is fairly
+sensitive over a wide angle in azimuth direction, but relatively focused
+in elevation. This makes it a very good candidate for the radar
+reprojection, as targets can be seen from the robot in a wide field of
+view, but floor and ceiling reflections are kept at a minimum. Of course
+the sensor can also be rotated. Omniradar also supplies a horn-like
+extension for the sensor board, which forms the radar sensitivity into a
+pencil-shaped beam that is very focused at a narrow field of view.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \label{fig:omniradar}
+        \includegraphics[max width=\linewidth]{pictures/omniradar}
+        \caption{Omniradar's RIC60-A sensor with horn antenna extension, attached to the 3D-printed Kobuki mount}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \label{fig:mount}
+        \includegraphics[max width=\linewidth]{models/mount.png}
+        \caption{3D model of the radar sensor mount, designed with OpenSCAD.\bigskip}
+    \end{subfigure}
+    \caption{Radar sensor on mount and model of the mount.}
+\end{figure}
+
+
+\subparagraph{Radar mount}\label{radar-mount}
+
+A 3D-printed part makes sure that the radar sensor is firmly mounted on
+the robot as it explores its environment. The part was designed in
+\href{http://www.openscad.org/}{OpenSCAD} and printed on a
+\href{https://3dprinter.dremel.com/}{Dremel 3D printer}. The bottom
+mount hole positions were extracted from the mechanical drawings of the
+Kobuki Base \cite{YujinRobot2012}; the side holes from the Altium layer
+document of the version 3.2 Omniradar interface board
+\cite{Omniradar2014}.
+
+When rotated to face to the left side of the robot, the RPLidar mount
+was in the way, so parts of the print had to be clipped off.
+
+Two screws hold the Omniradar interface board to the mount. The other
+two mounting holes in the interface board hold the Omniradar sensor
+board. The horn extension can be affixed to these screws as well. If a
+different sensor orientation is necessary, the sensor board can be
+rotated by 90 degrees, thanks to the symmetric layout.
+
+\subparagraph{Doppler sensitivity}\label{doppler-sensitivity}
+
+The Omniradar FMCW radar is not sensitive enough to use the Doppler
+speed directly. The following example illustrates this.
+
+The RIC60A has a sensitivity of \(400 \frac{Hz}{m/s}\). A target with a
+doppler speed of \(0.02 m/s\) (A low speed at which the Kobuki robot
+still moves continuously and without jerking) will cause a frequency
+spike with a shift of \(8Hz\) in the FMCW beat frequency.
+
+The speed resolution capability is inversely proportional to the
+measurement or acquisition time. A 10 ms long acquisition gives a 100 Hz
+frequency resolution, or a speed resolution of 0.9 km/h (or 0.25 m/s).
+
+Sampling frequency \(F_s=25MHz\) and RIC60A Doppler sensitivity,
+\(S_D = 400 \frac{Hz}{m/s}\) are constant values of the Omniradar RDK.
+
+Given a chirp duration of \(T_{chirp} = 2.5ms\), we get
+\(N_s = t_{chirp} F_s = 62500\) Samples,
+\(N_r = \lfloor \frac{N_s}{2} \rfloor = 31250\) Samples per
+up/downsweep, \(dF = \frac{F_s}{N_r - 1} = 800 Hz\) FFT frequency bin
+width and hence a Doppler resolution of \(\frac{dF}{S_D} = 2 m/s\).
+
+Even with subsample peak interpolation the accuracy will not be very
+good and targets will be reprojected at imprecise angles.
+
+It would be possible to use higher precision equipment. But another
+solution is to track the movement of target peaks in the range profile,
+using the Peak Gradient algorithm.
+
+\subsection{Optimal chirp time configuration}\label{optimal-chirp-time-configuration}
+
+The chirp duration \(t_{chirp}\) is configurable and has an effect on
+how the raw range profile data will look like.
+
+\textbf{Very short durations} (\(<2ms\)) incur a considerable processing
+overhead to acquisition time ratio and have a very low SNR.\\
+\textbf{Short durations} (\(<5ms\)) have acceptable SNR, and are more
+efficient with respect to overhead.\\
+\textbf{Long durations} (\(>15ms\))
+have good SNR, and don't create a lot of overhead. However at higher
+robot speeds, target peaks get blurred over several range bins as they
+move in range. Less intense target echos are more difficult to detect
+then.\\
+\textbf{Very long durations} (\(>20ms\)) required the Omniradar
+driver to be patched on Linux so as not to freeze when chirps longer
+than \(20ms\) are requested. Even with the patched driver the RDK's FPGA
+firmware is not very reliable at sending large volumes of data at once
+and corrupts packet headers or aborts transmissions intermittently.
+
+The optimal range was empirically found to lie between \(2ms\) and
+\(10ms\).
+
+TODO wording here
+
+\Cref{fig:fig_chirp_eff} shows the chirp efficiency
+\(\eta = \frac{n_{chirp}~t_{chirp}}{t_{msg}}\), with number of
+consecutive sweeps \(n_{chirp}\) (two in the graph's data source), chirp
+length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
+
+\begin{figure}[htbp]
+    \centering
+    \def\svgwidth{10cm}
+    \input{gfx/fig_svg/chirp_eff.pdf_tex}
+    \caption{Chirp efficiency \(\eta\) (measurement time per time spent) for various chirp lengths}
+    \label{fig:fig_chirp_eff}
+\end{figure}
+
+The chirp length has an effect on accuracy and resolution. \Cref{fig:fig_compare_chirp_times} shows the range profiles of one scene, recorded over $10s$. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a slimmer band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Especially with the horn extension attached longer measurement time also improves SNR.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_2.pdf_tex}
+        \caption{Normalized echo intensity of range profiles without horn extension}
+        \bigskip
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_1.pdf_tex}
+        \caption{Normalized echo intensity of range profiles with horn extension}
+        \bigskip
+    \end{subfigure}
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_4.pdf_tex}
+        \caption{Normalized harmonic mean of range profiles, without horn extension}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.475 \textwidth}
+        \centering
+        \def\svgwidth{\linewidth} \small
+        \input{gfx/fig_svg/chirp_comp_3.pdf_tex}
+        \caption{Normalized harmonic mean of range profiles, with horn extension}
+    \end{subfigure}
+    \caption{Effect of chirp length on SNR; with and without Horn extension}
+    \label{fig:fig_compare_chirp_times}
+\end{figure}

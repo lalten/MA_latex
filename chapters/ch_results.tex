@@ -2,29 +2,13 @@
 
 \section{Evaluation}\label{evaluation}
 
-\subsection{Evaluation dimensions}\label{evaluation-dimensions}
+Before the results of the presented proof-of-concept implementation are listed it needs to be clear what dimensions are important so that a distinction between good and bad results can be made.
 
-Needs to be * timely * false alarm rate * missed target rate * spatially
-precise * see different types of obstacles * comparable to other sensors
-* useful (humidity of wall is not interesting for obstacle detection)
+A good reprojection map has several qualities that make it usable as an obstacle gridmap. First, it needs to be \textbf{timely}. That means that the time between the appearance of an object in the robot's path and it being mapped in an obstacle map needs to be small enough that the robot can still avoid collisions. The \textbf{false alarm rate}, representing false positive detections, needs to be low enough to not negatively influence the robot's navigation behaviour by making it circumnavigate too many phantom obstacles. Vice versa, the \textbf{missed target rate}, or false negative detecion needs to be low, or the radar sensor will not bring an advantage over conventional obstacle sensors. The resulting map of course also needs to be \textbf{spatially correct}. This means that a detected obstacle is mapped at its true location. Otherwise, phantom obstacles or incorrectly sized obstacles will degrade map quality. The map becomes more useful if it contains \textbf{diverse types of obstacles}, and not just one class of objects, like walls. On the other hand, it should not contain \textbf{irrelevant information}, for example wall humidity is not interesting for obstacle detection. Lastly, only if the map is \textbf{comparable to other sensors} informed comparison can take place. For example, a glass wall is easily visible to the human eye, so their position in the radar reprojection map can be verfied. But metal struts in walls, which, while not presenting an obstacle to the robot (vacuum robots usually are not designed to breach walls), could be useful landmarks for later slam applications, are not visible in other maps. Hence the quality of metal strut mapping can not be asserted, but only assumed based on human knowledge of where a wall's metal struts might be.
 
-\subsection{Evaluation scan targets}\label{evaluation-scan-targets}
+There are some classes of targets that are particularly interesting in the evaluation of results. The first one is stacks of \textbf{metal cans}, because they appear in many of the scans. This is a kind of artificial obstacle that was designed to have a high probability of visibility in both radar scans (the curved metal surface is very reflective from every direction) and lidar scans (the can towers are high enough to cross the laser beam, and wide enough to not be missed even in some distance). Another easy target are \textbf{walls}. They are easy to see in the lidar scan, and detections in the radar reprojection map can be easily compared. A special case of walls are \textbf{glass walls} or windows. They present an impenetrable obstacle in a robots path, but almost always, neither a laser scanner nor a vision sensor can detect them. Another real world obstacle that escapes lidar scans are \textbf{office chair legs}. While the pillar is visible with laser, the horizontally stretching legs and rollers are usually too low to be detected (see figure \cref{fig:lidar-rgbd}). In the same category of low profile obstacles are \textbf{cables} lying on the floor. A vacuum robot can easily entangle in them and get stuck. Lastly, it would be interesting to see negative obstacles including \textbf{cliffs} and dips. Today, robots need an extra set of sensors (usually IR distance sensors at the front of the robot, aiming at the floor) to detect this kind of obstacle very reliably.
 
-\begin{itemize}
-\tightlist
-\item
-  Cans (easy)
-\item
-  Walls
-\item
-  Glass walls
-\item
-  Chair legs
-\item
-  Cables on floor
-\item
-  Cliffs
-\end{itemize}
+TODO figure laser/rgbd
 
 \section{Results}\label{results}
 
