@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{414.8821106bp}%
+    \setlength{\unitlength}{340.15748031bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,10 +48,10 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.60347064)%
+  \begin{picture}(1,0.75)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{slide_RIC60A.pdf}}%
-    \put(0.48162147,0.38289573){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{7x7x1.2 mm}}}%
-    \put(0.48162147,0.35072151){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{0.5 mm pitch}}}%
+    \put(0.40373854,0.54400556){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{7x7x1.2 mm}}}%
+    \put(0.40373854,0.50476343){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{0.5 mm pitch}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{slide_RIC60A.pdf}}%
   \end{picture}%
 \endgroup%
