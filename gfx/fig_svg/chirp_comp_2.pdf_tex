@@ -50,15 +50,14 @@
   \makeatother%
   \begin{picture}(1,0.60807911)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{chirp_comp_2.pdf}}%
-    \put(0.0929017,0.043311){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.30473245,0.043311){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.53972465,0.043311){\makebox(0,0)[lb]{\smash{1}}}%
-    \put(0.7515554,0.043311){\makebox(0,0)[lb]{\smash{1.5}}}%
-    \put(0.98654761,0.043311){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.43067321,0.00602223){\makebox(0,0)[lb]{\smash{Down range [m]}}}%
+    \put(0.0929017,0.04331103){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.30473245,0.04331103){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.53972463,0.04331103){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{1}}}%
+    \put(0.75155538,0.04331103){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{1.5}}}%
+    \put(0.98654759,0.04331103){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.43067322,0.0060222){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{Down range [m]}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{chirp_comp_2.pdf}}%
-    \put(0.0991854,0.22334842){\makebox(0,0)[rb]{\smash{$10^{-5}$}}}%
-    \put(0.0991854,0.43566171){\makebox(0,0)[rb]{\smash{$10^{-4}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{chirp_comp_2.pdf}}%
+    \put(0.0991854,0.22334842){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[rb]{\smash{$10^{-5}$}}}%
+    \put(0.0991854,0.43566171){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[rb]{\smash{$10^{-4}$}}}%
   \end{picture}%
 \endgroup%

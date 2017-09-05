@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'angle_compensation_2.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{450.48075999bp}%
+    \setlength{\unitlength}{422.32566833bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,36 +48,36 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.55035373)%
+  \begin{picture}(1,0.5503536)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{angle_compensation_2.pdf}}%
-    \put(0.07571037,0.03782084){\makebox(0,0)[lb]{\smash{-90}}}%
-    \put(0.19587834,0.03782084){\makebox(0,0)[lb]{\smash{-60}}}%
-    \put(0.31604614,0.03782084){\makebox(0,0)[lb]{\smash{-30}}}%
-    \put(0.44775733,0.03782084){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.56082179,0.03782084){\makebox(0,0)[lb]{\smash{30}}}%
-    \put(0.68098958,0.03782084){\makebox(0,0)[lb]{\smash{60}}}%
-    \put(0.80115755,0.03782084){\makebox(0,0)[lb]{\smash{90}}}%
-    \put(0.31811841,0.00351189){\makebox(0,0)[lb]{\smash{Robot orientation [°]}}}%
+    \put(0.07571038,0.03782085){\makebox(0,0)[lb]{\smash{-90}}}%
+    \put(0.19587836,0.03782085){\makebox(0,0)[lb]{\smash{-60}}}%
+    \put(0.31604617,0.03782085){\makebox(0,0)[lb]{\smash{-30}}}%
+    \put(0.44775738,0.03782085){\makebox(0,0)[lb]{\smash{0}}}%
+    \put(0.56082184,0.03782085){\makebox(0,0)[lb]{\smash{30}}}%
+    \put(0.68098965,0.03782085){\makebox(0,0)[lb]{\smash{60}}}%
+    \put(0.80115764,0.03782085){\makebox(0,0)[lb]{\smash{90}}}%
+    \put(0.31811845,0.0035119){\makebox(0,0)[lb]{\smash{Robot orientation [°]}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{angle_compensation_2.pdf}}%
-    \put(0.04857883,0.09565914){\makebox(0,0)[lb]{\smash{0.4}}}%
-    \put(0.03437178,0.14614458){\makebox(0,0)[lb]{\smash{0.45}}}%
-    \put(0.04857883,0.1966302){\makebox(0,0)[lb]{\smash{0.5}}}%
-    \put(0.03437178,0.24711564){\makebox(0,0)[lb]{\smash{0.55}}}%
-    \put(0.04857883,0.29760108){\makebox(0,0)[lb]{\smash{0.6}}}%
-    \put(0.03437178,0.34808652){\makebox(0,0)[lb]{\smash{0.65}}}%
-    \put(0.04857883,0.39857197){\makebox(0,0)[lb]{\smash{0.7}}}%
-    \put(0.03437178,0.44905758){\makebox(0,0)[lb]{\smash{0.75}}}%
-    \put(0.04857883,0.49954303){\makebox(0,0)[lb]{\smash{0.8}}}%
-    \put(0.02023879,0.20169554){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Down range [m]}}}}%
+    \put(0.04857883,0.09565915){\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.03437179,0.1461446){\makebox(0,0)[lb]{\smash{0.45}}}%
+    \put(0.04857883,0.19663022){\makebox(0,0)[lb]{\smash{0.5}}}%
+    \put(0.03437179,0.24711567){\makebox(0,0)[lb]{\smash{0.55}}}%
+    \put(0.04857883,0.29760111){\makebox(0,0)[lb]{\smash{0.6}}}%
+    \put(0.03437179,0.34808656){\makebox(0,0)[lb]{\smash{0.65}}}%
+    \put(0.04857883,0.39857201){\makebox(0,0)[lb]{\smash{0.7}}}%
+    \put(0.03437179,0.44905763){\makebox(0,0)[lb]{\smash{0.75}}}%
+    \put(0.04857883,0.49954308){\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.0202388,0.20169556){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Down range [m]}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{angle_compensation_2.pdf}}%
-    \put(0.91039889,0.12437903){\makebox(0,0)[lb]{\smash{-82.5}}}%
-    \put(0.91039889,0.18777974){\makebox(0,0)[lb]{\smash{-80}}}%
-    \put(0.91039889,0.25118063){\makebox(0,0)[lb]{\smash{-77.5}}}%
-    \put(0.91039889,0.31458152){\makebox(0,0)[lb]{\smash{-75}}}%
-    \put(0.91039889,0.37798241){\makebox(0,0)[lb]{\smash{-72.5}}}%
-    \put(0.91039889,0.44138329){\makebox(0,0)[lb]{\smash{-70}}}%
-    \put(0.91039889,0.50478418){\makebox(0,0)[lb]{\smash{-67.5}}}%
-    \put(0.9955671,0.1803848){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Echo intensity [dBVrms]}}}}%
+    \put(0.91039899,0.12437905){\makebox(0,0)[lb]{\smash{-82.5}}}%
+    \put(0.91039899,0.18777976){\makebox(0,0)[lb]{\smash{-80}}}%
+    \put(0.91039899,0.25118066){\makebox(0,0)[lb]{\smash{-77.5}}}%
+    \put(0.91039899,0.31458155){\makebox(0,0)[lb]{\smash{-75}}}%
+    \put(0.91039899,0.37798245){\makebox(0,0)[lb]{\smash{-72.5}}}%
+    \put(0.91039899,0.44138334){\makebox(0,0)[lb]{\smash{-70}}}%
+    \put(0.91039899,0.50478423){\makebox(0,0)[lb]{\smash{-67.5}}}%
+    \put(0.99556722,0.18038482){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Echo intensity [dBVrms]}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{angle_compensation_2.pdf}}%
   \end{picture}%
 \endgroup%
