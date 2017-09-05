@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'chirp_comp_1.pdf' (pdf, eps, ps)
 %%
@@ -59,6 +59,5 @@
     \put(0,0){\includegraphics[width=\unitlength,page=2]{chirp_comp_1.pdf}}%
     \put(0.10304564,0.21369782){\makebox(0,0)[rb]{\smash{$10^{-5}$}}}%
     \put(0.0991854,0.43180147){\makebox(0,0)[rb]{\smash{$10^{-4}$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{chirp_comp_1.pdf}}%
   \end{picture}%
 \endgroup%
