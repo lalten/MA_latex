@@ -1,10 +1,7 @@
 \chapter{List of Scans}
 
-\blindtext
 {
-
 \rowcolors{1}{ColorAlternatedRow}{}
-
 \begin{tabularx}{\textwidth}{%
   >{\setlength{\hsize}{.31\hsize}\raggedright\arraybackslash}X%
   >{\setlength{\hsize}{.13\hsize}\raggedright\arraybackslash}X%
@@ -13,23 +10,16 @@
   >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
   >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
   >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
-}%
-
+}
 \hiderowcolors
-%
-\caption{Scan parameters}
-%
+\caption{Scan parameters}\label{tab:params}\\
 \toprule
     Name & Sweep & Orient. & Squint & Horn   & Map    & TF     \\
 \midrule
 \endhead
-%
-\midrule
-\multicolumn{6}{r}{Continued on next page} \\
-\endfoot
-%
+
 \bottomrule
-\endlastfoot
+\endfoot
 \showrowcolors
 %
 Attic                             & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
@@ -59,7 +49,6 @@ Xray-Room                         & 2.5ms      & V           & 0°     & \xmark 
 Y is there a cable on the floor   & 5ms        & V           & 0°     & \xmark & \cmark & \cmark \\
 Z                                 &            &             &        &        &        &        \\
 
-\bottomrule
 \end{tabularx}
 }
 
