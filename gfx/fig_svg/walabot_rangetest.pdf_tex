@@ -48,16 +48,16 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.65713249)%
+  \begin{picture}(1,0.36169797)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{walabot_rangetest.pdf}}%
-    \put(0.17149408,0.03816017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{0}}}%
-    \put(0.37361445,0.03816017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{0.5}}}%
-    \put(0.57526165,0.03816017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{1}}}%
-    \put(0.77675614,0.03816017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{1.5}}}%
-    \put(0.97930381,0.03816017){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{2}}}%
-    \put(0.51385498,0.00763204){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Down range [m]}}}%
-    \put(0.01407347,0.12104268){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{0}}}%
-    \put(0.01532511,0.61313628){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{1}}}%
+    \put(0.17149408,0.03816016){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{0}}}%
+    \put(0.37361445,0.03816016){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{0.5}}}%
+    \put(0.57526165,0.03816016){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{1}}}%
+    \put(0.77675614,0.03816016){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{1.5}}}%
+    \put(0.97930381,0.03816016){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{2}}}%
+    \put(0.51385498,0.00763202){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Down range [m]}}}%
+    \put(0.01407347,0.08872447){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{0}}}%
+    \put(0.01532511,0.33448321){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{1}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{walabot_rangetest.pdf}}%
   \end{picture}%
 \endgroup%
