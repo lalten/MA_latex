@@ -119,10 +119,10 @@ direction and the radar beam with wavelength \(\lambda\)
 \cite{Skolnik2008}. The factor \(2\) is caused by the Doppler shift
 being applied twice; once for the incident wave, and once for the
 reflected wave. In effect this means that a radar sending out an EM wave
-with a frequency of exactly \(60GHz\) towards a target moving at a
-relative speed of \(v_r = 1\frac{cm}{s}\) towards the radar will receive
-back an echo with a frequency of \(60000000004 Hz\) because of the
-frequency shift of \(f_D = 4 Hz\).
+with a frequency of exactly \SI{60}{GHz} towards a target moving at a
+relative speed of \(v_r = \SI[per-mode=symbol]{1}{cm\per s}\) towards the radar will receive
+back an echo with a frequency of \SI{60000000004}{Hz} because of the
+frequency shift of \(f_D = \SI{4}{Hz}\).
 
 \subsection{Types of Radar}\label{types-of-radar}
 
@@ -309,11 +309,11 @@ different target.
 
 \Cref{fig:fig_raw_beat} shows a real-world example of how the beat signal \(f_b\)
 (\cref{fig:rawbeat_t}) and its frequency spectrum (\cref{fig:rawbeat_f}) look like. At
-\(t=T_d=32ms\), a jump in the beat frequency is caused by the modulation
+\(t=T_d=\SI{32}{ms}\), a jump in the beat frequency is caused by the modulation
 change from upsweep to downsweep. In the frequency spectrum, three
-stationary targets are visible at ca. \(3kHz\), \(6kHz\), and \(9kHz\).
-In this example, \(T_d=32ms\) and \(\Delta f=7GHz\), so the targets were
-at ranges of \(0.5m\), \(1m\), and \(1.5m\). Note that the in-phase part
+stationary targets are visible at ca. \SI{3}{kHz}, \SI{6}{kHz}, and \SI{9}{kHz}.
+In this example, \(T_d=\SI{32}{ms}\) and \(\Delta f=\SI{7}{GHz}\), so the targets were
+at ranges of \SI{0.5}{m}, \SI{1}{m}, and \SI{1.5}{m}. Note that the in-phase part
 \(S_I\) and quadrature part \(S_Q\) of the analytic signal are measured
 in separate channels to retain phase information. The Fourier transform
 in bottom subplot however shows the magnitude \(\|S\|\) of the analytic
@@ -372,31 +372,31 @@ Even though radar applications exist for many frequencies, only a few of
 them are OK to use for radiolocation and in home robots. The
 ``Industrial, Scientific, Medical'' (ISM) bands allows the unlicensed
 use of some frequencies for radiolocation, including center frequencies
-of \(24.125 GHz\), \(61.25 GHz\), \(122.5 GHz\) and \(245 GHz\).
+of \SI{24.125}{GHz}, \SI{61.25}{GHz}, \SI{122.5}{GHz} and \SI{245}{GHz}.
 Applications must however accept harmful interference \cite{FCC2017}.
 
-The \(77 GHz\) band is ``restricted to vehicle-mounted field disturbance
+The \SI{77}{GHz} band is ``restricted to vehicle-mounted field disturbance
 sensors used as vehicle radar systems.'' (FCC Part 15 §15.253(c)) - ETSI
 defines it as ``Automatic Cruise Control `long-range radar' operating at
-\(77 GHz\). This enables a vehicle to maintain a cruising distance from
+\SI{77}{GHz}. This enables a vehicle to maintain a cruising distance from
 a vehicle in front.'' (EN 301 091). The German Bundesnetzagentur also
 declares it ``Kraftfahrzeug-Kurzstreckenradar'' (Vfg 66 / 2014).
 
-A \(24 GHz\) center frequency is a safe bet. There are many radar
+A \SI{24}{GHz} center frequency is a safe bet. There are many radar
 systems available and it being an ISM band makes licensing much easier.
-The drawback is the very limited maximum bandwidth of \(250MHz\) in this
+The drawback is the very limited maximum bandwidth of \SI{250}{MHz} in this
 band.
 
-Some newer radars use the \(60 GHz\) ISM band. It allows a rather wide
-bandwidth of up to \(9GHz\) in some regions (see \cref{fig:wigig} ).
+Some newer radars use the \SI{60}{GHz} ISM band. It allows a rather wide
+bandwidth of up to \SI{9}{GHz} in some regions (see \cref{fig:wigig} ).
 According to equation \#REF, this gives a very good range resolution in
-the order of few \(cm\). At these high frequencies, RF energy
+the order of few \si{cm}. At these high frequencies, RF energy
 attenuation in material increases noticeably \cite{FerrisJr.1998}. The
-effect is that \(60GHz\) waves are limited to short ranges of a few
-\(m\) and don't usually penetrate walls.
+effect is that \SI{60}{GHz} waves are limited to short ranges of a few
+\si{m} and don't usually penetrate walls.
 
 Atmospheric attenuation also limits long-range applications. In short
-range (a few \(m\)) it should however not present a problem.
+range (a few \si{m}) it should however not present a problem.
 
 \begin{figure}[htp]
     \centering
@@ -416,7 +416,7 @@ range (a few \(m\)) it should however not present a problem.
 The downside is that there are some other technologies using the same
 frequency bands, most notably 802.11ad a.k.a.
 WiGig\cite{AgilentTechnologies2013}. The WiGig frequency allocations in
-\cref{fig:wigig} show in which regions the \(60GHz\) band is available (also
+\cref{fig:wigig} show in which regions the \SI{60}{GHz} band is available (also
 for radar).
 
 \begin{figure}[htp]
@@ -503,7 +503,7 @@ over time \(t\):
 \end{equation}
 where \(P_r\) is the echo power of the received target, accounting
 for dependencies like transmit power and path loss, \(\sigma\) is the
-target's RCS, imaginary unit \(j\), \(\varphi_s\) the scattering phase,
+target's RCS, imaginary unit \si{j}, \(\varphi_s\) the scattering phase,
 and \(\frac{4\pi}{\lambda}R(t)\) the azimuth phase variation due to
 changing distance \cite{Cumming2004}. The target's range \(R(t)\) is
 described by the range at closest approach \(R_0\) and the radar's
@@ -536,7 +536,7 @@ As far as moved radar sensors go, SAR is a great technique for imaging a scene w
 
 \subsection{Scanning radar}\label{scanning-radar}
 
-A radar system that changes the direction of its beam in a scanning pattern is called a scanning radar. This allows covering a larger overall search space by sampling a set of smaller regions, usually with a tighter beam shape for higher spatial accuracy. The scanning process can be implemented by mechanically rotating the radar's antenna, electronically through phased arrays (see \cref{fig:phased}), or even both in active electronically scanned arrays (AESA), which are used in fighter jets (see \cref{fig:aesa}). Some research robots use the K2PI radar sensor \cite{Rouveure2008}, which rotates a pencil-shape beam over 360° (see \cref{fig:k2pi}).
+A radar system that changes the direction of its beam in a scanning pattern is called a scanning radar. This allows covering a larger overall search space by sampling a set of smaller regions, usually with a tighter beam shape for higher spatial accuracy. The scanning process can be implemented by mechanically rotating the radar's antenna, electronically through phased arrays (see \cref{fig:phased}), or even both in active electronically scanned arrays (AESA), which are used in fighter jets (see \cref{fig:aesa}). Some research robots use the K2PI radar sensor \cite{Rouveure2008}, which rotates a pencil-shape beam over \ang{360} (see \cref{fig:k2pi}).
 
 \begin{figure}[htbp]
     \centering
@@ -555,7 +555,7 @@ A radar system that changes the direction of its beam in a scanning pattern is c
     \hfill
     \begin{subfigure}[t]{0.3\textwidth}
         \includegraphics[max width=\linewidth]{gfx/pictures/k2pi}
-        \caption{K2PI FMCW radar. Named for operating in the K band frequency (24 GHz) and rotating by $2\pi$ radian. Source: \cite{Rouveure2008}}
+        \caption{K2PI FMCW radar. Named for operating in the K band frequency (\SI{24}{GHz}) and rotating by $2\pi$ radian. Source: \cite{Rouveure2008}}
         \label{fig:k2pi}
     \end{subfigure}
     \caption{Scanning radars.}

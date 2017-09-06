@@ -62,7 +62,7 @@ target's echo are visible, which can lead to detection of incorrect
 angle and ranges. Luckily, in the recorded data almost no multipath
 effects are obvious. The only scan that shows some effects is the
 Torture Chamber. There, it seems like the radar waves bounce around a
-bit in the (2m,2m) area under the desk. The effect is that some targets
+bit in the (\SI{2}{m},\SI{2}{m}) area under the desk. The effect is that some targets
 are detected behind the wall behind the desk.
 
 
@@ -75,7 +75,7 @@ plastic bottle can be seen. However, the plastic bottle was relatively
 close to the sensor. On the other hand, in the scans with glass walls in
 them (P,Q,R,S,U), no significant radar echo is picked up from the
 (metal) chair legs behind the glass wall. This is because a typical
-glass pane attenuates the 60Ghz signal by about 5.5 dB \cite{Lu2014}. In
+glass pane attenuates the \SI{60}{GHz} signal by about \SI{5.5}{dB} \cite{Lu2014}. In
 effect, a radar sensor with higher transmission power might be able to
 see through walls, but in the conducted experiments radar echos were to
 faint to be picked up after the first bigger object (like a wall).
@@ -92,17 +92,17 @@ cliffs.
 
 The Virtual Reality scan was carried out in the standard configuration
 with a horizontal, slightly squinting, and not downwards angled sensor.
-The assumption was that a part of the strong signal int the 10cm to 20cm
+The assumption was that a part of the strong signal int the \SIrange{10}{20}{cm}
 range were reflections from the floor, that should disappear when the
 floor ends at a cliff. Visual inspection of the range profile however
 shows only a extremely slight change in signal, e.g.~at cross range
-0.8m..1.1m, down range 0.2m..0.25m., where the floor could not reflect
+\SIrange{0.8}{1.1}{m}, down range \SIrange{0.2}{0.25}{m}., where the floor could not reflect
 due to the radar sensor overhanging the cliff.
 
 The Washroom scan has the sensor mounted in a vertical configuration and
 downward facing instead to increase sensitivity to echo scattering from
-below. The echo intensity for cross range 3.5m..4.5m is indeed just
-barely lower than 0m..2m, which maches up to where the sensor was over
+below. The echo intensity for cross range \SIrange{3.5}{4.5}{m} is indeed just
+barely lower than \SIrange{0}{2}{m}, which maches up to where the sensor was over
 the edge and over floor, respectively.
 
 TODO picture of scene
@@ -128,8 +128,8 @@ TODO annotation-arrow pointing to darker region?
 To limit the transmit crosstalk's blinding effect, the sensor was
 mounted on a much higher position (on the RGBD camera mount) in the Xray
 Room scan. One effects is that the robot chassis itself is constantly
-visible at a distance of 0.35cm down range. At 0.45cm down range, the
-floor echo is visible. There is one dip in intensity at 2.5m cross
+visible at a distance of \SI{0.35}{cm} down range. At \SI{0.45}{cm} down range, the
+floor echo is visible. There is one dip in intensity at \SI{2.5}{m} cross
 range, where the sensor was not over floor. Overall the signal is
 however not as conclusive as in the Washroom scan.
 
@@ -167,9 +167,9 @@ but are hard to detect with conventional obstacle sensors. The Y (Is
 There A Cable On The Floor) scan deals with the detection if this kind
 of obstacle. For this, the same camera-mounted vertical configuration as
 in X Ray Room was used. Again, there is a constant robot chassis echo at
-down range 0.35. As the robot is driving closer towards the power cable
+down range \SI{0.35}{m}. As the robot is driving closer towards the power cable
 on the floor, the cable's echo is visibly coming closer before it
-disappears under the robot's chassis. The echos at 0.9m down range show
+disappears under the robot's chassis. The echos at \SI{0.9}{m} down range show
 the two can towers at the end of the cable.
 
 \begin{figure}[htp]
@@ -228,7 +228,7 @@ improve his data quality by use of an minimum-entropy based
 auto-focusing algorithm. The trick with this is that the radar needs to
 move in a very straight line, where the ``error in path linearity should
 be around less than tenth of a wavelength''. In Forsten's radar, this is
-about 5mm. However with the 60GHz Omniradar this is around 0.5mm.
+about \SI{5}{mm}. However with the \SI{60}{GHz} Omniradar this is around \SI{0.5}{mm}.
 Keeping a straight line with less than half a millimeter of linearity
 error is not realistically achievable on the Kobuki platform.
 

@@ -29,7 +29,7 @@ The Robot Operating System (ROS)\footnote{\url{http://www.ros.org/}} is widely u
 
 \subsection{Odroid}\label{odroid}
 
-In the Kobuki platform, only an embeddded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 2GHz Octa core CPUs paired with 2GB ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
+In the Kobuki platform, only an embeddded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 \SI{2}{GHz} Octa core CPUs paired with \SI{2}{GB} ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
 
 \subsection{Lidar Slam}\label{lidar}
 A RoboPeak / Slamtec RPLidar A1\footnote{\url{https://www.slamtec.com/en/Lidar/A1}} lidar sensor is mounted on the Kobuki base to enable laser-based slam. This is very useful to both provide odometry correction during reprojection mapping and to build a lidar slam occupancy gridmap that can then be compared with the radar reprojection map.
@@ -74,7 +74,7 @@ At the time of writing, the only interesting published project is a fall detecti
 
 \subparagraph{Static range test}\label{static-range-test}
 
-\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it records the scene in image \cref{fig:walabot_rangetest_setup} with metal can stacks at \(0.5m\) \(1m\) and \(1.5m\). The signal is very stable over time and shows next to no noise. Unfortunately however it doesn't seem like the radar sensor can detect the metal cans very well. The higher frequency signal in \cref{fig:walabot_rangetest_data} is the ``raw signal'' as reported by the Walabot sensor. It is however hardly believable that the signal was measured like this, as its base frequency is around 7GHz. It was not possible to get any useful information from Vayyar's technical support regarding this. A more interesting data source is the envelope signal, which can easily be constructed from the analytic signal, using the \texttt{scipy.signal} package's Hilbert transform.
+\Cref{fig:walabot_rangetest_data} shows the signal from two Walabot antenna pairs as it records the scene in image \cref{fig:walabot_rangetest_setup} with metal can stacks at \SI{0.5}{m}, \SI{1}{m}, and \SI{1.5}{m}. The signal is very stable over time and shows next to no noise. Unfortunately however it doesn't seem like the radar sensor can detect the metal cans very well. The higher frequency signal in \cref{fig:walabot_rangetest_data} is the ``raw signal'' as reported by the Walabot sensor. It is however hardly believable that the signal was measured like this, as its base frequency is around \SI{7}{GHz}. It was not possible to get any useful information from Vayyar's technical support regarding this. A more interesting data source is the envelope signal, which can easily be constructed from the analytic signal, using the \texttt{scipy.signal} package's Hilbert transform.
 
 Another problem with the data is that the peaks of the envelope jitter in range. This can be fixed by combination with another oddity: The last 180 samples rise very strongly in magnitude. If they are cut and prepended to the first sample, they match up perfectly. Peaks can then be detected in the signal (represented by the dots \cref{fig:walabot_rangetest_data}) and the range set to zero at the first peak. This eliminates the range jitter completely. The reason is that the first peak is caused by transmit antenna crosstalk and can thus be used as a timing reference point.
 
@@ -147,11 +147,11 @@ With its good range resolution and a good idea of its capabilities from \cite{Er
 
 Founded in 2010, Omniradar\footnote{\url{https://www.omniradar.com/}} is a Dutch
 startup\footnote{\url{https://www.crunchbase.com/organization/omniradar}} that
-claims to be the first to integrate a complete 60 GHz radar including
+claims to be the first to integrate a complete \SI{60}{GHz} radar including
 antennas and analog to digital conversion in one chip.
 
 With the RIC60-A they offer a Radar Development Kit (RDK) that gives
-7GHz of bandwidth on two receiving antennas. An Altera Cyclone IV FPGA
+\SI{7}{GHz} of bandwidth on two receiving antennas. An Altera Cyclone IV FPGA
 handles the signal acquisition and communication. \Cref{fig:slide_RIC60A} shows the
 radar IC and how the three antennas are integrated in silicon.
 
@@ -208,30 +208,30 @@ Two screws hold the Omniradar interface board to the mount. The other
 two mounting holes in the interface board hold the Omniradar sensor
 board. The horn extension can be affixed to these screws as well. If a
 different sensor orientation is necessary, the sensor board can be
-rotated by 90 degrees, thanks to the symmetric layout.
+rotated by \ang{90}, thanks to the symmetric layout.
 
 \subparagraph{Doppler sensitivity}\label{doppler-sensitivity}
 
 The Omniradar FMCW radar is not sensitive enough to use the Doppler
 speed directly. The following example illustrates this.
 
-The RIC60A has a sensitivity of \(400 \frac{Hz}{m/s}\). A target with a
-doppler speed of \(0.02 m/s\) (A low speed at which the Kobuki robot
+The RIC60A has a sensitivity of \SI{400}{Hz\per(m/s)}. A target with a
+doppler speed of \SI{0.02}{m\per s} (A low speed at which the Kobuki robot
 still moves continuously and without jerking) will cause a frequency
-spike with a shift of \(8Hz\) in the FMCW beat frequency.
+spike with a shift of \(\SI{8}{Hz}\) in the FMCW beat frequency.
 
 The speed resolution capability is inversely proportional to the
-measurement or acquisition time. A 10 ms long acquisition gives a 100 Hz
-frequency resolution, or a speed resolution of 0.9 km/h (or 0.25 m/s).
+measurement or acquisition time. A \SI{10}{ms} long acquisition gives a \SI{100}{Hz}
+frequency resolution, or a speed resolution of \SI{0.9}{km/h} (or \SI{0.25}{m/s}).
 
-Sampling frequency \(F_s=25MHz\) and RIC60A Doppler sensitivity,
-\(S_D = 400 \frac{Hz}{m/s}\) are constant values of the Omniradar RDK.
+Sampling frequency \(F_s=\SI{25}{MHz}\) and RIC60A Doppler sensitivity,
+\(S_D = \SI{400}{Hz\per(m/s)}\) are constant values of the Omniradar RDK.
 
-Given a chirp duration of \(T_{chirp} = 2.5ms\), we get
+Given a chirp duration of \(T_{chirp} = \SI{2.5}{ms}\), we get
 \(N_s = t_{chirp} F_s = 62500\) Samples,
 \(N_r = \lfloor \frac{N_s}{2} \rfloor = 31250\) Samples per
-up/downsweep, \(dF = \frac{F_s}{N_r - 1} = 800 Hz\) FFT frequency bin
-width and hence a Doppler resolution of \(\frac{dF}{S_D} = 2 m/s\).
+up/downsweep, \(dF = \frac{F_s}{N_r - 1} = \SI{800}{Hz}\) FFT frequency bin
+width and hence a Doppler resolution of \(\frac{dF}{S_D} = \SI{2}{m/s}\).
 
 Even with subsample peak interpolation the accuracy will not be very
 good and targets will be reprojected at imprecise angles.
@@ -247,23 +247,22 @@ TODO wording?
 The chirp duration \(t_{chirp}\) is configurable and has an effect on
 how the raw range profile data will look like.
 
-\textbf{Very short durations} (\(<2ms\)) incur a considerable processing
+\textbf{Very short durations} (\(<\SI{2}{ms}\)) incur a considerable processing
 overhead to acquisition time ratio and have a very low SNR.\\
-\textbf{Short durations} (\(<5ms\)) have acceptable SNR, and are more
+\textbf{Short durations} (\(<\SI{5}{ms}\)) have acceptable SNR, and are more
 efficient with respect to overhead.\\
-\textbf{Long durations} (\(>15ms\))
+\textbf{Long durations} (\(>\SI{15}{ms}\))
 have good SNR, and don't create a lot of overhead. However at higher
 robot speeds, target peaks get blurred over several range bins as they
 move in range. Less intense target echos are more difficult to detect
 then.\\
-\textbf{Very long durations} (\(>20ms\)) required the Omniradar
+\textbf{Very long durations} (\(>\SI{20}{ms}\)) required the Omniradar
 driver to be patched on Linux so as not to freeze when chirps longer
-than \(20ms\) are requested. Even with the patched driver the RDK's FPGA
+than \SI{20}{ms} are requested. Even with the patched driver the RDK's FPGA
 firmware is not very reliable at sending large volumes of data at once
 and corrupts packet headers or aborts transmissions intermittently.
 
-The optimal range was empirically found to lie between \(2ms\) and
-\(10ms\).
+The optimal range was empirically found to lie between \SI{2}{ms} and \SI{10}{ms}.
 
 TODO wording here
 
@@ -280,7 +279,7 @@ length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
     \label{fig:fig_chirp_eff}
 \end{figure}
 
-The chirp length has an effect on accuracy and resolution. \Cref{fig:fig_compare_chirp_times} shows the range profiles of one scene, recorded over $10s$. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a slimmer band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Especially with the horn extension attached longer measurement time also improves SNR.
+The chirp length has an effect on accuracy and resolution. \Cref{fig:fig_compare_chirp_times} shows the range profiles of one scene, recorded over \SI{10}{s}. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a slimmer band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Especially with the horn extension attached longer measurement time also improves SNR.
 
 \begin{figure}[htbp]
     \centering

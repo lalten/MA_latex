@@ -24,7 +24,7 @@ TODO is this really necessary?
   Use \texttt{rqt} with the \emph{Dynamic Reconfigure} plugin to set the
   Omniradar node to generate the preferred number of sweeps and sweep
   duration. The configuration string can also be changed. The defaults
-  are fine (One 5ms sweep)
+  are fine (One \SI{5}{ms} sweep)
 \item
   \texttt{rosbag\ record\ /omniradar\_node/radar\_raw\ /odom\ /tf\ /map\ -O\ scan}
   will record a rosbag ``scan.bag'' containing all ROS messages with
@@ -41,7 +41,7 @@ TODO is this really necessary?
   (\(Ctrl+C\)). Open a new terminal on your local machine and run
   \texttt{ssh\ zero2-pa\ "tar\ zcf\ -\ scan.bag"\ \textbar{}\ tar\ zxf\ -}.
   The rosbag will be transferred to your machine. Using ssh with the tar
-  pipe is the fastest way to transfer the data (around \(100 Mbps\) on
+  pipe is the fastest way to transfer the data (around \SI{100}{Mbps} on
   the BSH wifi). Compressing first (\texttt{rosbag\ compress\ scan.bag})
   and then sending takes a while on the not-so-powerful Odroid platform.
 \item
@@ -90,7 +90,7 @@ automatically loads the regular FTDI serial IO driver,
 \texttt{ftdi\_sio}. This was be solved by unbinding the driver using a
 set of udev rules \footnote{\url{https://stackoverflow.com/questions/44529376}}. Another
 issue was that due to a bug in the D2XX implementation, the Omniradar
-driver would freeze when more than 2MB of data (equivalent to a 20ms
+driver would freeze when more than \SI{2}{MB} of data (equivalent to a \SI{20}{ms}
 FMCW chirp) were requested. After a lot of debugging, this could be
 solved by never requesting a bigger amount of data than was already
 available in the D2XX buffer.
@@ -303,7 +303,7 @@ into a C++11 lambda thread that is immediately detached.
 \end{Shaded}
 \end{samepage}
 
-The multithreading approach lets the node use between 100\% and 140\%
+The multithreading approach lets the node use between \SI{100}{\%} and \SI{140}{\%}
 CPU (observed with \texttt{htop}).
 
 \subsection{Matlab interface}\label{matlab}
@@ -318,7 +318,7 @@ It is necessary to install custom message support with the roboticsAddon\footnot
 
 Before a target's radar echo can make its way to the map, it passes several stages. In this proof of concept implementation, the map building is done offline, so all data coming out of the omniradar Ros node is recorded in a \texttt{rosbag} for later analysis. This is a good solution because it (1) allows working even without access to hardware, (2) allows quick iteration and prototyping with scripted languages such as Matlab, which are not capable of receiving at real-time speeds, and (3) allows replaying any situation in which an algorithm fails, so that it can be can be tested and improved until the situation can be handled.
 
-The rosbags can be replayed with \texttt{rosbag play} and received in a subscribing \texttt{rosnode} in Matlab. However the replay speed needed to be adjusted to around 10\%, or Matlab will not be able to keep up and will lose some messages. This also the reason why a live system where Ros messages are sent via network to a computer running Matlab is not feasible. A better solution is to read the rosbag files directly into Matlab, using its \texttt{readMessages(bag,rows)}\footnote{\url{https://www.mathworks.com/help/robotics/ref/readmessages.html}}. The system quickly runs into memory problems when reading even a moderately sized bag (e.g. 400MB) at once, because the Java heap space is limited by default. It is not only safer (no \texttt{java.lang.OutOfMemoryError: GC overhead limit exceeded} crashes) to read in smaller chunks, but also allows to display a \texttt{waitbar} that shows that the program didn't freeze, but just takes a while to read in the bag. The described reading in is handled in the
+The rosbags can be replayed with \texttt{rosbag play} and received in a subscribing \texttt{rosnode} in Matlab. However the replay speed needed to be adjusted to around \SI{10}{\%}, or Matlab will not be able to keep up and will lose some messages. This also the reason why a live system where Ros messages are sent via network to a computer running Matlab is not feasible. A better solution is to read the rosbag files directly into Matlab, using its \texttt{readMessages(bag,rows)}\footnote{\url{https://www.mathworks.com/help/robotics/ref/readmessages.html}}. The system quickly runs into memory problems when reading even a moderately sized bag (e.g. \SI{400}{MB}) at once, because the Java heap space is limited by default. It is not only safer (no \texttt{java.lang.OutOfMemoryError: GC overhead limit exceeded} crashes) to read in smaller chunks, but also allows to display a \texttt{waitbar} that shows that the program didn't freeze, but just takes a while to read in the bag. The described reading in is handled in the
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{function [ radar_data ] = radar_bag2array( bag_filename )}
@@ -334,14 +334,14 @@ Next, the actual radar echo messages are read from the bag's \texttt{/omniradar\
 \NormalTok{function [ ch1I, ch1Q, ch2I, ch2Q ] = radar_unpack_data( packed_echo )}
 \end{Highlighting}
 \end{Shaded}
-takes care of the unpacking by reordering bit-interleaved 32bit words into the eight sigma delta ADC samples for four channels (Rx1/2, I/Q). This function is called very often, and the bit operations take a very long time in Matlab code. Performance was greatly increased after using Matlab Coder to generate C/C++ code embedded in a Matlab-callable MEX file. Once this is done, the range profile is extracted from the time-domain beat signal with
+takes care of the unpacking by reordering bit-interleaved \SI{32}{bit} words into the eight sigma delta ADC samples for four channels (Rx1/2, I/Q). This function is called very often, and the bit operations take a very long time in Matlab code. Performance was greatly increased after using Matlab Coder to generate C/C++ code embedded in a Matlab-callable MEX file. Once this is done, the range profile is extracted from the time-domain beat signal with
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{function [down_range, ranges_1_up, ranges_2_up, ranges_1_dn, ranges_2_dn]}
 \NormalTok{    = radar_echo2range( [ ch1I, ch1Q, ch2I, ch2Q ] , config )}
 \end{Highlighting}
 \end{Shaded}
-which first corrects ADC gain using the formula $echo_{V} = 4.8V \cdot echo_{Raw} - 1.2V$ and subsequently applies the Fourier transform on the Blackman-windowed time domain data.
+which first corrects ADC gain using the formula $echo_{V} = \SI{4.8}{V} \cdot echo_{Raw} - \SI{1.2}{V}$ and subsequently applies the Fourier transform on the Blackman-windowed time domain data.
 
 The global (i.e. relative to map origin) radar position is then calculated from the map-odom transform together with the odometry messages and a constant offset representing the translation from odometry node to radar sensor. This position vector is then linearly interpolated at the timestamps of the radar messages.
 
@@ -379,7 +379,7 @@ Signal & RMS of difference to harmonic mean\tabularnewline
 Harmonic mean & 0\tabularnewline
 Geometric mean & 0.144\tabularnewline
 Arithmetic mean & 0.275\tabularnewline
-50\%-Trim mean & 0.284\tabularnewline
+\SI{50}{\%}-Trim mean & 0.284\tabularnewline
 Median & 0.318\tabularnewline
 Raw & 1.064\tabularnewline
 \bottomrule
@@ -394,7 +394,7 @@ The geometric mean is defined as
 \[geomean(x_{1,2,...,n}) = \left(\prod_{i=1}^n x_i \right)^\frac{1}{n} = \sqrt[n]{x_1 x_2 \cdots x_n}.\]
 The arithmetic mean is defined as
 \[mean(x_{1,2,...,n}) = \frac{1}{n}\sum_{i=1}^n x_i=\frac{x_1+x_2+\cdots+x_n}{n}\]
-The 50\% trimmed mean is defined as the arithmetic mean of all except
+The \SI{50}{\%} trimmed mean is defined as the arithmetic mean of all except
 the highest and lowest \(\frac{n}4\) data points, where \(n\) is the
 number of data points. The median is defined as the value that lies
 between the lower and the upper half of sample values.
@@ -431,8 +431,7 @@ TODO subfigures, adjust references
     \label{fig:fig_explain_peak_gradient}
 \end{figure}
 
-In \cref{fig:fig_explain_peak_gradient} the scans at radar mileage \(0.355m\) and \(0.375m\) of
-a scene (``Basement'') are overlaid. Obviously the range profiles of the
+In \cref{fig:fig_explain_peak_gradient} the scans at radar mileage \SI{0.355}{m} and \SI{0.375}{m} of a scene (``Basement'') are overlaid. Obviously the range profiles of the
 two scans are very similar. However, as visible in \cref{fig:fig_explain_peak_gradient} some
 peaks from target echoes are shifted, as the distance to the targets
 changes with the radar moving through the scene. The rate at which the
@@ -447,16 +446,15 @@ become time independent and hence radar movement speed independent.
 
 A target's distance from the radar is assumed to be at the range bin of
 the corresponding peak in a scan's range profile. When a target's
-distance changes the peak will shift, too. This is visible in \cref{fig:fig_explain_peak_gradient} and we can read the Doppler speed from the figure. The peak around
-\(0.67m\) moves \(d_{down,1} = 0.0216m\) closer in range, while the peak
-around \(0.95m\) moves \(d_{down,2} = -0.0216m\) closer (i.e., away).
+distance changes the peak will shift, too. This is visible in \cref{fig:fig_explain_peak_gradient} and we can read the Doppler speed from the figure. The peak around \SI{0.67}{m} moves \(d_{down,1} = \SI{0.0216}{m}\) closer in range, while the peak
+around \SI{0.95}{m} moves \(d_{down,2} = -\SI{0.0216}{m}\) closer (i.e., away).
 Combined with the change in cross range,
-\(d_{cross} = 0.3752m - 0.3555m = 0.0197m\), we can calculate Doppler
-speeds of \(v_{D,1} = \frac{d_{down,1}}{d_{cross}} = 109.55 \%\) (of
+\(d_{cross} = \SI{0.3752}{m} - \SI{0.3555}{m} = \SI{0.0197}{m}\), we can calculate Doppler
+speeds of \(v_{D,1} = \frac{d_{down,1}}{d_{cross}} = \SI{109.55}{\%}\) (of
 radar movement speed) and
-\(v_{D,2} = \frac{d_{down,2}}{d_{cross}} = -109.55 \%\). If the speeds
-were \(100\%\) and \(-100\%\) it would mean that the targets are directly
-ahead and directly behind the moving radar. Speeds over 100\% are
+\(v_{D,2} = \frac{d_{down,2}}{d_{cross}} = -\SI{109.55}{\%}\). If the speeds
+were \SI{100}{\%} and -\SI{100}{\%} it would mean that the targets are directly
+ahead and directly behind the moving radar. Speeds over \SI{100}{\%} are
 however impossible in a static environment where all relative target
 motion is caused by the radar movement. The targets are therefore either
 dynamic and moving by themselves, or the peak locations that determined
@@ -474,8 +472,8 @@ peaks with lower echo intensity could not be detected.
 With higher downrange resolution, peaks could be localized more
 precisely. However, the down range resolution is limited by the
 available bandwidth of the radar sensor. In the Omniradar RIC60A, up to
-7GHz are available, which is already extremely high. Its range
-resolution \(dR\) is \(\frac{c}{2 BW}\), which is roughly \(2.1cm\). With
+\SI{7}{GHz} are available, which is already extremely high. Its range
+resolution \(dR\) is \(\frac{c}{2 BW}\), which is roughly \SI{2.1}{cm}. With
 this method, \(dR\) is of course the smallest measurable change of
 target range.
 
@@ -523,9 +521,9 @@ As evident by visual inspection, the intensity and location of the
 fitted function's maximum are much closer to the real value.
 
 With the same procedure as explained above, we measure peak distance
-shifts of \(d_{down,1}=9.510mm\) and \(d_{down,2}=-13.52mm\) in figure
-\cref{fig:fig_explain_peak_gradient} and can hence estimate Doppler speeds of \(v_{D,1}=48.26\%\) and
-\(v_{D,2}=-68.63\%\) of radar movement speed. These values are a much
+shifts of \(d_{down,1}=\SI{9.510}{mm}\) and \(d_{down,2}=-\SI{13.52}{mm}\) in figure
+\cref{fig:fig_explain_peak_gradient} and can hence estimate Doppler speeds of \(v_{D,1}=\SI{48.26}{\%}\) and
+\(v_{D,2}=-\SI{68.63}{\%}\) of radar movement speed. These values are a much
 more plausible estimation and generally work very well when used to
 calculate the reprojection angle in the reprojection method.
 
@@ -551,7 +549,7 @@ with intensity change factor \(\delta I\) and cross range difference
 \]
 which is more easily expressed as maximum Doppler speed \(v_D\) in
 percent of robot speed \(v_R\). Good values are a factor of
-\(5 cm^{-1}\) as maximum intensity change factor and a factor of
+\SI{5}{cm^{-1}} as maximum intensity change factor and a factor of
 \(2 v_R\) as maximum Doppler speed.
 
 \subsection{Minimum Peak height}\label{minimum-peak-height}
@@ -562,7 +560,7 @@ TODO
 At low range, spurious peaks occur. The first one is caused by transmit
 antenna crosstalk and is visible as very high intensity echo around
 \(d_{down}=0\). After the transmit antenna crosstalk spike there is
-another peak around \(d_{down}=0.25m\) which is consistently visible. It
+another peak around \(d_{down}=\SI{0.25}{m}\) which is consistently visible. It
 can be explained with static objects sitting close to the radar,
 i.e.~robot parts and the floor below the robot.
 
@@ -574,7 +572,7 @@ final map.
 Hence these spurious peaks must be ignored during peak detection. This
 can be achieved in two ways. The first is to simply replace all data
 values under a down range limit \(d_{mute}\) (usually
-\(d_{mute}=0.30m\)) with \(NaN\) values. For the second way, one effect
+\(d_{mute}=\SI{0.30}{m}\)) with \(NaN\) values. For the second way, one effect
 of range compensation is exploited. As shown in \cref{fig:fig_range_compensation_transmit_spike}, the spike
 that previously had its maximum in the first range bin, at
 \(d_{down}=0\), now has its maximum in a later range bin. The reason is
@@ -647,8 +645,8 @@ TODO subcaption with explanation of "simulation"
 In geometries as described in \cref{geometry-for-the-general-case}, the next step is to estimate the Direction of Arrival to resolve reprojection angle ambiguities.
 As described in \cref{direction-of-arrival}, the Direction of Arrival (DOA) angle can be measured from the phase difference at the receiving antennas of a multistatic radar.
 
-In the case of RIC60A the antenna separation \(d\) is \(1.16mm\) and
-wavelength \(\lambda\) is \(\lambda=\frac{c}{60GHz}=5.0mm\) (with speed
+In the case of RIC60A the antenna separation \(d=\SI{1.16}{mm}\) and
+wavelength \(\lambda\) is \(\lambda=\frac{c}{\SI{60}{GHz}}=\SI{5.0}{mm}\) (with speed
 of light \(c\)).
 
 \Cref{fig:fig_range,fig:fig_phase_shift} show the range profile and phase shift of the
@@ -704,8 +702,8 @@ sensor was not mounted perfectly orthogonal to the robot's movement
 direction (which is not necessary for the reprojection method), but was
 slightly off by. This can be seen at the closest points of the target
 arcs. At the pericenter the line of sight to a target is orthogonal to
-the robot's movement direction, but the DOA value shows to be around 5
-to 10 degrees.
+the robot's movement direction, but the DOA value shows to be around \ang{5}
+to \ang{10}.
 
 \begin{figure}[htbp]
     \centering
@@ -714,7 +712,7 @@ to 10 degrees.
     \label{fig:fig_doa}
 \end{figure}
 
-Note that if the radar sensor is mounted inverted (rotated by 180°), DOA
+Note that if the radar sensor is mounted inverted (rotated by \ang{180}), DOA
 values have to be multiplied by \(-1\) to keep right and left where they
 are.
 
@@ -893,7 +891,7 @@ cross versus down range. The range of the retroreflector varies with
 twice the distance of the radar to the robot's rotation center, but only
 the orientation is interesting - the range can just be summed up over
 the range bins the target is visible in (in this case,
-\(0.45m - 0.85m\)).
+\SIrange{0.45}{0.85}{m}).
 
 In figure \cref{fig:fig_range_compensation}, the same range scan lines are sorted by robot
 orientation during the scan. After the explained summing in down range
@@ -940,7 +938,7 @@ that is independent of observation angle.
         \centering
         \def\svgscale{0.8} \small
         \input{gfx/fig_svg/angle_compensation_3.pdf_tex}
-        \caption{Echo intensity between 0.4m and 0.8m down range, and compensation factor normalizing intensity}
+        \caption{Echo intensity between \SI{0.4}{m} and \SI{0.8}{m} down range, and compensation factor normalizing intensity}
         \bigskip
     \end{subfigure}
     \caption{Angle compensation factor}
