@@ -48,7 +48,7 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.44065657)%
+  \begin{picture}(1,0.35471687)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{explain_peak_gradient_2.pdf}}%
   \end{picture}%
 \endgroup%
