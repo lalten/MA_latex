@@ -430,33 +430,26 @@ TODO subfigures, adjust references
     \begin{subfigure}[t]{\textwidth}
         \def\svgscale{1}
         \input{gfx/fig_svg/explain_peak_gradient_1.pdf_tex}
-        \caption{}
+        \caption{Range profile}
         \label{fig:explain_peak_gradient_1}
-    \end{subfigure}%
-    \hfill
+    \end{subfigure}\bigskip\\
     \begin{subfigure}[t]{\textwidth}
         \def\svgscale{1}
         \input{gfx/fig_svg/explain_peak_gradient_2.pdf_tex}
-        \caption{}
+        \caption{Range profile in region of interest box}
         \label{fig:explain_peak_gradient_2}
-    \end{subfigure}%
-    \hfill
+    \end{subfigure}\bigskip\\
     \begin{subfigure}[t]{\textwidth}
         \def\svgscale{1}
         \input{gfx/fig_svg/explain_peak_gradient_3.pdf_tex}
-        \caption{}
+        \caption{Gauss-approximated range profile in region of interest box, with subsample-interpolated peaks}
         \label{fig:explain_peak_gradient_3}
-    \end{subfigure}
+    \end{subfigure}\bigskip
     \caption{Peak detection and subsample peak interpolation to find peak distance between two range profiles}
     \label{fig:fig_explain_peak_gradient}
 \end{figure}
 
-In \cref{fig:fig_explain_peak_gradient} the scans at radar mileage \SI{0.355}{m} and \SI{0.375}{m} of a scene (``Basement'') are overlaid. Obviously the range profiles of the
-two scans are very similar. However, as visible in \cref{fig:fig_explain_peak_gradient} some
-peaks from target echoes are shifted, as the distance to the targets
-changes with the radar moving through the scene. The rate at which the
-distance to a target changes is its relative speed to the radar, the
-Doppler speed.
+In \cref{fig:explain_peak_gradient_1} the scans at radar mileage \SI{0.355}{m} and \SI{0.375}{m} of a scene (``Basement'') are overlaid. At this small cross range difference the range profiles of the two scans are relatively similar. However, as visible in \cref{fig:explain_peak_gradient_2} some peaks from target echoes are shifted, as the distance to the targets changes with the radar moving through the scene. The rate at which the distance to a target changes is its relative speed to the radar, the Doppler speed.
 
 Usually, speed is measured in distance per time. In this case, it
 actually makes sense to ignore the scan's time stamps and look at the
@@ -466,7 +459,7 @@ become time independent and hence radar movement speed independent.
 
 A target's distance from the radar is assumed to be at the range bin of
 the corresponding peak in a scan's range profile. When a target's
-distance changes the peak will shift, too. This is visible in \cref{fig:fig_explain_peak_gradient} and we can read the Doppler speed from the figure. The peak around \SI{0.67}{m} moves \(d_{down,1} = \SI{0.0216}{m}\) closer in range, while the peak
+distance changes the peak will shift, too. This is visible in \cref{fig:explain_peak_gradient_2} and we can read the Doppler speed from the figure. The peak around \SI{0.67}{m} moves \(d_{down,1} = \SI{0.0216}{m}\) closer in range, while the peak
 around \SI{0.95}{m} moves \(d_{down,2} = -\SI{0.0216}{m}\) closer (i.e., away).
 Combined with the change in cross range,
 \(d_{cross} = \SI{0.3752}{m} - \SI{0.3555}{m} = \SI{0.0197}{m}\), we can calculate Doppler
@@ -532,7 +525,7 @@ In subsample peak interpolation a curve is fitted on several supporting
 points in the coarse-resolution data. In the case of a single,
 non-overlapping radar echo peak, a Gaussian pulse of the form
 \[g_i(x) = a_i e^{-b_i ( x - c_i )^2}\] is a good approximation. In
-figure \cref{fig:fig_explain_peak_gradient}, the data point of the respective peak as well as its left
+figure \cref{fig:explain_peak_gradient_3}, the data point of the respective peak as well as its left
 and right neighbors are fitted with a Gaussian. The fit parameters
 \(a\), \(b\) and \(c\) are calculated using Travis
 Wiens's crit\_interp\_g function\footnote{\url{https://www.mathworks.com/matlabcentral/fileexchange/24465}}.
@@ -542,7 +535,7 @@ fitted function's maximum are much closer to the real value.
 
 With the same procedure as explained above, we measure peak distance
 shifts of \(d_{down,1}=\SI{9.510}{mm}\) and \(d_{down,2}=-\SI{13.52}{mm}\) in figure
-\cref{fig:fig_explain_peak_gradient} and can hence estimate Doppler speeds of \(v_{D,1}=\SI{48.26}{\%}\) and
+\cref{fig:explain_peak_gradient_3} and can hence estimate Doppler speeds of \(v_{D,1}=\SI{48.26}{\%}\) and
 \(v_{D,2}=-\SI{68.63}{\%}\) of radar movement speed. These values are a much
 more plausible estimation and generally work very well when used to
 calculate the reprojection angle in the reprojection method.
