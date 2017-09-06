@@ -427,7 +427,26 @@ TODO subfigures, adjust references
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max width=.8\linewidth]{figures/fig_explain_peak_gradient.png}
+    \begin{subfigure}[t]{\textwidth}
+        \def\svgscale{1}
+        \input{gfx/fig_svg/explain_peak_gradient_1.pdf_tex}
+        \caption{}
+        \label{fig:explain_peak_gradient_1}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[t]{\textwidth}
+        \def\svgscale{1}
+        \input{gfx/fig_svg/explain_peak_gradient_2.pdf_tex}
+        \caption{}
+        \label{fig:explain_peak_gradient_2}
+    \end{subfigure}%
+    \hfill
+    \begin{subfigure}[t]{\textwidth}
+        \def\svgscale{1}
+        \input{gfx/fig_svg/explain_peak_gradient_3.pdf_tex}
+        \caption{}
+        \label{fig:explain_peak_gradient_3}
+    \end{subfigure}
     \caption{Peak detection and subsample peak interpolation to find peak distance between two range profiles}
     \label{fig:fig_explain_peak_gradient}
 \end{figure}
