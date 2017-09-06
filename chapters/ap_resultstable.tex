@@ -1,22 +1,37 @@
 \chapter{List of Scans}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% \usepackage{graphicx}
+\blindtext
+{
 
+\rowcolors{1}{ColorAlternatedRow}{}
 
-\begin{table}
+\begin{tabularx}{\textwidth}{%
+  >{\setlength{\hsize}{.31\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.13\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.13\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.13\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
+  >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
+  >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
+}%
 
-\label{my-label}
-
-% \rowcolors{1}{}{alternatedrowcolor}
-
-\begin{tabular} { l @{}c@{} @{}c@{} @{}c@{} @{}c@{} @{}c@{} @{}c@{} }
-
-Name & Sweep & Orient. & Squint & Horn   & Map    & TF     \\
-    \midrule
-
-
+\hiderowcolors
+%
+\caption{Scan parameters}
+%
+\toprule
+    Name & Sweep & Orient. & Squint & Horn   & Map    & TF     \\
+\midrule
+\endhead
+%
+\midrule
+\multicolumn{6}{r}{Continued on next page} \\
+\endfoot
+%
+\bottomrule
+\endlastfoot
+\showrowcolors
+%
 Attic                             & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
 Basement                          & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
 Cafeteria                         & 5ms        & H           & 90°    & \cmark & \xmark & \xmark \\
@@ -41,10 +56,12 @@ Underground                       & 2.5ms      & H/I         & 45°    & \xmark 
 Virtual Reality                   & 2.5ms      & H/I         & 45°    & \xmark & \cmark & \cmark \\
 Washroom                          & 2.5ms      & V           & 45°    & \xmark & \cmark & \cmark \\
 Xray-Room                         & 2.5ms      & V           & 0°     & \xmark & \cmark & \cmark \\
-Y is there a cable on the floor & 5ms        & V           & 0°     & \xmark & \cmark & \cmark \\
+Y is there a cable on the floor   & 5ms        & V           & 0°     & \xmark & \cmark & \cmark \\
 Z                                 &            &             &        &        &        &        \\
 
 \bottomrule
+\end{tabularx}
+}
 
 
 
@@ -71,8 +88,6 @@ Z                                 &            &             &        &        &
 % Underground                       & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_input}}        & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_doppler}}        & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_doa}}        & \raisebox{-.5\height}{\includegraphics{gfx/results/underground_reprojection}}        & 2.5ms      & H/I         & 45°    & \xmark & \cmark & \cmark \\
 
 
-\end{tabular}
-\end{table}
 
 
 \begin{figure}

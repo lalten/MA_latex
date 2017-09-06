@@ -59,7 +59,7 @@ The Bosch radar presented some challenges under a Linux environment. After its M
 Vayyar\footnote{\url{https://www.vayyar.com/}} is an Israeli
 startup\footnote{\url{https://www.crunchbase.com/organization/vayyar}} that was founded in 2011. Coming from a medical background, they moved away from use cases such as breast cancer detection towards general 3D imaging in the consumer market with their Walabot sensor. Vayyar's Walabot Pro sensor uses an 18-antenna MIMO array for 3D radar imaging. Vayyar is very quiet about the technology and algorithms used in their product and even the nature of the data that the sensor sends.
 
-In their Python \href{https://api.walabot.com}{API documentation} they showcase the available sensor operation modes: 3D imaging, 2D imaging, object tracking, pipe detection and raw data (see \cref{fig:walabot_image}).
+In their Python API documentation\footnote{\url{https://api.walabot.com}} they showcase the available sensor operation modes: 3D imaging, 2D imaging, object tracking, pipe detection and raw data (see \cref{fig:walabot_image}).
 
 \begin{figure}[htbp]
     \centering
@@ -80,13 +80,13 @@ Another problem with the data is that the peaks of the envelope jitter in range.
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}{\textwidth}
+    \begin{subfigure}{.8\textwidth}
         \centering
         \includegraphics[width=\linewidth]{pictures/experiment_walabot_rangetest}
         \caption{Setup with three towers of cans in front of the Walabot sensor}
         \label{fig:walabot_rangetest_setup}
     \end{subfigure}
-    \begin{subfigure}{\textwidth}
+    \begin{subfigure}{.8\textwidth}
         \centering
         \def\svgwidth{\linewidth}
         \input{gfx/fig_svg/walabot_rangetest.pdf_tex}
@@ -194,8 +194,8 @@ pencil-shaped beam that is very focused at a narrow field of view.
 
 A 3D-printed part makes sure that the radar sensor is firmly mounted on
 the robot as it explores its environment. The part was designed in
-\href{http://www.openscad.org/}{OpenSCAD} and printed on a
-\href{https://3dprinter.dremel.com/}{Dremel 3D printer}. The bottom
+OpenSCAD\footnote{\url{http://www.openscad.org/}} and printed on a
+Dremel 3D printer\footnote{\url{https://3dprinter.dremel.com/}}. The bottom
 mount hole positions were extracted from the mechanical drawings of the
 Kobuki Base \cite{YujinRobot2012}; the side holes from the Altium layer
 document of the version 3.2 Omniradar interface board
@@ -239,6 +239,8 @@ good and targets will be reprojected at imprecise angles.
 It would be possible to use higher precision equipment. But another
 solution is to track the movement of target peaks in the range profile,
 using the Peak Gradient algorithm.
+
+TODO wording?
 
 \subsection{Optimal chirp time configuration}\label{optimal-chirp-time-configuration}
 

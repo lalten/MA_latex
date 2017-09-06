@@ -37,12 +37,12 @@ left side of the robot (more green).
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=0.5\textwidth]{figures/fig_doa_sign_input.png}
+        \includegraphics[width=\linewidth]{figures/fig_doa_sign_input.png}
         \caption{\label{fig:sauna_input}Echo intensity}
-    \end{subfigure}
-    \hfill
+    \end{subfigure}%
+    \hfill%
     \begin{subfigure}[b]{0.45\textwidth}
-        \includegraphics[width=0.5\textwidth]{figures/fig_doa_sign_doa.png}
+        \includegraphics[width=\linewidth]{figures/fig_doa_sign_doa.png}
         \caption{\label{fig:sauna_doa}Direction of arrival estimation}
     \end{subfigure}
     \caption{Range profile and DOA of Sauna scan.}
@@ -73,7 +73,7 @@ Some objects are penetrated by the radar waves. For example, in the
 Attic and Basement scans, both the front and the back wall of the
 plastic bottle can be seen. However, the plastic bottle was relatively
 close to the sensor. On the other hand, in the scans with glass walls in
-them (P,P,Q,R,S,U), no significant radar echo is picked up from the
+them (P,Q,R,S,U), no significant radar echo is picked up from the
 (metal) chair legs behind the glass wall. This is because a typical
 glass pane attenuates the 60Ghz signal by about 5.5 dB \cite{Lu2014}. In
 effect, a radar sensor with higher transmission power might be able to
@@ -107,21 +107,23 @@ the edge and over floor, respectively.
 
 TODO picture of scene
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst}
-    \caption{Input energy for the Washroom scan.}
-    \label{fig:negobst}
+    \begin{subfigure}[t]{.475\textwidth}
+        \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst}
+        \caption{Regular plot.}
+        \label{fig:negobst}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{.475\textwidth}
+        \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_clipped}
+        \caption{Zoomed and intensity-clipped for better visibility of the effect.}
+        \label{fig:negobst_clipped}
+    \end{subfigure}
+    \caption{Input energy for the Washroom scan. Lower echo intensity at negative obstacles is hardly visible in the standard configuration.}
 \end{figure}
 
 TODO annotation-arrow pointing to darker region?
-
-\begin{figure}[htp]
-    \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_clipped}
-    \caption{Input Energy of the Washroom scan, zoomed and intensity-clipped for better visibility of the effect.}
-    \label{fig:negobst_clipped}
-\end{figure}
 
 To limit the transmit crosstalk's blinding effect, the sensor was
 mounted on a much higher position (on the RGBD camera mount) in the Xray
@@ -131,21 +133,24 @@ floor echo is visible. There is one dip in intensity at 2.5m cross
 range, where the sensor was not over floor. Overall the signal is
 however not as conclusive as in the Washroom scan.
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_xray}
-    \caption{Input Energy of the XRay Room scan}
-    \label{fig:negobst_xray}
-\end{figure}
-
 TODO annotation-arrow pointing to darker region?
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
     \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_xray_clipped}
-    \caption{Input Energy of the XRay Room scan, zoomed and intensity-clipped for better visibility of the effect.}
-    \label{fig:negobst_xray_clipped}
+    \begin{subfigure}[t]{.475\textwidth}
+        \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_xray}
+        \caption{Regular plot.}
+        \label{fig:negobst_xray}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{.475\textwidth}
+        \includegraphics[max height=10cm,max width=10cm]{figures/fig_negobst_xray_clipped}
+        \caption{Zoomed and intensity-clipped for better visibility of the effect.}
+        \label{fig:negobst_xray_clipped}
+    \end{subfigure}
+    \caption{Input energy for the XRay Room scan. Negative obstacles effect is not better with a higher-mounted vertical configuration.}
 \end{figure}
+
 
 Maybe the signal could be improved with improved background subtraction
 (see \#REF). However, the three scans show that it is very hard to
