@@ -1,0 +1,78 @@
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'overview.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{436.5bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.41580756)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{overview.pdf}}%
+    \put(0.23613401,0.32032646){\makebox(0,0)[b]{\smash{USB}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{overview.pdf}}%
+    \put(0.51620274,0.32204467){\makebox(0,0)[b]{\smash{ROS}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{overview.pdf}}%
+    \put(0.49804121,0.21723368){\makebox(0,0)[b]{\smash{SCP}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=4]{overview.pdf}}%
+    \put(0.46661513,0.1038316){\makebox(0,0)[b]{\smash{Input}}}%
+    \put(0.46661513,0.07977662){\makebox(0,0)[b]{\smash{Energy}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=5]{overview.pdf}}%
+    \put(0.74250862,0.12788659){\makebox(0,0)[b]{\smash{Peaks,}}}%
+    \put(0.74250862,0.1038316){\makebox(0,0)[b]{\smash{Doppler,}}}%
+    \put(0.74250862,0.07977662){\makebox(0,0)[b]{\smash{DOA}}}%
+    \put(0.38831615,0.39003436){\makebox(0,0)[b]{\smash{\textbf{\textbf{Kobuki / Odroid}}}}}%
+    \put(0.61168385,0.14604811){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{\textbf{Matlab}}}}}%
+    \put(0.11340206,0.3161512){\makebox(0,0)[b]{\smash{Omniradar}}}%
+    \put(0.11340206,0.29209622){\makebox(0,0)[b]{\smash{RIC60-A}}}%
+    \put(0.38831615,0.30412371){\makebox(0,0)[b]{\smash{rosnode}}}%
+    \put(0.66323024,0.30412371){\makebox(0,0)[b]{\smash{rosbag}}}%
+    \put(0.33676976,0.06357388){\makebox(0,0)[b]{\smash{Preprocessing}}}%
+    \put(0.61168385,0.08762887){\makebox(0,0)[b]{\smash{Peak}}}%
+    \put(0.61168385,0.06357388){\makebox(0,0)[b]{\smash{Gradient}}}%
+    \put(0.61168385,0.0395189){\makebox(0,0)[b]{\smash{Algorithm}}}%
+    \put(0.88659794,0.07560137){\makebox(0,0)[b]{\smash{Reprojection}}}%
+    \put(0.88659794,0.05154639){\makebox(0,0)[b]{\smash{Mapping}}}%
+  \end{picture}%
+\endgroup%

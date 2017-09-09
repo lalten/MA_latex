@@ -1,6 +1,6 @@
 %% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
-%% Accompanies image file 'doa.pdf' (pdf, eps, ps)
+%% Accompanies image file 'rgbd_glasswall.pdf' (pdf, eps, ps)
 %%
 %% To include the image in your LaTeX document, write
 %%   \input{<filename>.pdf_tex}
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{190.99216732bp}%
+    \setlength{\unitlength}{219.96849961bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,20 +48,10 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.97081112)%
-    \put(0,0){\includegraphics[width=\unitlength,page=1]{doa.pdf}}%
-    \put(0.0827571,0.2607421){\color[rgb]{0.72156863,0.32941176,0.31372549}\rotatebox{45}{\makebox(0,0)[b]{\smash{$\color{DiagramRed}\lambda~\Delta\Phi$}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=2]{doa.pdf}}%
-    \put(0.6014719,0.81177574){\color[rgb]{0.4,0.4,0.4}\rotatebox{45}{\makebox(0,0)[b]{\smash{\textcolor{DiagramGray}{Incident wavefront}}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=3]{doa.pdf}}%
-    \put(0.20339673,-0.04717878){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{$\color{DiagramBlue}d$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=4]{doa.pdf}}%
-    \put(0.20444376,0.6168943){\color[rgb]{0.42352941,0.55686275,0.74901961}\makebox(0,0)[b]{\smash{$\color{DiagramBlue}\theta$}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=5]{doa.pdf}}%
-    \put(0.04943904,0.06296275){\color[rgb]{0.72156863,0.32941176,0.31372549}\makebox(0,0)[b]{\smash{\textcolor{DiagramRed}{Rx1}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=6]{doa.pdf}}%
-    \put(0.35683124,0.0629625){\color[rgb]{0.50980392,0.70196078,0.4}\makebox(0,0)[b]{\smash{\textcolor{DiagramGreen}{Rx2}}}}%
-    \put(0,0){\includegraphics[width=\unitlength,page=7]{doa.pdf}}%
-    \put(0.40234129,0.40322782){\color[rgb]{0.83921569,0.71372549,0.3372549}\rotatebox{45}{\makebox(0,0)[b]{\smash{$\color{DiagramGray}\lambda/2$}}}}%
+  \begin{picture}(1,0.75714285)%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{rgbd_glasswall.pdf}}%
+    \put(0.15386188,0.09578152){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Lidar}}}%
+    \put(0.15375275,0.16855631){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{RGBD}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{rgbd_glasswall.pdf}}%
   \end{picture}%
 \endgroup%

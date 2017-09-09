@@ -2,76 +2,13 @@
 
 TODO
 
-\subsection{Overview}
-TODO
-
-\subsection{Usage}\label{usage}
-
-TODO is this really necessary?
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Start robot, connect three sessions with \texttt{ssh\ zero2-pa}
-\item
-  Start ROS core with \texttt{roscore}
-\item
-  Start the node, with keyboard teleoperation and Cartographer Laser
-  Slam:
-  \texttt{roslaunch\ omniradar\ omniradar\_teleop\_lidarslam.launch}
-\item
-  Use \texttt{rqt} with the \emph{Dynamic Reconfigure} plugin to set the
-  Omniradar node to generate the preferred number of sweeps and sweep
-  duration. The configuration string can also be changed. The defaults
-  are fine (One \SI{5}{ms} sweep)
-\item
-  \texttt{rosbag\ record\ /omniradar\_node/radar\_raw\ /odom\ /tf\ /map\ -O\ scan}
-  will record a rosbag ``scan.bag'' containing all ROS messages with
-  radar data, Kobuki odometry and slam map and transforms from
-  Cartographer.
-\item
-  In the terminal running \texttt{roslaunch}, use the arrow keys to move
-  the robot around (\(\uparrow\) and \(\downarrow\) to increase and
-  decrease speed, \(\leftarrow\) and \(\rightarrow\) to increase and
-  decrease rotation speed). \(E\) resets speed to zero and makes the
-  robot halt.
-\item
-  After recording some interesting data, stop the rosbag record
-  (\(Ctrl+C\)). Open a new terminal on your local machine and run
-  \texttt{ssh\ zero2-pa\ "tar\ zcf\ -\ scan.bag"\ \textbar{}\ tar\ zxf\ -}.
-  The rosbag will be transferred to your machine. Using ssh with the tar
-  pipe is the fastest way to transfer the data (around \SI{100}{Mbps} on
-  the BSH wifi). Compressing first (\texttt{rosbag\ compress\ scan.bag})
-  and then sending takes a while on the not-so-powerful Odroid platform.
-\item
-  Optionally filter out unwanted transforms from the rosbag to speed up
-  later processing:
-  \texttt{rosbag\ filter\ scan.bag\ scan\_filtered.bag\ \textquotesingle{}(topic\ ==\ "/tf"\ and\ m.transforms{[}0{]}.child\_frame\_id\ ==\ "odom")\ or\ topic\ !=\ "/tf"\textquotesingle{}}
-\item
-  In Matlab, run
-  \texttt{radar\_data\ =\ radar\_bag2array("/path/to/your/scan.bag");}.
-  This will read the bag sequentially into memory and extract the data:
-  The robot position is recorded from odometry information and corrected
-  using the /map \(\rightarrow\) /odom transform as reported by slam
-  localization. Cross range mileage is calculated as cumulative sum of
-  distance between radar positions (as the radar is not mounted over the
-  robot's rotation center, the radar mileage is different from robot
-  mileage as soon as any rotational velocity is present). Lastly, all
-  values are interpolated at the radar message timestamps. It is a good
-  idea to save the function's output, using
-  \texttt{save(\textquotesingle{}radar\_data/radar\_data\_scan.mat\textquotesingle{},\ \textquotesingle{}radar\_data\textquotesingle{})}
-\item
-  The radar data can now be analyzed. The
-  \texttt{plot\_world\_projection} script can be used to get a good
-  overview over raw data, doppler speeds, direction of arrival, and
-  reprojection map.
-\item
-  To compare radar reprojection map and laser slam map, try the
-  \texttt{test\_slam\_overlay} with the correct bag filename (the lidar
-  map is extracted from that bag)
-\end{enumerate}
-
+\begin{figure}[htbp]
+    \centering
+    \def\svgwidth{\textwidth} \small
+    \input{gfx/diagrams/overview.pdf_tex}
+    \caption{Schematic overview}
+    \label{fig:overview}
+\end{figure}
 
 \section{Driver}\label{driver}
 
@@ -172,7 +109,7 @@ this would look like
 
 The C++ library offers the same functions as Omniradar's Matlab driver,
 with two differences. The optional device index number is 0-based
-instead of 1-based and the AquireEcho functions return (a shared pointer
+instead of 1-based and the \texttt{AcquireEcho} functions return (a shared pointer
 to) packed data instead of unpacked data for performance reasons. With
 the
 
@@ -316,7 +253,7 @@ It is necessary to install custom message support with the roboticsAddon\footnot
 
 \subsection{Rosbag to Matlab}\label{rosbag-to-matlab}
 
-Before a target's radar echo can make its way to the map, it passes several stages. In this proof of concept implementation, the map building is done offline, so all data coming out of the omniradar Ros node is recorded in a \texttt{rosbag} for later analysis. This is a good solution because it (1) allows working even without access to hardware, (2) allows quick iteration and prototyping with scripted languages such as Matlab, which are not capable of receiving at real-time speeds, and (3) allows replaying any situation in which an algorithm fails, so that it can be can be tested and improved until the situation can be handled.
+Before a target's radar echo can make its way to the map, it passes several stages. In this proof of concept implementation, the map building is done offline, so all data coming out of the omniradar ROS node is recorded in a \texttt{rosbag} for later analysis. This is a good solution because it (1) allows working even without access to hardware, (2) allows quick iteration and prototyping with scripted languages such as Matlab, which are not capable of receiving at real-time speeds, and (3) allows replaying any situation in which an algorithm fails, so that it can be can be tested and improved until the situation can be handled.
 
 The rosbags can be replayed with \texttt{rosbag play} and received in a subscribing \texttt{rosnode} in Matlab. However the replay speed needed to be adjusted to around \SI{10}{\%}, or Matlab will not be able to keep up and will lose some messages. This also the reason why a live system where Ros messages are sent via network to a computer running Matlab is not feasible. A better solution is to read the rosbag files directly into Matlab, using its \texttt{readMessages(bag,rows)}\footnote{\url{https://www.mathworks.com/help/robotics/ref/readmessages.html}}. The system quickly runs into memory problems when reading even a moderately sized bag (e.g. \SI{400}{MB}) at once, because the Java heap space is limited by default. It is not only safer (no \texttt{java.lang.OutOfMemoryError: GC overhead limit exceeded} crashes) to read in smaller chunks, but also allows to display a \texttt{waitbar} that shows that the program didn't freeze, but just takes a while to read in the bag. The described reading in is handled in the
 \begin{Shaded}
@@ -360,51 +297,74 @@ distance. All samples in one bin are averaged to represent that bin's
 value. This greatly improves processing time (to less than a second for
 some minutes of recorded data).
 
-\Cref{fig:fig_compare_means} shows in gray the raw data of the first 20 range scan lines
-from the ``Mancave'' dataset. It then compares different ways of
-averaging over these 20 scans. All of them increase the SNR, because a
-big part of the noise signal is statistically uncorrelated. Table \cref{tab:mean}
-compares the RMS of the difference of each signal to the harmonic mean,
-which gives the cleanest signal.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth]{figures/fig_compare_means}
+    \caption{Range profile quality comparison with different averaging functions. Higher peak-to-trough ratio is better.}
+    \label{fig:fig_compare_means}
+\end{figure}
 
-\begin{table}[htbp]
-\rowcolors{1}{ColorAlternatedRow}{}
-\begin{tabularx}{0.5\textwidth}{XX}
-\hiderowcolors
-\toprule
-Signal & RMS of difference to harmonic mean\tabularnewline
-\midrule
-\endhead
-\showrowcolors
-Harmonic mean & 0\tabularnewline
-Geometric mean & 0.144\tabularnewline
-Arithmetic mean & 0.275\tabularnewline
-\SI{50}{\%}-Trim mean & 0.284\tabularnewline
-Median & 0.318\tabularnewline
-Raw & 1.064\tabularnewline
-\bottomrule
-\end{tabularx}
-\caption{Comparison of mean types by RMS}
-\label{tab:mean}
-\end{table}
+\Cref{fig:fig_compare_means} shows in gray the raw data of the first 20 range scan lines
+from the ``Mancave'' dataset. It then compares different methods of averaging (the three pythagoreans means, a trimmed mean and the median) over these 20 scans. All of them improve the SNR, because the noise is statistically mostly uncorrelated to the signal. Table \cref{tab:mean}
+compares the root mean square (RMS) of the difference of each signal to the harmonic mean,
+which gives the cleanest signal with the highest SNR.
+
+If the arithmetic mean is defined as
+\begin{equation}
+        \text{mean}(x_{i=1,2,...,n}) = \frac{1}{n}\sum_{i=1}^n x_i=\frac{x_1+x_2+\cdots+x_n}{n}
+\end{equation}
+
+then the RMS of a signal $x_i$ yields
+\begin{equation}
+    \text{RMS}(x_{i=1,2,...,n}) = \sqrt{\text{mean}(x_i^2)}
+\end{equation}
 
 The harmonic mean is defined as
-\[harmmean(x_{1,2,...,n}) = \frac{n}{\frac1{x_1} + \frac1{x_2} + \cdots + \frac1{x_n}} = \frac{n}{\sum\limits_{i=1}^n \frac1{x_i}}\]
+\begin{equation}
+    \text{hmean}(x_{i=1,2,...,n})
+    = \frac{1}{\text{mean}(x_i^{-1})}
+    = \frac{n}{\frac1{x_1} + \frac1{x_2} + \cdots + \frac1{x_n}} = \frac{n}{\sum\limits_{i=1}^n \frac1{x_i}}
+\end{equation}
+
 The geometric mean is defined as
-\[geomean(x_{1,2,...,n}) = \left(\prod_{i=1}^n x_i \right)^\frac{1}{n} = \sqrt[n]{x_1 x_2 \cdots x_n}.\]
-The arithmetic mean is defined as
-\[mean(x_{1,2,...,n}) = \frac{1}{n}\sum_{i=1}^n x_i=\frac{x_1+x_2+\cdots+x_n}{n}\]
+\begin{equation}
+    \text{gmean}(x_{i=1,2,...,n}) = \left(\prod_{i=1}^n x_i \right)^\frac{1}{n} = \sqrt[n]{x_1 x_2 \cdots x_n}.
+\end{equation}
 The \SI{50}{\%} trimmed mean is defined as the arithmetic mean of all except
 the highest and lowest \(\frac{n}4\) data points, where \(n\) is the
 number of data points. The median is defined as the value that lies
 between the lower and the upper half of sample values.
 
-\begin{figure}[htbp]
+The last row denotes the (arithmetic) mean of the value for the raw data $s_{d_{down},d_{cross}}$ of each of the 20 scans,
+\begin{equation}
+    \text{mean}_{d_{cross}}\Bigl[
+        \text{RMS}\Bigl(
+            s_{d_{down},d_{cross}} - \text{hmean}_{d_{down}}(s_{d_{down},d_{cross}})
+        \Bigr)
+    \Bigr]
+\end{equation}
+
+{ %\begin{table}[htbp]
     \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_compare_means}
-    \caption{Range profile quality comparison with different averaging functions. Higher peak-to-trough ratio is better.}
-    \label{fig:fig_compare_means}
-\end{figure}
+    \rowcolors{1}{ColorAlternatedRow}{}
+    \begin{tabularx}{0.5\textwidth}{XX}
+        \hiderowcolors
+        \toprule
+            Signal & RMS of difference to harmonic mean\tabularnewline
+        \midrule
+        \endhead
+        \showrowcolors
+            Harmonic mean & 0\tabularnewline
+            Geometric mean & 0.144\tabularnewline
+            Arithmetic mean & 0.275\tabularnewline
+            \SI{50}{\%} Trim mean & 0.284\tabularnewline
+            Median & 0.318\tabularnewline
+            Raw data, mean & 1.064\tabularnewline
+        \bottomrule
+        \caption{Comparison of mean types by RMS}
+        \label{tab:mean}
+    \end{tabularx}
+} %\end{table}
 
 Due to the good signal quality, the implementation uses the harmonic
 mean to average the bins. Weighting the average with triangular or
@@ -417,13 +377,10 @@ scan need to be averaged as well. These parameters are mileage at scan
 time, robot position and orientation, and robot speed. Sweep time and
 down range bins don't change.
 
-\section{Doppler Estimation with the Peak Gradient Algorithm}\label{doppler-estimation-with-the-peak-gradient-algorithm}
+\section{Doppler Estimation with the Peak Gradient Algorithm} \label{doppler-estimation-with-the-peak-gradient-algorithm}
 
 The peak gradient algorithm is a way to find Doppler speeds from
 consecutive range profiles.
-
-TODO subfigures, adjust references
-\the\textwidth
 
 \begin{figure}[htbp]
     \centering
@@ -551,21 +508,19 @@ cross range difference, i.e.~the driven distance between scans, is not
 too high, a single target will not change very much in both range and
 echo intensity. This allows the detection of peak matches, between which
 the Doppler speed will be calculated. The parameters for peak matching
-tolerance are therefor allowed intensity change
-\[
-    \text{max. ValueSearchArea} = \frac{\delta I}{\Delta d_{cross}}
-\]
-with intensity change factor \(\delta I\) and cross range difference
-\(\Delta d_{cross}\) allowed range change
-\[
-    \text{max. LocSearchArea} = \frac{\Delta d_{down}{\Delta d_{cross}}} = v_D = \alpha~v_R
-\]
-which is more easily expressed as maximum Doppler speed \(v_D\) in
-percent of robot speed \(v_R\). Good values are a factor of
-\SI{5}{cm^{-1}} as maximum intensity change factor and a factor of
-\(2 v_R\) as maximum Doppler speed.
+tolerance are therefor allowed intensity change \texttt{ValueSearchArea} and allowed range change \texttt{LocSearchArea}, respectively:
+\begin{align}
+    \text{\texttt{ValueSearchArea}} &= \frac{\delta I}{\Delta d_{cross}}\\
+\intertext{and}
+    \text{\texttt{LocSearchArea}} &= \frac{\Delta d_{down}}{\Delta d_{cross}} = v_{D,\max} \stackrel{\text{eq. \ref{eq:geometry_side_B}}}{=} v_R~cos(\alpha)
+\end{align}
+with intensity change factor $\delta I$ and down range deviation $\Delta d_{down}$ per added cross range mileage $\Delta d_{cross}$.
+
+$\Delta d_{down} / \Delta d_{cross}$ is more easily expressed as Doppler speed \(v_D\) in percent of robot speed \(v_R\). It makes sense to allow \texttt{LocSearchArea}s greater than $1~v_R$ to deal with noise and jitter -- otherwise a target peak closing at roughly $v_R$ would not always be detected and smoothing over cross-range would be worse. The detected $v_D > v_R$ of course need to be clipped to $v_R$ or ignored in reprojection (which is what the current implementation does). Good values are a \texttt{ValueSearchArea} of \SI{5}{cm^{-1}} and a \texttt{LocSearchArea} of \(2~v_R\).
 
 \subsection{Minimum Peak height}\label{minimum-peak-height}
+Without countermeasures a lot of noise with low height and low full-width-at-half-maximum will clutter the reprojection map. The easiest way to prevent this is to apply a threshold on the detected peak height that rejects all peaks that do not reach a certain minimum height. It's not easy to specify such a threshold that works for all scans, because the noise floor level strongly depends on the chirp time. \Cref{fig:fig_compare_chirp_times} shows that this persists even when the echo intensity is normalized to intensity 1 at the first range bin before transmit cross talk suppresion (see \cref{transmit-crosstalk-suppression}).
+
 TODO
 
 \subsection{Transmit crosstalk suppression}\label{transmit-crosstalk-suppression}
@@ -600,29 +555,53 @@ to ignore these echoes.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_range_compensation_transmit_spike.png}
-    \caption{Attenuating effect of range compensation on transmit peak in range profile}
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \def\svgscale{.8}
+        \input{gfx/fig_svg/fig_range_compensation_transmit_spike_1.pdf_tex}
+        \caption{Linear scale}
+        \label{fig:fig_range_compensation_transmit_spike_1}
+    \end{subfigure}\bigskip\\
+    \begin{subfigure}[t]{\textwidth}
+        \centering
+        \def\svgscale{.8}
+        \input{gfx/fig_svg/fig_range_compensation_transmit_spike_2.pdf_tex}
+        \caption{Logarithmic scale (Note that the \(0\) value at \(d_{down}=0\) can not be displayed in log scale.)}
+        \label{fig:fig_range_compensation_transmit_spike_2}
+    \end{subfigure}\bigskip
+    \caption{Attenuating effect of range compensation on transmit peak in a range profile}
     \label{fig:fig_range_compensation_transmit_spike}
 \end{figure}
 
-Note that the \(0\) value at \(d_{down}=0\) won't be displayed in log
-scale.
 
-\subsection{Peaks overlaps at crossing target arcs}\label{peaks-overlaps-at-crossing-target-arcs}
+\subsection{Peaks overlaps at crossing target arcs} \label{peaks-overlaps-at-crossing-target-arcs}
+Often there appears a situation where the range cell migration arcs of two targets cross each other. In this case, their peaks can almost always be still detected separately. However peak-associated data like DOA and Doppler speed will superpositioned. Using these in a regular fashion would yield wrong results. An approach that proved to work well in practice is to sort all peaks in a range scan line by ascending value (peak height), then assigning the feature in question to all output down range cells within half the FWHM of the respective peak. Higher peaks are hence treated as more important and overwrite the values of lower peaks. \Cref{fig:overlap} is an example where the overlapping effect is visible.
 
-TODO
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[max width=10cm]{gfx/results/attic_doa.png}
+    \caption{DOA of Attic scan. The DOA of higher peak values is applied over the FWHM, superseding the values of lower peak values.}
+    \label{fig:overlap}
+\end{figure}
+TODO annotate in figure where the overlap is
 
 \subsection{Output}\label{output}
+In this implementation the resulting size of the reprojection map is known in advance so the map does not need dynamic resizing and can be allocated ahead of time. To make sure everything will fit, the initial size is chosen as \texttt{round[ max(radar\_position) - min(radar\_position) + 2~radar\_max\_range + 2 * 0.2 m ]} in both X and Y dimension.
 
-TODO
+The \texttt{world\_res\_m} parameter defines the resolution of the gridmap to be created. Larger values (e.g. \SI{10}{cm}) result in coarse homogeneous map, while small values (e.g. \SI{1}{cm}) lead to unmapped area between reprojection lines. The latter is because noise and jitter in Doppler speed estimation cause imprecision in reprojection angles. As explained in \cref{sample-splitting}, the reprojected down range cells of the range scan lines fall into a maximum of four output pixels. With a limited number of reprojections that have slight variations in reprojection angle, this can result in gaps between the output cells. The optimal \texttt{world\_res\_m} is hence somewhere between these extremes, a good value is slightly larger than the down range resolution $dR$, which is around \SI{2.1}{cm} in this implementation.
+
+By saving the output after each processed range scan line and reassembling it, a video of the map buildup can be generated. Otherwise, the map can be trimmed of its empty cells.
+
+For some scans, the \texttt{map} topic is available. In this case, the radar map can be overlaid over the lidar slam gridmap. To achieve this in Matlab, the lidar map is plotted as \texttt{surface} of zero height and an RGB texture that is generated from the values in the gridmap. The radar map is then overlaid as separate surface with an alpha channel of zero opacity for empty reprojection map cells, \SI{70}{\%} opacity for reprojection cells with a normalized value $\ge \SI{70}{\%}$, and linearly mapped opacity between \SIrange{0}{70}{\%} normalized value.
 
 \subsection{Limitations}\label{limitations-1}
 
-TODO
+Next to the inherent limitations of reprojection mapping (see \cref{limitations}) there are some limitations that arise from the presented implementation.
 
-\subsubsection{Problems with imperfect fit function for subsampling}\label{problems-with-imperfect-fit-function-for-subsampling}
+\subsubsection{Problems with imperfect fit function for subsampling} \label{problems-with-imperfect-fit-function-for-subsampling}
+The subsample peak interpolation in \cref{subsample-peak-interpolation} works with a Gaussian fit function. This is a good but not perfect approximation of the real peak shape. The effect only becomes noticeable when the cross-range distance $\Delta d_{cross}$ between (smoothed) range scan lines becomes very small. Interpolated peaks at the center and edges of the down range bins are correctly placed because both the fit function and the true peak shape are symmetric around the true peak. In between those however, peaks are interpolated slightly off because the fit function does not perfectly reflect the true shape of the curve. When examining a peak migrating at a constant speed through the range profile, its subsampled peaks will then lie on an S-shaped path between every (correctly interpolated) cell edge and center. In effect, the Doppler speed estimated with the peak gradient algorithm (see \cref{doppler-estimation-with-the-peak-gradient-algorithm}) will show oscillations around the true Doppler speed. Since wrongly estimated Doppler speeds cause wrong reprojection angles, this causes a radial smearing of targets in the reprojection map.
 
-TODO
+The effect becomes less noticeable with greater cross-range distances and completely disappears at $\Delta d_{cross} \ge \Delta d_{down}$. Other than increased performance, that is also the reason for choosing a binning approach over a running average for raw data smoothing (see \cref{raw-data-smoothing}).
 
 \subsubsection{Problems with close targets}\label{problems-with-close-targets}
 
@@ -644,13 +623,27 @@ around the common speed. To combat this effect, a higher accumulation
 distance can be used during oversampling preprocessing, so the peaks
 move together so closely that they actually form a single target.
 
-TODO subcaption with explanation of "simulation"
+TODO explanation of "simulation"
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_squiggly_doppler_at_wall}
+    \begin{subfigure}[t]{.5\textwidth}
+        \centering
+        \def\svgscale{.8}
+        \input{gfx/fig_svg/squiggly_doppler_at_wall_1.pdf_tex}
+        \caption{Simulation setup}
+        \label{fig:squiggly_doppler_at_wall_1}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{.5\textwidth}
+        \centering
+        \def\svgscale{.8}
+        \input{gfx/fig_svg/squiggly_doppler_at_wall_2.pdf_tex}
+        \caption{Simulated input energy}
+        \label{fig:squiggly_doppler_at_wall_2}
+    \end{subfigure}\bigskip
     \caption{The target echo at the closest range usually has the brightest intensity. This can lead to errors in Doppler speed estimation.}
-    \label{fig:fig_squiggly_doppler_at_wall}
+    \label{fig:squiggly_doppler_at_wall}
 \end{figure}
 
 \section{DOA Estimation}\label{doa-implementation}
@@ -737,7 +730,7 @@ TODO ric60a doa figure
 
 Before the reprojection can be executed, the physical orientation of the
 radar sensor needs to be known to the algorithm. In the implementation,
-the two boolean parameters \texttt{forward\_looking} and
+the two Boolean parameters \texttt{forward\_looking} and
 \texttt{mount\_inverted} control the behaviour. If the radar's squint
 angle and angle sensitivity are such that the field of view reaches both
 sides of the robot path, the \texttt{forward\_looking} parameter needs
@@ -839,7 +832,7 @@ then \(p_{x_t, y_t} = 1\)
     \centering
     \def\svgwidth{10cm}
     \input{gfx/diagrams/sample_splitting.pdf_tex}
-    \caption{Illustration of a pixel value (white circle) being distributed over the four nearest grid neighbors. The shade of the neighbor's area indicates the individual distrution weight.}
+    \caption{Illustration of a pixel value (white circle) being distributed over the four nearest grid neighbors. The shade of the neighbor's area indicates the individual distribution weight.}
     \label{fig:Sample_splitting}
 \end{figure}
 
@@ -913,7 +906,7 @@ antennas is binned separately over 60 orientations from \(-\pi\) to
 \(\pi\).
 
 The manufacturer later provided angle sensitivity measurements of the
-IC's batch (see figure TODO). The measurements show that the
+IC's manufacturing batch. The measurements show that the
 experimental approach produced valid results.
 
 The compensation factor \(f_a\) for each angle is finally composed using

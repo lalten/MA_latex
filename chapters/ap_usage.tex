@@ -1,0 +1,66 @@
+\chapter{Usage}\label{usage}
+
+The following list shows the procedure for acquiring a radar reprojection map with the setup and implementation described in \cref{implementation-platform} and \cref{implementation}, respectively.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Start robot, connect three sessions with \texttt{ssh\ zero2-pa}
+\item
+  Start ROS core with \texttt{roscore}
+\item
+  Start the node, with keyboard teleoperation and Cartographer Laser
+  Slam:
+  \texttt{roslaunch\ omniradar\ omniradar\_teleop\_lidarslam.launch}
+\item
+  Use \texttt{rqt} with the \emph{Dynamic Reconfigure} plugin to set the
+  Omniradar node to generate the preferred number of sweeps and sweep
+  duration. The configuration string can also be changed. The defaults
+  are fine (One \SI{5}{ms} sweep)
+\item
+  \texttt{rosbag\ record\ /omniradar\_node/radar\_raw\ /odom\ /tf\ /map\ -O\ scan}
+  will record a rosbag ``scan.bag'' containing all ROS messages with
+  radar data, Kobuki odometry and slam map and transforms from
+  Cartographer.
+\item
+  In the terminal running \texttt{roslaunch}, use the arrow keys to move
+  the robot around (\(\uparrow\) and \(\downarrow\) to increase and
+  decrease speed, \(\leftarrow\) and \(\rightarrow\) to increase and
+  decrease rotation speed). \(E\) resets speed to zero and makes the
+  robot halt.
+\item
+  After recording some interesting data, stop the rosbag record
+  (\(Ctrl+C\)). Open a new terminal on your local machine and run
+  \texttt{ssh\ zero2-pa\ "tar\ zcf\ -\ scan.bag"\ \textbar{}\ tar\ zxf\ -}.
+  The rosbag will be transferred to your machine. Using ssh with the tar
+  pipe is the fastest way to transfer the data (around \SI{100}{Mbps} on
+  the BSH wifi). Compressing first (\texttt{rosbag\ compress\ scan.bag})
+  and then sending takes a while on the not-so-powerful Odroid platform.
+\item
+  Optionally filter out unwanted transforms from the rosbag to speed up
+  later processing:
+  \texttt{rosbag\ filter\ scan.bag\ scan\_filtered.bag\ \textquotesingle{}(topic\ ==\ "/tf"\ and\ m.transforms{[}0{]}.child\_frame\_id\ ==\ "odom")\ or\ topic\ !=\ "/tf"\textquotesingle{}}
+\item
+  In Matlab, run
+  \texttt{radar\_data\ =\ radar\_bag2array("/path/to/your/scan.bag");}.
+  This will read the bag sequentially into memory and extract the data:
+  The robot position is recorded from odometry information and corrected
+  using the /map \(\rightarrow\) /odom transform as reported by slam
+  localization. Cross range mileage is calculated as cumulative sum of
+  distance between radar positions (as the radar is not mounted over the
+  robot's rotation center, the radar mileage is different from robot
+  mileage as soon as any rotational velocity is present). Lastly, all
+  values are interpolated at the radar message timestamps. It is a good
+  idea to save the function's output, using
+  \texttt{save(\textquotesingle{}radar\_data/radar\_data\_scan.mat\textquotesingle{},\ \textquotesingle{}radar\_data\textquotesingle{})}
+\item
+  The radar data can now be analyzed. The
+  \texttt{plot\_world\_projection} script can be used to get a good
+  overview over raw data, Doppler speeds, direction of arrival, and
+  reprojection map.
+\item
+  To compare radar reprojection map and laser slam map, try the
+  \texttt{test\_slam\_overlay} with the correct bag filename (the lidar
+  map is extracted from that bag)
+\end{enumerate}

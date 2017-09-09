@@ -67,10 +67,11 @@
 \begin{document}
 
 
-\renewcommand{\thepage}{t\arabic{page}}
 \maketitle
 
-\include{chapters/head_abstract}
+\renewcommand{\thepage}{}
+\cleardoublepage 
+\input{chapters/head_abstract}
 
 
 \pagestyle{empty}
@@ -78,7 +79,7 @@
 \setcounter{page}{3}	% Laut VDI Richtlinien
 \renewcommand{\thepage}{\roman{page}}
 \begin{danksagung}
-    Vielen Dank \dots
+    TODO Vielen Dank \dots
     
     München, im Monat Jahr
 \end{danksagung}
@@ -102,7 +103,7 @@
 % content
 % \import{chapters/}{ch_introduction.tex}
 % \import{chapters/}{ch_background.tex}
-% \import{chapters/}{ch_approach.tex}
+\import{chapters/}{ch_approach.tex}
 % \import{chapters/}{ch_implementation_hw.tex}
 \import{chapters/}{ch_implementation_sw.tex}
 % \import{chapters/}{ch_results.tex}
@@ -114,7 +115,8 @@
 \clearpage
 \begin{appendix}
 
-% \include{chapters/ap_resultstable}
+\include{chapters/ap_usage}
+\include{chapters/ap_resultstable}
 
 \end{appendix}
 

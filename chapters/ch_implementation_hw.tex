@@ -29,12 +29,12 @@ The Robot Operating System (ROS)\footnote{\url{http://www.ros.org/}} is widely u
 
 \subsection{Odroid}\label{odroid}
 
-In the Kobuki platform, only an embeddded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 \SI{2}{GHz} Octa core CPUs paired with \SI{2}{GB} ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
+In the Kobuki platform, only an embedded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 \SI{2}{GHz} Octa core CPUs paired with \SI{2}{GB} ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
 
 \subsection{Lidar Slam}\label{lidar}
 A RoboPeak / Slamtec RPLidar A1\footnote{\url{https://www.slamtec.com/en/Lidar/A1}} lidar sensor is mounted on the Kobuki base to enable laser-based slam. This is very useful to both provide odometry correction during reprojection mapping and to build a lidar slam occupancy gridmap that can then be compared with the radar reprojection map.
 
-The slam algorithm used in the implementation is Google's Cartographer \cite{Hess2016} with the Cartopgrapher ROS Integration\footnote{\url{https://github.com/googlecartographer/cartographer_ros}}. Cartographer ROS for TurtleBots\footnote{\url{https://github.com/googlecartographer/cartographer_turtlebot}} conveniently provides configuration files that work well with the Kobuki.
+The slam algorithm used in the implementation is Google's Cartographer \cite{Hess2016} with the Cartographer ROS Integration\footnote{\url{https://github.com/googlecartographer/cartographer_ros}}. Cartographer ROS for TurtleBots\footnote{\url{https://github.com/googlecartographer/cartographer_turtlebot}} conveniently provides configuration files that work well with the Kobuki.
 
 \subsection{Radar sensor}\label{radar-sensor}
 
@@ -52,7 +52,7 @@ In the given time frame, the Walabot Pro, Omniradar RIC60-A and a proprietary Bo
 
 \subsubsection{Bosch Radar}\label{bosch-radar}
 
-The Bosch radar presented some challenges under a Linux environment. After its Matlab driver was patched for cross-platform compatibility, it turned out that the on-board MCU's firmware had an incompatible protocol format. A newer version of the prototype that was later provided did work under Windows, but by the time the board arrived, the decision to focus on Omniradar's chip was made and the newer driver was not cross-plattform patched.
+The Bosch radar presented some challenges under a Linux environment. After its Matlab driver was patched for cross-platform compatibility, it turned out that the on-board MCU's firmware had an incompatible protocol format. A newer version of the prototype that was later provided did work under Windows, but by the time the board arrived, the decision to focus on Omniradar's chip was made and the newer driver was not cross-platform patched.
 
 \subsubsection{Vayyar Walabot}\label{walabot}
 
