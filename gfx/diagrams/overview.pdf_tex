@@ -48,13 +48,13 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.41580756)%
+  \begin{picture}(1,0.45017182)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{overview.pdf}}%
-    \put(0.23613401,0.32032646){\makebox(0,0)[b]{\smash{USB}}}%
+    \put(0.24300686,0.35469072){\makebox(0,0)[b]{\smash{USB}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{overview.pdf}}%
-    \put(0.51620274,0.32204467){\makebox(0,0)[b]{\smash{ROS}}}%
+    \put(0.51620274,0.35640894){\makebox(0,0)[b]{\smash{ROS}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{overview.pdf}}%
-    \put(0.49804121,0.21723368){\makebox(0,0)[b]{\smash{SCP}}}%
+    \put(0.4995017,0.23441581){\makebox(0,0)[b]{\smash{SCP}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{overview.pdf}}%
     \put(0.46661513,0.1038316){\makebox(0,0)[b]{\smash{Input}}}%
     \put(0.46661513,0.07977662){\makebox(0,0)[b]{\smash{Energy}}}%
@@ -62,12 +62,13 @@
     \put(0.74250862,0.12788659){\makebox(0,0)[b]{\smash{Peaks,}}}%
     \put(0.74250862,0.1038316){\makebox(0,0)[b]{\smash{Doppler,}}}%
     \put(0.74250862,0.07977662){\makebox(0,0)[b]{\smash{DOA}}}%
-    \put(0.38831615,0.39003436){\makebox(0,0)[b]{\smash{\textbf{\textbf{Kobuki / Odroid}}}}}%
+    \put(0.38831615,0.42439863){\makebox(0,0)[b]{\smash{\textbf{\textbf{Kobuki / Odroid}}}}}%
     \put(0.61168385,0.14604811){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{\textbf{Matlab}}}}}%
-    \put(0.11340206,0.3161512){\makebox(0,0)[b]{\smash{Omniradar}}}%
-    \put(0.11340206,0.29209622){\makebox(0,0)[b]{\smash{RIC60-A}}}%
-    \put(0.38831615,0.30412371){\makebox(0,0)[b]{\smash{rosnode}}}%
-    \put(0.66323024,0.30412371){\makebox(0,0)[b]{\smash{rosbag}}}%
+    \put(0.11340206,0.35051546){\makebox(0,0)[b]{\smash{Omniradar}}}%
+    \put(0.11340206,0.32646048){\makebox(0,0)[b]{\smash{RIC60-A}}}%
+    \put(0.38831615,0.35051546){\makebox(0,0)[b]{\smash{libomniradar,}}}%
+    \put(0.38831615,0.32646048){\makebox(0,0)[b]{\smash{rosnode}}}%
+    \put(0.66323024,0.33848797){\makebox(0,0)[b]{\smash{rosbag}}}%
     \put(0.33676976,0.06357388){\makebox(0,0)[b]{\smash{Preprocessing}}}%
     \put(0.61168385,0.08762887){\makebox(0,0)[b]{\smash{Peak}}}%
     \put(0.61168385,0.06357388){\makebox(0,0)[b]{\smash{Gradient}}}%

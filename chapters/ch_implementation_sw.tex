@@ -1,12 +1,12 @@
 \section{Software Implementation Overview}\label{overview}
 
-TODO
+\Cref{fig:overview} shows the flow of information after the raw data is gathered from the hardware setup described in \cref{implementation-platform}: The \texttt{/omniradar\_node} rosnode (\cref{ros-node}) uses \texttt{libomniradar} (\cref{c-bindings-and-library}) to read in the raw data from the radar sensor. The rosmessages transmitted from the node are then stored in a \texttt{rosbag}, which is copied over the network to the machine running the Matlab implementation. In Matlab, the data is preprocessed (\cref{data-preprocessing}), Doppler speeds are estimated (\cref{doppler-estimation-with-the-peak-gradient-algorithm}) and finally the radar reprojection map is constructed (\cref{reprojection-mapping}).
 
 \begin{figure}[htbp]
     \centering
     \def\svgwidth{\textwidth} \small
     \input{gfx/diagrams/overview.pdf_tex}
-    \caption{Schematic overview}
+    \caption{Schematic overview of the information flow from the hardware to the reprojection map}
     \label{fig:overview}
 \end{figure}
 
@@ -147,7 +147,6 @@ This setup allowed the development of a ROS node that handles
 communication with the radar module on the Linux/Arm based Kobuki robot.
 
 \subsection{ROS node}\label{ros-node}
-
 A new \texttt{omniradar} ROS package was developed to support the use of
 the Omniradar sensor within the ROS environment. A set of
 \texttt{roslaunch} launchfiles comes with the package that support the
@@ -452,7 +451,7 @@ but by range accuracy, which mainly depends on SNR. It is much better
 than range resolution with \(\sigma_R = \frac{dR}{\sqrt{SNR}}\). This
 can be utilized with subsample peak interpolation.
 
-\subsection{Inter-scan vs Intra-scan Doppler estimation}\label{inter-scan-vs-intra-scan-doppler-estimation}
+\subsection{Inter-scan vs Intra-scan Doppler estimation} \label{inter-scan-vs-intra-scan-doppler-estimation}
 
 For correct Doppler estimation it is important to have the exact timing,
 or for relative Doppler speed, exact cross range mileage of the range
@@ -521,7 +520,7 @@ $\Delta d_{down} / \Delta d_{cross}$ is more easily expressed as Doppler speed \
 \subsection{Minimum Peak height}\label{minimum-peak-height}
 Without countermeasures a lot of noise with low height and low full-width-at-half-maximum will clutter the reprojection map. The easiest way to prevent this is to apply a threshold on the detected peak height that rejects all peaks that do not reach a certain minimum height. It's not easy to specify such a threshold that works for all scans, because the noise floor level strongly depends on the chirp time. \Cref{fig:fig_compare_chirp_times} shows that this persists even when the echo intensity is normalized to intensity 1 at the first range bin before transmit cross talk suppresion (see \cref{transmit-crosstalk-suppression}).
 
-TODO
+%TODO
 
 \subsection{Transmit crosstalk suppression}\label{transmit-crosstalk-suppression}
 
@@ -568,14 +567,14 @@ to ignore these echoes.
         \input{gfx/fig_svg/fig_range_compensation_transmit_spike_2.pdf_tex}
         \caption{Logarithmic scale (Note that the \(0\) value at \(d_{down}=0\) can not be displayed in log scale.)}
         \label{fig:fig_range_compensation_transmit_spike_2}
-    \end{subfigure}\bigskip
+    \end{subfigure}
     \caption{Attenuating effect of range compensation on transmit peak in a range profile}
     \label{fig:fig_range_compensation_transmit_spike}
 \end{figure}
 
 
 \subsection{Peaks overlaps at crossing target arcs} \label{peaks-overlaps-at-crossing-target-arcs}
-Often there appears a situation where the range cell migration arcs of two targets cross each other. In this case, their peaks can almost always be still detected separately. However peak-associated data like DOA and Doppler speed will superpositioned. Using these in a regular fashion would yield wrong results. An approach that proved to work well in practice is to sort all peaks in a range scan line by ascending value (peak height), then assigning the feature in question to all output down range cells within half the FWHM of the respective peak. Higher peaks are hence treated as more important and overwrite the values of lower peaks. \Cref{fig:overlap} is an example where the overlapping effect is visible.
+Often there appears a situation where the range cell migration arcs of two targets cross each other. In this case, their peaks can almost always be still detected separately. However peak-associated data like DOA and Doppler speed will superpositioned. Using these in a regular fashion would yield wrong results. An approach that proved to work well in practice is to sort all peaks in a range scan line by ascending value (peak height), then assigning the average over the FWHM of the feature in question to all output down range cells within half the FWHM of the respective peak. Higher peaks are hence treated as more important and overwrite the values of lower peaks. \Cref{fig:overlap} is an example where the overlapping effect is visible.
 
 \begin{figure}[htbp]
     \centering
@@ -863,10 +862,10 @@ near range, while the noise floor stays constant in the far range. This
 helps to keep a target's intensity at at least similar values over all
 ranges in the map.
 
-TODO subfigures, adjust refs
+TODO split in subfigures, adjust refs
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max height=10cm,max width=10cm]{figures/fig_range_compensation}
+    \includegraphics[max width=10cm]{figures/fig_range_compensation}
     \caption{Range compensation}
     \label{fig:fig_range_compensation}
 \end{figure}
@@ -979,7 +978,6 @@ figure shows how angle compensation helps to keep the echo intensity of
 a mapped object at the same level, regardless of the angle at which it
 is seen by the radar.
 
-TODO replace vector heatmap with bitmap
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}{\textwidth}
@@ -1009,8 +1007,3 @@ TODO replace vector heatmap with bitmap
     \caption{Effect of angle compensation and windowed angle compensation}
     \label{fig:fig_angle_compensation_comparison}
 \end{figure}
-
-
-\subsection{World map resolution}\label{world-map-resolution}
-
-TODO
