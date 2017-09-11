@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'sar_steps.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{444.77192511bp}%
+    \setlength{\unitlength}{444.77192436bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,22 +48,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.5615991)%
+  \begin{picture}(1,0.56159912)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{sar_steps.pdf}}%
-    \put(0.12163244,0.57398803){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{}}}%
-    \put(0.15758603,0.53761376){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Raw Data}}}%
-    \put(0.52178618,0.54257812){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Range Compressed Data}}}%
-    \put(0.87658149,0.54257812){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Image Data}}}%
-    \put(0.33548045,0.23921699){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Range Reference Function}}}%
-    \put(0.7046528,0.23425266){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth Reference Function}}}%
-    \put(0.88638046,0.20848663){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Far Range}}}%
-    \put(0.8947854,0.03685483){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Near Range}}}%
-    \put(0.70465259,0.00579736){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
-    \put(0.33561154,0.00523414){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Amplitude}}}%
-    \put(0.01842742,0.43369114){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Range}}}}%
-    \put(0.57697008,0.12197413){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Amplitude}}}}%
-    \put(0.20686805,0.12250146){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Range}}}}%
-    \put(0.52188927,0.32425498){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
-    \put(0.15768911,0.32425498){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
+    \put(0.12163245,0.57398804){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{ }}}%
+    \put(0.15758603,0.54346078){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Raw Data}}}%
+    \put(0.52178619,0.54257813){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Range Compressed Data}}}%
+    \put(0.87658151,0.54257813){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Image Data}}}%
+    \put(0.33548046,0.239217){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Range Reference Function}}}%
+    \put(0.70465281,0.239217){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth Reference Function}}}%
+    \put(0.89312551,0.20848664){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Far Range}}}%
+    \put(0.90416523,0.03685484){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Near Range}}}%
+    \put(0.70465261,0.00579737){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
+    \put(0.33561155,0.00523415){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Amplitude}}}%
+    \put(0.01842742,0.43369115){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Range}}}}%
+    \put(0.57697009,0.12197414){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Amplitude}}}}%
+    \put(0.20686805,0.12250147){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Range}}}}%
+    \put(0.52188928,0.32425499){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
+    \put(0.15768911,0.32425499){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Azimuth}}}%
   \end{picture}%
 \endgroup%
