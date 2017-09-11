@@ -67,7 +67,7 @@ It would be possible to resolve this ambiguity by tracking the targets while cha
 
 For multistatic radars there is however another solution to resolving the angle ambiguity: Using direction of arrival (DOA) information obtained from inter-antenna phase difference measurements (see \cref{direction-of-arrival}). \Cref{fig:geometry-forward} shows that if the radar is mounted at a straight forward angle, a target's DOA indicates the side it is being passed on. If the radar is not facing straight ahead, the DOA value should be tracked so its gradient can be used instead --- If a target's DOA is gradually shifting towards left (target B in \cref{fig:geometry-forward}), it will pass the radar on the left side. On the other hand, if it is gradually shifting towards right, it will pass on the right side (target C in \cref{fig:geometry-forward}).
 
-\section{Geometry for the General 3D Case}\label{geometry-for-the-general-case}
+\section{Geometry for the General 3D Case}\label{geometry-for-the-3d-case}
 
 The geometry in \cref{geometry-for-the-general-case} can be further generalized in a three dimensional geometry. The 3D case is depicted in \cref{fig:3dcase}. The model makes most sense for a robot that can traverse in all three dimensions, like a plane or drone. Hence the blue line in the figure can be called the sensor's flight path vector. Just like in the 2D case, when a static target is detected at range $R$, its radial speed $v_D$ leads to a reprojection angle $\alpha$. The difference is that the possible target location lies not on two points, but on the green circle with radius $R~\sin(\alpha)$ whose origin lies $R~cos(\alpha)$ away on the flight path vector.
 
@@ -94,7 +94,20 @@ This makes sense because it shows that the 2D case is a special case of the 3D c
 
 The ambiguity could be reduced through a two-dimensional DOA estimation. This is possible if a sensor has three or more non-collinear receiving antennas. The simplest configuration would be the one shown in \cref{fig:2ddoa}, which allows horizontal DOA estimation from the phase difference between \textit{Rx1} and \textit{Rx2}, and vertical DOA estimation between \textit{Rx1} and \textit{Rx3}. However, DOA measurements can not resolve the target location single point like in the 2D case and it would be necessary to implement the target-tracking-during-change-of-motion-vector approach.
 
-With this geometry, reprojection mapping could be used to build probabilistic 3D occupancy gridmaps like in \cite{Hornung2013}. As 2D target location resolution is usually completely sufficient for mobile ground robots, the rest of this thesis will focus on the geometry described in \cref{geometry-for-the-general-case}.
+With this geometry, reprojection mapping could be used to build probabilistic 3D occupancy gridmaps like in \cite{Hornung2013}, with vehicles moving in 3D space, like the TUM RCS's Modular Airborne Real-Time Testbed (MART)\footnote{\url{https://www.rcs.ei.tum.de/forschung/mart/}} that was also used in other research and publications \cite{Becker2015}.
+As 2D target location resolution is usually completely sufficient for mobile ground robots, the rest of this thesis will focus on the geometry described in \cref{geometry-for-the-general-case}.
+
+\section{Geometry for the General 3D Case with Two Sensors} \label{multisensor}
+The ambiguities in \cref{geometry-for-the-3d-case} can also be eliminated by using more than one range sensor. In a 2D environment, this makes it possible to do regular trilateration, so reprojection mapping would not be necessary. In the 3D case however, two sensors would be enough for trilateration to pinpoint a target location --- instead, the target would be localized on the intersection circle of two spheres around the sensors, each with a radius equal to the target range. With the addition of reprojection geometry, for each sensor a cone with an opening angle of twice the reprojection angle can be added. The cone's base edge lies on the sphere. A target's location is now known to be at the intersection of the two cones, which is a single point.
+
+\begin{figure}
+    \centering
+    \includegraphics[max width=.75\textwidth]{gfx/diagrams/multisensor.jpg}
+    \caption{3D rendering of a multi-sensor scenario: Two sensors are enough to single out a target's location, while a trilateraion approach would need a third sensor to narrow down the location from the intersection circle (green) of the trilateration spheres (reddish and blueish)}
+    \label{fig:multisensor}
+\end{figure}
+
+The method also helps when more than one target is visible and they need to be discerned from each other: while many trilateration spheres intersect in larger or smaller circles, the cone base edges touch (or, with added noise, are very close) only for the same target.
 
 \section{Doppler speed estimation}\label{doppler-speed-estimation}
 
@@ -115,7 +128,7 @@ The map can then be further processed with path planning algorithms such as Dijk
 
 The reprojection method has some inherent limitations. The most obvious one is that since target angles are calculated from radial target speed, all objects must not have a speed of their own, i.e. they must be static. This limitation however sounds more severe than it is in practice. On the one hand, robots often operate alone and without any other moving objects present, such as a vacuum robot cleaning the house while its owner is at work. On the other hand, if moving objects appear, such as a cat quickly escaping the vacuuming noise, they can be detected and tracked as soon as their radial speed exceeds the robot speed.
 
-In the preceding explanation, all visible targets are assumed to be in the same plane as the radar sensor. If this is not the case, target elevation needs to be estimated in addition to target azimuth. Yet, with an antenna beam pattern that limits sensitivity to planar elevation, coplanarity of all targets can be assumed. An extension to three-dimensional mapping is an interesting topic for future work and discussed in \cref{three-d-case}.
+In the preceding explanation, all visible targets are assumed to be in the same plane as the radar sensor. If this is not the case, target elevation needs to be estimated in addition to target azimuth. Yet, with an antenna beam pattern that limits sensitivity to planar elevation, coplanarity of all targets can be assumed.
 
 Another noteworthy issue is that real-world targets may not be adequately represented by a point target. However, especially if Doppler speed is estimated from peak gradient, any target visible in a range scan can only have one radial speed associated with it. If a long wall is visible over many range bins, the reprojection angle will be calculated from the speed of the peak point in the wall's echo. A map entry will be line-shaped with an angle corresponding to the point of strongest echo intensity, which is usually orthogonal to wall orientation, and with a length corresponding to detected peak width, which depends on the objects reflectivity at different incident angles. In effect, a wall will be built up on the map as the robot passes it, and the mapped wall thickness will be slightly influenced by how much of the wall reflects in a single range scan (usually a few centimeters, short solid red line in \cref{fig:wall}).
 

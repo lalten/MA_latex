@@ -1,8 +1,12 @@
 \chapter{Conclusion}\label{conclusion}
 
+While the presented implementation was shown to work, there are many areas which in which it could be extended with interesting features. Some worthwhile goals for future work on the topic are outlined in \cref{future-work}.
+
 \section{Future Work}\label{future-work}
 
 \subsection{Dynamic target rejection}\label{dynamic-target-rejection}
+
+As stated in \cref{limitations}, reprojection mapping only works for static environments. It is however not difficult to relax this strict requirement a little: Targets moving faster than the robot itself can easily be detected and ignored. These dynamic targets should of course be tracked with the peak matching of the peak gradient algorithm, to make sure they are ignored even after they slow down to below robot speed.
 
 \subsection{Online mapping}\label{online-mapping}
 
@@ -45,9 +49,7 @@ reasonable performance improvement.
 
 \subsection{Auto-thresholding}\label{auto-thresholding}
 
-TODO
-
-CFAR
+As \cref{minimum-peak-height} describes, the proof-of-concept implementation uses a constant threshold as minimum peak height. There has been extensive work done to create adaptive thresholds with a class of algorithms called constant false alarm rate (CFAR) \cite{Skolnik2008,Adams2012}. It would be interesting to implement this to make the reprojection robust against noise at unexpected levels.
 
 \subsection{Realtime}\label{realtime}
 
@@ -56,8 +58,6 @@ collisions before it's too late. Thus it would be great to have the
 system run under realtime constraints, so it can guarantee range
 scanning and reprojection mapping to be finished within a known time
 frame.
-
-\subsection{Dynamic changing of sweep time and bandwidth}\label{dynamic-changing-of-sweep-time-and-bandwidth}
 
 \subsection{Interference Investigation}\label{interference-investigation}
 
@@ -78,16 +78,32 @@ to read a range profile that looks very similar (see figure \cref{fig:had_us}) t
 what is used for the radar reprojection method. It might be possible to
 adapt the algorithms in this thesis to use ultrasound sensors.
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[max height=10cm,max width=10cm]{pictures/had_us}
-    \caption{\label{fig:had_us}Range profile measurement with a hacked HCSR04 ultrasound module. Source: \cite{Lee2015}}
+\begin{figure}[htpp]
+% 0.95 * 1538*945/1141 / (1538*945/1141 + 883) = 0.56106798574
+% 0.95 * 883 / (1538*945/1141 + 883) = 0.38893201425
+    \begin{subfigure}[t]{0.38893201425\textwidth}
+        \centering
+        \includegraphics[max width=\linewidth]{pictures/had_us}
+        \caption{Range profile measurement with a hacked HCSR04 ultrasound module. Source: \cite{Lee2015}}
+        \label{fig:had_us}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{0.56106798574\textwidth}
+        \centering
+        \includegraphics[max width=\linewidth]{gfx/pictures/sonar_sar}
+        \caption{Synthetic aperture sonar imagery of a sunken ship. Source: \cite{Hansen2011}}
+        \label{fig:sonar}
+    \end{subfigure}
+    \caption{Ultrasound might be a very interesting data source for reprojection mapping.}
+    \label{fig:us}
 \end{figure}
 
 Most ultrasound range sensors use the time of flight of a pulsed echo,
 but FMCW-based ultrasound modules have been proposed
 \cite{Battaglini2014} recently. With a range resolution of
-\[dR = \frac{c_{sound, air}}{2 BW} = \frac{\SI{330}{m\per s}}{2\cdot \SI{12.5}{kHz}} = \SI{1.32}{cm}\]
+\begin{equation}
+    dR = \frac{c_{sound, air}}{2 BW} = \frac{\SI{330}{m\per s}}{2\cdot \SI{12.5}{kHz}} = \SI{1.32}{cm}
+\end{equation}
 the proposed sensor would be comparable to the Omniradar sensor's range
 resolution and accuracy. However, for measurements to be very accurate
 the speed of sound in air must be known as it depends on humidity and
@@ -99,82 +115,17 @@ with a transducer array, direction of arrival can still be estimated
 \cite{Kunin2010}.
 
 Extension to ultrasound sensors would be a very interesting topic for
-further work.
-
-It might even be possible to use light waves with interferometric
+further work. It might even be possible to use light waves with interferometric
 modulated flash lidars and the right optics.
-
-\subsection{3D case}\label{three-d-case}
-
-Chapter \cref{idea} describes the geometry for 2D-cases. However, it
-is possible to extend the concept to the three dimensional space if a
-radar has more than two non-collinear receiving antennas, like
-visualized in figure \cref{fig:2ddoa}. Horizontal DOA would be measured between
-antennas at positions \(Rx1\) and \(Rx2\) while vertical DOA would be
-measured between \(Rx1\) and \(Rx3\).
-
-\begin{figure}[htp]
-    \centering
-    \def\svgwidth{5cm}
-    \input{gfx/diagrams/outlook_doa.pdf_tex}
-    \caption{\label{fig:2ddoa}Non-collinear triple receive antenna arrangement.}
-\end{figure}
-
-Reprojection mapping could then be used to build 3D occupancy maps. The
-reprojection angle \(\alpha\) would then describe a circle at distance
-\(R~cos(\alpha)\) around the radar path, on which the detected target
-lies. Direction of arrival in horizontal and vertical planes would then
-have to be used to pinpoint the target location on the circle.
-
-\begin{figure}[htp]
-    \centering
-    \def\svgwidth{5cm}
-    \input{gfx/diagrams/outlook_3d.pdf_tex}
-    \caption{\label{fig:3dcase}A target detected at range \(R\) and relative Doppler speed corresponding to reprojection angle \(\alpha\) will be at a point on a circle (green) around the flight path (blue).}
-\end{figure}
-
-This holds also for the 2D-case: The possible locations for targets are
-then at the intersection of reprojection cone circle and floor plane.
-
-This would be useful on vehicles moving in 3D space, like the TUM RCS's
-\href{https://www.rcs.ei.tum.de/forschung/mart/}{Modular Airborne
-Real-Time Testbed (MART)} that was also used in other research and
-publications \cite{Becker2015}.
-
-\subsection{Single receive antennas on multiple sensors}\label{single-receive-antennas-on-multiple-sensors}
-
-Direction of arrival is a good solution to resolve the ambiguities
-presented in the general 2D-case \cref{geometry-for-the-general-case} and 3D-case geometry (\cref{fig:3dcase}) for a
-sensor with a sufficient number of antennas. However, it should also be
-possible to use multiple, spatially separated sensors instead. Each
-sensor measures a reprojection angle. A target visible to both sensors
-can then be localized unambiguously with triangulation.
-
-TODO
-
-3D scenario. standard case: two intersecting spheres --\textgreater{}
-intersection circle Doppler reprojection case: angle --\textgreater{}
-cones with intersecting base edge -\textgreater{} two intersection
-points (DOA to resolve, or high flying drone to assume)
 
 \section{Conclusion}\label{conclusion-1}
 
-Mobile robots still struggle to detect some obstacles that are invisible
-to their conventional sensors. Radar sensors have a big potential to
-improve obstacle avoidance. With reprojection mapping, this thesis
-proposes a novel method to create an obstacle map without having to
-steer the radar beam.
+This thesis showed that mobile robots still struggle to detect some obstacles which are invisible to their conventional sensors. The fact that these are not special edge cases but very common objects like chair legs and windows highlights how important it is to improve mapping in these real-world environments. Radar sensing fills a gap in the design space by exposing these hidden obstacles. It is already a tried and tested technology and has been deployed in many diverse fields, including far-range military reconnaissance, speed limit enforcement, and weather forecasting for decades. However, with new advances in system integration, miniaturization, and cost optimization, ultra-wide bandwidth radar sensing becomes very interesting even for consumer-grade ground robots.
 
-A proof-of-concept implementation of the reprojection mapping produced
-obstacle maps from the radar scans of the experiments for this thesis.
-The maps prove that some previously undetectable obstacles, like glass
-walls and office chair legs, can now be detected and mapped.
+With reprojection mapping, this thesis proposes a novel method for scanless radar-based mapping that further reduces the barrier that kept radar sensors out of robots for so long by obviating the need to actively steer the radar beam via mechanical scanning or beamforming. The most limiting factor in the application is the need for a static environment to assert that any target can be localized through its Doppler speed. In practice this constraint is not too hard to meet because many indoor robots are designed to operate unsupervised in environments without moving objects, like an office at night or an apartment during working hours.
 
-The next step on the way to a mobile indoor robot proficiently
-navigating real-world environments should be the implementation of an
-online version of reprojection mapping. This will also show if the
-results need to be further improved with more advanced noise rejection.
+Even though the ideas behind reprojection mapping are not complex or require complicated math, this kind of scanless mapping has never been shown before. One can assume the reason to be that in high-performance, high-cost radar mapping applications it is easier to use more specifically designed expensive or complex scanning sensors. On the other end of the spectrum, low-cost and high-volume products could use cheaper and proven traditional sensors like laser scanners. Only the advent of cheaper and smaller radar range sensors allowed the expansion of robotic design space into the corner in which reprojection mapping becomes useful.
 
-TODO phys. limitations; where does this still make sense?
+That reprojection mapping is useful, and moreover that it works as designed, is shown with a proof-of-concept implementation. With this implementation, several obstacle maps were created from the radar scans of the experiments for this thesis. The maps prove that some previously undetectable obstacles, like glass walls and office chair legs, can now be detected and mapped.
 
-TODO
+The next step on the way to a mobile indoor robot proficiently navigating real-world environments is the implementation of an online version of reprojection mapping. This will also show if the results need to be further improved with more advanced noise rejection.

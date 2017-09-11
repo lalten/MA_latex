@@ -82,13 +82,25 @@ faint to be picked up after the first bigger object (like a wall).
 
 \subsection{Negative obstacles}\label{negative-obstacles}
 
+\begin{figure}[htbp]
+% 0.95 * 2832*2268/2124 / (2832*2268/2124 + 3024) = 0.475
+% 0.95 * 3024 / (2832*2268/2124 + 3024) = 0.475
+    \centering
+    \begin{subfigure}[t]{.475\textwidth}
+        \includegraphics[width=\textwidth]{gfx/pictures/cliff}
+        \caption{For the negative obstacle detection tests the robot was driving on the cabinet.}
+        \label{fig:cliff}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{.475\textwidth}
+        \includegraphics[width=\textwidth]{gfx/pictures/cliff_sensor}
+        \caption{Sensor orientation for the Washroom scan: downward-facing vertical in an attempt to improve cliff detection}
+        \label{fig:cliff_sensor}
+    \end{subfigure}
+\end{figure}
+
 With scans V,W,X the negative obstacle detection capability was
-analyzed. Cliffs, steps, and ditches are types of negative obstacles
-that cannot be traversed by the robot. In \cite{Jiang2015}, Jiang et al.
-claim that it is possible to detect this with UWB signals of various
-carrier frequencies. The experiments carried out for this thesis however
-did not show the same signal behaviour and it was not possible to detect
-cliffs.
+analyzed in the environment shown in \cref{fig:cliff}. Cliffs, steps, and ditches are types of negative obstacles that cannot be traversed by the robot. In \cite{Jiang2015}, Jiang et al. claim that it is possible to detect this with UWB signals of various carrier frequencies. The experiments carried out for this thesis however did not show the same signal behaviour and it was not possible to reliably detect cliffs.
 
 The Virtual Reality scan was carried out in the standard configuration
 with a horizontal, slightly squinting, and not downwards angled sensor.
@@ -96,16 +108,12 @@ The assumption was that a part of the strong signal int the \SIrange{10}{20}{cm}
 range were reflections from the floor, that should disappear when the
 floor ends at a cliff. Visual inspection of the range profile however
 shows only a extremely slight change in signal, e.g.~at cross range
-\SIrange{0.8}{1.1}{m}, down range \SIrange{0.2}{0.25}{m}., where the floor could not reflect
-due to the radar sensor overhanging the cliff.
+\SIrange{0.8}{1.1}{m}, down range \SIrange{0.2}{0.25}{m}., where the floor could not reflect due to the radar sensor overhanging the cliff.
 
 The Washroom scan has the sensor mounted in a vertical configuration and
-downward facing instead to increase sensitivity to echo scattering from
-below. The echo intensity for cross range \SIrange{3.5}{4.5}{m} is indeed just
+downward facing (see \cref{fig:cliff_sensor}) instead to increase sensitivity to echo scattering from below. The echo intensity for cross range \SIrange{3.5}{4.5}{m} is indeed just
 barely lower than \SIrange{0}{2}{m}, which matches up to where the sensor was over
 the edge and over floor, respectively.
-
-TODO picture of scene
 
 \begin{figure}[htbp]
     \centering
@@ -192,13 +200,10 @@ targets can not be projected onto the map if the robot is too close to
 them. This is an issue in the Sauna scan, where the Glass wall right at
 the beginning of the robot path cannot be mapped in its entirety.
 
-\subsection{Parameter tuning?}\label{parameter-tuning}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Comparison with other mapping
-techniques}\label{comparison-with-other-mapping-techniques}
+\section{Comparison with other mapping techniques} \label{comparison-with-other-mapping-techniques}
 
 While some of the radar reprojection maps speak for themselves, they
 make more sense when compared to other mapping techniques. In the
@@ -206,33 +211,39 @@ following, SAR techniques, Laser slam, and RGBD slam are compared to the
 radar reprojection.
 
 \subsection{SAR}\label{sar-1}
-
 Synthetic aperture radars make a lot of sense in other applications
 where the radar is moved over or through a map. The big difference to
 this application is that ``professional'' SAR applications have radar
 sensors that sit in vehicles that are not in the mapping plane.
 Airplanes, satellites and even Submarines scan the earth like that.
 
-There are a few examples for UWB radars being moved sideways (usually on
-a rail) in an effort to scan a scene with synthetic aperture radar.
-Gregory L. Charvat's ``tin can'' radar \cite{Charvat2014} might be the
-most famous one, with many examples at \url{http://glcharvat.com/shortrange/}.
-Another great resource was Henrik Forsten's Homemade Synthetic Aperture
-Radar, documented at \url{http://hforsten.com/homemade-synthetic-aperture-radar.html}. Forsten used
-the Omega-k algorithm \cite{Tolman2008} and Stolt interpolation \cite{Cumming2004} to correct the range migration arcs.
+There are a few examples for UWB radars being moved sideways (usually on a rail) in an effort to scan a scene with synthetic aperture radar.
+Gregory L. Charvat's ``tin can'' radar \cite{Charvat2014} might be the most famous one, with many examples at \url{http://glcharvat.com/shortrange/}.
+Another great resource was Henrik Forstén's Homemade Synthetic Aperture
+Radar, documented in \cite{Forsten2015} (see \cref{fig:forsten}). He used an Omega-k algorithm \cite{Tolman2008} and Stolt interpolation \cite{Cumming2004} to correct the range migration arcs.
 
-TODO make quad-subfigure with Forsten's images?
+\begin{figure}
+% 0.95 * 3264*817/2448 / (3264*817/2448 + 1299) = 0.43330076762
+% 0.95 * 1299 / (3264*817/2448 + 1299) = 0.51669923238
+    \begin{subfigure}[t]{0.43330076762\textwidth}
+        \centering
+        \includegraphics[max width=\linewidth]{gfx/pictures/forsten_1.jpg}
+        \caption{Forstén's SAR setup. Source: \cite{Forsten2015}}
+        \label{fig:forsten_1}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{0.51669923238\textwidth}
+        \centering
+        \includegraphics[max width=\linewidth]{gfx/pictures/forsten_2.jpg}
+        \caption{Forstén's SAR imagery agrees well with aerial imagery. Source: \cite{Forsten2015}}
+        \label{fig:forsten_2}
+    \end{subfigure}
+    \caption{After omega-k processing and autofocusing, Forstén's synthetic aperture radar can create nice-looking broadside SAR imagery.}
+    \label{fig:forsten}
+\end{figure}
 
-Forsten was able to greatly
-improve his data quality by use of an minimum-entropy based
-auto-focusing algorithm. The trick with this is that the radar needs to
-move in a very straight line, where the ``error in path linearity should
-be around less than tenth of a wavelength''. In Forsten's radar, this is
-about \SI{5}{mm}. However with the \SI{60}{GHz} Omniradar this is around \SI{0.5}{mm}.
-Keeping a straight line with less than half a millimeter of linearity
-error is not realistically achievable on the Kobuki platform.
 
-
+Forstén was able to greatly improve his data quality by use of an minimum-entropy based auto-focusing algorithm. The trick with this is that the radar needs to move in a very straight line, where the ``error in path linearity should be around less than tenth of a wavelength'' \cite{Forsten2015}. In Forstén's radar, this is about \SI{5}{mm}. However with the \SI{60}{GHz} Omniradar this is around \SI{0.5}{mm}. Keeping a straight line with less than half a millimeter of linearity error is not realistically achievable on the Kobuki platform.
 
 One big inherent problem with synthetic aperture radar algorithms is
 that basically all of them assume the radar to move in a straight line.
@@ -243,17 +254,47 @@ again relies on phase information, becomes more difficult
 \cite{Axelsson2002}.
 
 \subsection{RGBD}\label{rgbd-1}
+The Kobuki robot was also carrying an Astra Orbbec Mini\footnote{\url{https://orbbec3d.com/astra-mini/}} strutured light depth camera. Using the Rtabmap \cite{Labbe2014} ROS package\footnote{\url{http://wiki.ros.org/rtabmap_ros}}, some 3D scans of the office environment where made. \cref{traditional-obstacle-sensors} already showed the shortcomings of lidar and RGBD sensors, but in this section the same \cref{fig:lidar_rgbd2,fig:rgbd_glasswall2} are compared with radar reprojection.
 
-The Kobuki robot was also carrying a depth camera. Using the rtabmap ROS
-package, some 3D scans of the office environment where made.
+\begin{figure}
+    \begin{subfigure}[t]{.485\textwidth}
+        \centering
+        \includegraphics[max width=\textwidth]{gfx/screenshots/chair_laser_vs_rgbd}
+        \caption{Laser fails to detect horizontal chair legs.}
+        \label{fig:lidar_rgbd2}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{.485\textwidth}
+        \centering
+        \def\svgwidth{\linewidth}
+        \input{gfx/screenshots/rgbd_glasswall.pdf_tex}
+        \caption{RGBD camera can not detect glass surface.}
+        \label{fig:rgbd_glasswall2}
+    \end{subfigure}%
+    \caption{RViz screenshots showing traditional sensor shortcomings.}
+\end{figure}
+
+\Cref{fig:chairlegs} shows clearly that the radar reprojection contains horizontal chair legs, while the lidar scan does not. The scene in \cref{fig:rgbd_glasswall2} matches with the Underground scan, where the glass wall is clearly visible.
+
+\begin{figure}
+    \begin{subfigure}[t]{.485\textwidth}
+        \centering
+        \includegraphics[max width=\textwidth]{gfx/pictures/torturechamber_scene}
+        \caption{View of the Torturechamber scan environment. Blue path is the robot's path.}
+        \label{fig:chairs_scene}
+    \end{subfigure}%
+    \hfill%
+    \begin{subfigure}[t]{.485\textwidth}
+        \centering
+        \includegraphics[max width=\textwidth]{gfx/results/torturechamber_map}
+        \caption{Torturechamber reprojection map over lidar slam gridmap.}
+        \label{fig:chairs_map}
+    \end{subfigure}%
+    \caption{In the Torturechamber scan, horizontal chair legs are visible in the reprojection map but not in the lidar scan.}
+    \label{fig:chairlegs}
+\end{figure}
 
 \subsection{Lidar}\label{lidar-1}
-
-As stated in \cref{kobuki}, the Kobuki robot used in the experiments was
-equipped with an RPLidar and a computing platform powerful enough to
-perform slam. Lidar slam is the go-to, standard approach when it comes
-to mapping the environment around a robot. After years of research and
-product development, even cheaper lidar systems have acceptable range
-resolution. While they can't provide ground truth data (see problems
-with lidar data in \cref{traditional-obstacle-sensors}), it makes sense to compare the radar
-reprojection maps with laser scan maps.
+As stated in \cref{kobuki}, the Kobuki robot used in the experiments was equipped with an RPLidar and a computing platform powerful enough to perform slam. Lidar slam is the go-to, standard approach when it comes to mapping the environment around a robot. After years of research and product development, even relatively cheap lidar systems like the RPLidar have acceptable range resolution. While they can't provide ground truth data (see problems with lidar data in \cref{traditional-obstacle-sensors}), it makes sense to compare the radar reprojection maps with laser scan maps. This is why all scans after Mancave have lidar maps associated.
+%TODO!
+Not that there is a bug in the rosbag to Matlab conversion that sometimes causes the complete map to be rotated against the lidar map by some degrees.

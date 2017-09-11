@@ -1,6 +1,5 @@
+\clearpage
 \section{Software Implementation Overview}\label{overview}
-
-\Cref{fig:overview} shows the flow of information after the raw data is gathered from the hardware setup described in \cref{implementation-platform}: The \texttt{/omniradar\_node} rosnode (\cref{ros-node}) uses \texttt{libomniradar} (\cref{c-bindings-and-library}) to read in the raw data from the radar sensor. The rosmessages transmitted from the node are then stored in a \texttt{rosbag}, which is copied over the network to the machine running the Matlab implementation. In Matlab, the data is preprocessed (\cref{data-preprocessing}), Doppler speeds are estimated (\cref{doppler-estimation-with-the-peak-gradient-algorithm}) and finally the radar reprojection map is constructed (\cref{reprojection-mapping}).
 
 \begin{figure}[htbp]
     \centering
@@ -9,6 +8,8 @@
     \caption{Schematic overview of the information flow from the hardware to the reprojection map}
     \label{fig:overview}
 \end{figure}
+
+\Cref{fig:overview} shows the flow of information after the raw data is gathered from the hardware setup described in \cref{implementation-platform}: The \texttt{/omniradar\_node} rosnode (\cref{ros-node}) uses \texttt{libomniradar} (\cref{c-bindings-and-library}) to read in the raw data from the radar sensor. The rosmessages transmitted from the node are then stored in a \texttt{rosbag}, which is copied over the network to the machine running the Matlab implementation. In Matlab, the data is preprocessed (\cref{data-preprocessing}), Doppler speeds are estimated (\cref{doppler-estimation-with-the-peak-gradient-algorithm}) and finally the radar reprojection map is constructed (\cref{reprojection-mapping}).
 
 \section{Driver}\label{driver}
 
@@ -65,10 +66,10 @@ the binary that needs to use it.
         
         libomniradar.so &
         /usr/local/lib &
-        dynamically linked shared object \\
+        Dynamically linked shared object \\
         
         51-omniradar.rules, 52-omniradar.rules &
-        /etc/udev/rules.d/ &
+        /etc/udev/rules.d &
         Udev rules to unbind ftdi\_sio \\
     \bottomrule
     \end{tabularx}
