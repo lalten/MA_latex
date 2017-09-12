@@ -11,7 +11,7 @@
    height="240.765"
    version="1.1"
    id="svg2"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.2 (unknown)"
    sodipodi:docname="fmcw_blocks.svg">
   <metadata
      id="metadata180">
@@ -42,9 +42,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="1.2233255"
-     inkscape:cx="282.43456"
-     inkscape:cy="248.99549"
+     inkscape:zoom="1.7300435"
+     inkscape:cx="383.00314"
+     inkscape:cy="107.89647"
      inkscape:window-x="1145"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -272,47 +272,57 @@
     <g
        font-size="16px"
        id="g68"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(0,4)">
       <text
          x="259.5"
          y="233.5"
-         id="text70">ADC</text>
+         id="text70"
+         style="line-height:0%">ADC</text>
     </g>
     <g
        font-size="16px"
        id="g72"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(0,4)">
       <text
          x="339.5"
          y="233.5"
-         id="text74">IF filter</text>
+         id="text74"
+         style="line-height:0%">IF filter</text>
     </g>
     <g
        font-size="16px"
        id="g76"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(0,4)">
       <text
          x="419.5"
          y="233.5"
-         id="text78">IF amplifier</text>
+         id="text78"
+         style="line-height:0%">IF amplifier</text>
     </g>
     <g
        font-size="16px"
        id="g80"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(0,4)">
       <text
          x="499.5"
          y="233.5"
-         id="text82">Mixer</text>
+         id="text82"
+         style="line-height:0%">Mixer</text>
     </g>
     <g
        font-size="16px"
        id="g84"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(2)">
       <text
          x="634.5"
          y="153.5"
-         id="text86">Rx antenna</text>
+         id="text86"
+         style="line-height:0%">Rx antenna</text>
     </g>
     <g
        font-size="16px"
@@ -321,7 +331,8 @@
       <text
          x="419.5"
          y="53.5"
-         id="text90">RF amplifier</text>
+         id="text90"
+         style="line-height:0%">RF amplifier</text>
     </g>
     <g
        font-size="16px"
@@ -330,7 +341,8 @@
       <text
          x="304.5"
          y="53.5"
-         id="text94">VCO</text>
+         id="text94"
+         style="line-height:0%">VCO</text>
     </g>
     <path
        d="m 80,80 q 0,0 33.63,0"
@@ -405,7 +417,8 @@
       <text
          x="99.5"
          y="33.5"
-         id="text116">Radar backend</text>
+         id="text116"
+         style="line-height:0%">Radar backend</text>
     </g>
     <path
        d="m 160,80 q 0,0 118.63,0"
@@ -431,20 +444,24 @@
     <g
        font-size="16px"
        id="g124"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(0,4)">
       <text
          x="139.5"
          y="113.5"
-         id="text126">DAC</text>
+         id="text126"
+         style="line-height:0%">DAC</text>
     </g>
     <g
        font-size="16px"
        id="g128"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(0,4)">
       <text
          x="64.5"
          y="113.5"
-         id="text130">Predistortion</text>
+         id="text130"
+         style="line-height:0%">Predistortion</text>
     </g>
     <rect
        x="40"
@@ -505,7 +522,8 @@
       <text
          x="59.5"
          y="173.5"
-         id="text148">FFT</text>
+         id="text148"
+         style="line-height:0%">FFT</text>
     </g>
     <rect
        x="120"
@@ -529,7 +547,8 @@
       <text
          x="139.5"
          y="173.5"
-         id="text156">Window</text>
+         id="text156"
+         style="line-height:0%">Window</text>
     </g>
     <path
        d="m 86.37,200 q 0,0 33.63,0"
@@ -552,7 +571,8 @@
       <text
          x="479.5"
          y="143.5"
-         id="text164">LO</text>
+         id="text164"
+         style="line-height:0%">LO</text>
     </g>
     <path
        d="m 610,40 50,0 -30,20 43.63,0"
@@ -585,11 +605,13 @@
     <g
        font-size="16px"
        id="g174"
-       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000">
+       style="font-size:16px;font-family:LMRoman;text-anchor:middle;fill:#000000"
+       transform="translate(2)">
       <text
          x="634.5"
          y="33.5"
-         id="text176">Tx antenna</text>
+         id="text176"
+         style="line-height:0%">Tx antenna</text>
     </g>
   </g>
 </svg>
