@@ -58,25 +58,25 @@
     \put(0,0){\includegraphics[width=\unitlength,page=4]{fmcw_doppler.pdf}}%
     \put(0.13073005,0.74108659){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{fmcw_doppler.pdf}}%
-    \put(0.97113752,0.68760611){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.97453311,0.68421053){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{t}}}%
     \put(0.14940577,0.9286927){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{transmitted frequency}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{fmcw_doppler.pdf}}%
-    \put(0.31324278,0.64940577){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$T_d$}}}%
+    \put(0.31324278,0.6426146){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$T_d$}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{fmcw_doppler.pdf}}%
     \put(0.13073005,0.53735144){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{\(f_0+\Delta f\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{fmcw_doppler.pdf}}%
     \put(0.13073005,0.40152801){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{fmcw_doppler.pdf}}%
-    \put(0.97113752,0.34804754){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.97453311,0.34465195){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{t}}}%
     \put(0.14940577,0.58913413){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{fmcw_doppler.pdf}}%
     \put(0.13073005,0.02801358){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{\(0\)}}}%
-    \put(0.97113752,0.00848896){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{t}}}%
-    \put(0.14940577,0.24957555){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{| beat frequency |}}}%
+    \put(0.97453311,0.00509338){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.14940577,0.24957555){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$\|beat frequency\|$}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{fmcw_doppler.pdf}}%
-    \put(0.35314092,0.43633277){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{\(f_R+f_D\)}}}%
-    \put(0.47198642,0.43633277){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(f_R-f_D\)}}}%
+    \put(0.34295416,0.4295416){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{\(f_R+f_D\)}}}%
+    \put(0.48217317,0.4295416){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{\(f_R-f_D\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=12]{fmcw_doppler.pdf}}%
-    \put(0.41256367,0.31409168){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\(\tau\)}}}%
+    \put(0.41256367,0.30730051){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\(\tau\)}}}%
   \end{picture}%
 \endgroup%
