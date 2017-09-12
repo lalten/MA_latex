@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'fmcw_triangular.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{455.54619976bp}%
+    \setlength{\unitlength}{442.5bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,31 +48,31 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.96388555)%
+  \begin{picture}(1,0.95084746)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{fmcw_triangular.pdf}}%
-    \put(0.13406116,0.11905531){\makebox(0,0)[rb]{\smash{\(f_R\)}}}%
+    \put(0.12930509,0.13001693){\makebox(0,0)[rb]{\smash{\(f_R\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{fmcw_triangular.pdf}}%
-    \put(0.13430701,0.89175412){\makebox(0,0)[rb]{\smash{\(f_0+\Delta f\)}}}%
+    \put(0.12954237,0.87577966){\makebox(0,0)[rb]{\smash{\(f_0+\Delta f\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{fmcw_triangular.pdf}}%
-    \put(0.13430701,0.75126343){\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
+    \put(0.12954237,0.74018644){\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{fmcw_triangular.pdf}}%
-    \put(0.99756962,0.70260097){\makebox(0,0)[b]{\smash{t}}}%
-    \put(0.15813775,0.94845967){\makebox(0,0)[lb]{\smash{transmitted frequency}}}%
+    \put(0.96949153,0.68644068){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.15254237,0.93050847){\makebox(0,0)[lb]{\smash{transmitted frequency}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{fmcw_triangular.pdf}}%
-    \put(0.32446117,0.66345676){\makebox(0,0)[b]{\smash{\(T-d\)}}}%
+    \put(0.31306781,0.64866103){\makebox(0,0)[b]{\smash{\(T_d\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=6]{fmcw_triangular.pdf}}%
-    \put(0.13430701,0.54052741){\makebox(0,0)[rb]{\smash{\(f_0+\Delta f\)}}}%
+    \put(0.12954237,0.53679662){\makebox(0,0)[rb]{\smash{\(f_0+\Delta f\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=7]{fmcw_triangular.pdf}}%
-    \put(0.13430701,0.40003669){\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
+    \put(0.12954237,0.40120338){\makebox(0,0)[rb]{\smash{\(f_0\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=8]{fmcw_triangular.pdf}}%
-    \put(0.15462548,0.59372068){\makebox(0,0)[lb]{\smash{\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency}}}%
+    \put(0.14915254,0.58813559){\makebox(0,0)[lb]{\smash{\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=9]{fmcw_triangular.pdf}}%
-    \put(0.13406116,0.01368734){\makebox(0,0)[rb]{\smash{\(0\)}}}%
-    \put(0.15813775,0.24600622){\makebox(0,0)[lb]{\smash{| beat frequency |}}}%
+    \put(0.12930509,0.02832207){\makebox(0,0)[rb]{\smash{\(0\)}}}%
+    \put(0.15254237,0.25254237){\makebox(0,0)[lb]{\smash{| beat frequency |}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=10]{fmcw_triangular.pdf}}%
-    \put(0.42682619,0.31625157){\makebox(0,0)[b]{\smash{\(\tau\)}}}%
+    \put(0.41186441,0.31355932){\makebox(0,0)[b]{\smash{\(\tau\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=11]{fmcw_triangular.pdf}}%
-    \put(0.99756962,0.35137424){\makebox(0,0)[b]{\smash{t}}}%
-    \put(0.99756962,0.00014752){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.96949153,0.34745763){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.96949153,0.00847458){\makebox(0,0)[b]{\smash{t}}}%
   \end{picture}%
 \endgroup%

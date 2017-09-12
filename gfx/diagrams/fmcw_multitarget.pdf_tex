@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'fmcw_multitarget.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{422.7027bp}%
+    \setlength{\unitlength}{420.75bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,20 +48,20 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.15233331)%
+  \begin{picture}(1,1.10695187)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{fmcw_multitarget.pdf}}%
-    \put(0.08894088,1.13192369){\makebox(0,0)[lb]{\smash{transmitted and received frequencies}}}%
+    \put(0.10695187,1.08199643){\makebox(0,0)[lb]{\smash{\textcolor{DiagramRed}{transmitted} and received frequencies}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{fmcw_multitarget.pdf}}%
-    \put(0.99738078,0.3786756){\makebox(0,0)[b]{\smash{t}}}%
-    \put(0.12679254,0.64363724){\makebox(0,0)[b]{\smash{Mixer output}}}%
+    \put(0.96969697,0.36541889){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.10517647,0.62210339){\makebox(0,0)[lb]{\smash{Mixer output}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{fmcw_multitarget.pdf}}%
-    \put(0.99738078,0.00015898){\makebox(0,0)[b]{\smash{t}}}%
-    \put(0.12679254,0.26512062){\makebox(0,0)[b]{\smash{Range response}}}%
+    \put(0.96969697,0.00891266){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.10479144,0.26559715){\makebox(0,0)[lb]{\smash{Range response}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{fmcw_multitarget.pdf}}%
-    \put(0.99738078,0.75340706){\makebox(0,0)[b]{\smash{t}}}%
-    \put(0.06622988,0.26512062){\makebox(0,0)[rb]{\smash{\(\|F\|\)}}}%
-    \put(0.06622988,0.64363724){\makebox(0,0)[rb]{\smash{\(f\)}}}%
-    \put(0.06622988,1.13570886){\makebox(0,0)[rb]{\smash{\(f\)}}}%
+    \put(0.96969697,0.71836007){\makebox(0,0)[b]{\smash{t}}}%
+    \put(0.0855615,0.26559715){\makebox(0,0)[rb]{\smash{\(\|F\|\)}}}%
+    \put(0.0855615,0.62210339){\makebox(0,0)[rb]{\smash{\(f\)}}}%
+    \put(0.0855615,1.0855615){\makebox(0,0)[rb]{\smash{\(f\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{fmcw_multitarget.pdf}}%
   \end{picture}%
 \endgroup%

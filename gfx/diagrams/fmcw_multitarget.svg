@@ -1,2 +1,338 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="561px" height="621px" version="1.1"><defs/><g transform="translate(0.5,0.5)"><path d="M 60 200 L 533.63 200" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 538.88 200 L 531.88 203.5 L 533.63 200 L 531.88 196.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="59.5" y="13.5">transmitted and received frequencies</text></g><path d="M 60 200 L 60 26.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 60 21.12 L 63.5 28.12 L 60 26.37 L 56.5 28.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 80 180 L 360 40" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 140 180 L 420 40" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 230 180 L 510 40" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 160 180 L 440 40" fill="none" stroke="#d79b00" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 60 400 L 533.63 400" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 538.88 400 L 531.88 403.5 L 533.63 400 L 531.88 396.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="539.5" y="411.5">t</text></g><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="79.5" y="271.5">Mixer output</text></g><path d="M 60 400 L 60 286.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 60 281.12 L 63.5 288.12 L 60 286.37 L 56.5 288.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 60 600 L 533.63 600" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 538.88 600 L 531.88 603.5 L 533.63 600 L 531.88 596.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="539.5" y="611.5">t</text></g><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="79.5" y="471.5">Range response</text></g><path d="M 60 600 L 60 486.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 60 481.12 L 63.5 488.12 L 60 486.37 L 56.5 488.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 270 600 Q 270 600 275 540 Q 280 480 285 540 Q 290 600 290 600" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 160 360 L 360 360" fill="none" stroke="#d79b00" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 210 580 Q 210 580 215 530 Q 220 480 225 540 Q 230 600 230 600" fill="none" stroke="#d6b656" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 190 600 Q 190 600 195 540 Q 200 480 205 530 Q 210 580 210 580" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 290 600 Q 290 600 500 600" fill="none" stroke="#666666" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 60 600 Q 60 600 190 600" fill="none" stroke="#666666" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 230 600 Q 230 600 270 600" fill="none" stroke="#666666" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="539.5" y="213.5">t</text></g><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="47.5" y="471.5">\(\|F\|\)</text></g><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="47.5" y="271.5">\(f\)</text></g><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="47.5" y="11.5">\(f\)</text></g><path d="M 230 310 L 360 310" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 140 380 L 360 380" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="561px"
+   height="621px"
+   version="1.1"
+   id="svg92"
+   sodipodi:docname="fmcw_multitarget.svg"
+   inkscape:version="0.92.2 (unknown)">
+  <metadata
+     id="metadata96">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1176"
+     id="namedview94"
+     showgrid="false"
+     inkscape:zoom="1.2008324"
+     inkscape:cx="235.58528"
+     inkscape:cy="358.60265"
+     inkscape:window-x="1145"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g90" />
+  <defs
+     id="defs2" />
+  <g
+     transform="translate(0.5,0.5)"
+     id="g90">
+    <path
+       d="M 60 200 L 533.63 200"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path4" />
+    <path
+       d="M 538.88 200 L 531.88 203.5 L 533.63 200 L 531.88 196.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path6" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       font-size="12px"
+       id="g10">
+      <text
+         x="59.5"
+         y="13.5"
+         id="text8">\textcolor{DiagramRed}{transmitted} and received frequencies</text>
+    </g>
+    <path
+       d="M 60 200 L 60 26.37"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path12" />
+    <path
+       d="M 60 21.12 L 63.5 28.12 L 60 26.37 L 56.5 28.12 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path14" />
+    <path
+       d="M 80 180 L 360 40"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path16" />
+    <path
+       d="M 140 180 L 420 40"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path18" />
+    <path
+       d="M 230 180 L 510 40"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path20" />
+    <path
+       d="M 160 180 L 440 40"
+       fill="none"
+       stroke="#d79b00"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path22" />
+    <path
+       d="M 60 400 L 533.63 400"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path24" />
+    <path
+       d="M 538.88 400 L 531.88 403.5 L 533.63 400 L 531.88 396.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path26" />
+    <g
+       font-size="12px"
+       id="g30"
+       transform="translate(4,4)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="539.5"
+         y="411.5"
+         id="text28">t</text>
+    </g>
+    <g
+       font-size="12px"
+       id="g34"
+       transform="translate(-20.996)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="79.5"
+         y="271.5"
+         id="text32"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Mixer output</text>
+    </g>
+    <path
+       d="M 60 400 L 60 286.37"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path36" />
+    <path
+       d="M 60 281.12 L 63.5 288.12 L 60 286.37 L 56.5 288.12 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path38" />
+    <path
+       d="M 60 600 L 533.63 600"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path40" />
+    <path
+       d="M 538.88 600 L 531.88 603.5 L 533.63 600 L 531.88 596.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path42" />
+    <g
+       font-size="12px"
+       id="g46"
+       transform="translate(4,4)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="539.5"
+         y="611.5"
+         id="text44">t</text>
+    </g>
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="middle"
+       font-size="12px"
+       id="g50">
+      <text
+         x="58.287998"
+         y="471.5"
+         id="text48"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:Helvetica;-inkscape-font-specification:'Helvetica, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">Range response</text>
+    </g>
+    <path
+       d="M 60 600 L 60 486.37"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path52" />
+    <path
+       d="M 60 481.12 L 63.5 488.12 L 60 486.37 L 56.5 488.12 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path54" />
+    <path
+       d="M 270 600 Q 270 600 275 540 Q 280 480 285 540 Q 290 600 290 600"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path56" />
+    <path
+       d="M 160 360 L 360 360"
+       fill="none"
+       stroke="#d79b00"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path58" />
+    <path
+       d="M 210 580 Q 210 580 215 530 Q 220 480 225 540 Q 230 600 230 600"
+       fill="none"
+       stroke="#d6b656"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path60" />
+    <path
+       d="M 190 600 Q 190 600 195 540 Q 200 480 205 530 Q 210 580 210 580"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path62" />
+    <path
+       d="M 290 600 Q 290 600 500 600"
+       fill="none"
+       stroke="#666666"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path64" />
+    <path
+       d="M 60 600 Q 60 600 190 600"
+       fill="none"
+       stroke="#666666"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path66" />
+    <path
+       d="M 230 600 Q 230 600 270 600"
+       fill="none"
+       stroke="#666666"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path68" />
+    <g
+       font-size="12px"
+       id="g72"
+       transform="translate(4,4)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="539.5"
+         y="213.5"
+         id="text70">t</text>
+    </g>
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g76">
+      <text
+         x="47.5"
+         y="471.5"
+         id="text74">\(\|F\|\)</text>
+    </g>
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g80">
+      <text
+         x="47.5"
+         y="271.5"
+         id="text78">\(f\)</text>
+    </g>
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g84">
+      <text
+         x="47.5"
+         y="11.5"
+         id="text82">\(f\)</text>
+    </g>
+    <path
+       d="M 230 310 L 360 310"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path86" />
+    <path
+       d="M 140 380 L 360 380"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path88" />
+  </g>
+</svg>

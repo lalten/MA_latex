@@ -1,2 +1,698 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="590px" height="561px" version="1.1"><defs/><g transform="translate(0.5,0.5)"><path d="M 88 480 L 518 480" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="75.79" y="483.79">\(f_R\)</text></g><path d="M 88 40 L 528 40" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="75.93" y="43.79">\(f_0+\Delta f\)</text></g><path d="M 88 120 L 528 120" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="75.93" y="123.79">\(f_0\)</text></g><path d="M 88 140 L 561.63 140" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 566.88 140 L 559.88 143.5 L 561.63 140 L 559.88 136.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="567.5" y="151.5">t</text></g><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="89.5" y="11.5">transmitted frequency</text></g><path d="M 221.63 160 L 154.37 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 226.88 160 L 219.88 163.5 L 221.63 160 L 219.88 156.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 149.12 160 L 156.12 156.5 L 154.37 160 L 156.12 163.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="184.21" y="173.79">\(T-d\)</text></g><path d="M 148 160 L 148 40" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 308 40 L 388 120" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 468 40 L 388 120" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 70 L 468 40" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 100 L 148 40" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 140 L 88 26.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 21.12 L 91.5 28.12 L 88 26.37 L 84.5 28.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 240 L 528 240" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="75.93" y="243.79">\(f_0+\Delta f\)</text></g><path d="M 88 320 L 528 320" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="75.93" y="323.79">\(f_0\)</text></g><path d="M 88 340 L 561.63 340" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 566.88 340 L 559.88 343.5 L 561.63 340 L 559.88 336.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="87.5" y="213.5">\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency</text></g><path d="M 88 340 L 88 226.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 221.12 L 91.5 228.12 L 88 226.37 L 84.5 228.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 258 359.69 L 258 320" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 198 359.69 L 221.63 359.69" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 226.88 359.69 L 219.88 363.19 L 221.63 359.69 L 219.88 356.19 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 288 359.69 L 264.37 359.69" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 259.12 359.69 L 266.12 356.19 L 264.37 359.69 L 266.12 363.19 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 359.69 L 228 320" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 540 L 561.63 540" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 566.88 540 L 559.88 543.5 L 561.63 540 L 559.88 536.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="75.79" y="543.79">\(0\)</text></g><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="89.5" y="411.5">| beat frequency |</text></g><path d="M 88 540 L 88 426.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 421.12 L 91.5 428.12 L 88 426.37 L 84.5 428.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 148 480 L 118 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 163 540 L 148 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 148 40 L 228 120" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 120 L 308 40" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 160 L 228 120" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 270 L 468 240" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 308 240 L 388 320" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 320 L 308 240" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 148 240 L 228 320" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 300 L 148 240" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 528 270 L 498 240" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 428 280 L 398 310" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 338 240 L 418 320" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 258 320 L 338 240" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 178 240 L 258 320" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 118 300 L 178 240" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 468 240 L 388 320" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 240 L 418 320" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 178 480 L 163 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 243 540 L 228 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 258 480 L 243 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 308 480 L 258 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 323 540 L 308 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 480 L 178 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 403 541 L 388 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 418 480 L 403 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 388 480 L 338 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 338 480 L 323 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 468 480 L 418 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 483 540 L 468 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 480 L 483 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 508 480 L 498 480" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="242.5" y="371.5">\(\tau\)</text></g><path d="M 258 480 L 258 360" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><path d="M 228 480 L 228 360" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="567.5" y="351.5">t</text></g><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="567.5" y="551.5">t</text></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="590px"
+   height="561px"
+   version="1.1"
+   id="svg192"
+   sodipodi:docname="fmcw_triangular.svg"
+   inkscape:version="0.92.2 (unknown)">
+  <metadata
+     id="metadata196">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1176"
+     id="namedview194"
+     showgrid="false"
+     inkscape:zoom="1.3321025"
+     inkscape:cx="334.23419"
+     inkscape:cy="223.87643"
+     inkscape:window-x="1145"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g42" />
+  <defs
+     id="defs2" />
+  <g
+     transform="translate(0.5,0.5)"
+     id="g190">
+    <path
+       d="M 88 480 L 518 480"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="3 3"
+       pointer-events="none"
+       id="path4" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g8">
+      <text
+         x="75.79"
+         y="483.79"
+         id="text6">\(f_R\)</text>
+    </g>
+    <path
+       d="M 88 40 L 528 40"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="3 3"
+       pointer-events="none"
+       id="path10" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g14">
+      <text
+         x="75.93"
+         y="43.79"
+         id="text12">\(f_0+\Delta f\)</text>
+    </g>
+    <path
+       d="M 88 120 L 528 120"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="3 3"
+       pointer-events="none"
+       id="path16" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g20">
+      <text
+         x="75.93"
+         y="123.79"
+         id="text18">\(f_0\)</text>
+    </g>
+    <path
+       d="M 88 140 L 561.63 140"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path22" />
+    <path
+       d="M 566.88 140 L 559.88 143.5 L 561.63 140 L 559.88 136.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path24" />
+    <g
+       font-size="12px"
+       id="g28"
+       transform="translate(4,4)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="567.5"
+         y="151.5"
+         id="text26">t</text>
+    </g>
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       font-size="12px"
+       id="g32">
+      <text
+         x="89.5"
+         y="11.5"
+         id="text30">transmitted frequency</text>
+    </g>
+    <path
+       d="M 221.63 160 L 154.37 160"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path34" />
+    <path
+       d="M 226.88 160 L 219.88 163.5 L 221.63 160 L 219.88 156.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path36" />
+    <path
+       d="M 149.12 160 L 156.12 156.5 L 154.37 160 L 156.12 163.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path38" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="middle"
+       font-size="12px"
+       id="g42">
+      <text
+         x="184.21001"
+         y="177.78999"
+         id="text40">\(T_d\)</text>
+    </g>
+    <path
+       d="M 148 160 L 148 40"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path44" />
+    <path
+       d="M 308 40 L 388 120"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path46" />
+    <path
+       d="M 468 40 L 388 120"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path48" />
+    <path
+       d="M 498 70 L 468 40"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path50" />
+    <path
+       d="M 88 100 L 148 40"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path52" />
+    <path
+       d="M 88 140 L 88 26.37"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path54" />
+    <path
+       d="M 88 21.12 L 91.5 28.12 L 88 26.37 L 84.5 28.12 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path56" />
+    <path
+       d="M 88 240 L 528 240"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="3 3"
+       pointer-events="none"
+       id="path58" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g62">
+      <text
+         x="75.93"
+         y="243.79"
+         id="text60">\(f_0+\Delta f\)</text>
+    </g>
+    <path
+       d="M 88 320 L 528 320"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="3 3"
+       pointer-events="none"
+       id="path64" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g68">
+      <text
+         x="75.93"
+         y="323.79"
+         id="text66">\(f_0\)</text>
+    </g>
+    <path
+       d="M 88 340 L 561.63 340"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path70" />
+    <path
+       d="M 566.88 340 L 559.88 343.5 L 561.63 340 L 559.88 336.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path72" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       font-size="12px"
+       id="g76">
+      <text
+         x="87.5"
+         y="213.5"
+         id="text74">\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency</text>
+    </g>
+    <path
+       d="M 88 340 L 88 226.37"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path78" />
+    <path
+       d="M 88 221.12 L 91.5 228.12 L 88 226.37 L 84.5 228.12 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path80" />
+    <path
+       d="M 258 359.69 L 258 320"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path82" />
+    <path
+       d="M 198 359.69 L 221.63 359.69"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path84" />
+    <path
+       d="M 226.88 359.69 L 219.88 363.19 L 221.63 359.69 L 219.88 356.19 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path86" />
+    <path
+       d="M 288 359.69 L 264.37 359.69"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path88" />
+    <path
+       d="M 259.12 359.69 L 266.12 356.19 L 264.37 359.69 L 266.12 363.19 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path90" />
+    <path
+       d="M 228 359.69 L 228 320"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path92" />
+    <path
+       d="M 88 540 L 561.63 540"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path94" />
+    <path
+       d="M 566.88 540 L 559.88 543.5 L 561.63 540 L 559.88 536.5 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path96" />
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       text-anchor="end"
+       font-size="12px"
+       id="g100">
+      <text
+         x="75.79"
+         y="543.79"
+         id="text98">\(0\)</text>
+    </g>
+    <g
+       fill="#000000"
+       font-family="Helvetica"
+       font-size="12px"
+       id="g104">
+      <text
+         x="89.5"
+         y="411.5"
+         id="text102">| beat frequency |</text>
+    </g>
+    <path
+       d="M 88 540 L 88 426.37"
+       fill="none"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path106" />
+    <path
+       d="M 88 421.12 L 91.5 428.12 L 88 426.37 L 84.5 428.12 Z"
+       fill="#000000"
+       stroke="#000000"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path108" />
+    <path
+       d="M 148 480 L 118 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path110" />
+    <path
+       d="M 163 540 L 148 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path112" />
+    <path
+       d="M 148 40 L 228 120"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path114" />
+    <path
+       d="M 228 120 L 308 40"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path116" />
+    <path
+       d="M 228 160 L 228 120"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path118" />
+    <path
+       d="M 498 270 L 468 240"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path120" />
+    <path
+       d="M 308 240 L 388 320"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path122" />
+    <path
+       d="M 228 320 L 308 240"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path124" />
+    <path
+       d="M 148 240 L 228 320"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path126" />
+    <path
+       d="M 88 300 L 148 240"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path128" />
+    <path
+       d="M 528 270 L 498 240"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path130" />
+    <path
+       d="M 428 280 L 398 310"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path132" />
+    <path
+       d="M 338 240 L 418 320"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path134" />
+    <path
+       d="M 258 320 L 338 240"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path136" />
+    <path
+       d="M 178 240 L 258 320"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path138" />
+    <path
+       d="M 118 300 L 178 240"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path140" />
+    <path
+       d="M 468 240 L 388 320"
+       fill="none"
+       stroke="#b85450"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path142" />
+    <path
+       d="M 498 240 L 418 320"
+       fill="none"
+       stroke="#82b366"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path144" />
+    <path
+       d="M 178 480 L 163 540"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path146" />
+    <path
+       d="M 243 540 L 228 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path148" />
+    <path
+       d="M 258 480 L 243 540"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path150" />
+    <path
+       d="M 308 480 L 258 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path152" />
+    <path
+       d="M 323 540 L 308 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path154" />
+    <path
+       d="M 228 480 L 178 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path156" />
+    <path
+       d="M 403 541 L 388 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path158" />
+    <path
+       d="M 418 480 L 403 540"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path160" />
+    <path
+       d="M 388 480 L 338 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path162" />
+    <path
+       d="M 338 480 L 323 540"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path164" />
+    <path
+       d="M 468 480 L 418 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path166" />
+    <path
+       d="M 483 540 L 468 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path168" />
+    <path
+       d="M 498 480 L 483 540"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path170" />
+    <path
+       d="M 508 480 L 498 480"
+       fill="none"
+       stroke="#6c8ebf"
+       stroke-width="3"
+       stroke-miterlimit="10"
+       pointer-events="none"
+       id="path172" />
+    <g
+       font-size="12px"
+       id="g176"
+       transform="translate(0,4)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="242.5"
+         y="371.5"
+         id="text174">\(\tau\)</text>
+    </g>
+    <path
+       d="M 258 480 L 258 360"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="3 3"
+       pointer-events="none"
+       id="path178" />
+    <path
+       d="M 228 480 L 228 360"
+       fill="none"
+       stroke="#666666"
+       stroke-miterlimit="10"
+       stroke-dasharray="3 3"
+       pointer-events="none"
+       id="path180" />
+    <g
+       font-size="12px"
+       id="g184"
+       transform="translate(4,4)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="567.5"
+         y="351.5"
+         id="text182">t</text>
+    </g>
+    <g
+       font-size="12px"
+       id="g188"
+       transform="translate(4,4)"
+       style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">
+      <text
+         x="567.5"
+         y="551.5"
+         id="text186">t</text>
+    </g>
+  </g>
+</svg>
