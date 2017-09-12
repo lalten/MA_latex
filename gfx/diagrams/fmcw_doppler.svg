@@ -1,2 +1,653 @@
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="589px" height="561px" version="1.1"><defs/><g transform="translate(0.5,0.5)"><path d="M 88 500 L 518 500" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="79.5" y="504">\(f_R-f_D\)</text></g><path d="M 88 460 L 518 460" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="79.5" y="464">\(f_R+f_D\)</text></g><path d="M 88 40 L 488 40" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="77.5" y="44">\(f_0+\Delta f\)</text></g><path d="M 88 120 L 408 120" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="76.5" y="124">\(f_0\)</text></g><path d="M 88 140 L 561.63 140" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 566.88 140 L 559.88 143.5 L 561.63 140 L 559.88 136.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="567.5" y="151.5">t</text></g><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="87.5" y="13.5">transmitted frequency</text></g><path d="M 221.63 160 L 154.37 160" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 226.88 160 L 219.88 163.5 L 221.63 160 L 219.88 156.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 149.12 160 L 156.12 156.5 L 154.37 160 L 156.12 163.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="184" y="174">\(T_d\)</text></g><path d="M 148 160 L 148 40" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 308 40 L 388 120" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 468 40 L 388 120" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 70 L 468 40" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 100 L 148 40" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 140 L 88 26.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 21.12 L 91.5 28.12 L 88 26.37 L 84.5 28.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 240 L 478 240" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="76.5" y="244">\(f_0+\Delta f\)</text></g><path d="M 88 320 L 508 320" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="76.5" y="324">\(f_0\)</text></g><path d="M 88 340 L 561.63 340" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 566.88 340 L 559.88 343.5 L 561.63 340 L 559.88 336.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="567.5" y="351.5">t</text></g><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="87.5" y="213.5">\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency</text></g><path d="M 88 340 L 88 226.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 221.12 L 91.5 228.12 L 88 226.37 L 84.5 228.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 258 359.69 L 258 310" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 198 359.69 L 221.63 359.69" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 226.88 359.69 L 219.88 363.19 L 221.63 359.69 L 219.88 356.19 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 288 359.69 L 264.37 359.69" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 259.12 359.69 L 266.12 356.19 L 264.37 359.69 L 266.12 363.19 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 359.69 L 228 320" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 540 L 561.63 540" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 566.88 540 L 559.88 543.5 L 561.63 540 L 559.88 536.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="76.5" y="544">\(0\)</text></g><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="567.5" y="551.5">t</text></g><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="87.5" y="413.5">| beat frequency |</text></g><path d="M 88 540 L 88 426.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 421.12 L 91.5 428.12 L 88 426.37 L 84.5 428.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 148 500 L 108 500" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 158 540 L 148 500" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 148 40 L 228 120" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 120 L 308 40" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 160 L 228 120" fill="none" stroke="#666666" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 270 L 468 240" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 308 240 L 388 320" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 320 L 308 240" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 148 240 L 228 320" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 88 300 L 148 240" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 528 260 L 498 230" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 427.69 280.31 L 398 310" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 338 230 L 418 310" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 258 310 L 338 230" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 178 230 L 258 310" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 118 290 L 178 230" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 278 319.69 L 278 296.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 278 291.12 L 281.5 298.12 L 278 296.37 L 274.5 298.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 278 240 L 278 263.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 278 268.88 L 274.5 261.88 L 278 263.63 L 281.5 261.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 208 329.69 L 208 306.37" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 208 301.12 L 211.5 308.12 L 208 306.37 L 204.5 308.12 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 208 230 L 208 253.63" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 208 258.88 L 204.5 251.88 L 208 253.63 L 211.5 251.88 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 468 240 L 388 320" fill="none" stroke="#b85450" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 230 L 418 310" fill="none" stroke="#82b366" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="end" font-size="12px"><text x="207.5" y="303.5">\(f_R+f_D\)</text></g><g fill="#000000" font-family="Helvetica" font-size="12px"><text x="277.5" y="303.5">\(f_R-f_D\)</text></g><path d="M 178 460 L 158 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 248 540 L 228 460" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 258 500 L 248 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 308 500 L 258 500" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 318 540 L 308 500" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 460 L 178 460" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 408 541 L 388 460" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 418 500 L 408 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 388 460 L 338 460" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 338 460 L 318 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 468 500 L 418 500" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 478 540 L 468 500" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 460 L 478 540" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 498 460 L 508 460" fill="none" stroke="#6c8ebf" stroke-width="3" stroke-miterlimit="10" pointer-events="none"/><path d="M 228 460 L 228 360" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><path d="M 258 500 L 258 360" fill="none" stroke="#666666" stroke-miterlimit="10" stroke-dasharray="3 3" pointer-events="none"/><g fill="#000000" font-family="Helvetica" text-anchor="middle" font-size="12px"><text x="242.5" y="371.5">\(\tau\)</text></g></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="589px"
+   height="561px"
+   version="1.1"
+   id="svg222"
+   sodipodi:docname="fmcw_doppler.svg"
+   inkscape:version="0.92.2 (unknown)">
+  <metadata
+     id="metadata226">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1855"
+     inkscape:window-height="1176"
+     id="namedview224"
+     showgrid="false"
+     inkscape:zoom="1.3369742"
+     inkscape:cx="289.06649"
+     inkscape:cy="270.48904"
+     inkscape:window-x="1145"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg222" />
+  <defs
+     id="defs2" />
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path4"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,500.5 h 430" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="80"
+     y="504.5"
+     id="text6">\(f_R-f_D\)</text>
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path10"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,460.5 h 430" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="80"
+     y="464.5"
+     id="text12">\(f_R+f_D\)</text>
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path16"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,40.5 h 400" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="78"
+     y="44.5"
+     id="text18">\(f_0+\Delta f\)</text>
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path22"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,120.5 h 320" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="77"
+     y="124.5"
+     id="text24">\(f_0\)</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path28"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 88.5,140.5 H 562.13" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path30"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 567.38,140.5 -7,3.5 1.75,-3.5 -1.75,-3.5 z" />
+  <text
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, ';text-anchor:middle;fill:#000000"
+     x="572"
+     y="156"
+     id="text32">t</text>
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="88"
+     y="14"
+     id="text36">transmitted frequency</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path40"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 222.13,160.5 H 154.87" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path42"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 227.38,160.5 -7,3.5 1.75,-3.5 -1.75,-3.5 z" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path44"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 149.62,160.5 7,-3.5 -1.75,3.5 1.75,3.5 z" />
+  <text
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, ';text-anchor:middle;fill:#000000"
+     x="184.5"
+     y="178.5"
+     id="text46">$T_d$</text>
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path50"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 148.5,160.5 V 40.5" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path52"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 308.5,40.5 80,80" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path54"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 468.5,40.5 -80,80" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path56"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 498.5,70.5 -30,-30" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path58"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,100.5 60,-60" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path60"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 88.5,140.5 V 26.87" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path62"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,21.62 3.5,7 -3.5,-1.75 -3.5,1.75 z" />
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path64"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,240.5 h 390" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="77"
+     y="244.5"
+     id="text66">\(f_0+\Delta f\)</text>
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path70"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,320.5 h 420" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="77"
+     y="324.5"
+     id="text72">\(f_0\)</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path76"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 88.5,340.5 H 562.13" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path78"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 567.38,340.5 -7,3.5 1.75,-3.5 -1.75,-3.5 z" />
+  <text
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, ';text-anchor:middle;fill:#000000"
+     x="572"
+     y="356"
+     id="text80">t</text>
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="88"
+     y="214"
+     id="text84">\textcolor{DiagramRed}{transmitted} and \textcolor{DiagramGreen}{received} frequency</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path88"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 88.5,340.5 V 226.87" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path90"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,221.62 3.5,7 -3.5,-1.75 -3.5,1.75 z" />
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path92"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 258.5,360.19 V 310.5" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path94"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 198.5,360.19 h 23.63" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path96"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 227.38,360.19 -7,3.5 1.75,-3.5 -1.75,-3.5 z" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path98"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 288.5,360.19 H 264.87" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path100"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 259.62,360.19 7,-3.5 -1.75,3.5 1.75,3.5 z" />
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path102"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 228.5,360.19 V 320.5" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path104"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 88.5,540.5 H 562.13" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path106"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 567.38,540.5 -7,3.5 1.75,-3.5 -1.75,-3.5 z" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="77"
+     y="544.5"
+     id="text108">\(0\)</text>
+  <text
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, ';text-anchor:middle;fill:#000000"
+     x="572"
+     y="556"
+     id="text112">t</text>
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="88"
+     y="414"
+     id="text116">| beat frequency |</text>
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path120"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 88.5,540.5 V 426.87" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path122"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,421.62 3.5,7 -3.5,-1.75 -3.5,1.75 z" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path124"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 148.5,500.5 h -40" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path126"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 158.5,540.5 -10,-40" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path128"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 148.5,40.5 80,80" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path130"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 228.5,120.5 80,-80" />
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path132"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 228.5,160.5 v -40" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path134"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 498.5,270.5 -30,-30" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path136"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 308.5,240.5 80,80" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path138"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 228.5,320.5 80,-80" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path140"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 148.5,240.5 80,80" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path142"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 88.5,300.5 60,-60" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path144"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 528.5,260.5 -30,-30" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path146"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 428.19,280.81 398.5,310.5" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path148"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 338.5,230.5 80,80" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path150"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 258.5,310.5 80,-80" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path152"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 178.5,230.5 80,80" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path154"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 118.5,290.5 60,-60" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path156"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 278.5,320.19 V 296.87" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path158"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 278.5,291.62 3.5,7 -3.5,-1.75 -3.5,1.75 z" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path160"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 278.5,240.5 v 23.63" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path162"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 278.5,269.38 -3.5,-7 3.5,1.75 3.5,-1.75 z" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path164"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="M 208.5,330.19 V 306.87" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path166"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 208.5,301.62 3.5,7 -3.5,-1.75 -3.5,1.75 z" />
+  <path
+     style="fill:none;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path168"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 208.5,230.5 v 23.63" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path170"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 208.5,259.38 -3.5,-7 3.5,1.75 3.5,-1.75 z" />
+  <path
+     style="fill:none;stroke:#b85450;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path172"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 468.5,240.5 -80,80" />
+  <path
+     style="fill:none;stroke:#82b366;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path174"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 498.5,230.5 -80,80" />
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';text-anchor:end;fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="208"
+     y="304"
+     id="text176">\(f_R+f_D\)</text>
+  <text
+     style="font-size:16px;font-family:'Latin Modern Roman';fill:#000000;-inkscape-font-specification:'Latin Modern Roman, ';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
+     x="278"
+     y="304"
+     id="text180">\(f_R-f_D\)</text>
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path184"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 178.5,460.5 -20,80" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path186"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 248.5,540.5 -20,-80" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path188"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 258.5,500.5 -10,40" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path190"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 308.5,500.5 h -50" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path192"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 318.5,540.5 -10,-40" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path194"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 228.5,460.5 h -50" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path196"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 408.5,541.5 -20,-81" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path198"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 418.5,500.5 -10,40" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path200"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 388.5,460.5 h -50" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path202"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 338.5,460.5 -20,80" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path204"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 468.5,500.5 h -50" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path206"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 478.5,540.5 -10,-40" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path208"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 498.5,460.5 -20,80" />
+  <path
+     style="fill:none;stroke:#6c8ebf;stroke-width:3;stroke-miterlimit:10"
+     inkscape:connector-curvature="0"
+     id="path210"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 498.5,460.5 h 10" />
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path212"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 228.5,460.5 v -100" />
+  <path
+     style="fill:none;stroke:#666666;stroke-miterlimit:10;stroke-dasharray:3, 3"
+     inkscape:connector-curvature="0"
+     id="path214"
+     pointer-events="none"
+     stroke-miterlimit="10"
+     d="m 258.5,500.5 v -140" />
+  <text
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Latin Modern Roman';-inkscape-font-specification:'Latin Modern Roman, ';text-anchor:middle;fill:#000000"
+     x="243"
+     y="376"
+     id="text216">\(\tau\)</text>
+</svg>
