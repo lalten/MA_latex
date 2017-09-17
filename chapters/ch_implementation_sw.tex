@@ -147,6 +147,8 @@ file.
 This setup allowed the development of a ROS node that handles
 communication with the radar module on the Linux/Arm based Kobuki robot.
 
+The files comprising \texttt{libomniradar} are publicly available at \url{https://github.com/lalten/libomniradar}.
+
 \subsection{ROS node}\label{ros-node}
 A new \texttt{omniradar} ROS package was developed to support the use of
 the Omniradar sensor within the ROS environment. A set of
@@ -242,6 +244,8 @@ into a C++11 lambda thread that is immediately detached.
 
 The multithreading approach lets the node use between \SI{100}{\%} and \SI{140}{\%}
 CPU (observed with \texttt{htop}).
+
+The rospackage providing the omniradar rosnode is available at \url{https://github.com/lalten/omniradar}.
 
 \subsection{Matlab interface}\label{matlab}
 
