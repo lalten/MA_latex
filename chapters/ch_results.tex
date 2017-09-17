@@ -33,14 +33,23 @@ During development of the reprojection method, over 30 scans were taken. The env
 
 The scans of this environment are assigned code names in alphabetical order for easy referencing. \Cref{tab:params} shows the parameters with which each of the scans was taken: Sweep time, sensor orientation (\textbf{H}orizontal / \textbf{V}ertical / \textbf{H}orizontal \textbf{I}nverted beam fan), squint angle (center of sensor's FOV, so \ang{90} is sideways-looking and \ang{0} is forward-looking), mounted horn antenna extension (which narrows the beam shape), availability of \texttt{/map} rosmessages with lidar slam information, and finally availability of \texttt{/tf} rosmessages which carry the slam-based odometry drift correction.
 
-The scans are presented through the following plots:
-\begin{itemize}
-    \item Preprocessed (i.e. oversampled, range and transmit crosstalk compensated) input energy of range scans (down range echo intensity vs.~cross-range/mileage)
-    \item Estimated Doppler speed, averaged over cross range as described in \cref{raw-data-smoothing} and peak FWHM as described in \cref{peaks-overlaps-at-crossing-target-arcs}
-    \item DOA estimation (described in \cref{doa-implementation}) to resolve the angle ambiguities described in \cref{geometry-for-the-general-case}. Likewise averaged over cross-range and FWHM.
-    \item Reprojection map as described in \cref{reprojection-mapping}
-    \item If the \texttt{/map} is available for a scan, also the overlay of reprojection map and lidar occupancy gridmap as described in \cref{output}.
-\end{itemize}
+The scans are presented through the following plot types. An exemplary result is shown in \cref{fig:nirvana} and more result plots can be found in \cref{scans}
+
+\subparagraph{Input Energy}
+This plot (e.g. \cref{fig:resinput}) visualizes the preprocessed (i.e. oversampled, range and transmit crosstalk compensated) input energy of a scan. To understand the graph, it helps to first think of it as the stacked range profile of a range sensor that looks in a \ang{90} angle to the right of the robot. The x-axis represents down-range (in \si{m}), which is the range axis in the 1D range profile as extracted from the FMCW beat frequency (see \cref{fig:rawbeat_f} for an example). Each range profile line's echo intensity (shown on the y-axis in \cref{fig:rawbeat_f}) is visualized in a logarithmic \texttt{hcparula}\footnote{\texttt{hcparula} is a monotonic, linear-grayscale intensity colormap with enhanced contrast. It is available at \url{https://www.mathworks.com/matlabcentral/fileexchange/61768}} color scale. The unit is \si{dB Vrms}. These range lines are stacked over the Y-axis direction, which is the cross-range dimension. This dimension shows how far the radar sensor has traveled from the scan's origin (i.e. mileage, in \si{m}). If the radar was moved at a constant velocity, it can be thought of as the time axis, however denoting and processing it as mileage has the benefit of radar velocity independence. Note that this plot does not show any information on where (at which angle) a target is, but only at what distance it is. Target peaks appear and disappear over the course of the y-axis, because they enter or leave the radar antenna's field of view.
+
+\subparagraph{Doppler estimation}
+To calculate reprojection angles, a target's Doppler speed must be estimated. This graph (e.g. \cref{fig:resdoppler}) shows the estimation from the peak gradient algorithm: Every detected peak has a certain speed associated with it. This speed is plotted as color over the FWHM around the peak's location in down-range/cross-range space. The color follows a symmetric linear pink/white/green color scale\footnote{Specifically, \texttt{PiYG} via the \texttt{cbrewer} function, which is available at \url{https://www.mathworks.com/matlabcentral/fileexchange/34087}}. The estimated Doppler speed is not shown in its smoothed version, which is averaged over cross range as described in \cref{raw-data-smoothing} and peak FWHM as described in \cref{peaks-overlaps-at-crossing-target-arcs}. The background of the graph is dark grey to make sure the white middle of the color scale is visible, as well as to help highlight where Doppler peaks were actually detected.
+
+\subparagraph{DOA estimation}
+The third input graph (e.g. \cref{fig:resdoa}) shows DOA data as estimated in \cref{doa-implementation}, which in the current implementation is solely used to resolve the left-right reprojection angle ambiguity in the forward-looking geometry (see \cref{geometry-for-the-general-case}). The (darkened) graph background visualizes the phase difference of the oversampled complex analytic input signal of both receiving radar antennas. Similar to the Doppler graph, DOA information over detected peaks is smoothed over cross-range and each peak's FWHM. The color is the same symmetric pink/white/green as the Doppler plot. The color scale is from $-\pi/3$ to $\pi/3$ radian; values above or below are clipped (but this happens only for the noisy background signal).
+
+\subparagraph{Reprojection map}
+This is the main output of the reprojection mapping implementation, as described in \cref{reprojection-mapping}. The graph (e.g. \cref{fig:resrepro}) shows a top-view 2D map, with the origin (0,0) at the scan starting point. Axes are in \si{m}. The color scale is again \texttt{hcparula}, with echo intensities in \si{dBVrms}. The red line shows the radar motion path.
+
+\subparagraph{Reprojection map overlay}
+If the \texttt{/map} is available for a scan, this graph (e.g. \cref{fig:resmap}) shows the reprojection map overlaid over the lidar occupancy gridmap as described in \cref{output}. The lidar map has a grayscale colormap, where black means occupied, white means clear, and anything in between shows occupancy probability. Uncharted, unknown values are a ``tasteful blueish greenish grayish color''\footnote{Legal $-1$ value from \url{http://docs.ros.org/jade/api/rviz/html/c++/map\_\_display\_8cpp\_source.html\#l00212}}. The red path is again the radar motion path.
+
 
 \begin{table}[htb]
     \rowcolors{1}{ColorAlternatedRow}{}
@@ -88,44 +97,41 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
  Washroom & \SI{2.5}{ms} & V & \ang{45} & \xmark & \cmark & \cmark \\
  Xray-Room & \SI{2.5}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
  Y is there a cable on the floor & \SI{5.0}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
- Z & & & & & & \\
+%  Z & & & & & & \\
     \end{tabularx}
     \caption{Scan parameters}
     \label{tab:params}
 \end{table}
-
-
-An exemplary result is shown in \cref{fig:nirvana}. More result plots can be found in \cref{scans}
 
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[t]{0.32\linewidth}
         \centering
         \includegraphics[width=\linewidth]{gfx/results/nirvana_input.png}
-        \caption{\small Input energy}
+        \caption{\small Input energy} \label{fig:resinput}
     \end{subfigure}%
     \hfill%
     \begin{subfigure}[t]{0.32\linewidth}  
         \centering 
         \includegraphics[width=\linewidth]{gfx/results/nirvana_doppler.png}
-        \caption{\small Doppler estimation}
+        \caption{\small Doppler estimation} \label{fig:resdoppler}
     \end{subfigure}%
     \hfill%
     \begin{subfigure}[t]{0.32\linewidth}   
         \centering 
         \includegraphics[width=\linewidth]{gfx/results/nirvana_doa.png}
-        \caption{\small Direction of Arrival}
+        \caption{\small Direction of Arrival} \label{fig:resdoa}
     \end{subfigure}\\
     \begin{subfigure}[t]{0.475\textwidth}   
         \centering 
         \includegraphics[max width=\linewidth, max height=\linewidth]{gfx/results/nirvana_reprojection.png}
-        \caption{\small Reprojection Map}
+        \caption{\small Reprojection Map} \label{fig:resrepro}
     \end{subfigure}%
     \hfill%
     \begin{subfigure}[t]{0.475\textwidth}   
         \centering 
         \includegraphics[max width=\linewidth, max height=\linewidth]{gfx/results/nirvana_map.png}
-        \caption{\small Reprojection Map}
+        \caption{\small Reprojection Map} \label{fig:resmap}
     \end{subfigure}%
     \caption{Nirvana scan} \label{fig:nirvana}
 \end{figure}
