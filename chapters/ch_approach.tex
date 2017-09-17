@@ -16,7 +16,7 @@ Assume that the sensor's antenna is sensitive only to co-planar targets --- this
 \begin{equation} \label{eq:geometry_side_A}
     v_D = v_R\text{, for }\alpha=0.
 \end{equation}
-At the same time it just passes target B at the point of closest approach with $alpha=\frac{\pi}{2}$. Target B's Doppler speed will be measured as
+At the same time it just passes target C at the point of closest approach with $\alpha=\frac{\pi}{2}$. Target C's Doppler speed will be measured as
 \begin{equation} \label{eq:geometry_side_C}
     v_D = 0\text{, for }\alpha=\frac{\pi}{2}.
 \end{equation}
@@ -30,13 +30,15 @@ This is of course also true for already passed targets, which will yield a negat
 \end{equation}
 Note that \cref{eq:geometry_side_alpha} holds, because the scene must be static and hence $-v_R \leq v_D \leq v_R$.
 
+\section{Geometry for the General 2D Case} \label{geometry-for-the-general-case}
+
 \begin{figure}[htp]
     \centering
     \footnotesize
     \begin{subfigure}[t]{0.475\textwidth}
         \def\svgwidth{\linewidth}
         \input{gfx/diagrams/geometry_side.pdf_tex}
-        \caption{Side-facing case}
+        \caption{Side-facing 2D case}
         \label{fig:geometry-side}
     \end{subfigure}%
     \hfill%
@@ -49,13 +51,11 @@ Note that \cref{eq:geometry_side_alpha} holds, because the scene must be static 
     \caption{Reprojection geometries}
 \end{figure}
 
-\section{Geometry for the General 2D Case} \label{geometry-for-the-general-case}
-
 In the planar side-facing case, only the principal value of the inverse cosine in \cref{eq:geometry_side_alpha} is used. However, as soon as the radar antenna features angle sensitivities that allow the detection of targets on both sides of the motion path, there will be an angle ambiguity. This is the case for a sensor that is mounted forward-facing or that can detect targets in a field of view of over 180°. This case is practically very relevant as it is of high importance for an obstacle sensor to be sensitive to obstacles in its path rather than just objects located on the side.
 
 \Cref{fig:geometry-forward} visualizes this geometry: For target A the angle is still clear, because according to \cref{eq:geometry_side_A} $\alpha = 0$. Targets B and C however are located at angles $\alpha$ and $-\alpha$, which according to \cref{eq:geometry_side_B} causes the same Doppler speed. In this case, \cref{eq:geometry_side_alpha} will yield an ambiguous result.
 
-It would be possible to resolve this ambiguity by tracking the targets while changing the robot's movement direction. If the robot's bearing is changed by $\Delta\alpha$, the targets B and C appear at angles $\alpha+\Delta\alpha$ and $\alpha-\Delta\alpha$, respectively (see \cref{fig:geometry-turn}). The target whose Doppler speed changes to $v_D = v_R~\cos(\alpha+\Delta\alpha)$ is the one that the robot turned away from, and vice versa for the other target. The drawback is that newly detected targets can only be mapped after a change of bearing, which means that the robot has to drive in a zig-zag path to properly map its environment.
+It would be possible to resolve this ambiguity by tracking the targets while changing the robot's movement direction as shown in \cref{fig:geometry-turn}. If the robot's bearing is changed by $\beta$, the targets B and C appear at angles $\alpha+\beta$ and $\alpha-\beta$, respectively. The target whose Doppler speed changes to $v_D = v_R~\cos(\alpha+\beta)$ is the one that the robot turned away from, and vice versa for the other target. The drawback is that newly detected targets can only be mapped after a change of bearing, which means that the robot has to drive in a zig-zag path to properly map its environment.
 
 \begin{figure}
     \centering
