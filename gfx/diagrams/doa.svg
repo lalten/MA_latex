@@ -12,7 +12,7 @@
    version="1.1"
    id="svg454"
    sodipodi:docname="doa.svg"
-   inkscape:version="0.92.2 (unknown)">
+   inkscape:version="0.92.1 r15371">
   <metadata
      id="metadata458">
     <rdf:RDF>
@@ -21,7 +21,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -43,9 +43,9 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      units="mm"
-     inkscape:zoom="2.7640116"
-     inkscape:cx="110.05322"
-     inkscape:cy="142.92865"
+     inkscape:zoom="7.8178054"
+     inkscape:cx="76.631992"
+     inkscape:cy="-9.1826964"
      inkscape:window-x="1145"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -107,7 +107,7 @@
      x="-112.95952"
      y="142.76352"
      id="text378"
-     transform="rotate(-45)">$\color{DiagramRed}\lambda~\Delta\Phi$</text>
+     transform="rotate(-45)">$\color{DiagramRed}\lambda~\Delta\phi$</text>
   <path
      style="fill:none;stroke:#666666;stroke-width:0.65218055;stroke-miterlimit:10"
      inkscape:connector-curvature="0"

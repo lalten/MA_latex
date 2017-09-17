@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'doa.pdf' (pdf, eps, ps)
 %%
@@ -50,7 +50,7 @@
   \makeatother%
   \begin{picture}(1,0.97081112)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{doa.pdf}}%
-    \put(0.0827571,0.2607421){\color[rgb]{0.72156863,0.32941176,0.31372549}\rotatebox{45}{\makebox(0,0)[b]{\smash{$\color{DiagramRed}\lambda~\Delta\Phi$}}}}%
+    \put(0.0827571,0.2607421){\color[rgb]{0.72156863,0.32941176,0.31372549}\rotatebox{45}{\makebox(0,0)[b]{\smash{$\color{DiagramRed}\lambda~\Delta\phi$}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{doa.pdf}}%
     \put(0.6014719,0.81177574){\color[rgb]{0.4,0.4,0.4}\rotatebox{45}{\makebox(0,0)[b]{\smash{\textcolor{DiagramGray}{Incident wavefront}}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{doa.pdf}}%

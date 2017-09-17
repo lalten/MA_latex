@@ -22,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -40,7 +40,7 @@
      id="namedview95"
      showgrid="false"
      inkscape:zoom="2.0779727"
-     inkscape:cx="416.51173"
+     inkscape:cx="421.80535"
      inkscape:cy="240.5"
      inkscape:current-layer="svg93"
      fit-margin-top="0"
@@ -120,7 +120,11 @@
     <text
        id="text11"
        y="81.800003"
-       x="656.56">\(\color{DiagramBlue}v_D = v_R~\cos(\alpha - \Delta\alpha)\)</text>
+       x="656.56">
+      <tspan
+         sodipodi:role="line"
+         id="tspan56">\(\color{DiagramBlue}v_D = v_R~\cos(\alpha - \beta\)</tspan>
+    </text>
   </g>
   <path
      style="fill:none;stroke:#666666;stroke-width:3;stroke-miterlimit:10;stroke-dasharray:9, 9"
@@ -160,7 +164,12 @@
     <text
        id="text23"
        y="401.48999"
-       x="656.21002">\(\color{DiagramRed}v_D = v_R~\cos(\alpha + \Delta\alpha)\)</text>
+       x="656.21002"
+       style="-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:8.00012136px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">
+      <tspan
+         sodipodi:role="line"
+         id="tspan60">\(\color{DiagramRed}v_D = v_R~\cos(\alpha + \beta)\)</tspan>
+    </text>
   </g>
   <rect
      style="fill:url(#linearGradient4574);stroke:none"
@@ -394,6 +403,11 @@
     <text
        id="text87"
        y="219.5"
-       x="676.5">\(\color{DiagramGreen}\Delta\alpha\)</text>
+       x="676.5"
+       style="-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:8.00002624px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">
+      <tspan
+         sodipodi:role="line"
+         id="tspan58">\(\color{DiagramGreen}\beta\)</tspan>
+    </text>
   </g>
 </svg>
