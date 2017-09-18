@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'overview.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{436.5bp}%
+    \setlength{\unitlength}{453.54330709bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,32 +48,32 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.45017182)%
+  \begin{picture}(1,0.4501718)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{overview.pdf}}%
-    \put(0.24300686,0.35469072){\makebox(0,0)[b]{\smash{USB}}}%
+    \put(0.25115871,0.35554981){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{USB}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{overview.pdf}}%
-    \put(0.51620274,0.35640894){\makebox(0,0)[b]{\smash{ROS}}}%
+    \put(0.52604438,0.35726803){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{ROS}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{overview.pdf}}%
-    \put(0.4995017,0.23441581){\makebox(0,0)[b]{\smash{SCP}}}%
+    \put(0.5000199,0.23527491){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{SCP}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{overview.pdf}}%
-    \put(0.46661513,0.1038316){\makebox(0,0)[b]{\smash{Input}}}%
-    \put(0.46661513,0.07977662){\makebox(0,0)[b]{\smash{Energy}}}%
+    \put(0.47457112,0.10469068){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Input}}}%
+    \put(0.47405784,0.08063571){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Energy}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=5]{overview.pdf}}%
-    \put(0.74250862,0.12788659){\makebox(0,0)[b]{\smash{Peaks,}}}%
-    \put(0.74250862,0.1038316){\makebox(0,0)[b]{\smash{Doppler,}}}%
-    \put(0.74250862,0.07977662){\makebox(0,0)[b]{\smash{DOA}}}%
-    \put(0.38831615,0.42439863){\makebox(0,0)[b]{\smash{\textbf{\textbf{Kobuki / Odroid}}}}}%
-    \put(0.61168385,0.14604811){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{\textbf{Matlab}}}}}%
-    \put(0.11340206,0.35051546){\makebox(0,0)[b]{\smash{Omniradar}}}%
-    \put(0.11340206,0.32646048){\makebox(0,0)[b]{\smash{RIC60-A}}}%
-    \put(0.38831615,0.35051546){\makebox(0,0)[b]{\smash{libomniradar,}}}%
-    \put(0.38831615,0.32646048){\makebox(0,0)[b]{\smash{rosnode}}}%
-    \put(0.66323024,0.33848797){\makebox(0,0)[b]{\smash{rosbag}}}%
-    \put(0.33676976,0.06357388){\makebox(0,0)[b]{\smash{Preprocessing}}}%
-    \put(0.61168385,0.08762887){\makebox(0,0)[b]{\smash{Peak}}}%
-    \put(0.61168385,0.06357388){\makebox(0,0)[b]{\smash{Gradient}}}%
-    \put(0.61168385,0.0395189){\makebox(0,0)[b]{\smash{Algorithm}}}%
-    \put(0.88659794,0.07560137){\makebox(0,0)[b]{\smash{Reprojection}}}%
-    \put(0.88659794,0.05154639){\makebox(0,0)[b]{\smash{Mapping}}}%
+    \put(0.74965799,0.12874568){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Peaks,}}}%
+    \put(0.74965799,0.10499496){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Doppler,}}}%
+    \put(0.74911105,0.08063571){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{DOA}}}%
+    \put(0.38852232,0.42525771){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{Kobuki / Odroid} (online)}}}%
+    \put(0.61189004,0.1469072){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{Matlab}(offline)}}}%
+    \put(0.11306952,0.35137455){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Omniradar}}}%
+    \put(0.1133778,0.32731956){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{RIC60-A}}}%
+    \put(0.38881751,0.35137455){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{libomniradar,}}}%
+    \put(0.38832051,0.32731956){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{rosnode}}}%
+    \put(0.66307262,0.33934707){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{rosbag}}}%
+    \put(0.33652725,0.06443297){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Preprocessing}}}%
+    \put(0.61145765,0.08848795){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Peak}}}%
+    \put(0.61169201,0.06443297){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Gradient}}}%
+    \put(0.6115503,0.040378){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Algorithm}}}%
+    \put(0.88643592,0.07646046){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Reprojection}}}%
+    \put(0.88633115,0.05240549){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Mapping}}}%
   \end{picture}%
 \endgroup%
