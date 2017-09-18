@@ -125,7 +125,8 @@ matrix displayed in \cref{fig:walabot_dynamic_data}.
     \end{subfigure}%
     \hfill%
     \begin{subfigure}[t]{0.68815948789\textwidth}
-        \includegraphics[max width=\linewidth]{figures/walabot_disttest}
+        \def\svgwidth{\linewidth}
+        \input{gfx/figures/walabot_disttest.pdf_tex}
         \caption{Range profile (\textit{y-axis}) over time (\textit{x-axis}) while the robot was moved at constant speed away and towards the Walabot sensor}
         \label{fig:walabot_dynamic_data}
     \end{subfigure}%
@@ -161,7 +162,7 @@ radar IC and how the three antennas are integrated in silicon.
     \centering
     \def\svgwidth{12cm}
     \input{gfx/pictures/slide_RIC60A.pdf_tex}
-    \caption{Decapped Omniradar IC (top left); five cent coin as size reference (top right); schematic with antenna locations (botto left); and antenna directionality pattern of Omniradar's RIC60-A (bottom right). Adapted from \cite{Brouwer2015} p.9}
+    \caption{Decapped Omniradar IC (top left); five cent coin as size reference (top right); schematic with antenna locations (bottom left); and antenna directionality pattern of Omniradar's RIC60-A (bottom right). Adapted from \cite{Brouwer2015} p.9}
     \label{fig:slide_RIC60A}
 \end{figure}
 
@@ -176,17 +177,17 @@ pencil-shaped beam that is very focused at a narrow field of view.
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[t]{0.51206961048\textwidth}
-        \label{fig:omniradar}
-        \includegraphics[max width=\linewidth]{pictures/omniradar}
-        \caption{Omniradar's RIC60-A sensor with horn antenna extension, attached to the 3D-printed Kobuki mount}
-    \end{subfigure}
-    \hfill
     \begin{subfigure}[t]{0.43793038951\textwidth}
         \centering
         \label{fig:mount}
         \includegraphics[max width=\linewidth]{models/mount.png}
         \caption{3D model of the radar sensor mount, designed with OpenSCAD.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.51206961048\textwidth}
+        \label{fig:omniradar}
+        \includegraphics[max width=\linewidth]{pictures/omniradar}
+        \caption{Omniradar's RIC60-A sensor with horn antenna extension, attached to the 3D-printed Kobuki mount.}
     \end{subfigure}
     \caption{Radar sensor on mount and model of the mount.}
 \end{figure}
@@ -196,7 +197,7 @@ pencil-shaped beam that is very focused at a narrow field of view.
 
 A 3D-printed part makes sure that the radar sensor is firmly mounted on
 the robot as it explores its environment. The part was designed in
-OpenSCAD\footnote{\url{http://www.openscad.org/}} and printed on a
+OpenSCAD\footnote{\url{http://www.openscad.org/}} (rendering in \cref{fig:mount}) and printed on a
 Dremel 3D printer\footnote{\url{https://3dprinter.dremel.com/}}. The bottom
 mount hole positions were extracted from the mechanical drawings of the
 Kobuki Base \cite{YujinRobot2012}; the side holes from the Altium layer
@@ -204,7 +205,7 @@ document of the version 3.2 Omniradar interface board
 \cite{Omniradar2014}.
 
 When rotated to face to the left side of the robot, the RPLidar mount
-was in the way, so parts of the print had to be clipped off.
+was in the way, so small parts of the print are clipped off in \cref{fig:omniradar}.
 
 Two screws hold the Omniradar interface board to the mount. The other
 two mounting holes in the interface board hold the Omniradar sensor
@@ -218,7 +219,7 @@ The Omniradar FMCW radar is not sensitive enough to use the Doppler
 speed directly. The following example illustrates this.
 
 The RIC60A has a sensitivity of \SI{400}{Hz\per(m/s)}. A target with a
-doppler speed of \SI{0.02}{m\per s} (A low speed at which the Kobuki robot
+Doppler speed of \SI{0.02}{m\per s} (A low speed at which the Kobuki robot
 still moves continuously and without jerking) will cause a frequency
 spike with a shift of \(\SI{8}{Hz}\) in the FMCW beat frequency.
 
@@ -226,62 +227,68 @@ The speed resolution capability is inversely proportional to the
 measurement or acquisition time. A \SI{10}{ms} long acquisition gives a \SI{100}{Hz}
 frequency resolution, or a speed resolution of \SI{0.9}{km/h} (or \SI{0.25}{m/s}).
 
-Sampling frequency \(F_s=\SI{25}{MHz}\) and RIC60A Doppler sensitivity,
-\(S_D = \SI{400}{Hz\per(m/s)}\) are constant values of the Omniradar RDK.
-
-Given a chirp duration of \(T_{chirp} = \SI{2.5}{ms}\), we get
-\(N_s = t_{chirp} F_s = 62500\) Samples,
-\(N_r = \lfloor \frac{N_s}{2} \rfloor = 31250\) Samples per
-up/downsweep, \(dF = \frac{F_s}{N_r - 1} = \SI{800}{Hz}\) FFT frequency bin
-width and hence a Doppler resolution of \(\frac{dF}{S_D} = \SI{2}{m/s}\).
+The sampling frequency,
+\[
+    F_s=\SI{25}{MHz}
+\]
+and RIC60A Doppler sensitivity,
+\[
+    S_D = \SI{400}{Hz\per(m/s)}
+\]
+are constant values of the Omniradar RDK. Given a chirp duration of
+\[
+    T_{chirp} = \SI{2.5}{ms}
+\]
+there are
+\[
+    N_s = \left\lfloor F_s T_{chirp} \right\rfloor = \SI{62500}{samples}
+\]
+available for every sweep, and hence
+\[
+    N_r = \left\lfloor \frac{N_s}{2} \right\rfloor = \SI{31250}{samples}
+\]
+per up/downsweep. With FFT frequency bin width
+\[
+    dF = \frac{F_s}{N_r - 1} = \SI{800}{Hz}
+\]
+this yields a Doppler speed resolution of
+\[
+\frac{dF}{S_D} = \SI{2}{m/s}
+\]
 
 Even with subsample peak interpolation the accuracy will not be very
 good and targets will be reprojected at imprecise angles.
 
 It would be possible to use higher precision equipment. But another
 solution is to track the movement of target peaks in the range profile,
-using the Peak Gradient algorithm.
+using the peak gradient algorithm described in \cref{doppler-estimation-with-the-peak-gradient-algorithm}.
 
-TODO wording?
+\subsection{Optimal chirp time configuration} \label{optimal-chirp-time-configuration}
 
-\subsection{Optimal chirp time configuration}\label{optimal-chirp-time-configuration}
+The chirp duration \(T_{chirp}\) is configurable and has an effect on
+how the raw range profile data will look like. Next to SNR of raw data, an important measure is chirp efficiency, which influences effectiveness of raw data smoothing (because more data allows better smoothing) and hence SNR of processed data. The chirp efficiency $\eta$ is defined as the percentage of time spent on actual measurement:
+\begin{equation}
+    \eta = \frac{n_{chirp}~t_{chirp}}{t_{msg}}
+\end{equation}    
+with number of consecutive sweeps \(n_{chirp}\), chirp
+length \(t_{chirp}\), and the time between the start of one respective measurement and the next, \(t_{msg}\). \Cref{fig:fig_chirp_eff} shows how chirp efficiency increases with chirp time. 
 
-The chirp duration \(t_{chirp}\) is configurable and has an effect on
-how the raw range profile data will look like.
-
-\textbf{Very short durations} (\(<\SI{2}{ms}\)) incur a considerable processing
-overhead to acquisition time ratio and have a very low SNR.\\
-\textbf{Short durations} (\(<\SI{5}{ms}\)) have acceptable SNR, and are more
-efficient with respect to overhead.\\
-\textbf{Long durations} (\(>\SI{15}{ms}\))
-have good SNR, and don't create a lot of overhead. However at higher
-robot speeds, target peaks get blurred over several range bins as they
-move in range. Less intense target echos are more difficult to detect
-then.\\
-\textbf{Very long durations} (\(>\SI{20}{ms}\)) required the Omniradar
-driver to be patched on Linux so as not to freeze when chirps longer
-than \SI{20}{ms} are requested. Even with the patched driver the RDK's FPGA
-firmware is not very reliable at sending large volumes of data at once
-and corrupts packet headers or aborts transmissions intermittently.
-
-The optimal range was empirically found to lie between \SI{2}{ms} and \SI{10}{ms}.
-
-TODO wording here
-
-\Cref{fig:fig_chirp_eff} shows the chirp efficiency
-\(\eta = \frac{n_{chirp}~t_{chirp}}{t_{msg}}\), with number of
-consecutive sweeps \(n_{chirp}\) (two in the graph's data source), chirp
-length \(t_{chirp}\), and \(t_{msg}\) the time since last radar message.
+\textbf{Very short duration} (\(<\SI{2}{ms}\)) Will have very low SNR and incur considerable processing overhead and hence chirp efficiency. It is hard to detect targets in this mode.\\
+\textbf{Short duration} (\SIrange{2}{5}{ms}) Will have acceptable SNR, and are more efficient with respect to overhead.\\
+\textbf{Medium duration} (\SIrange{5}{15}{ms}) Empirically found to be the optimal range.\\
+\textbf{Long duration} (\SIrange{15}{20}{ms}) Good SNR and not a lot of overhead. However, some radar signal packets are glitched and unusable. This seems to be a bug in the RIC60-A/FPGA communication that occurs over a certain amount of bandwidth. The probability of glitches occuring increases with the amount of requested data.\\
+\textbf{Very long duration} (\(>\SI{20}{ms}\)) These large amounts of data require the Omniradar driver to be patched on Linux so as not to freeze when chirps longer than \SI{20}{ms} are requested. Even with the patched driver the RDK's FPGA firmware is not very reliable at sending large volumes of data at once and corrupts packet headers or aborts transmissions intermittently.
+At higher robot speeds, target peaks also get blurred over several range bins as they move in range over time. Less intense target echos are more difficult to detect then.
 
 \begin{figure}[htbp]
     \centering
     \def\svgwidth{10cm}
     \input{gfx/fig_svg/chirp_eff.pdf_tex}
-    \caption{Chirp efficiency \(\eta\) (measurement time per time spent) for various chirp lengths}
+    \caption{Chirp efficiency \(\eta\) (measurement time per time spent) for various chirp lengths. For this data, $n_{chirp}=2$.}
     \label{fig:fig_chirp_eff}
 \end{figure}
 
-The chirp length has an effect on accuracy and resolution. \Cref{fig:fig_compare_chirp_times} shows the range profiles of one scene, recorded over \SI{10}{s}. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a slimmer band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Especially with the horn extension attached longer measurement time also improves SNR.
+\Cref{fig:fig_compare_chirp_times} shows that the chirp length has an effect on accuracy and resolution. Short chirp times lead to a higher noise floor, but exhibit less variance, i.e. a narrower band of frequencies. Longer measurement times have a lower noise floor but have more outliers. Attaching the horn extension generally yields a higher SNR because the radar antenna beam shape is focused on a smaller field of view.
 
 \begin{figure}[htbp]
     \centering
@@ -313,6 +320,6 @@ The chirp length has an effect on accuracy and resolution. \Cref{fig:fig_compare
         \input{gfx/fig_svg/chirp_comp_3.pdf_tex}
         \caption{Normalized harmonic mean of range profiles, with horn extension}
     \end{subfigure}
-    \caption{Effect of chirp length on SNR; with and without Horn extension}
+    \caption{Effect of chirp length on SNR; with and without Horn extension. The range profiles depict the same scene and are recorded over \SI{10}{s} each.}
     \label{fig:fig_compare_chirp_times}
 \end{figure}
