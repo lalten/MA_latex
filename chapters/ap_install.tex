@@ -1,0 +1,31 @@
+\chapter{\texttt{libomniradar} installation} \label{install}
+
+If the driver source is available, installing the files can be
+accomplished from the source directory with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir}\NormalTok{ build }\KeywordTok{\&\&} \BuiltInTok{cd}\NormalTok{ build}
+\FunctionTok{cmake}\NormalTok{ -DCPP_BINDINGS=ON -DMATLAB_BINDINGS=OFF ..}
+\FunctionTok{make}
+\FunctionTok{sudo}\NormalTok{ make install}
+\end{Highlighting}
+\end{Shaded}
+
+The driver can then be included in an application. Note that since it is
+dynamically linked, the \texttt{ftd2xx}, \texttt{pthread} and
+\texttt{dl} libraries dependencies also need to be linked. In a Catkin\footnote{Catkin is the CMake-based ROS build system}-\texttt{CMakeLists.txt}
+this would look like
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{target_link_libraries}\NormalTok{(}
+  \VariableTok{\$\{PROJECT_NAME\}}\NormalTok{_node}
+\NormalTok{  omniradar}
+\NormalTok{  ftd2xx}
+\NormalTok{  pthread}
+\NormalTok{  dl}
+  \VariableTok{\$\{catkin_LIBRARIES\}}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}

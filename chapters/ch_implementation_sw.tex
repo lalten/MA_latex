@@ -9,25 +9,19 @@
     \label{fig:overview}
 \end{figure}
 
-\Cref{fig:overview} shows the flow of information after the raw data is gathered from the hardware setup described in \cref{implementation-platform}: The \texttt{/omniradar\_node} rosnode (\cref{ros-node}) uses \texttt{libomniradar} (\cref{c-bindings-and-library}) to read in the raw data from the radar sensor. The rosmessages transmitted from the node are then stored in a \texttt{rosbag}, which is copied over the network to the machine running the Matlab implementation. In Matlab, the data is preprocessed (\cref{data-preprocessing}), Doppler speeds are estimated (\cref{doppler-estimation-with-the-peak-gradient-algorithm}) and finally the radar reprojection map is constructed (\cref{reprojection-mapping}).
+\Cref{fig:overview} shows the flow of information in the presented hardware/software implementation. The top part in the diagram represents the online part, which comprises the components that are necessary to perform a radar scan: Radar data is gathered from the hardware setup described in \cref{implementation-platform} while the \texttt{/omniradar\_node} rosnode (\cref{ros-node}) uses \texttt{libomniradar} (\cref{c-bindings-and-library}) to read in the raw data from the radar sensor. The rosmessages transmitted from the node are then stored in a \texttt{rosbag}. This rosbag is later copied over the network to a machine running the offline parts of the implementation. In Matlab, the data is preprocessed (\cref{data-preprocessing}), Doppler speeds are estimated (\cref{doppler-estimation-with-the-peak-gradient-algorithm}) and finally the radar reprojection map is constructed (\cref{reprojection-mapping}).
 
 \section{Driver}\label{driver}
 
 \subsection{Omniradar ROS driver}\label{omniradar-ros-driver}
 
-The Omniradar RIC60A comes with a precompiled Matlab MEX driver library.
-This works well in a Windows OS on x86-based computers with a Matlab
-installation. An early goal was to have the robot carry the radar module
-around wireless. One option would have been to mount a Windows laptop on
-the Kobuki. However, Omniradar was kind enough to provide the author
-with the driver sources under an NDA agreement. This allowed recompiling
-the MEX driver for Linux systems. There were some issues with FTDI's
+The Omniradar RIC60A Radar Development Kit comes with a precompiled Matlab MEX driver library, which works well in a Windows OS on x86-based computers with a Matlab installation. An early goal was however to have the robot carry the radar module around wireless which would only have been possible with a complete Windows laptop mounted on the Kobuki platform. However, Omniradar was kind enough to provide the driver sources under an NDA agreement. This allowed recompiling
+the MEX driver for Linux systems. There were still some issues with FTDI's
 D2XX serial communication library that had to be fixed for Linux
 systems. One challenge with the D2XX driver was that Ubuntu
 automatically loads the regular FTDI serial IO driver,
 \texttt{ftdi\_sio}. This was be solved by unbinding the driver using a
-set of udev rules \footnote{\url{https://stackoverflow.com/questions/44529376}}. Another
-issue was that due to a bug in the D2XX implementation, the Omniradar
+set of udev rules \footnote{\url{https://stackoverflow.com/questions/44529376}}. Another issue was that due to a bug in the D2XX implementation, the Omniradar
 driver would freeze when more than \SI{2}{MB} of data (equivalent to a \SI{20}{ms}
 FMCW chirp) were requested. After a lot of debugging, this could be
 solved by never requesting a bigger amount of data than was already
@@ -41,7 +35,7 @@ added to the driver. The C++ bindings serve the same purpose as the
 Matlab bindings.
 
 To include the library, some files need to be installed or pointed to by
-the binary that needs to use it.
+the binary that needs to use it. They are available in precompiled form from \url{https://github.com/lalten/libomniradar}.
 
 \begin{table}[h]
     \centering
@@ -77,38 +71,7 @@ the binary that needs to use it.
     \label{tab:files}
 \end{table}
 
-If the driver source is available, installing the files can be
-accomplished from the source directory with
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{mkdir}\NormalTok{ build }\KeywordTok{\&\&} \BuiltInTok{cd}\NormalTok{ build}
-\FunctionTok{cmake}\NormalTok{ -DCPP_BINDINGS=ON -DMATLAB_BINDINGS=OFF ..}
-\FunctionTok{make}
-\FunctionTok{sudo}\NormalTok{ make install}
-\end{Highlighting}
-\end{Shaded}
-
-The driver can then be included in an application. Note that since it is
-dynamically linked, the \texttt{ftd2xx}, \texttt{pthread} and
-\texttt{dl} libraries dependencies also need to be linked. In a Catkin
-\footnote{Catkin is the CMake-based ROS build system} CMakeLists.txt
-this would look like
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{target_link_libraries}\NormalTok{(}
-  \VariableTok{\$\{PROJECT_NAME\}}\NormalTok{_node}
-\NormalTok{  omniradar}
-\NormalTok{  ftd2xx}
-\NormalTok{  pthread}
-\NormalTok{  dl}
-  \VariableTok{\$\{catkin_LIBRARIES\}}
-\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-The C++ library offers the same functions as Omniradar's Matlab driver,
+\Cref{install} contains information on how to build, install and integrate the library. It offers the same functions as Omniradar's Matlab driver,
 with two differences. The optional device index number is 0-based
 instead of 1-based and the \texttt{AcquireEcho} functions return (a shared pointer
 to) packed data instead of unpacked data for performance reasons. With
@@ -123,7 +86,7 @@ the
 
 function, the library offers an easy way to demultiplex the packed data
 array into a (shared pointer to a) vector of four vectors - one for each
-echo signal of the I/Q channel of left and right receiving antenna.
+echo signal of the I/Q channel of left and right receiving antennas.
 
 Useage is simple as the driver follows the RAII principle. Allocation of
 an object of type \texttt{Omniradar} causes the library to fully
