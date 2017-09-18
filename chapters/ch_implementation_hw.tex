@@ -21,6 +21,7 @@ The reprojection method requires that the radar is moved through the scene with 
         \caption{Hardkernel Odroid XU4. Source: \url{https://wikimedia.org/wiki/File:Hardkernel_Odroid_XU4_Board.jpg}}
         \label{fig:odroid}
     \end{subfigure}
+    \caption{The supporting hardware} \label{fig:hardware}
 \end{figure}
 
 \subsection{ROS integration}\label{ros-integration}
@@ -29,7 +30,7 @@ The Robot Operating System (ROS)\footnote{\url{http://www.ros.org/}} is widely u
 
 \subsection{Odroid}\label{odroid}
 
-In the Kobuki platform, only an embedded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 \SI{2}{GHz} Octa core CPUs paired with \SI{2}{GB} ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
+In the Kobuki platform, only an embedded microcontroller is integrated to drive the robot's hardware. ROS however needs an OS to run on and a computing platform with at least some performance. In this implementation, Hardkernel's Odroid XU4\footnote{\url{http://www.hardkernel.com/main/products/prdt_info.php?g_code=G143452239825}} (see \cref{fig:odroid}) single-board computer provides plenty of power with its Samsung Exynos Cortex-A15/Cortex-A7 \SI{2}{GHz} Octa-core CPU paired with \SI{2}{GB} ram. It runs Ubuntu Linux 14.04 with ROS Indigo Igloo.
 
 \subsection{Lidar Slam}\label{lidar}
 A RoboPeak / Slamtec RPLidar A1\footnote{\url{https://www.slamtec.com/en/Lidar/A1}} lidar sensor is mounted on the Kobuki base to enable laser-based slam. This is very useful to both provide odometry correction during reprojection mapping and to build a lidar slam occupancy gridmap that can then be compared with the radar reprojection map.
@@ -70,7 +71,7 @@ In their Python API documentation\footnote{\url{https://api.walabot.com}} they s
 
 The catch is that it is almost impossible to do imaging without background subtraction, which they do in all their examples. Granted, this works well in scenarios where the sensor is at a fixed position or if the region of interest is very small, like in the pipe detection scenario. However, In the case of a robot-mounted sensor this does not provide great data quality, because not only a small part, but the whole scene changes when the robot moves.
 
-At the time of writing, the only interesting published project is a fall detection scenario \cite{Haider2017} by Haider, in which people can be localized at intersections of vertically and horizontally oriented heatmaps.
+At the time of writing, the only interesting published project using the Walabot is a fall detection scenario by Haider and Shaker \cite{Haider2017}, in which people can be localized at intersections of vertically and horizontally oriented heatmaps.
 
 \subparagraph{Static range test}\label{static-range-test}
 
@@ -82,16 +83,17 @@ Another problem with the data is that the peaks of the envelope jitter in range.
     \centering
     \begin{subfigure}{.8\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{pictures/experiment_walabot_rangetest}
-        \caption{Setup with three towers of cans in front of the Walabot sensor}
-        \label{fig:walabot_rangetest_setup}
+        \def\svgwidth{\linewidth}
+        \input{gfx/fig_svg/walabot_rangetest.pdf_tex}
+        \caption{Normalized echo intensity of range profile measurement with two antenna pairs. After the transmit peak at \(t=0\), three peaks corresponding to the three can targets are vaguely perceptible.}
+        \label{fig:walabot_rangetest_data}
     \end{subfigure}
     \begin{subfigure}{.8\textwidth}
         \centering
         \def\svgwidth{\linewidth}
-        \input{gfx/fig_svg/walabot_rangetest.pdf_tex}
-        \caption{Normalized echo intensity of range profile measurement with two antenna pairs. After the transmit peak at \(t=0\), three peaks corresponding to the three can targets are vaguely perceptible. }
-        \label{fig:walabot_rangetest_data}
+        \input{pictures/experiment_walabot_rangetest}.pdf_tex
+        \caption{Setup with three towers of cans in front of the Walabot sensor}
+        \label{fig:walabot_rangetest_setup}
     \end{subfigure}
     \caption{Static range test with the Walabot sensor}
     \label{fig:walabot_rangetest}
