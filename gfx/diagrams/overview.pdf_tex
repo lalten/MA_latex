@@ -63,7 +63,7 @@
     \put(0.74965799,0.10499496){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Doppler,}}}%
     \put(0.74911105,0.08063571){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{DOA}}}%
     \put(0.38852232,0.42525771){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{Kobuki / Odroid} (online)}}}%
-    \put(0.61189004,0.1469072){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{Matlab}(offline)}}}%
+    \put(0.61189004,0.1469072){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{\textbf{Matlab} (offline)}}}%
     \put(0.11306952,0.35137455){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Omniradar}}}%
     \put(0.1133778,0.32731956){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{RIC60-A}}}%
     \put(0.38881751,0.35137455){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{libomniradar,}}}%
