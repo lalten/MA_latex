@@ -1,5 +1,7 @@
 \chapter{Discussion and Comparison}\label{discussion-and-comparison}
 
+TODO: intro to discussion topics. was the initial hypothesis validated?
+
 \section{Discussion}
 
 \subsection{Reflection directionality}\label{reflection-directionality}
@@ -11,24 +13,23 @@ Underground scan, where a glass wall is detected as the robot passes it,
 but not while the robot sees it at an angle.
 
 In the Torture Chamber scan, the same effect is visible for chair legs,
-especially for the chair at the scene center. the legs appear in clear
-form as soon as the radar sees the leg from a point that is orthogonal
+especially for the chair at the scene center. The legs appear in clear
+form as soon as the radar sees them from a point that is orthogonal
 to the office chair legs.
 
+This means that in an online mapping process, obstacles might appear earlier or later, depending on their orientation towards the radar position. The effect is expected and was decribed in \cref{limitations}.
 
 
 \subsection{Material-dependent echo strength}\label{material-dependent-echo-strength}
 
-Some materials, like metal, are obviously better at reflecting radar
-waves than others, like Styrofoam. Metal objects cause particularly
-strong echos which are visible from a higher distance. This can be
-observed in the hallway scans (e.g.~Orbit, Public Restroom, Queue,
+Some materials, like metal, are better at reflecting radar
+waves than others, like Styrofoam. Due to their electrical conductivity, metal objects cause particularly strong echos which are visible from a higher distance. This can be observed in the hallway scans (e.g.~Orbit, Public Restroom, Queue,
 Racetrack, Sauna, Underground), where the metal frames of doors and
 glass walls stand out in the scan.
 
 \subsection{Doppler vs Direction of Arrival data quality}\label{doppler-vs-direction-of-arrival-data-quality}
 
-In forward-facing geometry (scans D-T), the DOA is necessary to resolve
+In forward-facing geometry (scans D--T), the DOA is necessary to resolve
 the sign of a target's reprojection angle. This works fairly well, for
 example at the start of Sauna (see \cref{fig:sauna_doa}), the closer target
 passes on the right (more pink), while the other targets stay to the
@@ -50,8 +51,10 @@ left side of the robot (more green).
 \end{figure}
 
 In fact, for the side-facing case, the smoothed DOA data also turned out
-to be very good. It could even be used to calculate a more precise
+to be very good (angular error is usually less than \ang{10}). In combination with a sensor fusion approach, it might even be used to calculate a more precise
 reprojection angle.
+
+Both the forward- and side-facing geometry DOA data is sensitive to the rotation of the radar's antenna with respect to the radar motion path. When the DOA sign is used for angle ambiguity resolution, errors can thus appear at angles near \ang{0}. The effect does not have a drastic effect on map quality though, because angle sign errors do produce phantom targets at wrong map locations at large angles (e.g. \ang{90}), but still yield similar positions at small angles (i.e. mostly straight ahead).
 
 \subsection{Multipath effects}\label{multipath-effects}
 
@@ -62,10 +65,9 @@ target's echo are visible, which can lead to detection of incorrect
 angle and ranges. Luckily, in the recorded data almost no multipath
 effects are obvious. The only scan that shows some effects is the
 Torture Chamber. There, it seems like the radar waves bounce around a
-bit in the (\SI{2}{m},\SI{2}{m}) area under the desk. The effect is that some targets
-are detected behind the wall behind the desk.
+bit in the area with highly reflective metal cabinets under the desk around (\SI{2}{m},\SI{2}{m}). The effect is that some targets are detected behind the wall behind the desk.
 
-
+The effect can be expected to be less noticeable in residential environments, which contain fewer (if any) metal corners.
 
 \subsection{Object penetration}\label{object-penetration}
 
@@ -255,24 +257,6 @@ again relies on phase information, becomes more difficult
 
 \subsection{RGBD}\label{rgbd-1}
 The Kobuki robot was also carrying an Astra Orbbec Mini\footnote{\url{https://orbbec3d.com/astra-mini/}} strutured light depth camera. Using the Rtabmap \cite{Labbe2014} ROS package\footnote{\url{http://wiki.ros.org/rtabmap_ros}}, some 3D scans of the office environment where made. \cref{traditional-obstacle-sensors} already showed the shortcomings of lidar and RGBD sensors, but in this section the same \cref{fig:lidar_rgbd2,fig:rgbd_glasswall2} are compared with radar reprojection.
-
-\begin{figure}
-    \begin{subfigure}[t]{.485\textwidth}
-        \centering
-        \includegraphics[max width=\textwidth]{gfx/screenshots/chair_laser_vs_rgbd}
-        \caption{Laser fails to detect horizontal chair legs.}
-        \label{fig:lidar_rgbd2}
-    \end{subfigure}%
-    \hfill%
-    \begin{subfigure}[t]{.485\textwidth}
-        \centering
-        \def\svgwidth{\linewidth}
-        \input{gfx/screenshots/rgbd_glasswall.pdf_tex}
-        \caption{RGBD camera can not detect glass surface.}
-        \label{fig:rgbd_glasswall2}
-    \end{subfigure}%
-    \caption{RViz screenshots showing traditional sensor shortcomings.}
-\end{figure}
 
 \Cref{fig:chairlegs} shows clearly that the radar reprojection contains horizontal chair legs, while the lidar scan does not. The scene in \cref{fig:rgbd_glasswall2} matches with the Underground scan, where the glass wall is clearly visible.
 

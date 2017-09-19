@@ -4,26 +4,26 @@
 
 Before the results of the presented proof-of-concept implementation are listed it needs to be clear what dimensions are important so that a distinction between good and bad results can be made.
 
-A good reprojection map has several qualities that make it usable as an obstacle gridmap. First, it needs to be \textbf{timely}. That means that the time between the appearance of an object in the robot's path and it being mapped in an obstacle map needs to be small enough that the robot can still avoid collisions. The \textbf{false alarm rate}, representing false positive detections, needs to be low enough to not negatively influence the robot's navigation behaviour by making it circumnavigate too many phantom obstacles. Vice versa, the \textbf{missed target rate}, or false negative detection needs to be low, or the radar sensor will not bring an advantage over conventional obstacle sensors. The resulting map of course also needs to be \textbf{spatially correct}. This means that a detected obstacle is mapped at its true location. Otherwise, phantom obstacles or incorrectly sized obstacles will degrade map quality. The map becomes more useful if it contains \textbf{diverse types of obstacles}, and not just one class of objects, like walls. On the other hand, it should not contain \textbf{irrelevant information}, for example wall humidity is not interesting for obstacle detection. Lastly, only if the map is \textbf{comparable to other sensors} informed comparison can take place. For example, a glass wall is easily visible to the human eye, so their position in the radar reprojection map can be verified. But metal struts in walls, which, while not presenting an obstacle to the robot (vacuum robots usually are not designed to breach walls), could be useful landmarks for later slam applications, are not visible in other maps. Hence the quality of metal strut mapping can not be asserted, but only assumed based on human knowledge of where a wall's metal struts might be.
+A good reprojection map has several qualities that make it usable as an obstacle gridmap. First, it needs to be \textbf{timely}. That means that the time between the appearance of an object in the robot's path and it being mapped in an obstacle map needs to be small enough that the robot can still avoid collisions. The \textbf{false alarm rate}, representing false positive detections, needs to be low enough to not negatively influence the robot's navigation behaviour by making it circumnavigate phantom obstacles. Vice versa, the \textbf{missed target rate}, or false negative detection needs to be low, or the radar sensor will not bring an advantage over conventional obstacle sensors. The resulting map of course also needs to be \textbf{spatially correct}. This means that a detected obstacle is mapped at its true location. Otherwise, phantom obstacles or incorrectly sized obstacles will degrade map quality. The map becomes more useful if it contains \textbf{diverse types of obstacles}, and not just one class of objects, like walls. On the other hand, it should not contain \textbf{irrelevant information}, for example wall temperature is not interesting for obstacle detection. Lastly, only if the map is \textbf{comparable to other sensors} informed comparison can take place. For example, a glass wall is easily visible to the human eye, so their position in the radar reprojection map can be verified. But metal struts in walls, which, while not presenting an obstacle to the robot (vacuum robots usually are not designed to breach walls), could be useful landmarks for later slam applications, are not visible in other maps. Hence the quality of metal strut mapping can not be asserted, but only assumed based on human knowledge of where a wall's metal struts might be.
 
-There are some classes of targets that are particularly interesting in the evaluation of results. The first one is stacks of \textbf{metal cans}, because they appear in many of the scans. This is a kind of artificial obstacle that was designed to have a high probability of visibility in both radar scans (the curved metal surface is very reflective from every direction) and lidar scans (the can towers are high enough to cross the laser beam, and wide enough to not be missed even in some distance). Another easy target are \textbf{walls}. They are easy to see in the lidar scan, and detections in the radar reprojection map can be easily compared. A special case of walls are \textbf{glass walls} or windows. They present an impenetrable obstacle in a robots path, but almost always, neither a laser scanner nor a vision sensor can detect them (see \cref{fig:rgbd_glasswall2}). Another real world obstacle that escapes lidar scans are \textbf{office chair legs}. While the pillar is visible with laser, the horizontally stretching legs and rollers are usually too low to be detected (see \cref{fig:lidar_rgbd2}). In the same category of low profile obstacles are \textbf{cables} lying on the floor. A vacuum robot can easily entangle in them and get stuck. Lastly, it would be interesting to see negative obstacles including \textbf{cliffs} and dips. Today, robots need an extra set of sensors (usually IR distance sensors at the front of the robot, aiming at the floor) to detect this kind of obstacle very reliably.
+There are some classes of targets that are particularly interesting in the evaluation of results. The first one is stacks of \textbf{metal cans}, because they appear in many of the scans. This is a kind of artificial obstacle that was designed to have a high probability of visibility in both radar scans (the curved metal surface is very reflective from every direction) and lidar scans (the can towers are high enough to cross the laser beam, and wide enough to not be missed even in some distance). Another easy target are \textbf{walls}. They are easy to see in the lidar scan, and detections in the radar reprojection map can be easily compared. A special case of walls are \textbf{glass walls} or windows. They present an impenetrable obstacle in a robots path, but almost always, neither a laser scanner nor a vision sensor can detect them (see \cref{fig:rgbd_glasswall2}). Another real world obstacle that escapes lidar scans are \textbf{office chair legs}. While the pillar is visible with laser (green dot in \cref{fig:lidar_rgbd2}), the horizontally stretching legs and rollers are usually too low to be detected. In the same category of low profile obstacles are \textbf{cables} lying on the floor. A vacuum robot can easily entangle in them and get stuck. Lastly, it would be interesting to see negative obstacles including \textbf{cliffs} and dips. Today, robots need an extra set of sensors (usually IR distance sensors at the front of the robot, aiming at the floor) to detect this kind of obstacle very reliably.
 
 \begin{figure}
-    \begin{subfigure}[t]{.485\textwidth}
-        \centering
-        \includegraphics[max width=\textwidth]{gfx/screenshots/chair_laser_vs_rgbd}
-        \caption{Laser fails to detect horizontal chair legs.}
-        \label{fig:lidar_rgbd2}
-    \end{subfigure}%
-    \hfill%
-    \begin{subfigure}[t]{.485\textwidth}
-        \centering
-        \def\svgwidth{\linewidth}
-        \input{gfx/screenshots/rgbd_glasswall.pdf_tex}
-        \caption{RGBD camera can not detect glass surface.}
-        \label{fig:rgbd_glasswall2}
-    \end{subfigure}%
-    \caption{RViz screenshots showing traditional sensor shortcomings.}
+  \begin{subfigure}[t]{.485\textwidth}
+      \centering
+      \def\svgwidth{\linewidth}
+      \input{gfx/screenshots/rgbd_glasswall.pdf_tex}
+      \caption{RGBD camera can not detect glass surface.}
+      \label{fig:rgbd_glasswall2}
+  \end{subfigure}%
+  \hfill%
+  \begin{subfigure}[t]{.485\textwidth}
+      \centering
+      \includegraphics[max width=\textwidth]{gfx/screenshots/chair_laser_vs_rgbd}
+      \caption{Laser fails to detect horizontal chair legs.}
+      \label{fig:lidar_rgbd2}
+  \end{subfigure}%
+  \caption{Screenshots showing traditional sensor shortcomings.}
 \end{figure}
 
 
@@ -48,11 +48,13 @@ The third input graph (e.g. \cref{fig:resdoa}) shows DOA data as estimated in \c
 This is the main output of the reprojection mapping implementation, as described in \cref{reprojection-mapping}. The graph (e.g. \cref{fig:resrepro}) shows a top-view 2D map, with the origin (0,0) at the scan starting point. Axes are in \si{m}. The color scale is again \texttt{hcparula}, with echo intensities in \si{dBVrms}. The red line shows the radar motion path.
 
 \subparagraph{Reprojection map overlay}
-If the \texttt{/map} is available for a scan, this graph (e.g. \cref{fig:resmap}) shows the reprojection map overlaid over the lidar occupancy gridmap as described in \cref{output}. The lidar map has a grayscale colormap, where black means occupied, white means clear, and anything in between shows occupancy probability. Uncharted, unknown values are a ``tasteful blueish greenish grayish color''\footnote{Legal $-1$ value from \url{http://docs.ros.org/jade/api/rviz/html/c++/map\_\_display\_8cpp\_source.html\#l00212}}. The red path is again the radar motion path.
+If the \texttt{/map} is available for a scan, this graph (e.g. \cref{fig:resmap}) shows the reprojection map overlaid over the lidar occupancy gridmap as described in \cref{output}. The lidar map has a grayscale colormap, where black means occupied, white means clear, and anything in between shows occupancy probability. Uncharted, unknown values are a ``tasteful blueish greenish grayish color''\footnote{Legal \texttt{-1} value from \url{http://docs.ros.org/jade/api/rviz/html/c++/map\_\_display\_8cpp\_source.html\#l00212}}. The red path is again the radar motion path.
 
 
 \begin{table}[htb]
-    \rowcolors{1}{ColorAlternatedRow}{}
+  \caption{Scan parameters}
+  \label{tab:params}
+  \rowcolors{1}{ColorAlternatedRow}{}
     \begin{tabularx}{\textwidth}{%
       >{\setlength{\hsize}{.31\hsize}\raggedright\arraybackslash}X%
       >{\setlength{\hsize}{.15\hsize}\raggedright\arraybackslash}X%
@@ -67,7 +69,7 @@ If the \texttt{/map} is available for a scan, this graph (e.g. \cref{fig:resmap}
 Name & Sweep & Orient. & Squint & Horn & Map & TF \\
     \midrule
     \endhead
-    
+
     \bottomrule
     \endfoot
     \showrowcolors
@@ -77,11 +79,11 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
  Cafeteria & \SI{5.0}{ms} & H & \ang{90} & \cmark & \xmark & \xmark \\
  Dungeon & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
  Entryway & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Fallout shelter & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
+ Fallout Shelter & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
  Garden & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Home cinema & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Indoor swimming pool & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Jail cell & \SI{5.0}{ms} & H & \ang{20} & \cmark & \xmark & \xmark \\
+ Home Cinema & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
+ Indoor Swimming Pool & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
+ Jail Cell & \SI{5.0}{ms} & H & \ang{20} & \cmark & \xmark & \xmark \\
  Kitchen & \SI{5.0}{ms} & H & \ang{20} & \xmark & \xmark & \xmark \\
  Lobby & \SI{5.0}{ms} & H/I & \ang{0} & \xmark & \xmark & \xmark \\
  Mancave & \SI{5.0}{ms} & H/I & \ang{0} & \xmark & \xmark & \xmark \\
@@ -96,11 +98,9 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
  Virtual Reality & \SI{2.5}{ms} & H/I & \ang{45} & \xmark & \cmark & \cmark \\
  Washroom & \SI{2.5}{ms} & V & \ang{45} & \xmark & \cmark & \cmark \\
  Xray-Room & \SI{2.5}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
- Y is there a cable on the floor & \SI{5.0}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
+ Y Is There A Cable On The Floor & \SI{5.0}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
 %  Z & & & & & & \\
     \end{tabularx}
-    \caption{Scan parameters}
-    \label{tab:params}
 \end{table}
 
 \begin{figure}[htbp]
@@ -111,28 +111,27 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
         \caption{\small Input energy} \label{fig:resinput}
     \end{subfigure}%
     \hfill%
-    \begin{subfigure}[t]{0.32\linewidth}  
-        \centering 
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
         \includegraphics[width=\linewidth]{gfx/results/nirvana_doppler.png}
         \caption{\small Doppler estimation} \label{fig:resdoppler}
     \end{subfigure}%
     \hfill%
-    \begin{subfigure}[t]{0.32\linewidth}   
-        \centering 
+    \begin{subfigure}[t]{0.32\linewidth}
+        \centering
         \includegraphics[width=\linewidth]{gfx/results/nirvana_doa.png}
         \caption{\small Direction of Arrival} \label{fig:resdoa}
     \end{subfigure}\\
-    \begin{subfigure}[t]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[t]{0.475\textwidth}
+        \centering
         \includegraphics[max width=\linewidth, max height=\linewidth]{gfx/results/nirvana_reprojection.png}
         \caption{\small Reprojection Map} \label{fig:resrepro}
     \end{subfigure}%
     \hfill%
-    \begin{subfigure}[t]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[t]{0.475\textwidth}
+        \centering
         \includegraphics[max width=\linewidth, max height=\linewidth]{gfx/results/nirvana_map.png}
         \caption{\small Reprojection Map} \label{fig:resmap}
     \end{subfigure}%
     \caption{Nirvana scan} \label{fig:nirvana}
 \end{figure}
-
