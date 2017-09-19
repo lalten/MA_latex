@@ -57,11 +57,11 @@ the binary that needs to use it. They are available in precompiled form from \ur
         omniradar.h &
         /usr/local/include &
         Library header file \\
-        
+
         libomniradar.so &
         /usr/local/lib &
         Dynamically linked shared object \\
-        
+
         51-omniradar.rules, 52-omniradar.rules &
         /etc/udev/rules.d &
         Udev rules to unbind ftdi\_sio \\
@@ -91,26 +91,12 @@ echo signal of the I/Q channel of left and right receiving antennas.
 Useage is simple as the driver follows the RAII principle. Allocation of
 an object of type \texttt{Omniradar} causes the library to fully
 initialize the RIC60A RDK. After that, the configuration string and the
-VCO tuning curve should be set. Omniradar provides some Matlab example
-code that measures the sensor's VCO tuning curve. The easiest way to
-bring this tuning curve into the C++ domain is to
-print\footnote{`['A' 10 'B']` is a quick way to print a newline character between `A` and `B`}
-it as C style array, e.g.~with
+VCO tuning curve should be set. The VCO tuning curve is responsible for predistorting the (non-linear) VCO in a way that yields a linear frequency sweep.
+Omniradar provides Matlab scripts to measure the sensor's VCO tuning curve. \Cref{vcotune} contains information on how to convert the Matlab script results into something that can be used in a C++ application.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{[ }\StringTok{'#pragma once'} \FloatTok{10} \StringTok{'std::vector<double>'} \FloatTok{10} \KeywordTok{...}\\
-\NormalTok{    }\StringTok{'vco_tune \{'}\NormalTok{, sprintf(}\StringTok{'\%.100g, '}\NormalTok{, VCOtune), }\StringTok{'\};'}\NormalTok{ ]}
-\end{Highlighting}
-\end{Shaded}
-
-and then saving the resulting string as \texttt{vco\_tune.h} include
-file.
-
-This setup allowed the development of a ROS node that handles
-communication with the radar module on the Linux/Arm based Kobuki robot.
-
-The files comprising \texttt{libomniradar} are publicly available at \url{https://github.com/lalten/libomniradar}.
+\texttt{libomniradar} enables the development of a C++ ROS node that handles
+communication with the radar module on the Linux/Arm based Odroid.
+The files comprising \texttt{libomniradar} are publicly available for integration in projects using the RIC60 sensor at \url{https://github.com/lalten/libomniradar}.
 
 \subsection{ROS node}\label{ros-node}
 A new \texttt{omniradar} ROS package was developed to support the use of
@@ -155,7 +141,7 @@ efficiency \(\eta\). The custom message type also allows to send out the
 configuration (RIC configuration string, number and length of FMCW
 sweeps) that was used to attain the message's echo. The message's
 timestamp and sequential ID is contained in the regular
-\texttt{std\_msgs/Header}.
+\texttt{std\_msgs/Header}. \Cref{fig:nodegraph} shows the \texttt{/radar\_raw} rostopic in a node graph of the rosnode.
 
 \begin{figure}[htbp]
     \centering
@@ -206,9 +192,9 @@ into a C++11 lambda thread that is immediately detached.
 \end{samepage}
 
 The multithreading approach lets the node use between \SI{100}{\%} and \SI{140}{\%}
-CPU (observed with \texttt{htop}).
+CPU on the \SI{2}{GHz} octa-core Odroid (observed with \texttt{htop}).
 
-The rospackage providing the omniradar rosnode is available at \url{https://github.com/lalten/omniradar}.
+Like \texttt{libomniradar}, the rospackage providing the \texttt{omniradar} rosnode is available at \url{https://github.com/lalten/omniradar}.
 
 \subsection{Matlab interface}\label{matlab}
 
@@ -222,7 +208,7 @@ It is necessary to install custom message support with the roboticsAddon\footnot
 
 Before a target's radar echo can make its way to the map, it passes several stages. In this proof of concept implementation, the map building is done offline, so all data coming out of the omniradar ROS node is recorded in a \texttt{rosbag} for later analysis. This is a good solution because it (1) allows working even without access to hardware, (2) allows quick iteration and prototyping with scripted languages such as Matlab, which are not capable of receiving at real-time speeds, and (3) allows replaying any situation in which an algorithm fails, so that it can be can be tested and improved until the situation can be handled.
 
-The rosbags can be replayed with \texttt{rosbag play} and received in a subscribing \texttt{rosnode} in Matlab. However the replay speed needed to be adjusted to around \SI{10}{\%}, or Matlab will not be able to keep up and will lose some messages. This also the reason why a live system where Ros messages are sent via network to a computer running Matlab is not feasible. A better solution is to read the rosbag files directly into Matlab, using its \texttt{readMessages(bag,rows)}\footnote{\url{https://www.mathworks.com/help/robotics/ref/readmessages.html}}. The system quickly runs into memory problems when reading even a moderately sized bag (e.g. \SI{400}{MB}) at once, because the Java heap space is limited by default. It is not only safer (no \texttt{java.lang.OutOfMemoryError: GC overhead limit exceeded} crashes) to read in smaller chunks, but also allows to display a \texttt{waitbar} that shows that the program didn't freeze, but just takes a while to read in the bag. The described reading in is handled in the
+The rosbags can be replayed with \texttt{rosbag play} and received in a subscribing \texttt{rosnode} in Matlab. However the replay speed needed to be slowed down by a factor of ten, or Matlab will not be able to keep up and will lose some messages. This also the reason why a live system where rosmessages are sent via network to a computer running Matlab is not feasible. A better solution is to read the rosbag files directly into Matlab, using its \texttt{readMessages(bag,rows)}\footnote{\url{https://www.mathworks.com/help/robotics/ref/readmessages.html}}. The system quickly runs into memory problems when reading even a moderately sized bag (e.g. \SI{400}{MB}) at once, because the Java heap space is limited by default. It is not only safer (no \texttt{java.lang.OutOfMemoryError: GC overhead limit exceeded} crashes) to read in smaller chunks, but also allows to display a \texttt{waitbar} that shows that the program didn't freeze, but just takes a while to read in the bag. The described reading in is handled in the \texttt{radar\_bag2array} function:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{function [ radar_data ] = radar_bag2array( bag_filename )}
@@ -232,13 +218,13 @@ The messages inside the read bags need to be processed first. If a \texttt{/tf} 
 
 Odometry messages from the \texttt{/odom} topic are read in next. Some messages have unchanged values with timestamps that lie very close to the previous message. These are removed, because they cause problems in the later interpolation stages.
 
-Next, the actual radar echo messages are read from the bag's \texttt{/omniradar\_node/radar\_raw} topic. The messages still contain the packed radar data. The
+Next, the actual radar echo messages are read from the bag's \texttt{/omniradar\_node/radar\_raw} topic. The messages still contain the packed radar data. The function
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{function [ ch1I, ch1Q, ch2I, ch2Q ] = radar_unpack_data( packed_echo )}
 \end{Highlighting}
 \end{Shaded}
-takes care of the unpacking by reordering bit-interleaved \SI{32}{bit} words into the eight sigma delta ADC samples for four channels (Rx1/2, I/Q). This function is called very often, and the bit operations take a very long time in Matlab code. Performance was greatly increased after using Matlab Coder to generate C/C++ code embedded in a Matlab-callable MEX file. Once this is done, the range profile is extracted from the time-domain beat signal with
+takes care of the unpacking by reordering bit-interleaved \SI{32}{bit} words into the eight sigma delta ADC samples for four channels (Rx1/2, I/Q). This function is called very often, and the bit operations take a very long time in Matlab code. Performance was greatly increased after using Matlab Coder to generate C/C++ code embedded in a Matlab-callable MEX file. Once this is done, the range profile is extracted from the time-domain beat signal with the \texttt{radar\_echo2range} function,
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{function [down_range, ranges_1_up, ranges_2_up, ranges_1_dn, ranges_2_dn]}
@@ -258,7 +244,7 @@ noisy. One solution to getting cleaner range data with higher SNR is
 oversampling. It is possible to use a moving average over a certain
 accumulation distance to achieve this. However, the number of raw
 samples is quite high and processing each sample takes a considerable
-amount of time (some minutes for some minutes of recorded data). It is
+amount of time (around the same time span as recorded data duration). It is
 better to make use of binning, with bins the width of the accumulation
 distance. All samples in one bin are averaged to represent that bin's
 value. This greatly improves processing time (to less than a second for
@@ -271,17 +257,15 @@ some minutes of recorded data).
     \label{fig:fig_compare_means}
 \end{figure}
 
-\Cref{fig:fig_compare_means} shows in gray the raw data of the first 20 range scan lines
-from the ``Mancave'' dataset. It then compares different methods of averaging (the three pythagoreans means, a trimmed mean and the median) over these 20 scans. All of them improve the SNR, because the noise is statistically mostly uncorrelated to the signal. Table \cref{tab:mean}
-compares the root mean square (RMS) of the difference of each signal to the harmonic mean,
-which gives the cleanest signal with the highest SNR.
+There are several ways to implement the averaging, and they can be quantitatively compared. All of them improve the SNR, because the noise is statistically mostly uncorrelated to the signal. While peak intensities don't vary much (because there is less noise in the signal), some averaging methods are better than others at decreasing the signal level in troughs. The difference can be expressed by the root means square (RMS) of the difference to the best signal, which is acquired with the harmonic mean.
+Table \cref{tab:mean} compares the three Pythagorean means (arithmetic, geometric, and harmonic), a trimmed mean and the median with this metric. The means and RMS are defined as follows.
 
 If the arithmetic mean is defined as
 \begin{equation}
         \text{mean}(x_{i=1,2,...,n}) = \frac{1}{n}\sum_{i=1}^n x_i=\frac{x_1+x_2+\cdots+x_n}{n}
 \end{equation}
 
-then the RMS of a signal $x_i$ yields
+then the RMS of a signal $x_i$ is
 \begin{equation}
     \text{RMS}(x_{i=1,2,...,n}) = \sqrt{\text{mean}(x_i^2)}
 \end{equation}
@@ -297,12 +281,9 @@ The geometric mean is defined as
 \begin{equation}
     \text{gmean}(x_{i=1,2,...,n}) = \left(\prod_{i=1}^n x_i \right)^\frac{1}{n} = \sqrt[n]{x_1 x_2 \cdots x_n}.
 \end{equation}
-The \SI{50}{\%} trimmed mean is defined as the arithmetic mean of all except
-the highest and lowest \(\frac{n}4\) data points, where \(n\) is the
-number of data points. The median is defined as the value that lies
-between the lower and the upper half of sample values.
+In a set of $n$ data points, the \SI{50}{\%} trimmed mean is defined as the arithmetic mean of the middle $n/2$ data points, tossing out the $n/4$ highest and lowest points. The median is defined as the value that lies equidistant between the lower and the upper half of sample values.
 
-The last row denotes the (arithmetic) mean of the value for the raw data $s_{d_{down},d_{cross}}$ of each of the 20 scans,
+The last row of \cref{tab:mean} denotes the (arithmetic) mean of the value for the raw data $s_{d_{down},d_{cross}}$ of each of the 20 scans,
 \begin{equation}
     \text{mean}_{d_{cross}}\Bigl[
         \text{RMS}\Bigl(
@@ -310,6 +291,9 @@ The last row denotes the (arithmetic) mean of the value for the raw data $s_{d_{
         \Bigr)
     \Bigr]
 \end{equation}
+The high value confirms that all the mean methods produce a better signal than the untreated signal. The value also gives an idea of how much better than the raw data each of the smoothed signal's versions is.
+
+\Cref{fig:fig_compare_means} shows in gray the raw data of the first 20 range scan lines from the ``Mancave'' dataset and compares the different presented methods of averaging over the 20 scans.
 
 { %\begin{table}[htbp]
     \centering
@@ -321,14 +305,14 @@ The last row denotes the (arithmetic) mean of the value for the raw data $s_{d_{
         \midrule
         \endhead
         \showrowcolors
-            Harmonic mean & 0\tabularnewline
+            Harmonic mean & n/a\tabularnewline
             Geometric mean & 0.144\tabularnewline
             Arithmetic mean & 0.275\tabularnewline
             \SI{50}{\%} Trim mean & 0.284\tabularnewline
             Median & 0.318\tabularnewline
             Raw data, mean & 1.064\tabularnewline
         \bottomrule
-        \caption{Comparison of mean types by RMS}
+        \caption{Comparison of mean types by RMS relativ to harmonic mean}
         \label{tab:mean}
     \end{tabularx}
 } %\end{table}
@@ -366,7 +350,7 @@ consecutive range profiles.
     \begin{subfigure}[t]{\textwidth}
         \def\svgscale{1}
         \input{gfx/fig_svg/explain_peak_gradient_3.pdf_tex}
-        \caption{Gauss-approximated range profile in region of interest box, with subsample-interpolated peaks}
+        \caption{Gauss-approximated range profile in region of interest box, with subsample-interpolated peaks based on the three points closest to the raw peak}
         \label{fig:explain_peak_gradient_3}
     \end{subfigure}\bigskip
     \caption{Peak detection and subsample peak interpolation to find peak distance between two range profiles}
@@ -389,10 +373,9 @@ Combined with the change in cross range,
 \(d_{cross} = \SI{0.3752}{m} - \SI{0.3555}{m} = \SI{0.0197}{m}\), we can calculate Doppler
 speeds of \(v_{D,1} = \frac{d_{down,1}}{d_{cross}} = \SI{109.55}{\%}\) (of
 radar movement speed) and
-\(v_{D,2} = \frac{d_{down,2}}{d_{cross}} = -\SI{109.55}{\%}\). If the speeds
-were \SI{100}{\%} and -\SI{100}{\%} it would mean that the targets are directly
-ahead and directly behind the moving radar. Speeds over \SI{100}{\%} are
-however impossible in a static environment where all relative target
+\(v_{D,2} = \frac{d_{down,2}}{d_{cross}} = -\SI{109.55}{\%}\).
+If the speeds are \SI{100}{\%} and -\SI{100}{\%} it would mean that the targets are directly
+ahead and directly behind the moving radar. Speeds over \SI{100}{\%} are impossible in a static environment where all relative target
 motion is caused by the radar movement. The targets are therefore either
 dynamic and moving by themselves, or the peak locations that determined
 those too-high speeds were not exact. Since we know that there were no
@@ -410,7 +393,7 @@ With higher downrange resolution, peaks could be localized more
 precisely. However, the down range resolution is limited by the
 available bandwidth of the radar sensor. In the Omniradar RIC60A, up to
 \SI{7}{GHz} are available, which is already extremely high. Its range
-resolution \(dR\) is \(\frac{c}{2 BW}\), which is roughly \SI{2.1}{cm}. With
+resolution \(dR=\frac{c}{2 BW}\) is roughly \SI{2.1}{cm}. With
 this method, \(dR\) is of course the smallest measurable change of
 target range.
 
@@ -429,11 +412,11 @@ The Omniradar sensor can send multiple consecutive sweeps without any
 delay between them. The timing will then be very exact, because the
 precise length of one sweep is known. However, the number of sweeps in
 such a set of sweeps is limited (transmission of high data volumes will
-often fail), so they can't be average to be smoothed through
+often fail), so they can't be smoothed through
 oversampling and will be noisy. Smaller peaks will then not be detected
 reliably. Another problem with this approach is that it will give target
-Doppler speeds in change of down range over time, but not the robot
-speed-invariant relative Doppler speed in change of down range over
+Doppler speeds in terms of change of down range over time, but not the robot
+speed-invariant relative Doppler speed in terms of change of down range over
 change of cross range.
 
 Inter-scan comparison gives better Doppler estimation, because the data
@@ -475,7 +458,7 @@ cross range difference, i.e.~the driven distance between scans, is not
 too high, a single target will not change very much in both range and
 echo intensity. This allows the detection of peak matches, between which
 the Doppler speed will be calculated. The parameters for peak matching
-tolerance are therefor allowed intensity change \texttt{ValueSearchArea} and allowed range change \texttt{LocSearchArea}, respectively:
+tolerance are therefore allowed intensity change \texttt{ValueSearchArea} and allowed range change \texttt{LocSearchArea}, respectively:
 \begin{align}
     \text{\texttt{ValueSearchArea}} &= \frac{\delta I}{\Delta d_{cross}}\\
 \intertext{and}
@@ -483,12 +466,7 @@ tolerance are therefor allowed intensity change \texttt{ValueSearchArea} and all
 \end{align}
 with intensity change factor $\delta I$ and down range deviation $\Delta d_{down}$ per added cross range mileage $\Delta d_{cross}$.
 
-$\Delta d_{down} / \Delta d_{cross}$ is more easily expressed as Doppler speed \(v_D\) in percent of robot speed \(v_R\). It makes sense to allow \texttt{LocSearchArea}s greater than $1~v_R$ to deal with noise and jitter -- otherwise a target peak closing at roughly $v_R$ would not always be detected and smoothing over cross-range would be worse. The detected $v_D > v_R$ of course need to be clipped to $v_R$ or ignored in reprojection (which is what the current implementation does). Good values are a \texttt{ValueSearchArea} of \SI{5}{cm^{-1}} and a \texttt{LocSearchArea} of \(2~v_R\).
-
-\subsection{Minimum Peak height}\label{minimum-peak-height}
-Without countermeasures a lot of noise with low height and low full-width-at-half-maximum will clutter the reprojection map. The easiest way to prevent this is to apply a threshold on the detected peak height that rejects all peaks that do not reach a certain minimum height. It's not easy to specify such a threshold that works for all scans, because the noise floor level strongly depends on the chirp time. \Cref{fig:fig_compare_chirp_times} shows that this persists even when the echo intensity is normalized to intensity 1 at the first range bin before transmit cross talk suppresion (see \cref{transmit-crosstalk-suppression}).
-
-%TODO
+$\Delta d_{down} / \Delta d_{cross}$ is more easily expressed as Doppler speed \(v_D\) in percent of robot speed \(v_R\). It makes sense to allow \texttt{LocSearchArea}s greater than $1~v_R$ to deal with noise and jitter -- otherwise a target peak closing at roughly $v_R$ would not always be detected and smoothing over cross-range would be worse. The detected $v_D > v_R$ of course need to be clipped to $v_R$ or ignored in reprojection (which is what the current implementation does). Good values are determined to be a \texttt{ValueSearchArea} of \SI{5}{cm^{-1}} and a \texttt{LocSearchArea} of \(2~v_R\).
 
 \subsection{Transmit crosstalk suppression}\label{transmit-crosstalk-suppression}
 
@@ -540,6 +518,8 @@ to ignore these echoes.
     \label{fig:fig_range_compensation_transmit_spike}
 \end{figure}
 
+\subsection{Minimum Peak height}\label{minimum-peak-height}
+Without countermeasures a lot of noise with low height and low full-width-at-half-maximum will clutter the reprojection map. The easiest way to prevent this is to apply a threshold on the detected peak height that rejects all peaks that do not reach a certain minimum height. It's not easy to specify such a threshold that works for all scans, because the noise floor level strongly depends on the chirp time. \Cref{fig:fig_compare_chirp_times} shows that this persists even when the echo intensity is normalized to intensity 1 at the first range bin before transmit cross talk suppresion (see \cref{transmit-crosstalk-suppression}).
 
 \subsection{Peaks overlaps at crossing target arcs} \label{peaks-overlaps-at-crossing-target-arcs}
 Often there appears a situation where the range cell migration arcs of two targets cross each other. In this case, their peaks can almost always be still detected separately. However peak-associated data like DOA and Doppler speed will superpositioned. Using these in a regular fashion would yield wrong results. An approach that proved to work well in practice is to sort all peaks in a range scan line by ascending value (peak height), then assigning the average over the FWHM of the feature in question to all output down range cells within half the FWHM of the respective peak. Higher peaks are hence treated as more important and overwrite the values of lower peaks. \Cref{fig:overlap} is an example where the overlapping effect is visible.
@@ -550,6 +530,7 @@ Often there appears a situation where the range cell migration arcs of two targe
     \caption{DOA of Attic scan. The DOA of higher peak values is applied over the FWHM, superseding the values of lower peak values.}
     \label{fig:overlap}
 \end{figure}
+
 TODO annotate in figure where the overlap is
 
 \subsection{Output}\label{output}
@@ -582,15 +563,13 @@ than the range resolution. Sometimes however some peaks come from
 point-like targets that are close together, like a parts of a wall. This
 bundle of targets is however not always separated by the same range.
 Especially in the case of a wall, the traces of visible points will
-cross each other as they slide on the sine arc (see figure). When the
+cross each other as they slide on the sine arc (see \cref{fig:squiggly_doppler_at_wall}). When the
 points are close together, only the brightest spots will be seen as
 peaks, and the trace of the detected peak matches will describe a
 squiggly motion. This causes the estimated Doppler speed to wander
 around the common speed. To combat this effect, a higher accumulation
 distance can be used during oversampling preprocessing, so the peaks
 move together so closely that they actually form a single target.
-
-TODO explanation of "simulation"
 
 \begin{figure}[htbp]
     \centering
@@ -619,7 +598,7 @@ In geometries as described in \cref{geometry-for-the-general-case}, the next ste
 As described in \cref{direction-of-arrival}, the Direction of Arrival (DOA) angle can be measured from the phase difference at the receiving antennas of a multistatic radar.
 
 In the case of RIC60A the antenna separation \(d=\SI{1.16}{mm}\) and
-wavelength \(\lambda\) is \(\lambda=\frac{c}{\SI{60}{GHz}}=\SI{5.0}{mm}\) (with speed
+wavelength \(\lambda=\frac{c}{\SI{60}{GHz}}=\SI{5.0}{mm}\) (with speed
 of light \(c\)).
 
 \Cref{fig:fig_range,fig:fig_phase_shift} show the range profile and phase shift of the
@@ -673,7 +652,7 @@ the ``Basement'' scan. The direction of arrival seems plausible: In this
 side-facing scan the robot passed some metal cans. Apparently the radar
 sensor was not mounted perfectly orthogonal to the robot's movement
 direction (which is not necessary for the reprojection method), but was
-slightly off by. This can be seen at the closest points of the target
+slightly off. This can be seen at the closest points of the target
 arcs. At the pericenter the line of sight to a target is orthogonal to
 the robot's movement direction, but the DOA value shows to be around \ang{5}
 to \ang{10}.
@@ -688,8 +667,6 @@ to \ang{10}.
 Note that if the radar sensor is mounted inverted (rotated by \ang{180}), DOA
 values have to be multiplied by \(-1\) to keep right and left where they
 are.
-
-TODO ric60a doa figure
 
 \section{Reprojection Mapping}\label{reprojection-mapping}
 
@@ -768,32 +745,41 @@ closest pixel centers.
 
 If the target coordinate is \(p_{target}=(x_t, y_t)\), then the
 horizontal and vertical distributions \(\nu_h\) and \(\nu_v\),
-respectively, are \[
-\nu_h = \frac{x_t - \lfloor x_t \rfloor}{\lceil x_t \rceil - \lfloor x_t \rfloor} \\
-\nu_v = \frac{y_t - \lfloor y_t \rfloor}{\lceil y_t \rceil - \lfloor y_t \rfloor}
-\]
+respectively, are
+\begin{align}
+\nu_h &= \frac{x_t - \lfloor x_t \rfloor}{\lceil x_t \rceil - \lfloor x_t \rfloor} \\
+\nu_v &= \frac{y_t - \lfloor y_t \rfloor}{\lceil y_t \rceil - \lfloor y_t \rfloor}
+\end{align}
 
-The pixel weights \(p_{x,y}\) are then \[
-p_{\lfloor x_t \rfloor, \lfloor y_t \rfloor} = \nu_v \nu_h\\
-p_{\lfloor x_t \rfloor, \lceil y_t \rceil} = \nu_v (1 - \nu_h)\\
-p_{\lceil x_t \rceil, \lfloor y_t \rfloor} =  (1 - \nu_v) \nu_h\\
-p_{\lceil x_t \rceil, \lceil y_t \rceil} = (1 - \nu_v) (1 - \nu_h)
-\] , such that \[
-\sum\limits_{
-x \in \{\lceil x_t \rceil, \lfloor x_t \rfloor\}\\
-y \in \{\lceil y_t \rceil, \lfloor y_t \rfloor\}
-} p_{x,y} = 1
-\]
+The pixel weights \(p_{x,y}\) are then
+\begin{align}
+  p_{\lfloor x_t \rfloor, \lfloor y_t \rfloor} = \nu_v \nu_h \nonumber\\
+  p_{\lfloor x_t \rfloor, \lceil y_t \rceil} = \nu_v (1 - \nu_h) \nonumber\\
+  p_{\lceil x_t \rceil, \lfloor y_t \rfloor} =  (1 - \nu_v) \nu_h \nonumber\\
+  p_{\lceil x_t \rceil, \lceil y_t \rceil} = (1 - \nu_v) (1 - \nu_h) \nonumber
+\intertext{such that}
+  \sum\limits_{\mathclap{\substack{
+  x \in \{\lceil x_t \rceil, \lfloor x_t \rfloor\}\\
+  y \in \{\lceil y_t \rceil, \lfloor y_t \rfloor\}
+  }}} p_{x,y} = 1
+\end{align}
 
-In the special case where $y\_t = \lceil y\_t \rceil = \lfloor y\_t\rfloor$ there are only two instead of the four neighboring pixels. Their weights \(p_{x,y}\) are \[
-p_{\lfloor x_t \rfloor, y_t} = \nu_h\\
-p_{\lceil x_t \rceil, y_t} = (1 - \nu_h)
-\] The same applies when $x\_t = \lceil x\_t \rceil = \lfloor x\_t\rfloor$: \[
-p_{x_t, \lfloor y_t \rfloor} = \nu_v\\
-p_{x_t, \lceil y_t \rceil} = (1 - \nu_v)
-\] And lastly, if
+In the special case where $y\_t = \lceil y\_t \rceil = \lfloor y\_t\rfloor$ there are only two instead of the four neighboring pixels. Their weights \(p_{x,y}\) are
+\begin{align*}
+p_{\lfloor x_t \rfloor, y_t} &= \nu_h\\
+p_{\lceil x_t \rceil, y_t} &= (1 - \nu_h)
+\end{align*}
+The same applies when $x\_t = \lceil x\_t \rceil = \lfloor x\_t\rfloor$:
+\begin{align*}
+p_{x_t, \lfloor y_t \rfloor} &= \nu_v\\
+p_{x_t, \lceil y_t \rceil} &= (1 - \nu_v)
+\end{align*}
+And lastly, if
 (\(y_t = \lceil y_t \rceil = \lfloor y_t \rfloor ) \land (x_t = \lceil x_t \rceil = \lfloor x_t \rfloor )\),
-then \(p_{x_t, y_t} = 1\)
+\begin{align*}
+p_{x_t, y_t} = 1
+\end{align*}
+
 
 \begin{figure}[htbp]
     \centering
@@ -830,7 +816,7 @@ near range, while the noise floor stays constant in the far range. This
 helps to keep a target's intensity at at least similar values over all
 ranges in the map.
 
-TODO split in subfigures, adjust refs
+TODO split in subfigures, adjust refs, annotate
 \begin{figure}[htbp]
     \centering
     \includegraphics[max width=10cm]{figures/fig_range_compensation}
@@ -851,7 +837,7 @@ be compensated by multiplying detected target peak heights with a factor
 that is based on the angle the target is believed to be seen under.
 
 The angle compensation factor curve was found by experiment. A strong
-point target (a retroreflector) was placed at a known range away from
+point target (retroreflector) was placed at a known range away from
 the robot. The robot was then made to rotate around itself, such that
 the target comes into view and leaves again. Meanwhile, the radar scans,
 together with robot odometry were recorded.
@@ -859,14 +845,14 @@ together with robot odometry were recorded.
 The radar was not mounted over the center of rotation of the robot. This
 way, the radar did describe a circular path whose mileage can be
 calculated. The angle compensation measurement can hence be visualized
-in figure \cref{fig:fig_range_compensation} in the usual range profile with echo intensities over
+in \cref{fig:fig_range_compensation} in the usual range profile with echo intensities over
 cross versus down range. The range of the retroreflector varies with
 twice the distance of the radar to the robot's rotation center, but only
 the orientation is interesting - the range can just be summed up over
 the range bins the target is visible in (in this case,
 \SIrange{0.45}{0.85}{m}).
 
-In figure \cref{fig:fig_range_compensation}, the same range scan lines are sorted by robot
+In \cref{fig:fig_range_compensation}, the same range scan lines are sorted by robot
 orientation during the scan. After the explained summing in down range
 dimension the intensity (absolute value of complex signal) data of both
 antennas is binned separately over 60 orientations from \(-\pi\) to
@@ -876,7 +862,7 @@ The manufacturer later provided angle sensitivity measurements of the
 IC's manufacturing batch. The measurements show that the
 experimental approach produced valid results.
 
-The compensation factor \(f_a\) for each angle is finally composed using
+The compensation factor \(f_a\) for each angle is composed using
 the formula
 
 \[m = \max \left( \max (s_{Rx1}), \max (s_{Rx2}) \right)\] \[
@@ -887,7 +873,7 @@ f_a = \frac{1}{2}
   \right)
 \]
 
-Multiplicating a peak which is to be reprojected at angle \(\alpha\)
+Multiplying a peak which is to be reprojected at angle \(\alpha\)
 with angle compensation factor \(f_a(\alpha)\) results in a peak height
 that is independent of observation angle.
 
@@ -921,27 +907,26 @@ that is independent of observation angle.
 \subsection{Angle compensation window}\label{angle-compensation-window}
 
 Detected peaks are not in a single range bin, but form a curve over
-several range bins. Multiplicating each of these range bin's values with
+several range bins. Multiplying each of these range bin's values with
 the same \(f_a\) does work, but leaves hard edges. It is better to
-multiplicate the peak with a window function with height \(f_a\). The
-implementation the window \(w\):
-\[
+multiply the peak with a window function $w$ of height \(f_a\):
+\begin{equation}
 w(x,f_a) = 1 + (f_a - 1) ~e ^ { -\frac{ \left( {x - p_x} \right) ^ 2 } {p_w} }
-\] where \(p_x\) is the peaks subsample-interpolated peak location in
+\end{equation}
+where \(p_x\) is the peak's subsample-interpolated peak location in
 down range space and
-\[
+\begin{equation}
 p_w = \cfrac{
 \left( \frac{fwhm}{4}  \right) ^2
 }{
 4 ln(2)}
-\]
-is
-the peaks width, where \(fwhm\) is the full width at half maximum as
+\end{equation}
+is the peak's width, where \(fwhm\) is the full width at half maximum as
 found by the subsample-interpolated peak fit.
 
 \Cref{fig:fig_angle_compensation_comparison} show a glass wall in the ``Racetrack'' scan. In \cref{fig:fig_angle_compensation_comparison_1}, only range compensation is applied. In \cref{fig:fig_angle_compensation_comparison_2},
 angle compensation is switched on. In \cref{fig:fig_angle_compensation_comparison_3}, both angle
-compensation and angle compensation windowing are switched on. The
+compensation and windowing are switched on. The
 figure shows how angle compensation helps to keep the echo intensity of
 a mapped object at the same level, regardless of the angle at which it
 is seen by the radar.

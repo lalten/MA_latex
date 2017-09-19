@@ -29,3 +29,21 @@ this would look like
 \NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\section{VCO tuning curve import} \label{vcotune}
+
+\Cref{c-bindings-and-library} mentions that the VCO tuning curve needs to be known in order to correctly predistort the VCO.
+Omniradar provides Matlab scripts that can measure this curve, the data just needs to be converted to a format that is appropriate for a C++ application using \texttt{libomniradar}, such as the \texttt{omniradar} rosnode.
+The easiest way to bring this tuning curve into the C++ domain is to
+print\footnote{\texttt{['A' 10 'B']} is a quick way to print a \texttt{'\\n'} (newline character) between \texttt{A} and \texttt{B}}
+it as C style array, with
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{[ }\StringTok{'#pragma once'} \FloatTok{10} \StringTok{'std::vector<double>'} \FloatTok{10} \KeywordTok{...}\\
+\NormalTok{    }\StringTok{'vco_tune \{'}\NormalTok{, sprintf(}\StringTok{'\%.100g, '}\NormalTok{, VCOtune), }\StringTok{'\};'}\NormalTok{ ]}
+\end{Highlighting}
+\end{Shaded}
+
+and saving the resulting string as \texttt{vco\_tune.h} include
+file.
