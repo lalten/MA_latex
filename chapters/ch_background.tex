@@ -19,7 +19,7 @@ case is negative obstacle (e.g.~cliff) detection. Here, infrared
 (IR) range sensors are usually employed on the underside of the robot.
 
 Intelligent navigation and path planning however can only be achieved
-with ranging sensors. Classic range sensors are IR-, ultrasound (US)-, or
+with ranging sensors. Classic range sensors are IR-, ultrasound-, or
 laser-based. They measure the distance to the closest target in one
 direction. Because obstacles can appear in any direction, these sensors
 need to be scanned. Scanning means that the bearing of active sensing
@@ -130,10 +130,10 @@ motion. A common example is the change of pitch that can be heard when a
 race car or ambulance passes the observer. The Doppler frequency shift
 \(f_D\) is
 \begin{equation} \label{eq:doppler}
-    f_D = 2 \frac{v_r}{\lambda} = 2 \frac{v \cos ( \theta )}{\lambda}
+    f_D = 2 \frac{v_r}{\lambda} = 2 \frac{v \cos ( \alpha )}{\lambda}
 \end{equation}
 where \(v_r\) is the radial velocity component of the target, which
-travels at a speed \(v\) at angle \(\theta\) between the target's
+travels at a speed \(v\) at angle \(\alpha\) between the target's
 direction and the radar beam with wavelength \(\lambda\)
 \cite{Skolnik2008}. The factor \(2\) is caused by the Doppler shift
 being applied twice; once for the incident wave, and once for the
@@ -156,14 +156,13 @@ effect.
 
 Pulse radars send series of short bursts. The time delay \(\tau\)
 between transmission and reception of a pulse is called time of flight
-(TOF). Together with speed fo light $c$ it yields a target's range \(R\):
+(TOF). Together with speed of light $c$ it yields a target's range \(R\):
 \begin{equation} \label{eq:tof}
 	 R = \frac{c\tau}{2} 
 \end{equation}
-The range resolution \(\Delta R\) is given by
-
+The range resolution \(dR\) is given by
 \begin{equation} \label{eq:tof_res}
-	\Delta R = \frac{c\tau_m}{2}
+	dR = \frac{c\tau_m}{2}
 \end{equation}
 with \(\tau_m\) the pulse high time of the burst modulation (see \cref{fig:radar_pulse}). To
 achieve high range resolution pulses must be very short, which requires
@@ -240,7 +239,7 @@ is the (angular) frequency of the transmitted signal. The signal \(v_{Mixer}\) b
 \begin{align}
 \begin{split}
     v_{Mixer}(t)    &= v_{Tx}(t) ~ v_{Rx}(t) \label{eq:fmcw3}\\
-                    &= A_{Tx}A_{Rx}~\cos(t\omega_{Tx}(t))t~\cos(\omega_{Tx}(t-\tau)t)
+                    &= A_{Tx}A_{Rx}~\cos\bigl(t\omega_{Tx}(t)\bigr)~\cos\bigl(\omega_{Tx}(t-\tau)\bigr)
 \end{split}
 \end{align}
 
@@ -270,7 +269,7 @@ be detected) signal containing the beat frequency. The output of the
 low-pass filter intrinsic in the mixer stage will thus only consist of
 the beat frequency (plus noise of similar frequencies) from \cref{eq:fmcw4}:
 \begin{equation} \label{eq:vbeat}
-    v_{beat}(t,\tau) = \frac{A{Tx}A_{Rx}}{2} \cos \left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau \right) \tau \right]
+    v_{beat}(t,\tau) = \frac{A_{Tx}A_{Rx}}{2} \cos \left[ 2\pi\left(\frac{\Delta f}{T_d}\tau\right)t - \left(\omega_c + \pi\frac{\Delta f}{T_d}\tau \right) \tau \right]
 \end{equation}
 
 The term \(\frac{\Delta f}{T_d}\tau\) in \cref{eq:vbeat}'s \(v_{beat}(t,\tau)\) is
@@ -617,7 +616,7 @@ Most newer slam navigation algorithms are derived from the classical Bayesian pr
 \begin{equation} \label{eq:slam}
     P_{t|t}(X_t,M_t|Z_{1:t},U_{1:t-1},X_0)
 \end{equation}
-Recursive probabilistic solutions then first \textit{predict} the joint state \( P_{t|t-1}(X_t,M_t|Z_{1:t-1},U_{1:t-1},X_0) \) from control inputs and then \textit{correct} the state with the observations, to get the posterior of \cref{eq:slam}.
+Recursive probabilistic solutions first \textit{predict} the joint state \( P_{t|t-1}(X_t,M_t|Z_{1:t-1},U_{1:t-1},X_0) \) from control inputs and then \textit{correct} the state with the observations, to get the posterior of \cref{eq:slam}.
 
 Many current applications using slam acquire observation data with laser scanners or vision sensors (VSLAM), but this is not an inherent limitation of slam. In fact, any kind of sensor can be used as long as it delivers reproducible data where features can easily be re-detected from different locations.
 
