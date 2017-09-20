@@ -1,8 +1,8 @@
 \chapter{Conclusion}\label{conclusion}
 
-While the presented implementation was shown to work, there are many areas which in which it could be extended with interesting features. Some worthwhile goals for future work on the topic are outlined in \cref{future-work}.
-
 \section{Future Work}\label{future-work}
+
+While the presented implementation was shown to work, there are many areas which in which it could be extended with interesting features. Some worthwhile goals for future work on the topic are outlined in \cref{future-work}.
 
 \subsection{Dynamic target rejection}\label{dynamic-target-rejection}
 
@@ -19,15 +19,10 @@ which does not run on arm processors natively. Matlab's Robotics Toolbox
 does include a way to receive ROS messages live, but it is very slow and
 would miss a lot of messages. This was tested by replaying a rosbag,
 which works only at less than 10\% replay speed. This means that a 6
-minute recording takes around 60 minutes to process. On the other hand,
-just reading in all the messages in a rosbag takes around 3 minutes,
-which is the reason the implementation was not done live. In a real
-system (i.e.~not replayed from a rosbag) sending raw scan messages over
-the network requires a lot of bandwidth, so the sampling frequency also
-drops considerably.
+minute recording takes around 60 minutes to process (which is the reason the implementation was not done live). On the other hand, just reading in all the messages in a rosbag takes around 3 minutes. In a real system (i.e.~not replayed from a rosbag) sending raw scan messages over the network requires a lot of bandwidth, so the sampling frequency also drops considerably.
 
-An online system would probably have to be designed as a ROS node that
-runs on the embedded platform.
+An online system would have to be designed as a ROS node that
+runs locally on the embedded platform.
 
 Another topic that needs to be looked at for an online version is the
 size of the reprojection map. It should automatically expand if a wider
@@ -122,7 +117,7 @@ modulated flash lidars and the right optics.
 
 This thesis showed that mobile robots still struggle to detect some obstacles which are invisible to their conventional sensors. The fact that these are not special edge cases but very common objects like chair legs and windows highlights how important it is to improve mapping in these real-world environments. Radar sensing fills a gap in the design space by exposing these hidden obstacles. It is already a tried and tested technology and has been deployed in many diverse fields, including far-range military reconnaissance, speed limit enforcement, and weather forecasting for decades. However, with new advances in system integration, miniaturization, and cost optimization, ultra-wide bandwidth radar sensing becomes very interesting even for consumer-grade ground robots.
 
-With reprojection mapping, this thesis proposes a novel method for scanless radar-based mapping that further reduces the barrier that kept radar sensors out of robots for so long by obviating the need to actively steer the radar beam via mechanical scanning or beamforming. The most limiting factor in the application is the need for a static environment to assert that any target can be localized through its Doppler speed. In practice this constraint is not too hard to meet because many indoor robots are designed to operate unsupervised in environments without moving objects, like an office at night or an apartment during working hours.
+With reprojection mapping, this thesis introduces a novel method for scanless radar-based mapping that further reduces the barrier that kept radar sensors out of robots for so long by obviating the need to actively steer the radar beam via mechanical scanning or beamforming. The most limiting factor in the application is the need for a static environment to assert that any target can be localized through its Doppler speed. In practice this constraint is not too hard to meet because many indoor robots are designed to operate unsupervised in environments without moving objects, like an office at night or an apartment during working hours.
 
 Even though the ideas behind reprojection mapping are not complex or require complicated math, this kind of scanless mapping has never been shown before. One can assume the reason to be that in high-performance, high-cost radar mapping applications it is easier to use more specifically designed expensive or complex scanning sensors. On the other end of the spectrum, low-cost and high-volume products could use cheaper and proven traditional sensors like laser scanners. Only the advent of cheaper and smaller radar range sensors allowed the expansion of robotic design space into the corner in which reprojection mapping becomes useful.
 

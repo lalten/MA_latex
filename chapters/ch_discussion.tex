@@ -65,14 +65,12 @@ target's echo are visible, which can lead to detection of incorrect
 angle and ranges. Luckily, in the recorded data almost no multipath
 effects are obvious. The only scan that shows some effects is the
 Torture Chamber. There, it seems like the radar waves bounce around a
-bit in the area with highly reflective metal cabinets under the desk around (\SI{2}{m},\SI{2}{m}). The effect is that some targets are detected behind the wall behind the desk.
-
-The effect can be expected to be less noticeable in residential environments, which contain fewer (if any) metal corners.
+bit in the area with highly reflective metal cabinets under the desk around (\SI{2}{m},\SI{2}{m}). The effect is that some targets are detected behind the wall behind the desk. It can be expected to be less noticeable in residential environments, which contain fewer (if any) metal corners.
 
 \subsection{Object penetration}\label{object-penetration}
 
 Some objects are penetrated by the radar waves. For example, in the
-Attic and Basement scans, both the front and the back wall of the
+Attic and Basement scans, both the front and the back wall of a
 plastic bottle can be seen. However, the plastic bottle was relatively
 close to the sensor. On the other hand, in the scans with glass walls in
 them (P,Q,R,S,U), no significant radar echo is picked up from the
@@ -81,6 +79,7 @@ glass pane attenuates the \SI{60}{GHz} signal by about \SI{5.5}{dB} \cite{Lu2014
 effect, a radar sensor with higher transmission power might be able to
 see through walls, but in the conducted experiments radar echos were to
 faint to be picked up after the first bigger object (like a wall).
+This is OK, because obstacles that are behind walls don't pose an immediate threat that needs to be circumnavigated. Through-wall visibility would mostly be interesting in slam applications that use the mapped objects for localization.
 
 \subsection{Negative obstacles}\label{negative-obstacles}
 
@@ -106,8 +105,8 @@ analyzed in the environment shown in \cref{fig:cliff}. Cliffs, steps, and ditche
 
 The Virtual Reality scan was carried out in the standard configuration
 with a horizontal, slightly squinting, and not downwards angled sensor.
-The assumption was that a part of the strong signal int the \SIrange{10}{20}{cm}
-range were reflections from the floor, that should disappear when the
+The assumption was that a part of the strong signal in the \SIrange{10}{20}{cm}
+range was due to reflections from the floor, that should disappear when the
 floor ends at a cliff. Visual inspection of the range profile however
 shows only a extremely slight change in signal, e.g.~at cross range
 \SIrange{0.8}{1.1}{m}, down range \SIrange{0.2}{0.25}{m}., where the floor could not reflect due to the radar sensor overhanging the cliff.
@@ -137,7 +136,7 @@ TODO annotation-arrow pointing to darker region?
 
 To limit the transmit crosstalk's blinding effect, the sensor was
 mounted on a much higher position (on the RGBD camera mount) in the Xray
-Room scan. One effects is that the robot chassis itself is constantly
+Room scan. One effect is that the robot chassis itself is constantly
 visible at a distance of \SI{0.35}{cm} down range. At \SI{0.45}{cm} down range, the
 floor echo is visible. There is one dip in intensity at \SI{2.5}{m} cross
 range, where the sensor was not over floor. Overall the signal is
@@ -191,15 +190,16 @@ the two can towers at the end of the cable.
 
 Both the X Ray Room and Y (Is There A Cable On The Floor) introduce a
 new geometry that lifts the radar sensor out of the two dimensional
-mapping plane. The geometry is better described with a 3D case, for
-which more than
+mapping plane. The geometry is better described with the 3D case in \cref{geometry-for-the-3d-case}.
+
+The results suggest that cables can be detected, but it might be hard to decide if the robot can safely drive over them.
 
 \subsection{Minimum distance}\label{minimum-distance}
 
 The constant noise from the transmission crosstalk leads to a high
-minimum detection distance as explained in \#REF. The effect is that
+minimum detection distance as explained in \cref{transmit-crosstalk-suppression}. The effect is that
 targets can not be projected onto the map if the robot is too close to
-them. This is an issue in the Sauna scan, where the Glass wall right at
+them. This is an issue in the Sauna scan, where the glass wall right at
 the beginning of the robot path cannot be mapped in its entirety.
 
 
@@ -213,7 +213,7 @@ following, SAR techniques, Laser slam, and RGBD slam are compared to the
 radar reprojection.
 
 \subsection{SAR}\label{sar-1}
-Synthetic aperture radars make a lot of sense in other applications
+Synthetic aperture radars make a lot of sense in applications
 where the radar is moved over or through a map. The big difference to
 this application is that ``professional'' SAR applications have radar
 sensors that sit in vehicles that are not in the mapping plane.
@@ -245,7 +245,7 @@ Radar, documented in \cite{Forsten2015} (see \cref{fig:forsten}). He used an Ome
 \end{figure}
 
 
-Forstén was able to greatly improve his data quality by use of an minimum-entropy based auto-focusing algorithm. The trick with this is that the radar needs to move in a very straight line, where the ``error in path linearity should be around less than tenth of a wavelength'' \cite{Forsten2015}. In Forstén's radar, this is about \SI{5}{mm}. However with the \SI{60}{GHz} Omniradar this is around \SI{0.5}{mm}. Keeping a straight line with less than half a millimeter of linearity error is not realistically achievable on the Kobuki platform.
+Forstén was able to greatly improve his data quality by use of a minimum-entropy based auto-focusing algorithm. The trick with this is that the radar needs to move in a very straight line, where the ``error in path linearity should be around less than tenth of a wavelength'' \cite{Forsten2015}. In Forstén's radar, this is about \SI{5}{mm}. However with the \SI{60}{GHz} Omniradar this is around \SI{0.5}{mm}. Keeping a straight line with less than half a millimeter of linearity error is not realistically achievable on the Kobuki platform.
 
 One big inherent problem with synthetic aperture radar algorithms is
 that basically all of them assume the radar to move in a straight line.
@@ -279,6 +279,6 @@ The Kobuki robot was also carrying an Astra Orbbec Mini\footnote{\url{https://or
 \end{figure}
 
 \subsection{Lidar}\label{lidar-1}
-As stated in \cref{kobuki}, the Kobuki robot used in the experiments was equipped with an RPLidar and a computing platform powerful enough to perform slam. Lidar slam is the go-to, standard approach when it comes to mapping the environment around a robot. After years of research and product development, even relatively cheap lidar systems like the RPLidar have acceptable range resolution. While they can't provide ground truth data (see problems with lidar data in \cref{traditional-obstacle-sensors}), it makes sense to compare the radar reprojection maps with laser scan maps. This is why all scans after Mancave have lidar maps associated.
-%TODO!
-Not that there is a bug in the rosbag to Matlab conversion that sometimes causes the complete map to be rotated against the lidar map by some degrees.
+As stated in \cref{kobuki}, the Kobuki robot used in the experiments was equipped with an RPLidar and a computing platform powerful enough to perform slam. Lidar slam is the standard approach when it comes to mapping the environment around a robot. After years of research and product development, even relatively cheap lidar systems like the RPLidar have acceptable range resolution. While they can't provide ground truth data (see problems with lidar data in \cref{traditional-obstacle-sensors}), it makes sense to compare the radar reprojection maps with laser scan maps. This is why all scans after Mancave have lidar maps associated.
+%TODO?
+Note that there is a bug in the rosbag to Matlab conversion that sometimes causes the complete map to be rotated against the lidar map by some degrees.
