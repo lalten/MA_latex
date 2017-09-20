@@ -9,27 +9,55 @@
   >{\setlength{\hsize}{2cm}\raggedright\arraybackslash}X%
 }
 
-$A_r$ & Effective antenna aperture          & $m^2$\\
-$c$   & Speed of light                      & $m/s$ \\
-$d$   & Antenna separation                  & $m$ \\
-$dR$  & Range resolution                    & $m$ \\
+$A_r$ & Effective antenna aperture          & \si{m^2}\\
+$A_{Rx}$ & Receive signal attenuation          & \si{m^2}\\
+$A_{Tx}$ & Transmit signal attenuation          & \si{m^2}\\
+$c$   & Speed of light                      & \si{m/s} \\
+$d$   & Antenna separation                  & \si{m} \\
+$dR$  & Range resolution                    & \si{m} \\
+$f$ &  Frequency & \si{Hz}\\
+$f_0$ & Carrier frequency $f_C$ minus half bandwidth $\Delta f$& \si{Hz}\\
 $f_a$ & Angle compensation factor           & \\
+$f_b$ & Beat frequency & \\
+$f_b,up$ & Beat frequency during up-sweep modulation & \\
+$f_b,down$ & Beat frequency during down-sweep modulation & \\
+$f_C$ & Carrier frequency                   & \si{Hz}\\
+$f_D$ & Doppler frequency shift             & \si{Hz}\\
 $f_r$ & Range compensation factor           & \\
+$f_R$ & Range-specific frequency            & \\
 $G_r$ & Receive antenna gain                & \\
 $G_t$ & Transmit antenna gain               & \\
 $n_{chirp}$ & Number of consecutive FMCW chirps & \\
-$P_r$ & Received target power               & $W$ \\
-$P_t$ & Transmission power                  & $W$ \\
-$R$   & Target range                        & $m$ \\
-$S_i$ & Complex antenna signal              & \\
-$t_{chirp}$ & Duration of FMCW chirp        & $s$ \\
-$t_{msg}$ & Time between two ROS radar messages & $s$ \\
-$v_R$ & Radar or robot movement speed       & $m/s$ \\
-$v_D$ & Relative Doppler speed              & $m/m$ \\
-$\Delta\phi$ & Phase difference             & $rad$\\
-$\lambda$ & Wavelength                      & $m$ \\
-$\sigma$ & Radar cross section              & $m^2$ \\
-$\tau$ & Time of flight / Time delay        & $s$
+$P_r$ & Received target power               & \si{W} \\
+$P_t$ & Transmission power                  & \si{W} \\
+$R$   & Target range                        & \si{m} \\
+$R_0$ & Target range at closest approach    & \si{m} \\
+$S$ & Complex antenna signal              & \\
+$S_I$ & In-phase component of complex antenna signal & \\
+$S_Q$ & Quadrature component of complex antenna signal & \\
+$s_a$ & echo signal of elemental scatterer  & \\
+$T_d$ & FMCW chirp length                   & \si{s} \\
+$t$ & Time                                  & \si{s} \\
+$t_{chirp}$ & Duration of FMCW chirp        & \si{s} \\
+$t_{msg}$ & Time between two ROS radar messages & \si{s} \\
+$v_Mixer$ & IF signal                       & \si{V(t)} \\
+$v_R$ & Radar or robot movement speed       & \si{m/s} \\
+$v_Rx$ & Received signal                    & \si{V(t)} \\
+$v_Tx$ & Transmitted signal                 & \si{V(t)} \\
+$v_D$ & Relative Doppler speed              & \si{m/m} \\
+$\alpha$ & Reprojection angle               & \si{rad}\\
+$\beta$ & Change of bearing angle               & \si{rad}\\
+$\phi$ & Phase of complex receive signal    & \si{rad}\\
+$\phi_s$ & Scattering phase    & \si{rad}\\
+$\Delta\phi$ & Phase difference             & \si{rad}\\
+$\lambda$ & Wavelength                      & \si{m} \\
+$\sigma$ & Radar cross section              & \si{m^2} \\
+$\tau$ & Time of flight / Time delay        & \si{s} \\
+$\tau_m$ & Duration of radar pulse        & \si{s} \\
+$\theta$ & Direction of arrival angle        & \\
+$\alpha$ & Reprojection angle               &\\
+$\omega_C$ & angular frequency of carrier frequency &\\
+$\omega_{Tx}$ & angular frequency of transmit signal &\\
 
 \end{tabularx}
 
