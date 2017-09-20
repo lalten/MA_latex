@@ -50,7 +50,7 @@
   \makeatother%
   \begin{picture}(1,0.64912281)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{geometry_turning.pdf}}%
-    \put(0.88604589,0.53805668){\makebox(0,0)[lb]{\smash{\(\color{DiagramBlue}v_D = v_R~\cos(\alpha - \beta\)}}}%
+    \put(0.88604589,0.53805668){\makebox(0,0)[lb]{\smash{\(\color{DiagramBlue}v_D = v_R~\cos(\alpha - \beta)\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{geometry_turning.pdf}}%
     \put(0.88557358,0.10662619){\makebox(0,0)[lb]{\smash{\(\color{DiagramRed}v_D = v_R~\cos(\alpha + \beta)\)}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{geometry_turning.pdf}}%

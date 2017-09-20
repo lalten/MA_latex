@@ -40,9 +40,9 @@
      id="namedview95"
      showgrid="false"
      inkscape:zoom="2.0779727"
-     inkscape:cx="421.80535"
+     inkscape:cx="273.10272"
      inkscape:cy="240.5"
-     inkscape:current-layer="svg93"
+     inkscape:current-layer="g13"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
@@ -120,10 +120,11 @@
     <text
        id="text11"
        y="81.800003"
-       x="656.56">
+       x="656.56"
+       style="-inkscape-font-specification:'Helvetica, Normal';font-family:Helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:8.00008514px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">
       <tspan
          sodipodi:role="line"
-         id="tspan56">\(\color{DiagramBlue}v_D = v_R~\cos(\alpha - \beta\)</tspan>
+         id="tspan4532">\(\color{DiagramBlue}v_D = v_R~\cos(\alpha - \beta)\)</tspan>
     </text>
   </g>
   <path
