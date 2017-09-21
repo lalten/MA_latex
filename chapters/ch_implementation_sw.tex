@@ -21,7 +21,7 @@ D2XX serial communication library that had to be fixed for Linux
 systems. One challenge with the D2XX driver was that Ubuntu
 automatically loads the regular FTDI serial IO driver,
 \texttt{ftdi\_sio}. This was be solved by unbinding the driver using a
-set of udev rules \footnote{\url{https://stackoverflow.com/questions/44529376}}. Another issue was that due to a bug in the D2XX implementation, the Omniradar
+set of udev rules\footnote{\url{https://stackoverflow.com/questions/44529376}}. Another issue was that due to a bug in the D2XX implementation, the Omniradar
 driver would freeze when more than \SI{2}{MB} of data (equivalent to a \SI{20}{ms}
 FMCW chirp) were requested. After a lot of debugging, this could be
 solved by never requesting a bigger amount of data than was already
@@ -336,19 +336,19 @@ consecutive range profiles.
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[t]{\textwidth}
-        \def\svgscale{1}
+        \def\svgwidth{\linewidth}
         \input{gfx/fig_svg/explain_peak_gradient_1.pdf_tex}
         \caption{Range profile}
         \label{fig:explain_peak_gradient_1}
-    \end{subfigure}\bigskip\\
+    \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
-        \def\svgscale{1}
+        \def\svgwidth{\linewidth}
         \input{gfx/fig_svg/explain_peak_gradient_2.pdf_tex}
         \caption{Range profile in region of interest box}
         \label{fig:explain_peak_gradient_2}
-    \end{subfigure}\bigskip\\
+    \end{subfigure}
     \begin{subfigure}[t]{\textwidth}
-        \def\svgscale{1}
+        \def\svgwidth{\linewidth}
         \input{gfx/fig_svg/explain_peak_gradient_3.pdf_tex}
         \caption{Gauss-approximated range profile in region of interest box, with subsample-interpolated peaks based on the three points closest to the raw peak}
         \label{fig:explain_peak_gradient_3}
@@ -398,7 +398,7 @@ this method, \(dR\) is of course the smallest measurable change of
 target range.
 
 The localization of peaks is however not limited by range resolution,
-but by range accuracy, which mainly depends on SNR. It is much better
+but by range accuracy, which mainly depends on SNR. Accuracy is much better
 than range resolution with \(\sigma_R = \frac{dR}{\sqrt{SNR}}\). This
 can be utilized with subsample peak interpolation.
 
@@ -422,9 +422,9 @@ change of cross range.
 Inter-scan comparison gives better Doppler estimation, because the data
 can be smoothed through oversampling first. Consecutive sweeps can still
 be used: They need to be separated into individual scans with timestamps
-adjusted to \(t_{msg} + i\cdot t_{sweep}\) (with message timestamp
-\(t_{msg}\), consecutive sweep index \(i\) and sweep duration
-\(t_{sweep}\)) and cross range mileage interpolated at that timestamp.
+adjusted to \(T_{msg} + i\cdot T_{chirp}\) (with message timestamp
+\(T_{msg}\), consecutive sweep index \(i\) and sweep duration
+\(T_{chirp}\)) and cross range mileage interpolated at that timestamp.
 
 \subsection{Subsample peak interpolation}\label{subsample-peak-interpolation}
 
@@ -485,17 +485,17 @@ final map.
 Hence these spurious peaks must be ignored during peak detection. This
 can be achieved in two ways. The first is to simply replace all data
 values under a down range limit \(d_{mute}\) (usually
-\(d_{mute}=\SI{0.30}{m}\)) with \(NaN\) values. For the second way, one effect
+\(d_{mute}=\SI{0.30}{m}\)) with \texttt{NaN} values. For the second way, one effect
 of range compensation is exploited. As shown in \cref{fig:fig_range_compensation_transmit_spike}, the spike
 that previously had its maximum in the first range bin, at
 \(d_{down}=0\), now has its maximum in a later range bin. The reason is
-that the range compensation factor at \(d_{down}=0\) is \(r(0) = 0\) but
-\(r(d_{down}>0) > 0\). As the transmit peak now has a maximum with
+that the range compensation factor $f_R$ (see \cref{eq:range_comp} in \cref{range-compensation}) at \(d_{down}=0\) is \(f_r(0) = 0\) but
+\(f_r(d_{down}>0) > 0\). As the transmit peak now has a maximum with
 neighbors lower than its maximum, \texttt{findpeaks} can find it. Color
 scaling can then be made to work correctly by clipping all values higher
 than the \emph{second highest} peak. The Peak Gradient Algorithm also
 has an optional parameter \texttt{SkipFirstPeak} which, when set to
-\(true\), ignores the first peak in each range scan line. This can help
+\texttt{true}), ignores the first peak in each range scan line. This can help
 to ignore these echoes.
 
 \begin{figure}[htbp]
@@ -526,12 +526,10 @@ Often there appears a situation where the range cell migration arcs of two targe
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max width=10cm]{gfx/results/attic_doa.png}
-    \caption{DOA of Attic scan. The DOA of higher peak values is applied over the FWHM, superseding the values of lower peak values.}
+    \includegraphics[max width=10cm]{gfx/figures/attic_doa_annot.pdf}
+    \caption{DOA of Attic scan. The DOA of higher peak values is applied over the FWHM, superseding the values of lower peak values. Red arrows annotate some of the overlaps.}
     \label{fig:overlap}
 \end{figure}
-
-TODO annotate in figure where the overlap is
 
 \subsection{Output}\label{output}
 In this implementation the resulting size of the reprojection map is known in advance so the map does not need dynamic resizing and can be allocated ahead of time. To make sure everything will fit, the initial size is chosen as \texttt{round[ max(radar\_position) - min(radar\_position) + 2~radar\_max\_range + 2 * 0.2 m ]} in both X and Y dimension.
@@ -798,14 +796,15 @@ most importantly, when targets are detected from a far distance, mapped
 intensities are decreased due to the map's averaging.
 
 This attenuation can be compensated with a range-based compensation
-factor \(f_r\) with \[f_r(d_{down}) = {
-\left(
-c_a + (
-\frac{{d_{down}}{c_b}}
-+ c_c)^{-4}
-\right) ^ {-1}
-}\]
-
+factor \(f_r\):
+\begin{equation} \label{eq:range_comp}
+    f_r(d_{down}) = {
+    \left(
+    c_a + ( c_b~d_{down} + c_c)^{-4}
+    \right) ^ {-1}
+    }
+\end{equation}
+$c_a$, $c_b$, and $c_c$ are constant parameters that define the shape of the compensation function, which depends on antenna sensitivity and radar beam shape.
 
 \Cref{fig:fig_range_compensation} shows the range profile of the ``Torture Chamber'' scan
 both as oversampled raw values (top subplot) and with range compensation
@@ -816,15 +815,15 @@ near range, while the noise floor stays constant in the far range. This
 helps to keep a target's intensity at at least similar values over all
 ranges in the map.
 
-TODO split in subfigures, adjust refs, annotate
 \begin{figure}[htbp]
     \centering
     \includegraphics[max width=10cm]{figures/fig_range_compensation}
-    \caption{Range compensation}
+    \caption{Range compensation: Top subplot is uncompensated; middle subplot shows range profiles of top and bottom subplot at the red line; and bottom subplot shows range-compensated input energy.}
     \label{fig:fig_range_compensation}
 \end{figure}
 
-\subsection{Angle sensitivity compensation}\label{angle-sensitivity-compensation}
+
+\subsection{Angle sensitivity compensation} \label{angle-sensitivity-compensation}
 
 The intensity of a target peak depends on its angle with respect to the
 antenna. The angle is unknown before the Doppler speed is estimated, so
@@ -845,59 +844,62 @@ together with robot odometry were recorded.
 The radar was not mounted over the center of rotation of the robot. This
 way, the radar did describe a circular path whose mileage can be
 calculated. The angle compensation measurement can hence be visualized
-in \cref{fig:fig_range_compensation} in the usual range profile with echo intensities over
-cross versus down range. The range of the retroreflector varies with
+in \cref{fig:angle-1} in a range profile with echo intensities over
+cross versus down range (i.e. transposed to the usual visualization). The range of the retroreflector varies with
 twice the distance of the radar to the robot's rotation center, but only
 the orientation is interesting - the range can just be summed up over
 the range bins the target is visible in (in this case,
 \SIrange{0.45}{0.85}{m}).
 
-In \cref{fig:fig_range_compensation}, the same range scan lines are sorted by robot
+In \cref{fig:angle-2}, the same range scan lines are sorted by robot
 orientation during the scan. After the explained summing in down range
-dimension the intensity (absolute value of complex signal) data of both
+dimension the intensity data (absolute value of complex signal) of both
 antennas is binned separately over 60 orientations from \(-\pi\) to
-\(\pi\).
-
-The manufacturer later provided angle sensitivity measurements of the
-IC's manufacturing batch. The measurements show that the
+\(\pi\) and plotted in \cref{fig:angle-3}. The manufacturer later provided
+angle sensitivity measurements of the
+IC's manufacturing batch which showed that the
 experimental approach produced valid results.
 
-The compensation factor \(f_a\) for each angle is composed using
+The compensation factor \(f_a\) for each angle $(\alpha)$ is composed using
 the formula
 
-\[m = \max \left( \max (s_{Rx1}), \max (s_{Rx2}) \right)\] \[
-f_a = \frac{1}{2}
-  \left(
-    \frac{m}{ s_{Rx1} } +
-    \frac{m}{ s_{Rx2} }
-  \right)
-\]
+\begin{align}
+    m = \max \bigl( \max (s_{Rx1}), \max (s_{Rx2}) \bigr) \nonumber
+    \\
+    f_a(\alpha) = \frac{1}{2}
+        \left(
+            \frac{m}{ s_{Rx1}(\alpha) } +
+            \frac{m}{ s_{Rx2}(\alpha) }
+        \right)
+\end{align}
+
+and plotted in yellow in \cref{fig:angle-3}.
 
 Multiplying a peak which is to be reprojected at angle \(\alpha\)
-with angle compensation factor \(f_a(\alpha)\) results in a peak height
+with the angle compensation factor \(f_a(\alpha)\) results in a peak height
 that is independent of observation angle.
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}{\textwidth}
+    \begin{subfigure}{.85\textwidth}
         \centering
-        \def\svgscale{0.8} \small
+        \def\svgwidth{\linewidth} \small
         \input{gfx/fig_svg/angle_compensation_1.pdf_tex}
-        \caption{Range profile, as recorded}
+        \caption{Range profile, as recorded} \label{fig:angle-1}
         \bigskip
     \end{subfigure}
-    \begin{subfigure}{\textwidth}
+    \begin{subfigure}{.85\textwidth}
         \centering
-        \def\svgscale{0.8} \small
+        \def\svgwidth{\linewidth} \small
         \input{gfx/fig_svg/angle_compensation_2.pdf_tex}
-        \caption{Range profile, sorted by robot orientation}
+        \caption{Range profile, sorted by robot orientation} \label{fig:angle-2}
         \bigskip
     \end{subfigure}
-    \begin{subfigure}{\textwidth}
+    \begin{subfigure}{.85\textwidth}
         \centering
-        \def\svgscale{0.8} \small
+        \def\svgwidth{\linewidth} \small
         \input{gfx/fig_svg/angle_compensation_3.pdf_tex}
-        \caption{Echo intensity between \SI{0.4}{m} and \SI{0.8}{m} down range, and compensation factor normalizing intensity}
+        \caption{Echo intensity between \SI{0.4}{m} and \SI{0.8}{m} down range, and compensation factor normalizing intensity} \label{fig:angle-3}
         \bigskip
     \end{subfigure}
     \caption{Angle compensation factor}

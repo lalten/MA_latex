@@ -1,10 +1,10 @@
-\chapter{Discussion and Comparison}\label{discussion-and-comparison}
+\chapter{Discussion and Comparison} \label{discussion-and-comparison}
 
-TODO: intro to discussion topics. was the initial hypothesis validated?
+At first glance, the results in \cref{results} look promising. The problematic obstacles in \cref{traditional-obstacle-sensors} that provided the motivation for this work (windows and chairlegs) appear on the maps in \cref{fig:pres3,fig:pres4}. The following section takes a detailed look at some of the qualities outlined in \cref{evaluation} by analyzing some effects which are visible in the radar scans.
 
 \section{Discussion}
 
-\subsection{Reflection directionality}\label{reflection-directionality}
+\subsection{Reflection directionality} \label{reflection-directionality}
 
 Many objects only become visible when their surface is oriented
 perpendicularly to the incident radar waves, so that enough scattered EM
@@ -20,14 +20,14 @@ to the office chair legs.
 This means that in an online mapping process, obstacles might appear earlier or later, depending on their orientation towards the radar position. The effect is expected and was decribed in \cref{limitations}.
 
 
-\subsection{Material-dependent echo strength}\label{material-dependent-echo-strength}
+\subsection{Material-dependent echo strength} \label{material-dependent-echo-strength}
 
 Some materials, like metal, are better at reflecting radar
 waves than others, like Styrofoam. Due to their electrical conductivity, metal objects cause particularly strong echos which are visible from a higher distance. This can be observed in the hallway scans (e.g.~Orbit, Public Restroom, Queue,
 Racetrack, Sauna, Underground), where the metal frames of doors and
 glass walls stand out in the scan.
 
-\subsection{Doppler vs Direction of Arrival data quality}\label{doppler-vs-direction-of-arrival-data-quality}
+\subsection{Doppler vs Direction of Arrival data quality} \label{doppler-vs-direction-of-arrival-data-quality}
 
 In forward-facing geometry (scans D--T), the DOA is necessary to resolve
 the sign of a target's reprojection angle. This works fairly well, for
@@ -129,10 +129,8 @@ the edge and over floor, respectively.
         \caption{Zoomed and intensity-clipped for better visibility of the effect.}
         \label{fig:negobst_clipped}
     \end{subfigure}
-    \caption{Input energy for the Washroom scan. Lower echo intensity at negative obstacles is hardly visible in the standard configuration.}
+    \caption{Input energy for the Washroom scan. Lower echo intensity at negative obstacles (annotated with arrow) is hardly visible in the standard configuration.}
 \end{figure}
-
-TODO annotation-arrow pointing to darker region?
 
 To limit the transmit crosstalk's blinding effect, the sensor was
 mounted on a much higher position (on the RGBD camera mount) in the Xray
@@ -141,8 +139,6 @@ visible at a distance of \SI{0.35}{cm} down range. At \SI{0.45}{cm} down range, 
 floor echo is visible. There is one dip in intensity at \SI{2.5}{m} cross
 range, where the sensor was not over floor. Overall the signal is
 however not as conclusive as in the Washroom scan.
-
-TODO annotation-arrow pointing to darker region?
 
 \begin{figure}[htbp]
     \centering
@@ -157,7 +153,7 @@ TODO annotation-arrow pointing to darker region?
         \caption{Zoomed and intensity-clipped for better visibility of the effect.}
         \label{fig:negobst_xray_clipped}
     \end{subfigure}
-    \caption{Input energy for the XRay Room scan. Negative obstacles effect is not better with a higher-mounted vertical configuration.}
+    \caption{Input energy for the XRay Room scan. Negative obstacle effect is not better with a higher-mounted vertical configuration.}
 \end{figure}
 
 
@@ -183,7 +179,7 @@ the two can towers at the end of the cable.
 \begin{figure}[htp]
     \centering
     \includegraphics[max height=10cm,max width=10cm]{figures/fig_cable}
-    \caption{Input energy of the Y (Is There A Cable On The Ground) scan. The center arc represents the echo of a cable on the floor as the robot approaches.}
+    \caption{Input energy of the Y (Is There A Cable On The Ground) scan. The arc (circled in red) represents the echo of a cable on the floor as the robot approaches.}
     \label{fig:cable}
 \end{figure}
 
@@ -253,6 +249,16 @@ curvature in satellite applications, SAR with curved or even arbitrary
 paths is a challenging topic, particularly because auto-focusing, which
 again relies on phase information, becomes more difficult
 \cite{Axelsson2002}.
+
+In \cite{Watts2016}, Watts, \textit{et al.} showed experiments with conceiled SAR imaging on a PR2 robot (see \cref{fig:pr2}). Their radar sensor had \SI{11.5}{GHz} of bandwidth available and is able to create SAR imagery with high precision. However, they relied on classic SAR geometry and moved the radar sensor in a straight line.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[max width=\textwidth]{gfx/pictures/pr2_sar.png}
+    \caption{A PR2 robot performing conceiled SAR imaging by moving the radar sensor attached to its gripper in a straight line. Source: \cite{Watts2016}.}
+    \label{fig:pr2}
+\end{figure}
+
 
 \subsection{RGBD}\label{rgbd-1}
 The Kobuki robot was also carrying an Astra Orbbec Mini\footnote{\url{https://orbbec3d.com/astra-mini/}} strutured light depth camera. Using the Rtabmap \cite{Labbe2014} ROS package\footnote{\url{http://wiki.ros.org/rtabmap_ros}}, some 3D scans of the office environment where made. \cref{traditional-obstacle-sensors} already showed the shortcomings of lidar and RGBD sensors, but in this section the same \cref{fig:lidar_rgbd2,fig:rgbd_glasswall2} are compared with radar reprojection.

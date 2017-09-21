@@ -33,7 +33,8 @@ During development of the reprojection method, over 30 scans were taken. The env
 
 The scans of this environment are assigned code names in alphabetical order for easy referencing. \Cref{tab:params} shows the parameters with which each of the scans was taken: Sweep time, sensor orientation (\textbf{H}orizontal / \textbf{V}ertical / \textbf{H}orizontal \textbf{I}nverted beam fan), squint angle (center of sensor's FOV, so \ang{90} is sideways-looking and \ang{0} is forward-looking), mounted horn antenna extension (which narrows the beam shape), availability of \texttt{/map} rosmessages with lidar slam information, and finally availability of \texttt{/tf} rosmessages which carry the slam-based odometry drift correction.
 
-The scans are presented through the following plot types. An exemplary result is shown in \cref{fig:nirvana} and more result plots can be found in \cref{scans}
+\subsection{Plot Types}
+The scans are presented through the following plot types.
 
 \subparagraph{Input Energy}
 This plot (e.g. \cref{fig:resinput}) visualizes the preprocessed (i.e. oversampled, range and transmit crosstalk compensated) input energy of a scan. To understand the graph, it helps to first think of it as the stacked range profile of a range sensor that looks in a \ang{90} angle to the right of the robot. The x-axis represents down-range (in \si{m}), which is the range axis in the 1D range profile as extracted from the FMCW beat frequency (see \cref{fig:rawbeat_f} for an example). Each range profile line's echo intensity (shown on the y-axis in \cref{fig:rawbeat_f}) is visualized in a logarithmic \texttt{hcparula}\footnote{\texttt{hcparula} is a monotonic, linear-grayscale intensity colormap with enhanced contrast. It is available at \url{https://www.mathworks.com/matlabcentral/fileexchange/61768}} color scale. The unit is \si{dB Vrms}. These range lines are stacked over the Y-axis direction, which is the cross-range dimension. This dimension shows how far the radar sensor has traveled from the scan's origin (i.e. mileage, in \si{m}). If the radar was moved at a constant velocity, it can be thought of as the time axis, however denoting and processing it as mileage has the benefit of radar velocity independence. Note that this plot does not show any information on where (at which angle) a target is, but only at what distance it is. Target peaks appear and disappear over the course of the y-axis, because they enter or leave the radar antenna's field of view.
@@ -50,88 +51,55 @@ This is the main output of the reprojection mapping implementation, as described
 \subparagraph{Reprojection map overlay}
 If the \texttt{/map} is available for a scan, this graph (e.g. \cref{fig:resmap}) shows the reprojection map overlaid over the lidar occupancy gridmap as described in \cref{output}. The lidar map has a grayscale colormap, where black means occupied, white means clear, and anything in between shows occupancy probability. Uncharted, unknown values are a ``tasteful blueish greenish grayish color''\footnote{Legal \texttt{-1} value from \url{http://docs.ros.org/jade/api/rviz/html/c++/map\_\_display\_8cpp\_source.html\#l00212}}. The red path is again the radar motion path.
 
-
-\begin{table}[htb]
-  \caption{Scan parameters}
-  \label{tab:params}
-  \rowcolors{1}{ColorAlternatedRow}{}
-    \begin{tabularx}{\textwidth}{%
-      >{\setlength{\hsize}{.31\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.15\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.12\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.12\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
-      >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
-      >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
-    }
-    \hiderowcolors
-    \toprule
-Name & Sweep & Orient. & Squint & Horn & Map & TF \\
-    \midrule
-    \endhead
-
-    \bottomrule
-    \endfoot
-    \showrowcolors
-    %
- Attic & \SI{5.0}{ms} & H & \ang{90} & \cmark & \xmark & \xmark \\
- Basement & \SI{5.0}{ms} & H & \ang{90} & \cmark & \xmark & \xmark \\
- Cafeteria & \SI{5.0}{ms} & H & \ang{90} & \cmark & \xmark & \xmark \\
- Dungeon & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Entryway & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Fallout Shelter & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Garden & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Home Cinema & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Indoor Swimming Pool & \SI{5.0}{ms} & V & \ang{20} & \cmark & \xmark & \xmark \\
- Jail Cell & \SI{5.0}{ms} & H & \ang{20} & \cmark & \xmark & \xmark \\
- Kitchen & \SI{5.0}{ms} & H & \ang{20} & \xmark & \xmark & \xmark \\
- Lobby & \SI{5.0}{ms} & H/I & \ang{0} & \xmark & \xmark & \xmark \\
- Mancave & \SI{5.0}{ms} & H/I & \ang{0} & \xmark & \xmark & \xmark \\
- Nirvana & \SI{5.0}{ms} & H/I & \ang{0} & \xmark & \cmark & \xmark \\
- Orbit & \SI{5.0}{ms} & H/I & \ang{0} & \xmark & \cmark & \xmark \\
- Public Restroom & \SI{5.0}{ms} & H/I & \ang{0} & \xmark & \cmark & \cmark \\
- Queue & \SI{20}{ms} & H/I & \ang{0} & \xmark & \cmark & \cmark \\
- Racetrack & \SI{2.0}{ms} & H/I & \ang{0} & \xmark & \cmark & \cmark \\
- Sauna & \SI{2.5}{ms} & H/I & \ang{0} & \xmark & \cmark & \cmark \\
- Torture Chamber & \SI{2.5}{ms} & H/I & \ang{45} & \xmark & \cmark & \cmark \\
- Underground & \SI{2.5}{ms} & H/I & \ang{45} & \xmark & \cmark & \cmark \\
- Virtual Reality & \SI{2.5}{ms} & H/I & \ang{45} & \xmark & \cmark & \cmark \\
- Washroom & \SI{2.5}{ms} & V & \ang{45} & \xmark & \cmark & \cmark \\
- Xray-Room & \SI{2.5}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
- Y Is There A Cable On The Floor & \SI{5.0}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
-%  Z & & & & & & \\
-    \end{tabularx}
-\end{table}
+\subsection{Exemplary Results}
+Exemplary results are shown in \cref{fig:pres1,fig:pres2,fig:pres3,fig:pres4}. More result plots can be found in \cref{scans}.
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[t]{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{gfx/results/nirvana_input.png}
-        \caption{\small Input energy} \label{fig:resinput}
+    \includegraphics[max width=\textwidth]{gfx/diagrams/presentationscan1.png}
+    \caption{A simple example scan with only one major (point) target. The range cell migration arc is clearly visible in both input energy (top left) and Doppler estimation (bottom left). The reprojection map is overlaid on the floor of the scene picture on the right.}
+    \label{fig:pres1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[max width=\textwidth]{gfx/diagrams/presentationscan_2.png}
+    \caption{This example scan shows how the angle sign ambiguities discussed in \cref{geometry-for-the-general-case} are resolved with DOA values (bottom right). The reprojection map is overlaid on the floor of the scene picture on the right and shows that targets left and right of the motion path (red line) were clearly separated.}
+    \label{fig:pres2}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{.32\textwidth}
+        \includegraphics[max width=\linewidth]{gfx/figures/t_input.png}
+        \caption{Input energy of Torture Chamber scan.}
+        \label{fig:pres3-i}
     \end{subfigure}%
     \hfill%
-    \begin{subfigure}[t]{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{gfx/results/nirvana_doppler.png}
-        \caption{\small Doppler estimation} \label{fig:resdoppler}
+    \begin{subfigure}[t]{.32\textwidth}
+        \includegraphics[max width=\linewidth]{gfx/figures/t_doppler.png}
+        \caption{Doppler estimation of Torture Chamber scan.}
+        \label{fig:pres3-d}
     \end{subfigure}%
     \hfill%
-    \begin{subfigure}[t]{0.32\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{gfx/results/nirvana_doa.png}
-        \caption{\small Direction of Arrival} \label{fig:resdoa}
-    \end{subfigure}\\
-    \begin{subfigure}[t]{0.475\textwidth}
-        \centering
-        \includegraphics[max width=\linewidth, max height=\linewidth]{gfx/results/nirvana_reprojection.png}
-        \caption{\small Reprojection Map} \label{fig:resrepro}
-    \end{subfigure}%
-    \hfill%
-    \begin{subfigure}[t]{0.475\textwidth}
-        \centering
-        \includegraphics[max width=\linewidth, max height=\linewidth]{gfx/results/nirvana_map.png}
-        \caption{\small Reprojection Map} \label{fig:resmap}
-    \end{subfigure}%
-    \caption{Nirvana scan} \label{fig:nirvana}
+    \begin{subfigure}[t]{.32\textwidth}
+        \includegraphics[max width=\linewidth]{gfx/figures/t_doa.png}
+        \caption{DOA estimation of Torture Chamber scan.}
+        \label{fig:pres3-doa}
+    \end{subfigure}
+    \bigskip
+    \begin{subfigure}{\textwidth}
+        \includegraphics[max width=\textwidth]{gfx/diagrams/presentationscan_torture.png}
+        \caption{Reprojection map overlaid on a picture of the scene.}
+        \label{fig:pres3-r}
+    \end{subfigure}
+    \caption{The Torture Chamber scan is representative of a typical office environment with desks, chairs and cabinets.}
+    \label{fig:pres3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[max width=\textwidth]{gfx/diagrams/pres4.png}
+    \caption{This example scan shows the reprojection map overlay of the Underground scan. The grayscale laser slam mapped the room behind the depicted corridor's glass wall, but it does not the glass wall itself. The radar reprojection map however prominently features the obstacle.}
+    \label{fig:pres4}
 \end{figure}
