@@ -1,6 +1,6 @@
 \chapter{List of Scans} \label{scans}
 
-\Cref{tab:params} lists the scan parameters of the 25 named scans. Some of them are presented in the following.
+\Cref{tab:params} lists the scan parameters of the 25 named scans, which are presented in the following. The parameters are: sweep time, sensor orientation (\textbf{H}orizontal / \textbf{V}ertical / \textbf{H}orizontal \textbf{I}nverted beam fan), squint angle (center of sensor's FOV, so \ang{90} is sideways-looking and \ang{0} is forward-looking), mounted horn antenna extension (which narrows the beam shape), availability of \texttt{/map} rosmessages with lidar slam information, and finally availability of \texttt{/tf} rosmessages which carry the slam-based odometry drift correction.
 
 \begin{table}[htb]
   \caption{Scan parameters}
@@ -367,6 +367,7 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
         \includegraphics[width=\linewidth,max height=.475\textheight]{gfx/results/publicrestroom_map.png}
     \end{subfigure}%
     \caption{Public Restroom scan}
+    \label{fig:res_p}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -390,6 +391,7 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
         \includegraphics[width=\linewidth,max height=.475\textheight]{gfx/results/queue_map.png}
     \end{subfigure}%
     \caption{Queue scan}
+    \label{fig:res_q}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -413,6 +415,7 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
         \includegraphics[width=\linewidth,max height=.475\textheight]{gfx/results/racetrack_map.png}
     \end{subfigure}%
     \caption{Racetrack scan}
+    \label{fig:res_r}
 \end{figure}
 
 \begin{figure}[htbp]
@@ -436,6 +439,7 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
         \includegraphics[width=\linewidth,max height=.475\textheight]{gfx/results/sauna_map.png}
     \end{subfigure}%
     \caption{Sauna scan}
+    \label{fig:res_s}
 \end{figure}
 
 \begin{figure}[htbp]
