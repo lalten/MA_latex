@@ -56,17 +56,19 @@ Exemplary results are shown in \cref{fig:pres1,fig:pres2,fig:pres3,fig:pres4}. M
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max width=\textwidth]{gfx/diagrams/presentationscan1.png}
-    \caption{A simple example scan with only one major (point) target. The range cell migration arc is clearly visible in both input energy (top left) and Doppler estimation (bottom left). The reprojection map is overlaid on the floor of the scene picture on the right.}
-    \label{fig:pres1}
+    \begin{subfigure}{.95\textwidth}
+        \includegraphics[max width=\textwidth]{gfx/diagrams/presentationscan1.png}
+        \caption{A simple example scan with only one major (point) target. The range cell migration arc is clearly visible in both input energy (top left) and Doppler estimation (bottom left). The reprojection map is overlaid on the floor of the scene picture on the right.}
+        \label{fig:pres1}
+    \end{subfigure}\medskip\\
+    \begin{subfigure}{.95\textwidth}
+        \includegraphics[max width=\textwidth]{gfx/diagrams/presentationscan_2.png}
+        \caption{This example scan shows how the angle sign ambiguities discussed in \cref{geometry-for-the-general-case} are resolved with DOA values (bottom right). The reprojection map is overlaid on the floor of the scene picture on the right and shows that targets left and right of the motion path (red line) were clearly separated.}
+        \label{fig:pres2}
+    \end{subfigure}
+    \caption{Examples of simple side- and forward facing radar antenna.}
 \end{figure}
 
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[max width=\textwidth]{gfx/diagrams/presentationscan_2.png}
-    \caption{This example scan shows how the angle sign ambiguities discussed in \cref{geometry-for-the-general-case} are resolved with DOA values (bottom right). The reprojection map is overlaid on the floor of the scene picture on the right and shows that targets left and right of the motion path (red line) were clearly separated.}
-    \label{fig:pres2}
-\end{figure}
 
 \begin{figure}[htbp]
     \centering
@@ -84,10 +86,10 @@ Exemplary results are shown in \cref{fig:pres1,fig:pres2,fig:pres3,fig:pres4}. M
     \hfill%
     \begin{subfigure}[t]{.3\textwidth}
         \includegraphics[max width=\linewidth]{gfx/figures/t_doa.png}
-        \caption{DOA estimation of Torture Chamber scan.}
+        \caption{DOA estimation.}
         \label{fig:pres3-doa}
-    \end{subfigure}\bigskip\\
-    \begin{subfigure}[t]{.4\textwidth}
+    \end{subfigure}\medskip\\
+    \begin{subfigure}[t]{.45\textwidth}
         \includegraphics[max width=\linewidth]{gfx/results/torturechamber_reprojection.png}
         \caption{Reprojection map.}
         \label{fig:pres3-r}
@@ -95,15 +97,15 @@ Exemplary results are shown in \cref{fig:pres1,fig:pres2,fig:pres3,fig:pres4}. M
     \hfill%
     \begin{subfigure}[t]{.45\textwidth}
         \includegraphics[max width=\linewidth]{gfx/results/torturechamber_map.png}
-        \caption{Reprojection map overlaid on the lidar slam occupancy gridmap.}
+        \caption{Reprojection map overlaid over lidar-based slam occupancy gridmap.}
         \label{fig:pres3-l}
-    \end{subfigure}\bigskip\\
-    \begin{subfigure}{.9\textwidth}
+    \end{subfigure}\medskip\\
+    \begin{subfigure}{\textwidth}
         \includegraphics[max width=\linewidth]{gfx/diagrams/presentationscan_torture.png}
         \caption{Reprojection map overlaid on a picture of the scene.}
         \label{fig:pres3-3d}
     \end{subfigure}
-    \caption{The Torture Chamber scan is representative of a typical office environment with desks, chairs and cabinets.}
+    \caption{Several plots representing the Torture Chamber scan.}
     \label{fig:pres3}
 \end{figure}
 

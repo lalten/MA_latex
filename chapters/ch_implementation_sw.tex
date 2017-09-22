@@ -684,6 +684,8 @@ DOA values are processed they need to be mirrored (multiplication with
 \(-1\)) because the left and right antennas are switched. Otherwise,
 targets will be projected to the wrong side of the robot's path.
 
+As explained in \cref{doppler-estimation-with-the-peak-gradient-algorithm}, the implementation does not use the ratio of actual robot and Doppler speeds to calculate reprojection angles, but rather a target's relative speed in terms of down rate change per mileage. There is a caveat with this approach: the mileage used to determine relative speed will monotonically increase, but it is important to know if the robot is moving forward or backward, because the sign of the Doppler speeds will change with the robot's movement direction. The robot speed (including sign) is stored in the odometry data, and is used to determine if the reprojection angle should be calculated for forward- or backward motion (after smoothing and interpolation, see \cref{raw-data-smoothing}). The Jail Cell scan (see \cref{res_j}) is a good example of where this is necessary.
+
 \subsection{Projection direction}\label{projection-direction}
 
 The radar reprojection can be executed as forward or backward mapping.
@@ -817,7 +819,8 @@ ranges in the map.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[max width=10cm]{figures/fig_range_compensation}
+    \includegraphics[max height=\dimexpr\textheight-3\baselineskip-\parskip-.2em-
+    \abovecaptionskip-\belowcaptionskip]{figures/fig_range_compensation}
     \caption{Range compensation: Top subplot is uncompensated; middle subplot shows range profiles of top and bottom subplot at the red line; and bottom subplot shows range-compensated input energy.}
     \label{fig:fig_range_compensation}
 \end{figure}
@@ -845,7 +848,8 @@ The radar was not mounted over the center of rotation of the robot. This
 way, the radar did describe a circular path whose mileage can be
 calculated. The angle compensation measurement can hence be visualized
 in \cref{fig:angle-1} in a range profile with echo intensities over
-cross versus down range (i.e. transposed to the usual visualization). The range of the retroreflector varies with
+cross versus down range (i.e. transposed to the usual visualization).
+The range of the retroreflector varies with
 twice the distance of the radar to the robot's rotation center, but only
 the orientation is interesting - the range can just be summed up over
 the range bins the target is visible in (in this case,
