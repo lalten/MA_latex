@@ -268,10 +268,10 @@ using the peak gradient algorithm described in \cref{doppler-estimation-with-the
 The chirp duration \(T_{chirp}\) is configurable and has an effect on
 how the raw range profile data will look like. Next to SNR of raw data, an important measure is chirp efficiency, which influences effectiveness of raw data smoothing (because more data allows better smoothing) and hence SNR of processed data. The chirp efficiency $\eta$ is defined as the percentage of time spent on actual measurement:
 \begin{equation}
-    \eta = \frac{n_{chirp}~T_{chirp}}{t_{msg}}
-\end{equation}    
+    \eta = \frac{n_{chirp}~T_{chirp}}{T_{msg}}
+\end{equation}
 with number of consecutive sweeps \(n_{chirp}\), chirp
-length \(T_{chirp}\), and the time between the start of one respective measurement and the next, \(t_{msg}\). \Cref{fig:fig_chirp_eff} shows how chirp efficiency increases with chirp time. 
+length \(T_{chirp}\), and the time between the start of one respective measurement and the next, \(T_{msg}\). \Cref{fig:fig_chirp_eff} shows how chirp efficiency increases with chirp time.
 
 \textbf{Very short duration} (\(<\SI{2}{ms}\)) Will have very low SNR and incur considerable processing overhead and hence chirp efficiency. It is hard to detect targets in this mode.\\
 \textbf{Short duration} (\SIrange{2}{5}{ms}) Will have acceptable SNR, and are more efficient with respect to overhead.\\
