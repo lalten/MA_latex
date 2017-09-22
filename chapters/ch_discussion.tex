@@ -195,7 +195,16 @@ The constant noise from the transmission crosstalk leads to a high
 minimum detection distance as explained in \cref{transmit-crosstalk-suppression}. The effect is that
 targets can not be projected onto the map if the robot is too close to
 them. This is an issue in the Sauna scan, where the glass wall right at
-the beginning of the robot path cannot be mapped in its entirety.
+the beginning of the robot path cannot be mapped easily without introducing some phantom targets caused by the transmission crosstalk.
+
+\subsection{Noise} \label{noise}
+As stated in \cref{optimal-chirp-time-configuration}, the signal and noise levels in the input energy are influenced strongly by a scan's sweep duration. This can be observed when comparing the input energy plots of the P,Q,R,S scans (see \cref{fig:res_p,fig:res_q,fig:res_r,fig:res_s}), whose scan parameters vary only in sweep duration (5, 20, 2, and \SI{2.5}{ms}, respectively). The \SI{20}{ms} scan in \cref{fig:res_q} features very high noise in some cross-range areas. This comes from broken and glitched radar packages which get smoothed out. Without these glitches, many targets would have intense echos, which facilitates mapping them. In future versions, either a glitch detection should be implemented to avoid this kind of noise, or the radar firmware/driver communication should be corrected to prevent glitches in the first place. The \SI{5}{ms} scan in \cref{fig:res_p} still has the occasional broken packet, but is overall much cleaner, which a good SNR. The \SI{2.5}{ms} scan in \cref{fig:res_s} is comparable to the \SI{2.0}{ms} scan in \cref{fig:res_r} and both still have a good SNR. As concluded in \cref{optimal-chirp-time-configuration}. \SI{5}{ms} are a good compromise between good SNR from the long sweep time and a low probability of glitches occuring.
+
+The \SI{2.5}{ms} scan has another kind of noise in it: there is a constantly visible peak at around \SI{1}{m}, corresponding to a range frequency of ca. \SI{24}{kHz}. The harmonics of this frequency are also visible at \SI{2}{m} and so on. The constant frequency suggests that some onboard electronics introduce this noise. \cite{Ernst2016} observed some SPI bus noise on the original board, and this could be related. It is however easy to work around by erasing the offending input data: \texttt{range(:,down\_range>0.98 \& down\_range<1.07) = nan;}. The harmonics are below the minimum peak threshold, so they do not cause harm. Another easy way of getting around this issue is to choose a sweep time other than \SI{2.0}{ms}.
+
+In the close down range (<\SI{0.5}{m}), there are two kinds of noise sources: One is the transmit crosstalk explained in \cref{transmit-crosstalk-suppression} and the other one is ground echo. Ground echo only plays a role in vertical beam fan shape configuration (``V'' in \cref{tab:params}); horizontal beam fan orientations have sufficient elevation focus to be unaffected. Scans D-I have therefore a slightly higher noise level right after the transmit crosstalk noise.
+
+The signal level is also further boosted with the plastic horn antenna extension, at the cost of seeing targets only in a limited field of view and hence for a shorter amount of time. The reprojection maps have similar quality. With the horn extension installed, targets that are farther away are detected more reliably. In a mostly side-facing geometry, targets that lie more ahead of the robot than off to the side of the motion path are detected earlier with the horn extension removed. So applications like obstacle avoidance, where early detection is important should use a wider beam (i.e. no horn extension) and applications geared towards mapping even at range should use a more narrow beam (i.e. horn extension installed).
 
 
 
@@ -219,7 +228,7 @@ Gregory L. Charvat's ``tin can'' radar \cite{Charvat2014} might be the most famo
 Another great resource was Henrik Forstén's Homemade Synthetic Aperture
 Radar, documented in \cite{Forsten2015} (see \cref{fig:forsten}). He used an Omega-k algorithm \cite{Tolman2008} and Stolt interpolation \cite{Cumming2004} to correct the range migration arcs.
 
-\begin{figure}
+\begin{figure}[htbp]
 % 0.95 * 3264*817/2448 / (3264*817/2448 + 1299) = 0.43330076762
 % 0.95 * 1299 / (3264*817/2448 + 1299) = 0.51669923238
     \begin{subfigure}[t]{0.43330076762\textwidth}
@@ -239,8 +248,8 @@ Radar, documented in \cite{Forsten2015} (see \cref{fig:forsten}). He used an Ome
     \label{fig:forsten}
 \end{figure}
 
-
 Forstén was able to greatly improve his data quality by use of a minimum-entropy based auto-focusing algorithm. The trick with this is that the radar needs to move in a very straight line, where the ``error in path linearity should be around less than tenth of a wavelength'' \cite{Forsten2015}. In Forstén's radar, this is about \SI{5}{mm}. However with the \SI{60}{GHz} Omniradar this is around \SI{0.5}{mm}. Keeping a straight line with less than half a millimeter of linearity error is not realistically achievable on the Kobuki platform.
+
 
 One big inherent problem with synthetic aperture radar algorithms is
 that basically all of them assume the radar to move in a straight line.
