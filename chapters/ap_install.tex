@@ -1,5 +1,6 @@
 \chapter{\texttt{libomniradar} installation} \label{install}
 
+\section{Building from source}
 If the driver source is available, installing the files can be
 accomplished from the source directory with
 
@@ -12,6 +13,8 @@ accomplished from the source directory with
 \end{Highlighting}
 \end{Shaded}
 
+
+\section{Integrating into application}
 The driver can then be included in an application. Note that since it is
 dynamically linked, the \texttt{ftd2xx}, \texttt{pthread} and
 \texttt{dl} libraries dependencies also need to be linked. In a Catkin\footnote{Catkin is the CMake-based ROS build system}-\texttt{CMakeLists.txt}
@@ -35,7 +38,7 @@ this would look like
 \Cref{c-bindings-and-library} mentions that the VCO tuning curve needs to be known in order to correctly predistort the VCO.
 Omniradar provides Matlab scripts that can measure this curve, the data just needs to be converted to a format that is appropriate for a C++ application using \texttt{libomniradar}, such as the \texttt{omniradar} rosnode.
 The easiest way to bring this tuning curve into the C++ domain is to
-print\footnote{\texttt{['A' 10 'B']} is a quick way to print a \texttt{'\\n'} (newline character) between \texttt{A} and \texttt{B}}
+print\footnote{\texttt{['A' 10 'B']} is a quick way to print a \texttt{'\\\\n'} (newline character) between \texttt{A} and \texttt{B}}
 it as C style array, with
 
 \begin{Shaded}

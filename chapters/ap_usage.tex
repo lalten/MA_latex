@@ -56,11 +56,8 @@ The following list shows the procedure for acquiring a radar reprojection map wi
   \texttt{save(\textquotesingle{}radar\_data/radar\_data\_scan.mat\textquotesingle{},\ \textquotesingle{}radar\_data\textquotesingle{})}
 \item
   The radar data can now be analyzed. The
-  \texttt{plot\_world\_projection} script can be used to get a good
+  \texttt{plot\_all} script can be used to get a good
   overview over raw data, Doppler speeds, direction of arrival, and
-  reprojection map.
-\item
-  To compare radar reprojection map and laser slam map, try the
-  \texttt{test\_slam\_overlay} with the correct bag filename (the lidar
-  map is extracted from that bag)
+  reprojection map. If a lidar slam occupancy gridmap is available, the
+  reprojection map will also be overlaid on it.
 \end{enumerate}
