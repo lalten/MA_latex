@@ -684,7 +684,17 @@ DOA values are processed they need to be mirrored (multiplication with
 \(-1\)) because the left and right antennas are switched. Otherwise,
 targets will be projected to the wrong side of the robot's path.
 
-As explained in \cref{doppler-estimation-with-the-peak-gradient-algorithm}, the implementation does not use the ratio of actual robot and Doppler speeds to calculate reprojection angles, but rather a target's relative speed in terms of down rate change per mileage. There is a caveat with this approach: the mileage used to determine relative speed will monotonically increase, but it is important to know if the robot is moving forward or backward, because the sign of the Doppler speeds will change with the robot's movement direction. The robot speed (including sign) is stored in the odometry data, and is used to determine if the reprojection angle should be calculated for forward- or backward motion (after smoothing and interpolation, see \cref{raw-data-smoothing}). The Jail Cell scan (see \cref{res_j}) is a good example of where this is necessary.
+As explained in \cref{doppler-estimation-with-the-peak-gradient-algorithm}, the
+implementation does not use the ratio of actual robot and Doppler speeds to
+calculate reprojection angles, but rather a target's relative speed in terms of
+down rate change per mileage. There is a caveat with this approach: the mileage
+used to determine relative speed will monotonically increase, but it is
+important to know if the robot is moving forward or backward, because the sign
+of the Doppler speeds will change with the robot's movement direction. The robot
+ speed (including sign) is stored in the odometry data, and is used to determine
+ if the reprojection angle should be calculated for forward- or backward motion
+ (after smoothing and interpolation, see \cref{raw-data-smoothing}). The Jail
+ Cell scan (see \cref{fig:res_j}) is a good example of where this is necessary.
 
 \subsection{Projection direction}\label{projection-direction}
 
@@ -781,7 +791,7 @@ p_{x_t, y_t} = 1
 \end{align*}
 
 
-\begin{figure}[htbp]
+\begin{figure}[htb]
     \centering
     \def\svgwidth{10cm}
     \input{gfx/diagrams/sample_splitting.pdf_tex}
