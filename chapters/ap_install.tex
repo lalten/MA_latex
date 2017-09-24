@@ -38,7 +38,7 @@ this would look like
 \Cref{c-bindings-and-library} mentions that the VCO tuning curve needs to be known in order to correctly predistort the VCO.
 Omniradar provides Matlab scripts that can measure this curve, the data just needs to be converted to a format that is appropriate for a C++ application using \texttt{libomniradar}, such as the \texttt{omniradar} rosnode.
 The easiest way to bring this tuning curve into the C++ domain is to
-print\footnote{\texttt{['A' 10 'B']} is a quick way to print a \texttt{'\\\\n'} (newline character) between \texttt{A} and \texttt{B}}
+print\footnote{\texttt{['A' 10 'B']} is a quick way to print a \texttt{'{\textbackslash}n'} (newline character) between \texttt{A} and \texttt{B}}
 it as C style array, with
 
 \begin{Shaded}
