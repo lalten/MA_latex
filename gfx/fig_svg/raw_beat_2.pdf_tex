@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'raw_beat_2.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{388.47184753bp}%
+    \setlength{\unitlength}{234.28219292bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,25 +48,25 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.61754638)%
+  \begin{picture}(1,0.63742603)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{raw_beat_2.pdf}}%
-    \put(0.09678807,0.04332286){\makebox(0,0)[lb]{\smash{0}}}%
-    \put(0.21639537,0.04332286){\makebox(0,0)[lb]{\smash{2000}}}%
-    \put(0.36013552,0.04332286){\makebox(0,0)[lb]{\smash{4000}}}%
-    \put(0.50387586,0.04332286){\makebox(0,0)[lb]{\smash{6000}}}%
-    \put(0.6476162,0.04332286){\makebox(0,0)[lb]{\smash{8000}}}%
-    \put(0.78363397,0.04332286){\makebox(0,0)[lb]{\smash{10000}}}%
-    \put(0.92737373,0.04332286){\makebox(0,0)[lb]{\smash{12000}}}%
-    \put(0.55224984,0.00602382){\makebox(0,0)[b]{\smash{Frequency [Hz]}}}%
+    \put(0.1359501,0.06155064){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{0}}}%
+    \put(0.2733613,0.06155064){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{2}}}%
+    \put(0.41219364,0.06155064){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{4}}}%
+    \put(0.55049034,0.06155064){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{6}}}%
+    \put(0.68899538,0.06155064){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{8}}}%
+    \put(0.82680103,0.06155064){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{10}}}%
+    \put(0.96530548,0.06155064){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{12}}}%
+    \put(0.56855766,0.01280507){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{Frequency [kHz]}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{raw_beat_2.pdf}}%
-    \put(0.03736716,0.06992286){\makebox(0,0)[lb]{\smash{-100}}}%
-    \put(0.05281229,0.20217182){\makebox(0,0)[lb]{\smash{-95}}}%
-    \put(0.05281229,0.33442079){\makebox(0,0)[lb]{\smash{-90}}}%
-    \put(0.05281229,0.46666974){\makebox(0,0)[lb]{\smash{-85}}}%
-    \put(0.05281229,0.5989187){\makebox(0,0)[lb]{\smash{-80}}}%
-    \put(0.02200253,0.34293898){\rotatebox{90}{\makebox(0,0)[b]{\smash{Intensity [dBVrms]}}}}%
+    \put(0.08615821,0.09358432){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{-100}}}%
+    \put(0.0934358,0.22101661){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{-95}}}%
+    \put(0.09359951,0.34844886){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{-90}}}%
+    \put(0.0934358,0.47588113){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{-85}}}%
+    \put(0.09359951,0.60331333){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{-80}}}%
+    \put(0.03841521,0.35665685){\color[rgb]{0.14901961,0.14901961,0.14901961}\rotatebox{90}{\makebox(0,0)[b]{\smash{Intensity [dBVrms]}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{raw_beat_2.pdf}}%
-    \put(0.90053896,0.55354862){\makebox(0,0)[lb]{\smash{|Rx1|}}}%
+    \put(0.88397153,0.55959567){\makebox(0,0)[lb]{\smash{\tiny{|Rx1|}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{raw_beat_2.pdf}}%
   \end{picture}%
 \endgroup%
