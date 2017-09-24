@@ -6,26 +6,26 @@ The following list shows the procedure for acquiring a radar reprojection map wi
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Start robot, connect three sessions with \texttt{ssh\ zero2-pa}
+  Start robot platform and connect three sessions with \texttt{ssh\ zero2-pa}
 \item
   Start ROS core with \texttt{roscore}
 \item
-  Start the node, with keyboard teleoperation and Cartographer Laser
-  Slam:
+  Launch the \texttt{omniradar} rosnode together with keyboard teleoperation and
+  Cartographer lidar slam:
   \texttt{roslaunch\ omniradar\ omniradar\_teleop\_lidarslam.launch}
 \item
   Use \texttt{rqt} with the \emph{Dynamic Reconfigure} plugin to set the
   Omniradar node to generate the preferred number of sweeps and sweep
-  duration. The configuration string can also be changed. The defaults
-  are fine (One \SI{5}{ms} sweep)
+  duration. The configuration string could also be changed (refer to Omniradar's
+  documentation for valid configurations). The defaults are fine (One \SI{5}{ms} sweep)
 \item
   \texttt{rosbag\ record\ /omniradar\_node/radar\_raw\ /odom\ /tf\ /map\ -O\ scan}
-  will record a rosbag ``scan.bag'' containing all ROS messages with
-  radar data, Kobuki odometry and slam map and transforms from
+  will record a rosbag ``scan.bag'' containing all ROS messages containing the
+  radar data, encoder odometry, and lidar slam map and transforms from
   Cartographer.
 \item
   In the terminal running \texttt{roslaunch}, use the arrow keys to move
-  the robot around (\(\uparrow\) and \(\downarrow\) to increase and
+  the robot around: (\(\uparrow\) and \(\downarrow\) to increase and
   decrease speed, \(\leftarrow\) and \(\rightarrow\) to increase and
   decrease rotation speed). \(E\) resets speed to zero and makes the
   robot halt.
