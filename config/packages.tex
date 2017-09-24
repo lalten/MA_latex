@@ -63,3 +63,10 @@
 \usepackage{import}
 
 \usepackage{pdflscape} % for 'landscape' environment
+
+
+\usepackage{appendix}
+\let\appendixpagenameorig\appendixpagename
+\renewcommand{\appendixpagename}{\sffamily\appendixpagenameorig}
+
+\usepackage[defaultlines=3,all]{nowidow}
