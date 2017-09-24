@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.92.2, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'angle_compensation_1.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{448.5bp}%
+    \setlength{\unitlength}{453.54330709bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,23 +48,22 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.23807875)%
+  \begin{picture}(1,0.27876914)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{angle_compensation_1.pdf}}%
-    \put(0.24343509,0.07344192){\makebox(0,0)[lb]{\smash{2}}}%
-    \put(0.3790264,0.07344192){\makebox(0,0)[lb]{\smash{4}}}%
-    \put(0.5146177,0.07344192){\makebox(0,0)[lb]{\smash{6}}}%
-    \put(0.650209,0.07344192){\makebox(0,0)[lb]{\smash{8}}}%
-    \put(0.77911151,0.07344192){\makebox(0,0)[lb]{\smash{10}}}%
-    \put(0.29431402,0.04113523){\makebox(0,0)[lb]{\smash{Cross range (mileage) [m]}}}%
+    \put(0.21974782,0.09110336){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{2}}}%
+    \put(0.36581683,0.09110336){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{4}}}%
+    \put(0.51188585,0.09110336){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{6}}}%
+    \put(0.65795483,0.09110336){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{8}}}%
+    \put(0.79681819,0.09110336){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{10}}}%
+    \put(0.45373936,0.0563002){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[b]{\smash{Cross range (mileage) [m]}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{angle_compensation_1.pdf}}%
-    \put(0.07144111,0.09872235){\makebox(0,0)[lb]{\smash{0.4}}}%
-    \put(0.07144111,0.12584058){\makebox(0,0)[lb]{\smash{0.8}}}%
-    \put(0.05813292,0.01809743){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Down range [m]}}}}%
-    \put(0.27173894,0.14748907){\makebox(0,0)[lb]{\smash{\textbf{Range profile, as recorded}}}}%
+    \put(0.03446317,0.11833733){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.4}}}%
+    \put(0.03446317,0.14755109){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{0.8}}}%
+    \put(0.02012661,0.14248967){\color[rgb]{0.14901961,0.14901961,0.14901961}\rotatebox{90}{\makebox(0,0)[b]{\smash{Down range [m]}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=3]{angle_compensation_1.pdf}}%
-    \put(0.88129345,0.10920947){\makebox(0,0)[lb]{\smash{-77.5}}}%
-    \put(0.88129345,0.12601416){\makebox(0,0)[lb]{\smash{-67.5}}}%
-    \put(0.96149128,-0.00196946){\rotatebox{90}{\makebox(0,0)[lb]{\smash{Echo intensity [dBVrms]}}}}%
+    \put(0.90689615,0.11548221){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-77.5}}}%
+    \put(0.90689615,0.14971){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lb]{\smash{-67.5}}}%
+    \put(0.99329118,0.1425165){\color[rgb]{0.14901961,0.14901961,0.14901961}\rotatebox{90}{\makebox(0,0)[b]{\smash{Echo intensity [dBVrms]}}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=4]{angle_compensation_1.pdf}}%
   \end{picture}%
 \endgroup%
