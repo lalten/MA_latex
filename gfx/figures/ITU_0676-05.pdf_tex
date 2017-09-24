@@ -1,4 +1,4 @@
-%% Creator: Inkscape inkscape 0.91, www.inkscape.org
+%% Creator: Inkscape inkscape 0.92.1, www.inkscape.org
 %% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
 %% Accompanies image file 'ITU_0676-05.pdf' (pdf, eps, ps)
 %%
@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{287.24163707bp}%
+    \setlength{\unitlength}{287.24164581bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,23 +48,23 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,1.21597793)%
+  \begin{picture}(1,1.21597791)%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{ITU_0676-05.pdf}}%
-    \put(0.18108621,0.43049573){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^{-1}$}}}%
+    \put(0.18108621,0.43049574){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^{-1}$}}}%
     \put(0,0){\includegraphics[width=\unitlength,page=2]{ITU_0676-05.pdf}}%
-    \put(0.62934128,0.52504903){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$H_2O$}}}%
-    \put(0.18108621,1.18464543){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^2$}}}%
-    \put(0.18108621,0.93342561){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^1$}}}%
-    \put(0.18108621,0.17927592){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^{-2}$}}}%
+    \put(0.62934126,0.52504904){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$H_2O$}}}%
+    \put(0.18108621,1.1846454){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^2$}}}%
+    \put(0.18108621,0.9334256){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^1$}}}%
+    \put(0.18108621,0.17927594){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^{-2}$}}}%
     \put(0.18108621,0.68220571){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{$10^0$}}}%
-    \put(0.08832383,0.64755645){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Specific attenuation (dB/km)}}}}%
-    \put(0.72992097,0.84149475){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{Dry air}}}%
-    \put(0.59328391,0.01044417){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Frequency $f$ (GHz)}}}%
-    \put(0.21951627,1.16386347){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.4399869\unitlength}\raggedright \colorbox{white}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{Pressure: 1013 hPa\\ Temperature: 15° C\\ Water vapour: 7.5 g/m }}\end{minipage}}}%
-    \put(0.18478823,0.05467957){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$10^0$}}}%
-    \put(0.50447724,0.05467957){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$10^1$}}}%
-    \put(0.82564235,0.05467957){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$10^2$}}}%
-    \put(0.62649599,0.05467957){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$24$}}}%
-    \put(0.75471108,0.05467957){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$60$}}}%
+    \put(0.07265759,0.64755646){\color[rgb]{0,0,0}\rotatebox{90}{\makebox(0,0)[b]{\smash{Specific attenuation (dB/km)}}}}%
+    \put(0.72992094,0.84149474){\color[rgb]{0,0,0}\makebox(0,0)[rb]{\smash{Dry air}}}%
+    \put(0.59328389,0.00522212){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{Frequency $f$ (GHz)}}}%
+    \put(0.21951627,1.16386344){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.48829115\unitlength}\raggedright \colorbox{white}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{Pressure: 1013 hPa\\ Temperature: 15° C\\ Water vapour: 7.5 g/m }}\end{minipage}}}%
+    \put(0.18478823,0.0546796){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$10^0$}}}%
+    \put(0.50447723,0.0546796){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$10^1$}}}%
+    \put(0.82564232,0.0546796){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$10^2$}}}%
+    \put(0.62649597,0.0546796){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$24$}}}%
+    \put(0.75471105,0.0546796){\color[rgb]{0,0,0}\makebox(0,0)[b]{\smash{$60$}}}%
   \end{picture}%
 \endgroup%
