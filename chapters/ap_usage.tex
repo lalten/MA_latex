@@ -38,8 +38,8 @@ The following list shows the procedure for acquiring a radar reprojection map wi
   the BSH wifi). Compressing first (\texttt{rosbag\ compress\ scan.bag})
   and then sending takes a while on the not-so-powerful Odroid platform.
 \item
-  Optionally filter out unwanted transforms from the rosbag to speed up
-  later processing:
+  Optionally filter out unwanted transforms from the rosbag. Later processing is
+  sped up if only relevant transforms need to be read in:
   \texttt{rosbag\ filter\ scan.bag\ scan\_filtered.bag\ \textquotesingle{}(topic\ ==\ "/tf"\ and\ m.transforms{[}0{]}.child\_frame\_id\ ==\ "odom")\ or\ topic\ !=\ "/tf"\textquotesingle{}}
 \item
   In Matlab, run
