@@ -2,19 +2,18 @@
 
 \Cref{tab:params} lists the scan parameters of the 25 named scans, which are presented in the following. The parameters are: sweep time, sensor orientation (\textbf{H}orizontal / \textbf{V}ertical / \textbf{H}orizontal \textbf{I}nverted beam fan), squint angle (center of sensor's FOV, so \ang{90} is sideways-looking and \ang{0} is forward-looking), mounted horn antenna extension (which narrows the beam shape), availability of \texttt{/map} rosmessages with lidar slam information, and finally availability of \texttt{/tf} rosmessages which carry the slam-based odometry drift correction.
 
-\begin{table}[htb]
-  \caption{Scan parameters}
-  \label{tab:params}
-  \rowcolors{1}{ColorAlternatedRow}{}
-    \begin{tabularx}{\textwidth}{%
-      >{\setlength{\hsize}{.31\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.15\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.12\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.12\hsize}\raggedright\arraybackslash}X%
-      >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
-      >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
-      >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
-    }
+{
+\rowcolors{1}{ColorAlternatedRow}{}
+\begin{tabularx}{\textwidth}{%
+  >{\setlength{\hsize}{.31\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.15\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.12\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.12\hsize}\raggedright\arraybackslash}X%
+  >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
+  >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
+  >{\setlength{\hsize}{.10\hsize}\centering\arraybackslash}X%
+}
+    \caption{Scan parameters}\label{tab:params}\\
     \hiderowcolors
     \toprule
 Name & Sweep & Orient. & Squint & Horn & Map & TF \\
@@ -51,10 +50,9 @@ Name & Sweep & Orient. & Squint & Horn & Map & TF \\
  Xray-Room & \SI{2.5}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
  Y Is There A Cable On The Floor & \SI{5.0}{ms} & V & \ang{0} & \xmark & \cmark & \cmark \\
 %  Z & & & & & & \\
-    \end{tabularx}
-\end{table}
-
-
+\bottomrule
+\end{tabularx}
+}
 
 \begin{figure}[htbp]
     \centering
