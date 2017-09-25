@@ -6,10 +6,10 @@
     listof=totoc,
     bibliography=totoc,
     index=totoc,
+    twoside=false,
 ]{diplomarbeit}
 
 \areaset[20mm]{160mm}{240mm}	% Binderand, Breite und Höhe nutzbarer Bereich
-% \usepackage[textwidth=160mm,textheight=240mm]{geometry}
 
 \input{config/pandoc}
 \input{config/packages}
@@ -45,16 +45,15 @@
     plainpages=false,
     breaklinks=true,
 % für die DRUCK-Ausgabe
-%    plainpages=false,
-%    allcolors=black ]{hyperref}
+    hidelinks=true,
 % PDF stuff
-    colorlinks=true,
-    allcolors=ColorLink,
-    pdfborder={0 0 0},
-    pdftitle={\@title},
-    pdfauthor={\@author},
-    pdfsubject={Master's Thesis},
-    pdfkeywords={Radar,Reprojection Mapping,Obstacle Sensor,Mobile Indoor Robots},
+    % colorlinks=true,
+    % allcolors=ColorLink,
+    % pdfborder={0 0 0},
+    % pdftitle={\@title},
+    % pdfauthor={\@author},
+    % pdfsubject={Master's Thesis},
+    % pdfkeywords={Radar,Reprojection Mapping,Obstacle Sensor,Mobile Indoor Robots},
 }
 \urlstyle{same}
 
@@ -97,14 +96,14 @@
 \setcounter{page}{1}
 
 % content
-% \import{chapters/}{ch_introduction.tex}
-% \import{chapters/}{ch_background.tex}
-% \import{chapters/}{ch_approach.tex}
-% \import{chapters/}{ch_implementation_hw.tex}
-% \import{chapters/}{ch_implementation_sw.tex}
-% \import{chapters/}{ch_results.tex}
-% \import{chapters/}{ch_discussion.tex}
-% \import{chapters/}{ch_conclusion.tex}
+\import{chapters/}{ch_introduction.tex}
+\import{chapters/}{ch_background.tex}
+\import{chapters/}{ch_approach.tex}
+\import{chapters/}{ch_implementation_hw.tex}
+\import{chapters/}{ch_implementation_sw.tex}
+\import{chapters/}{ch_results.tex}
+\import{chapters/}{ch_discussion.tex}
+\import{chapters/}{ch_conclusion.tex}
 
 
 % Anhang
@@ -114,7 +113,7 @@
 
 \include{chapters/ap_install}
 \include{chapters/ap_usage}
-% \include{chapters/ap_resultstable}
+\include{chapters/ap_resultstable}
 
 \end{appendix}
 
