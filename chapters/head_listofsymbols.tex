@@ -6,75 +6,74 @@
 \begin{tabularx}{\textwidth}{%
   >{\setlength{\hsize}{3cm}\raggedright\arraybackslash}X%
   X%
-  >{\setlength{\hsize}{2cm}\raggedright\arraybackslash}X%
 }
 
-$A_r$ & Effective antenna aperture          & \si{m^2}\\
-$A_{Rx}$ & Receive signal attenuation       & \si{m^2}\\
-$A_{Tx}$ & Transmit signal attenuation      & \si{m^2}\\
-$c$  & Speed of light                       & \si{m/s}\\
-$d$  & Antenna separation                   & \si{m}  \\
-$d_{down}$ & Down-range dimension           & \si{m} \\
-$d_{cross}$ & Cross-range dimension (azimuth) & \si{m} \\
-$d_{mute}$ & Transmit crosstalk suppression range & \si{m} \\
-$dR$  & Range resolution                    & \si{m} \\
-$dF$  & FFT bin width / Frequency spectrum resolution & \si{m} \\
-$F_S$ &  Sampling frequency                 & \si{Hz}\\
-$f$   &  Frequency                          & \si{Hz}\\
-$f_0$ & Carrier frequency $f_C$ minus half bandwidth $\Delta f$& \si{Hz}\\
-$f_a$ & Angle compensation factor           & \\
-$f_b$ & Beat frequency                      & \\
-$f_b,up$ & Beat frequency during up-sweep modulation & \\
-$f_b,down$ & Beat frequency during down-sweep modulation & \\
-$f_C$ & Carrier frequency                   & \si{Hz}\\
-$f_D$ & Doppler frequency shift             & \si{Hz}\\
-$f_r$ & Range compensation factor           & \\
-$f_R$ & Range-specific frequency            & \\
-$G_r$ & Receive antenna gain                & \\
-$G_t$ & Transmit antenna gain               & \\
-$L$ & Antenna loss factor                   & \\
-$N_s$ & Number of samples per full sweep    & \\
-$N_r$ & Number of samples per ramp (half sweep) & \\
-$n_{chirp}$ & Number of consecutive FMCW chirps & \\
-$P_r$ & Received target power               & \si{W} \\
-$P_t$ & Transmission power                  & \si{W} \\
-$p_{x,y}$ & Sample splitting pixel distribution weights & \\
-$R$   & Target range                        & \si{m} \\
-$R_0$ & Target range at closest approach    & \si{m} \\
-$S$   & Complex antenna signal              & \\
-$S_D$ & Doppler sensitivity                 & \si{Hz/(m/s)}\\
-$S_I$ & In-phase component of complex antenna signal & \\
-$S_Q$ & Quadrature component of complex antenna signal & \\
-$s_a$ & echo signal of elemental scatterer  & \\
-$s_{d_{down},d_{cross}}$ & Echo intensity in down and cross range dimension & \\
-$T_{chirp}$ & FMCW chirp (comprising two ramps) duration & \si{s} \\
-$T_d$ & FMCW sweep ramp duration            & \si{s} \\
-$T_{msg}$ & Time between two ROS radar messages & \si{s} \\
-$t$ & Time                                  & \si{s} \\
-$v_{Mixer}$ & IF signal                     & \si{V(t)} \\
-$v_R$ & Radar or robot movement speed       & \si{m/s} \\
-$v_Rx$ & Received signal                    & \si{V(t)} \\
-$v_Tx$ & Transmitted signal                 & \si{V(t)} \\
-$v_D$ & Relative Doppler speed              & \si{m/m} \\
-$\alpha$ & Reprojection angle               & \si{rad}\\
-$\beta$ & Change of bearing angle           & \si{rad}\\
-$\Delta d_{down}$ & Down range change       & \si{m}\\
-$\Delta d_{cross}$ & Cross range change     & \si{m}\\
-$\Delta\phi$ & Phase difference             & \si{rad}\\
-$\delta I$ & Intensity change factor        & \\
-$\eta$ & Chirp efficiency                   & \\
-$\phi$ & Phase of complex receive signal    & \si{rad}\\
-$\phi_s$ & Scattering phase                 & \si{rad}\\
-$\lambda$ & Wavelength                      & \si{m} \\
-$\nu_h$ & Horizontal sample split weight distribution & \si{m} \\
-$\nu_v$ & Vertical sample split weight distribution & \si{m} \\
-$\sigma$ & Radar cross section              & \si{m^2} \\
-$\sigma_R$ & Range accuracy                 & \si{m} \\
-$\tau$ & Time of flight / Time delay        & \si{s} \\
-$\tau_m$ & Duration of radar pulse          & \si{s} \\
-$\theta$ & Direction of arrival angle       & \\
-$\omega_c$ & angular frequency of carrier frequency &\\
-$\omega_{Tx}$ & angular frequency of transmit signal &\\
+$A_r$ & Effective antenna aperture \\
+$A_{Rx}$ & Receive signal attenuation \\
+$A_{Tx}$ & Transmit signal attenuation \\
+$c$  & Speed of light \\
+$d$  & Antenna separation \\
+$d_{down}$ & Down-range dimension \\
+$d_{cross}$ & Cross-range dimension (azimuth) \\
+$d_{mute}$ & Transmit crosstalk suppression range \\
+$dR$  & Range resolution \\
+$dF$  & FFT bin width / Frequency spectrum resolution \\
+$F_S$ &  Sampling frequency \\
+$f$   &  Frequency \\
+$f_0$ & Carrier frequency $f_C$ minus half bandwidth $\Delta f$ \\
+$f_a$ & Angle compensation factor \\
+$f_b$ & Beat frequency \\
+$f_{b,up}$ & Beat frequency during up-sweep modulation \\
+$f_{b,down}$ & Beat frequency during down-sweep modulation \\
+$f_C$ & Carrier frequency \\
+$f_D$ & Doppler frequency shift \\
+$f_r$ & Range compensation factor \\
+$f_R$ & Range-specific frequency \\
+$G_r$ & Receive antenna gain \\
+$G_t$ & Transmit antenna gain \\
+$L$ & Antenna loss factor \\
+$N_s$ & Number of samples per full sweep \\
+$N_r$ & Number of samples per ramp (half sweep) \\
+$n_{chirp}$ & Number of consecutive FMCW chirps \\
+$P_r$ & Received target power \\
+$P_t$ & Transmission power \\
+$p_{x,y}$ & Sample splitting pixel distribution weights \\
+$R$   & Target range \\
+$R_0$ & Target range at closest approach \\
+$S$   & Complex antenna signal \\
+$S_D$ & Doppler sensitivity \\
+$S_I$ & In-phase component of complex antenna signal \\
+$S_Q$ & Quadrature component of complex antenna signal \\
+$s_a$ & echo signal of elemental scatterer \\
+$s_{d_{down},d_{cross}}$ & Echo intensity in down and cross range dimension \\
+$T_{chirp}$ & FMCW chirp (comprising two ramps) duration \\
+$T_d$ & FMCW sweep ramp duration \\
+$T_{msg}$ & Time between two ROS radar messages \\
+$t$ & Time \\
+$v_{Mixer}$ & IF signal \\
+$v_R$ & Radar or robot movement speed \\
+$v_Rx$ & Received signal \\
+$v_Tx$ & Transmitted signal \\
+$v_D$ & Relative Doppler speed \\
+$\alpha$ & Reprojection angle \\
+$\beta$ & Change of bearing angle \\
+$\Delta d_{down}$ & Down range change \\
+$\Delta d_{cross}$ & Cross range change \\
+$\Delta\phi$ & Phase difference \\
+$\delta I$ & Intensity change factor \\
+$\eta$ & Chirp efficiency \\
+$\phi$ & Phase of complex receive signal \\
+$\phi_s$ & Scattering phase \\
+$\lambda$ & Wavelength \\
+$\nu_h$ & Horizontal sample split weight distribution \\
+$\nu_v$ & Vertical sample split weight distribution \\
+$\sigma$ & Radar cross section \\
+$\sigma_R$ & Range accuracy \\
+$\tau$ & Time of flight / Time delay \\
+$\tau_m$ & Duration of radar pulse \\
+$\theta$ & Direction of arrival angle \\
+$\omega_c$ & angular frequency of carrier frequency \\
+$\omega_{Tx}$ & angular frequency of transmit signal \\
 
 \end{tabularx}
 
