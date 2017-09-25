@@ -16,11 +16,14 @@
 
 \arbeitsart{Master's Thesis}
 
-\title{Radar Reprojection Mapping Improves Obstacle Avoidance in Mobile Robots with an Unsteered Radar Sensor}
+\EnlargeTitleWidth{-1cm}
+
+\title{Radar Reprojection Mapping Improves Obstacle Avoidance In Mobile Robots With An Unsteered Radar Sensor}
 \author{Laurenz Altenmüller}
 \authorsaddr{Pommernstr. 9\\
              80809 München}
-\betreuer{Michael Balszun, M.Sc.}
+\betreuer{Dipl.-Ing. Michael Balszun}
+\supervisor{Dr. Philip Roan}
 \ausgefuehrtam{at BSH Home Appliances Corporation\\Bosch Research and Technology Center\\Palo Alto, California, USA}
 \eingereicht{September 2017}
 
@@ -43,8 +46,8 @@
     breaklinks=true,
 % für die DRUCK-Ausgabe
 %    plainpages=false,
-%    allcolors=black ]{hyperref} 
-% PDF stuff    
+%    allcolors=black ]{hyperref}
+% PDF stuff
     colorlinks=true,
     allcolors=ColorLink,
     pdfborder={0 0 0},
@@ -70,12 +73,12 @@
 \maketitle
 
 \renewcommand{\thepage}{}
-\cleardoublepage 
+\cleardoublepage
 \input{chapters/head_abstract}
 
 
 \pagestyle{empty}
-\cleardoublepage 
+\cleardoublepage
 \setcounter{page}{3}	% Laut VDI Richtlinien
 \renewcommand{\thepage}{\roman{page}}
 
@@ -94,23 +97,24 @@
 \setcounter{page}{1}
 
 % content
-\import{chapters/}{ch_introduction.tex}
-\import{chapters/}{ch_background.tex}
-\import{chapters/}{ch_approach.tex}
-\import{chapters/}{ch_implementation_hw.tex}
-\import{chapters/}{ch_implementation_sw.tex}
-\import{chapters/}{ch_results.tex}
-\import{chapters/}{ch_discussion.tex}
-\import{chapters/}{ch_conclusion.tex}
+% \import{chapters/}{ch_introduction.tex}
+% \import{chapters/}{ch_background.tex}
+% \import{chapters/}{ch_approach.tex}
+% \import{chapters/}{ch_implementation_hw.tex}
+% \import{chapters/}{ch_implementation_sw.tex}
+% \import{chapters/}{ch_results.tex}
+% \import{chapters/}{ch_discussion.tex}
+% \import{chapters/}{ch_conclusion.tex}
 
 
 % Anhang
-\clearpage
+\cleardoublepage
+\appendixpage
 \begin{appendix}
 
 \include{chapters/ap_install}
 \include{chapters/ap_usage}
-\include{chapters/ap_resultstable}
+% \include{chapters/ap_resultstable}
 
 \end{appendix}
 

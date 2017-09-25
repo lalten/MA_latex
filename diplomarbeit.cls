@@ -57,6 +57,7 @@
       \def\ausgefuehrtamtext{Ausgef\"uhrt am~}
       \def\betreutdurchtext{Betreut durch den~}
       \def\betreuertext{Betreuer:}
+      \def\supervisortext{Supervisor:}
       \def\bearbeitertext{Bearbeiter:}
       \renewcommand*\indexname{Stichwortverzeichnis}
     }{% English and all others
@@ -83,6 +84,7 @@
       \def\ausgefuehrtamtext{Executed at the~}
       \def\betreutdurchtext{Supervised by the~}
       \def\betreuertext{Advisor:}
+      \def\supervisortext{Supervisor:}
       \def\bearbeitertext{Author:}
     }
 
@@ -127,7 +129,7 @@
     }
   }
 }
-                        
+
 \gdef\@arbeitsart{\arbeitsarttext}
 \gdef\@techreport{false}
 \def\band#1{\gdef\@band{#1}}
@@ -138,6 +140,9 @@
 
 \def\betreuer#1{\gdef\@betreuer{#1}}
 \gdef\@betreuer{\null}
+
+\def\supervisor#1{\gdef\@supervisor{#1}}
+\gdef\@supervisor{\null}
 
 \def\eingereicht#1{\gdef\@eingereicht{#1}}
 % Default is today's date (month and year)
@@ -236,17 +241,20 @@
  \begin{center}%
   \ifx\@ausgefuehrtam\@empty {{\ausgefuehrtamtext\@betreutdurch}}
   \else {{\betreutdurchtext\@betreutdurch
-         \vfill  
+         \vfill
          \ausgefuehrttext\@ausgefuehrtam}}
   \fi
  \end{center}\par
  \vskip 1.5em
  \vfill
  \begin{tabular}{l@{\hspace{1cm}}l}%
-   \bfseries{\betreuertext} & 
+   \bfseries{\betreuertext} &
      \parbox[t]{9cm}{{\@betreuer}}\\
      & \\
-   \bfseries{\bearbeitertext} & 
+   \bfseries{\supervisortext} &
+     \parbox[t]{9cm}{{\@supervisor}}\\
+     & \\
+   \bfseries{\bearbeitertext} &
      \parbox[t]{9cm}{{\@author\\ \@authorsaddr}} \\
      & \\*[0.5cm]
  \multicolumn{2}{l}{{\eingereichttext \@eingereicht}} \\
@@ -266,7 +274,7 @@
 \deffootnotemark{\textsuperscript{\normalfont\thefootnotemark)}}
 
 % --------------------------------------------------------------------
-% Dank 
+% Dank
 % --------------------------------------------------------------------
 \newenvironment{danksagung}{%
   \clearpage
@@ -315,6 +323,6 @@
 \renewcommand*\idx@heading{%
   \addchap{\indexname}
 }
- 
+
 \endinput
 % LocalWords:  makeatletter
