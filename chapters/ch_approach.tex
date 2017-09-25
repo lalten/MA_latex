@@ -10,7 +10,7 @@ This thesis proposes the reprojection method, with which a radar target's source
 
 The method requires that the sensor moves at a known speed \(v_R\) through an otherwise static environment. Through the sensor's motion the distance to visible targets will then change over time, which causes a Doppler effect for the entire visible scene. Based on the deviation of a target's measured Doppler speed \(v_D\) from the known sensor movement speed \(v_R\) the magnitude of the angle between the movement vector and the line-of-sight to the same target can then be calculated.
 
-\section{Geometry for the Side-Facing 2D Case}\label{geometry-for-the-side-facing-case}
+\section{Geometry For The Side-Facing 2D Case}\label{geometry-for-the-side-facing-case}
 
 Assume that the sensor's antenna is sensitive only to co-planar targets --- this can be achieved with antennas that feature a fan-shaped beam pattern that has high sensitivity only around zero elevation. In the simplest case, the antenna is also sensitive only to targets on one side of the path of motion described by the sensor. \Cref{fig:geometry-side} depicts a robot (gray circle) with a radar sensor (triangle) moving at speed $v_R$. The three targets A, B, and C (colored circles) are detected. Targets A and C represent the edge cases: The radar is moving straight towards target A (i.e. $\alpha=0$) and measures its Doppler speed as
 \begin{equation} \label{eq:geometry_side_A}
@@ -30,7 +30,7 @@ This is of course also true for already passed targets, which will yield a negat
 \end{equation}
 Note that \cref{eq:geometry_side_alpha} holds, because the scene must be static and hence $-v_R \leq v_D \leq v_R$.
 
-\section{Geometry for the General 2D Case} \label{geometry-for-the-general-case}
+\section{Geometry For The General 2D Case} \label{geometry-for-the-general-case}
 
 \begin{figure}[htp]
     \centering
@@ -67,7 +67,7 @@ It would be possible to resolve this ambiguity by tracking the targets while cha
 
 For multistatic radars there is however another solution to resolving the angle ambiguity: Using direction of arrival (DOA) information obtained from inter-antenna phase difference measurements (see \cref{direction-of-arrival}). \Cref{fig:geometry-forward} shows that if the radar is mounted at a straight forward angle, a target's DOA indicates the side it is being passed on. If the radar is not facing straight ahead, the DOA value should be tracked so its gradient can be used instead --- If a target's DOA is gradually shifting towards left (target B in \cref{fig:geometry-forward}), it will pass the radar on the left side. On the other hand, if it is gradually shifting towards right, it will pass on the right side (target C in \cref{fig:geometry-forward}).
 
-\section{Geometry for the General 3D Case}\label{geometry-for-the-3d-case}
+\section{Geometry For The General 3D Case}\label{geometry-for-the-3d-case}
 
 The geometry in \cref{geometry-for-the-general-case} can be further generalized in a three dimensional geometry. The 3D case is depicted in \cref{fig:3dcase}. The model makes most sense for a robot that can traverse in all three dimensions, like a plane or drone. Hence the blue line in the figure can be called the sensor's flight path vector. Just like in the 2D case, when a static target is detected at range $R$, its radial speed $v_D$ leads to a reprojection angle $\alpha$. The difference is that the possible target location lies not on two points, but on the green circle with radius $R~\sin(\alpha)$ whose origin lies $R~\cos(\alpha)$ away on the flight path vector.
 
@@ -96,7 +96,7 @@ The ambiguity could be reduced through a two-dimensional DOA estimation. This is
 
 With this geometry, reprojection mapping could be used to build probabilistic 3D occupancy gridmaps like in \cite{Hornung2013}, with vehicles moving in 3D space, like the TUM RCS's Modular Airborne Real-Time Testbed (MART)\footnote{\url{https://www.rcs.ei.tum.de/forschung/mart/}} that was also used in other research and publications \cite{Becker2015}.
 
-\section{Geometry for the General 3D Case with Two Sensors} \label{multisensor}
+\section{Geometry For The General 3D Case With Two Sensors} \label{multisensor}
 The ambiguities in \cref{geometry-for-the-3d-case} can also be eliminated by using more than one range sensor. In a 2D environment, this makes it possible to do regular trilateration, so reprojection mapping would not be necessary. In the 3D case however, two sensors would be enough for trilateration to pinpoint a target location --- instead, the target would be localized on the intersection circle of two spheres around the sensors, each with a radius equal to the target range. With the addition of reprojection geometry, for each sensor a cone with an opening angle of twice the reprojection angle can be added. The cone's base edge lies on the sphere. A target's location is now known to be at the intersection of the two cones, which is a single point.
 
 \begin{figure}
@@ -113,13 +113,13 @@ The method also helps when more than one target is visible and they need to be d
 
 2D target location resolution is completely sufficient for mobile ground robots. Hence the rest of this thesis will focus on the side- and forward-facing 2D geometry described in \cref{geometry-for-the-general-case}.
 
-\section{Doppler speed estimation}\label{doppler-speed-estimation}
+\section{Doppler Speed Estimation}\label{doppler-speed-estimation}
 
 In order to estimate the reprojection angle with \cref{eq:geometry_side_alpha}, the target Doppler speed $v_D$ must be measured. If the measurement is not precise, the reprojection angle \(\alpha\) will be imprecise and noisy. A map built with noisy observations will contain smeared-out targets or even false positive detections on the map.
 
 With FMCW radar, a target's range and Doppler speed can be simultaneously registered. Especially at low speeds the speed resolution or accuracy may not be not very high with this method. Doppler speed can instead be estimated from a target's change in range over time. The development of the peak gradient algorithm that accomplishes this with subsample resolution is detailed in \cref{doppler-estimation-with-the-peak-gradient-algorithm}.
 
-\section{Map building}\label{reprojection-method}
+\section{Map Building}\label{reprojection-method}
 
 As soon as a target's range and angle are known, it can be mapped in relation
 to the radar's position. The radar position can be assumed at the map's origin for the first measurement; however the radar's translation and rotation relative to this start position needs to be known for subsequent measurements. This can easily be achieved with proprioceptive sensors such as inertial measurement units (IMUs) and encoder odometry. To compensate odometry drift in longer scans position corrections from absolute position sources should be integrated. Such a source is usually available from a magnetometer for heading, from global navigation satellite system (GNSS) sensors (e.g. GPS), motion capture camera systems or other ground truth systems \cite{Godil2013}. It is also possible to run a slam algorithm or probabilistic localization like adaptive Monte Carlo localization (AMCL) for localization.

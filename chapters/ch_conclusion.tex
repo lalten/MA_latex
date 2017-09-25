@@ -4,12 +4,12 @@
 
 While the presented implementation was shown to work, there are many areas which in which it could be extended with interesting features. Some worthwhile goals for future work on the topic are outlined in \cref{future-work}.
 
-\subsection{Dynamic target rejection}\label{dynamic-target-rejection}
 
+\subsection{Dynamic Target Rejection}\label{dynamic-target-rejection}
 As stated in \cref{limitations}, reprojection mapping only works for static environments. It is however not difficult to relax this strict requirement a little: Targets moving faster than the robot itself can easily be detected and ignored. These dynamic targets should of course be tracked with the peak matching of the peak gradient algorithm, to make sure they are ignored even after they slow down to below robot speed.
 
-\subsection{Online mapping}\label{online-mapping}
 
+\subsection{Online Mapping}\label{online-mapping}
 The proof of concept implementation processes pre-recorded data. However
 the algorithm is by no means limited to offline processing. Being very
 much iterative and range scan line based it requires only the knowledge
@@ -31,8 +31,8 @@ area is necessary. This could be handled in a nice way with ROS's
 \href{http://wiki.ros.org/grid_map}{grid\_map package}. This would also
 allow pretty and useful visualizations with RViz.
 
-\subsection{ROS nodelet}\label{ros-nodelet}
 
+\subsection{ROS Nodelet}\label{ros-nodelet}
 The \texttt{omniradar\_node} ROS node spends quite some time on copying
 the radar echo into the ros message that is to be sent out. As Austin
 Hendrix points out in \textit{ROS answers}\footnote{\url{https://answers.ros.org/question/208801/how-to-have-no-copy-publishing-over-multiple-cores/?answer=208805\#post-id-208805}}, ``ROS doesn't provide intra-process, zero-copy publishing.
@@ -42,20 +42,20 @@ a rosbag still involves copying the data, but in an online system a
 nodelet-based reprojecting algorithm can be expected to bring a
 reasonable performance improvement.
 
-\subsection{Auto-thresholding}\label{auto-thresholding}
 
+\subsection{Auto-Thresholding}\label{auto-thresholding}
 As \cref{minimum-peak-height} describes, the proof-of-concept implementation uses a constant threshold as minimum peak height. There has been extensive work done to create adaptive thresholds with a class of algorithms called constant false alarm rate (CFAR) \cite{Skolnik2008,Adams2012}. It would be interesting to implement this to make the reprojection robust against noise at unexpected levels.
 
-\subsection{Realtime}\label{realtime}
 
+\subsection{Realtime Mapping}\label{realtime}
 An obstacle sensor's job is to provide information on impeding
 collisions before it's too late. Thus it would be great to have the
 system run under realtime constraints, so it can guarantee range
 scanning and reprojection mapping to be finished within a known time
 frame.
 
-\subsection{Interference Investigation}\label{interference-investigation}
 
+\subsection{Interference Investigation}\label{interference-investigation}
 Since the \SI{60}{GHz} band is ISM, other sources can be present, e.g.~the
 IEEE 802.11ad standard \cite{IEEE2014} (``WiGig'') which enables very
 high throughput wireless LAN operation in frequencies around \SI{60}{GHz}.
@@ -64,8 +64,8 @@ some interference with the \SI{60}{GHz} radar sensor. Detecting or avoiding
 interference in the range signal would be an important topic if this
 causes a lot of trouble.
 
-\subsection{Ultrasound}\label{ultrasound}
 
+\subsection{Ultrasound}\label{ultrasound}
 Usually, ultrasound sensors measure the distance to the closest object.
 However, K.C. Lee's project log of their ``Sonar for the visually
 impaired'' project \cite{Lee2015} shows how cheap sensors can be hacked
@@ -113,8 +113,8 @@ Extension to ultrasound sensors would be a very interesting topic for
 further work. It might even be possible to use light waves with interferometric
 modulated flash lidars and the right optics.
 
-\section{Conclusion}\label{conclusion-1}
 
+\section{Conclusion}\label{conclusion-1}
 This thesis showed that mobile robots still struggle to detect some obstacles which are invisible to their conventional sensors. The fact that these are not special edge cases but very common objects like chair legs and windows highlights how important it is to improve mapping in these real-world environments. Radar sensing fills a gap in the design space by exposing these hidden obstacles. It is already a tried and tested technology and has been deployed in many diverse fields, including far-range military reconnaissance, speed limit enforcement, and weather forecasting for decades. However, with new advances in system integration, miniaturization, and cost optimization, ultra-wide bandwidth radar sensing becomes very interesting even for consumer-grade ground robots.
 
 With reprojection mapping, this thesis introduces a novel method for scanless radar-based mapping that further reduces the barrier that kept radar sensors out of robots for so long by obviating the need to actively steer the radar beam via mechanical scanning or beamforming. The most limiting factor in the application is the need for a static environment to assert that any target can be localized through its Doppler speed. In practice this constraint is not too hard to meet because many indoor robots are designed to operate unsupervised in environments without moving objects, like an office at night or an apartment during working hours.

@@ -37,7 +37,7 @@ A RoboPeak / Slamtec RPLidar A1\footnote{\url{https://www.slamtec.com/en/Lidar/A
 
 The slam algorithm used in the implementation is Google's Cartographer \cite{Hess2016} with the Cartographer ROS Integration\footnote{\url{https://github.com/googlecartographer/cartographer_ros}}. Cartographer ROS for TurtleBots\footnote{\url{https://github.com/googlecartographer/cartographer_turtlebot}} conveniently provides configuration files that work well with the Kobuki.
 
-\subsection{Radar sensor}\label{radar-sensor}
+\subsection{Radar Sensor}\label{radar-sensor}
 
 One of the most important aspects of the implementation is the choice of radar sensor.
 
@@ -263,7 +263,7 @@ It would be possible to use higher precision equipment. But another
 solution is to track the movement of target peaks in the range profile,
 using the peak gradient algorithm described in \cref{doppler-estimation-with-the-peak-gradient-algorithm}.
 
-\subsection{Optimal chirp time configuration} \label{optimal-chirp-time-configuration}
+\subsection{Optimal Chirp Time Configuration} \label{optimal-chirp-time-configuration}
 
 The chirp duration \(T_{chirp}\) is configurable and has an effect on
 how the raw range profile data will look like. Next to SNR of raw data, an important measure is chirp efficiency, which influences effectiveness of raw data smoothing (because more data allows better smoothing) and hence SNR of processed data. The chirp efficiency $\eta$ is defined as the percentage of time spent on actual measurement:

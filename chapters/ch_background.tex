@@ -107,7 +107,7 @@ antenna \cite{Adams2012}. Antenna theory shows \cite{Balanis2015} the
 relation of receive antenna gain \(G_r\) with radiation wavelength
 \(\lambda\):
 \begin{equation} \label{eq:recvgain}
-    G_r = \frac{4\pi A_r}{\lambda^2}    
+    G_r = \frac{4\pi A_r}{\lambda^2}
 \end{equation}
 With constant antenna loss factor \(L>1\), substituting \cref{eq:recvgain} into \cref{eq:radar}
 yields the classical radar equation
@@ -121,7 +121,7 @@ this equation due to many factors including interference and
 atmospheric conditions. \(\sigma\) is also not constant but varies with
 viewing angle and material properties of the target. \cite{Adams2012}
 
-\subsection{Doppler effect}\label{doppler-effect}
+\subsection{Doppler Effect}\label{doppler-effect}
 
 Many radar systems measure radial velocity with the Doppler frequency
 shift. Austrian physicist Christian Doppler described the kinematic
@@ -143,22 +143,22 @@ relative speed of \(v_r = \SI[per-mode=symbol]{1}{cm\per s}\) towards the radar 
 back an echo with a frequency of \SI{60000000004}{Hz} because of the
 frequency shift of \(f_D = \SI{4}{Hz}\).
 
-\subsection{Types of Radar}\label{types-of-radar}
+\subsection{Types Of Radar}\label{types-of-radar}
 
-\subsubsection{Continuous Wave radar}\label{continuous-wave-cw-radar}
+\subsubsection{Continuous Wave Radar}\label{continuous-wave-cw-radar}
 
 Continuous wave (CW) radar is the earliest radar system. It uses a continuous transmission
 at a fixed frequency. Thanks to antenna directionality it can find a target's azimuth in radio direction finding. A target's velocity
 information can be extracted from the frequency shift due to the Doppler
 effect.
 
-\subsubsection{Pulse radar}\label{pulse-radar}
+\subsubsection{Pulse Radar}\label{pulse-radar}
 
 Pulse radars send series of short bursts. The time delay \(\tau\)
 between transmission and reception of a pulse is called time of flight
 (TOF). Together with speed of light $c$ it yields a target's range \(R\):
 \begin{equation} \label{eq:tof}
-	 R = \frac{c\tau}{2} 
+	 R = \frac{c\tau}{2}
 \end{equation}
 The range resolution \(dR\) is given by
 \begin{equation} \label{eq:tof_res}
@@ -180,7 +180,7 @@ frequency shift.
 \end{figure}
 
 
-\subsection{Frequency-modulated continuous wave (FMCW) radar}\label{frequency-modulated-continuous-wave-fmcw-radar}
+\subsection{Frequency-Modulated Continuous Wave (FMCW) Radar}\label{frequency-modulated-continuous-wave-fmcw-radar}
 
 FMCW radars use a frequency modulation to measure range and speed at the
 same time. The transmitted modulation is compared to the modulation in
@@ -227,7 +227,7 @@ received signal \(v_{Rx}\) and a portion of the transmitted signal
 analog multiplier to get the intermediate frequency (IF) \(v_{Mixer}\).
 The IF contains a target's beat frequency, which is proportional to the
 target's range. With the transmitted signal \(v_{Tx}\) and the received
-signal \(v_{Rx}\) as a function of time \(t\), 
+signal \(v_{Rx}\) as a function of time \(t\),
 \begin{align}
     v_{Tx}(t) &= A_{Tx} \cos\bigl(\omega_{Tx}(t)~t\bigr) \label{eq:fmcw1} \\
     v_{Rx}(t) &= A_{Rx} \cos\bigl(\omega_{Tx}(t-\tau)~t\bigr) \label{eq:fmcw2}
@@ -248,7 +248,7 @@ With the trigonometric identity
 	 \cos A \cdot \cos B = \frac{1}{2} \Bigl( \cos(A+B)~+~\cos(A-B) \Bigr)
 \end{equation*}
 
-\cref{eq:fmcw3}'s \(v_{Mixer}\) can be rewritten as 
+\cref{eq:fmcw3}'s \(v_{Mixer}\) can be rewritten as
 \begin{equation*}
 	v_{Mixer}(t-\tau) = \frac{A_{Tx} A_{Rx}}{2}(B_1 + B_2)
 \end{equation*}
@@ -305,7 +305,7 @@ corresponding $f_{b,up}$, while the down-sweep will have $f_{b,down}$
     \caption{\label{fig:fmcw_doppler}Target motion introduces a Doppler shift in the received signal, which changes the beat frequency during up- and down-sweeps. Adapted from \cite{Adams2012} p.~57.}
 \end{figure}
 
-The range-specific frequency and Doppler frequency can be extracted from the two beat frequencies of \cref{eq:vbeatup,eq:vbeatdn} by averaging them: 
+The range-specific frequency and Doppler frequency can be extracted from the two beat frequencies of \cref{eq:vbeatup,eq:vbeatdn} by averaging them:
 \begin{align}
 	f_R &= \frac{f_{b,down} + f_{b,up}}{2} \\
     f_D &= \frac{f_{b,down} - f_{b,up}}{2}
@@ -357,7 +357,7 @@ in \cref{fig:rawbeat_f} shows the frequency spectrum's magnitude \(\|S\|\).
     \caption{\label{fig:fig_raw_beat}Beat signal and spectrum / range profile in a real-world measurement.}
 \end{figure}
 
-\subsection{Direction of Arrival}\label{direction-of-arrival}
+\subsection{Direction Of Arrival}\label{direction-of-arrival}
 
 A radar sensor with two or more receiving antennas which are separated
 by not more than half a wavelength can measure the Direction of arrival
@@ -465,7 +465,7 @@ for radar).
     \caption{\label{fig:wigig}WiGig Channel Plan and Frequency Allocations by Region. Source: \cite{AgilentTechnologies2013}}
 \end{figure}
 
-\section{Overview of Radar Research}\label{overview-of-radar-research}
+\section{Overview Of Radar Research}\label{overview-of-radar-research}
 
 Radar has been used and researched since the 1940s. While it was historically only used to detect aircraft and ships, it is an active research domain in many fields today.
 Identification and localization of vessels is still an important application in both civil and military sectors.
@@ -476,7 +476,7 @@ A new and very promising discipline is radar-based gesture recognition, which en
 Indoor communication and localization with radar beacons is another interesting and upcoming technology \cite{Vinicchayakul2016,Albaidhani2016,Zhong2016,Zhu2016,Segura2012,Marano2010}.
 The radar-related research area that is most relevant for mobile robots is radar-based slam \cite{Adams2012,Guan2017,Rapp2016,Rouveure2008,Ristic2016,Marck2013,Deissler2010,Kauffman2014,Guerra2016,Jose2004,Jose2004a,Jose2004b,Jose2005,Gerossier2009,Mullane2010,Deissler2013,Schuster2016,Adams2013,Deissler2012,Seitz2008,Deissler2010,Deissler2009}.
 
-\section{Existing radar-based solutions for map building}\label{existing-radar-based-solutions-for-map-building}
+\section{Existing Radar-Based Solutions For Map Building}\label{existing-radar-based-solutions-for-map-building}
 
 \subsection{SAR}\label{sar}
 
@@ -536,7 +536,7 @@ azimuth-response from a target.
 \end{figure}
 
 An elemental scatterer at range \(R(t)\) will return an echo \(s_a(t)\)
-over time \(t\): 
+over time \(t\):
 \begin{equation} \label{eq:scatterer}
 	s_a(t) = P_r \sqrt{\sigma\vphantom{1}}
 	\exp(j\varphi_s)
@@ -552,12 +552,12 @@ target's RCS, imaginary unit \si{j}, \(\varphi_s\) the scattering phase,
 and \(\frac{4\pi}{\lambda}R(t)\) the azimuth phase variation due to
 changing distance \cite{Cumming2004}. The target's range \(R(t)\) is
 described by the range at closest approach \(R_0\) and the radar's
-(constant) movement speed \(v_R\): 
+(constant) movement speed \(v_R\):
 \begin{equation} \label{eq:azphvar}
 	R(t) = \sqrt{R_0^2+\left(v_Rt\right)^2} \approx R_0 + \frac{(v_Rt)^2}{2R_0} ~\text{for}~ \frac{v_Rt}{R_0} \ll 1
 \end{equation}
 Substituting \cref{eq:azphvar} into the azimuth phase in \cref{eq:scatterer} and derivating
-with respect to time yields the azimuth frequency \(f_D\) 
+with respect to time yields the azimuth frequency \(f_D\)
 \begin{equation}
 	f_D = \underbrace{\frac{1}{2\pi}}_{\omega_D = 2\pi f_D} \frac{\partial}{\partial t} \frac{-4\pi}{\lambda}  \underbrace{\left( R_0 + \frac{(v_Rt)^2}{2R_0}  \right)}_{R(t)} = -\frac{2v_R^2}{\lambda R_0}t
 \end{equation}
@@ -579,8 +579,8 @@ scaling algorithms \cite{Moreira2013}.
 
 As far as moved radar sensors go, SAR is a great technique for imaging a scene while it is passed on the side. If obstacle detection is to be performed, it is however necessary to know what lies ahead. Today, robots that use a radar sensor for this task therefore use a scanning radar.
 
-\subsection{Scanning radar}\label{scanning-radar}
 
+\subsection{Scanning Radar}\label{scanning-radar}
 A radar system that changes the direction of its beam in a scanning pattern is called a scanning radar. This allows covering a larger overall search space by sampling a set of smaller regions, usually with a tighter beam shape for higher spatial accuracy. The scanning process can be implemented by mechanically rotating the radar's antenna, electronically through phased arrays (see \cref{fig:phased}), or even both in active electronically scanned arrays (AESA), which are used in fighter jets (see \cref{fig:aesa}). Some research robots use the K2PI radar sensor \cite{Rouveure2008}, which rotates a pencil-shape beam over \ang{360} (see \cref{fig:k2pi}).
 
 \begin{figure}[htbp]
@@ -607,9 +607,7 @@ A radar system that changes the direction of its beam in a scanning pattern is c
 \end{figure}
 
 
-\subsection{Radar slam}\label{radar-slam}
-
-
+\subsection{Radar Slam}\label{radar-slam}
 Simultaneous localization and mapping algorithms are of course a very useful tool in the effort to create an accurate map of a robot's surroundings and have been referred to as the ``holy grail'' of autonomous robotics research \cite{Dissanayake2001}.
 
 Most newer slam navigation algorithms are derived from the classical Bayesian probabilistic recursion. They model the system by a probabilistic density function (PDF) on map and agent location. At the discrete time step $t$ the joint PDF for location $X_t$ and map $M_t$ is based on the history of (noisy) control inputs $U$, state $X$ (usually map location in terms of translation and rotation from known location $X_0$), and exteroceptive measurements of the environment $Z$ \cite{Adams2012}:

@@ -13,7 +13,7 @@
 
 \section{Driver}\label{driver}
 
-\subsection{Omniradar ROS driver}\label{omniradar-ros-driver}
+\subsection{Omniradar ROS Driver}\label{omniradar-ros-driver}
 
 The Omniradar RIC60A Radar Development Kit comes with a precompiled Matlab MEX driver library, which works well in a Windows OS on x86-based computers with a Matlab installation. An early goal was however to have the robot carry the radar module around wireless which would only have been possible with a complete Windows laptop mounted on the Kobuki platform. However, Omniradar was kind enough to provide the driver sources under an NDA agreement. This allowed recompiling
 the MEX driver for Linux systems. There were still some issues with FTDI's
@@ -27,7 +27,7 @@ FMCW chirp) were requested. After a lot of debugging, this could be
 solved by never requesting a bigger amount of data than was already
 available in the D2XX buffer.
 
-\subsubsection{C++ bindings and library}\label{c-bindings-and-library}
+\subsubsection{C++ Bindings And Library}\label{c-bindings-and-library}
 
 Since Matlab does not run on Arm arch processors such as the Odroid on
 the Kobuki robot, a new set of platform-independent C++ bindings was
@@ -98,7 +98,7 @@ Omniradar provides Matlab scripts to measure the sensor's VCO tuning curve. \Cre
 communication with the radar module on the Linux/Arm based Odroid.
 The files comprising \texttt{libomniradar} are publicly available for integration in projects using the RIC60 sensor at \url{https://github.com/lalten/libomniradar}.
 
-\subsection{ROS node}\label{ros-node}
+\subsection{\texttt{omniradar} Rosnode}\label{ros-node}
 A new \texttt{omniradar} ROS package was developed to support the use of
 the Omniradar sensor within the ROS environment. A set of
 \texttt{roslaunch} launchfiles comes with the package that support the
@@ -196,15 +196,15 @@ CPU on the \SI{2}{GHz} octa-core Odroid (observed with \texttt{htop}).
 
 Like \texttt{libomniradar}, the rospackage providing the \texttt{omniradar} rosnode is available at \url{https://github.com/lalten/omniradar}.
 
-\subsection{Matlab interface}\label{matlab}
 
+\subsection{Matlab Interface}\label{matlab}
 Matlab (release R2017a) was chosen as implementation platform and language because it allows quick prototyping, provides relatively easy visualization, and, with the Robotics Toolbox, supports many ROS features.
 
 It is necessary to install custom message support with the roboticsAddon\footnote{\url{https://www.mathworks.com/help/robotics/ref/roboticsaddons.html}} and to generate\footnote{\url{https://www.mathworks.com/help/robotics/ug/create-custom-messages-from-ros-package.html}} some files to read in rosbags with the custom \texttt{RadarEcho} type messages.
 
 \section{Data Preprocessing}\label{data-preprocessing}
 
-\subsection{Rosbag to Matlab}\label{rosbag-to-matlab}
+\subsection{Rosbag To Matlab}\label{rosbag-to-matlab}
 
 Before a target's radar echo can make its way to the map, it passes several stages. In this proof of concept implementation, the map building is done offline, so all data coming out of the omniradar ROS node is recorded in a \texttt{rosbag} for later analysis. This is a good solution because it (1) allows working even without access to hardware, (2) allows quick iteration and prototyping with scripted languages such as Matlab, which are not capable of receiving at real-time speeds, and (3) allows replaying any situation in which an algorithm fails, so that it can be can be tested and improved until the situation can be handled.
 
@@ -328,7 +328,7 @@ scan need to be averaged as well. These parameters are mileage at scan
 time, robot position and orientation, and robot speed. Sweep time and
 down range bins don't change.
 
-\section{Doppler Estimation with the Peak Gradient Algorithm} \label{doppler-estimation-with-the-peak-gradient-algorithm}
+\section{Doppler Estimation With The Peak Gradient Algorithm} \label{doppler-estimation-with-the-peak-gradient-algorithm}
 
 The peak gradient algorithm is a way to find Doppler speeds from
 consecutive range profiles.
@@ -402,7 +402,7 @@ but by range accuracy, which mainly depends on SNR. Accuracy is much better
 than range resolution with \(\sigma_R = \frac{dR}{\sqrt{SNR}}\). This
 can be utilized with subsample peak interpolation.
 
-\subsection{Inter-scan vs Intra-scan Doppler estimation} \label{inter-scan-vs-intra-scan-doppler-estimation}
+\subsection{Inter-Scan vs. Intra-Scan Doppler Estimation} \label{inter-scan-vs-intra-scan-doppler-estimation}
 
 For correct Doppler estimation it is important to have the exact timing,
 or for relative Doppler speed, exact cross range mileage of the range
@@ -426,7 +426,7 @@ adjusted to \(T_{msg} + i\cdot T_{chirp}\) (with message timestamp
 \(T_{msg}\), consecutive sweep index \(i\) and sweep duration
 \(T_{chirp}\)) and cross range mileage interpolated at that timestamp.
 
-\subsection{Subsample peak interpolation}\label{subsample-peak-interpolation}
+\subsection{Subsample Peak Interpolation}\label{subsample-peak-interpolation}
 
 In subsample peak interpolation a curve is fitted on several supporting
 points in the coarse-resolution data. In the case of a single,
@@ -447,7 +447,7 @@ shifts of \(d_{down,1}=\SI{9.510}{mm}\) and \(d_{down,2}=-\SI{13.52}{mm}\) in fi
 more plausible estimation and generally work very well when used to
 calculate the reprojection angle in the reprojection method.
 
-\subsection{Peak matching}\label{peak-matching}
+\subsection{Peak Matching}\label{peak-matching}
 
 Visually it seems clear which peaks belong to each other in consecutive
 range scan lines. But for the algorithm this poses a challenge. Range
@@ -468,7 +468,7 @@ with intensity change factor $\delta I$ and down range deviation $\Delta d_{down
 
 $\Delta d_{down} / \Delta d_{cross}$ is more easily expressed as Doppler speed \(v_D\) in percent of robot speed \(v_R\). It makes sense to allow \texttt{LocSearchArea}s greater than $1~v_R$ to deal with noise and jitter -- otherwise a target peak closing at roughly $v_R$ would not always be detected and smoothing over cross-range would be worse. The detected $v_D > v_R$ of course need to be clipped to $v_R$ or ignored in reprojection (which is what the current implementation does). Good values are determined to be a \texttt{ValueSearchArea} of \SI{5}{cm^{-1}} and a \texttt{LocSearchArea} of \(2~v_R\).
 
-\subsection{Transmit crosstalk suppression}\label{transmit-crosstalk-suppression}
+\subsection{Transmit Crosstalk Suppression}\label{transmit-crosstalk-suppression}
 
 At low range, spurious peaks occur. The first one is caused by transmit
 antenna crosstalk and is visible as very high intensity echo around
@@ -518,10 +518,10 @@ to ignore these echoes.
     \label{fig:fig_range_compensation_transmit_spike}
 \end{figure}
 
-\subsection{Minimum Peak height}\label{minimum-peak-height}
+\subsection{Minimum Peak Height}\label{minimum-peak-height}
 Without countermeasures a lot of noise with low height and low full-width-at-half-maximum will clutter the reprojection map. The easiest way to prevent this is to apply a threshold on the detected peak height that rejects all peaks that do not reach a certain minimum height. It's not easy to specify such a threshold that works for all scans, because the noise floor level strongly depends on the chirp time. \Cref{fig:fig_compare_chirp_times} shows that this persists even when the echo intensity is normalized to intensity 1 at the first range bin before transmit cross talk suppresion (see \cref{transmit-crosstalk-suppression}).
 
-\subsection{Peaks overlaps at crossing target arcs} \label{peaks-overlaps-at-crossing-target-arcs}
+\subsection{Peaks Overlaps At Crossing Target Arcs} \label{peaks-overlaps-at-crossing-target-arcs}
 Often there appears a situation where the range cell migration arcs of two targets cross each other. In this case, their peaks can almost always be still detected separately. However peak-associated data like DOA and Doppler speed will superpositioned. Using these in a regular fashion would yield wrong results. An approach that proved to work well in practice is to sort all peaks in a range scan line by ascending value (peak height), then assigning the average over the FWHM of the feature in question to all output down range cells within half the FWHM of the respective peak. Higher peaks are hence treated as more important and overwrite the values of lower peaks. \Cref{fig:overlap} is an example where the overlapping effect is visible.
 
 \begin{figure}[htbp]
@@ -544,12 +544,12 @@ For some scans, the \texttt{map} topic is available. In this case, the radar map
 
 Next to the inherent limitations of reprojection mapping (see \cref{limitations}) there are some limitations that arise from the presented implementation.
 
-\subsubsection{Problems with imperfect fit function for subsampling} \label{problems-with-imperfect-fit-function-for-subsampling}
+\subsubsection{Problems With Imperfect Fit Function For Subsampling} \label{problems-with-imperfect-fit-function-for-subsampling}
 The subsample peak interpolation in \cref{subsample-peak-interpolation} works with a Gaussian fit function. This is a good but not perfect approximation of the real peak shape. The effect only becomes noticeable when the cross-range distance $\Delta d_{cross}$ between (smoothed) range scan lines becomes very small. Interpolated peaks at the center and edges of the down range bins are correctly placed because both the fit function and the true peak shape are symmetric around the true peak. In between those however, peaks are interpolated slightly off because the fit function does not perfectly reflect the true shape of the curve. When examining a peak migrating at a constant speed through the range profile, its subsampled peaks will then lie on an S-shaped path between every (correctly interpolated) cell edge and center. In effect, the Doppler speed estimated with the peak gradient algorithm (see \cref{doppler-estimation-with-the-peak-gradient-algorithm}) will show oscillations around the true Doppler speed. Since wrongly estimated Doppler speeds cause wrong reprojection angles, this causes a radial smearing of targets in the reprojection map.
 
 The effect becomes less noticeable with greater cross-range distances and completely disappears at $\Delta d_{cross} \ge \Delta d_{down}$. Other than increased performance, that is also the reason for choosing a binning approach over a running average for raw data smoothing (see \cref{raw-data-smoothing}).
 
-\subsubsection{Problems with close targets}\label{problems-with-close-targets}
+\subsubsection{Problems With Close Targets}\label{problems-with-close-targets}
 
 When Doppler speed is measured directly using FMCW, there will be
 several Doppler peaks, each representing a different target at the same
@@ -668,7 +668,7 @@ are.
 
 \section{Reprojection Mapping}\label{reprojection-mapping}
 
-\subsection{Orientation parameters}\label{orientation-parameters}
+\subsection{Orientation Parameters}\label{orientation-parameters}
 
 Before the reprojection can be executed, the physical orientation of the
 radar sensor needs to be known to the algorithm. In the implementation,
@@ -696,14 +696,14 @@ of the Doppler speeds will change with the robot's movement direction. The robot
  (after smoothing and interpolation, see \cref{raw-data-smoothing}). The Jail
  Cell scan (see \cref{fig:res_j}) is a good example of where this is necessary.
 
-\subsection{Projection direction}\label{projection-direction}
+\subsection{Projection Direction}\label{projection-direction}
 
 The radar reprojection can be executed as forward or backward mapping.
 The proof of concept implementation has an optional parameter
 \texttt{ProjectionMethod} to switch between forward and backward
 mapping.
 
-\subsubsection{Backward mapping}\label{backward-mapping}
+\subsubsection{Backward Mapping}\label{backward-mapping}
 
 If backward mapping is enabled, the reprojection algorithm still
 operates range scan line based, but iterates over each pixel in the map.
@@ -727,7 +727,7 @@ foreach range_scan_line in range_scan_lines
         map.at(pixel).reduce_value
 \end{verbatim}
 
-\subsubsection{Forward mapping}\label{forward-mapping}
+\subsubsection{Forward Mapping}\label{forward-mapping}
 
 In forward mapping, the reprojection algorithm iterates over each range
 bin in each range scan line. Detected peaks are cut out and reprojected
@@ -746,7 +746,7 @@ foreach range_scan_line in range_scan_lines
       map.at(neighborhood).add(weights, range_bin.value)
 \end{verbatim}
 
-\subsection{Sample splitting}\label{sample-splitting}
+\subsection{Sample Splitting}\label{sample-splitting}
 
 To avoid aliasing when projecting a pixel in the forward projection
 direction, the sample is split over the four closest map pixels. The
@@ -799,7 +799,7 @@ p_{x_t, y_t} = 1
     \label{fig:Sample_splitting}
 \end{figure}
 
-\subsection{Range compensation}\label{range-compensation}
+\subsection{Range Compensation}\label{range-compensation}
 
 As evident from the classical radar \cref{eq:radarclassical}, echo intensity decreases with
 the fourth power of distance. This has the effect that reprojected
@@ -836,7 +836,7 @@ ranges in the map.
 \end{figure}
 
 
-\subsection{Angle sensitivity compensation} \label{angle-sensitivity-compensation}
+\subsection{Angle Sensitivity Compensation} \label{angle-sensitivity-compensation}
 
 The intensity of a target peak depends on its angle with respect to the
 antenna. The angle is unknown before the Doppler speed is estimated, so
@@ -917,7 +917,7 @@ that is independent of observation angle.
     \label{fig:fig_angle_compensation}
 \end{figure}
 
-\subsection{Angle compensation window}\label{angle-compensation-window}
+\subsection{Angle Compensation Window}\label{angle-compensation-window}
 
 Detected peaks are not in a single range bin, but form a curve over
 several range bins. Multiplying each of these range bin's values with
